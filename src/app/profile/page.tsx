@@ -1,6 +1,7 @@
 "use client";
 
 import { Loading } from "@/components/shared/loading/Loading";
+import { useAuthContext } from "@/context/AuthContext";
 import { ActorDetail } from "@/modules/actor/components/actorDetail/ActorDetail";
 import { useGetProfile } from "@/modules/actor/queries";
 import { SelectProfileType } from "@/modules/selectProfileType/SelectProfileType";
@@ -11,6 +12,7 @@ import { useEffect, useState } from "react";
 export default function ProfileType() {
     const auth = useAppSelector((state) => state.user.auth);
     const router = useRouter();
+    const { isHasProfile } = useAuthContext();
     const [clientLoaded, setClientLoaded] = useState(false);
     const { data: profile, isPending } = useGetProfile();
 
@@ -27,7 +29,7 @@ export default function ProfileType() {
 
     return (
         <div>
-            {auth.isHasProfile ? (
+            {isHasProfile ? (
                 <ActorDetail details={profile} isEdit />
             ) : (
                 <SelectProfileType />
