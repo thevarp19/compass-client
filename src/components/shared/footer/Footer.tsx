@@ -7,7 +7,7 @@ export const Footer: FC = () => {
     return (
         <div className="bg-primary border-t-[0.25px] border-gray_text">
             <div className="flex justify-center pt-[25px] sm:pt-12 pb-[46px] sm:pb-[88px]">
-                <div className="flex gap-[20px] sm:gap-[170px] items-center">
+                <div className="flex gap-[15px] sm:gap-[170px] items-center">
                     <div className="max-w-[84px] sm:max-w-[167px] flex flex-col gap-[15px] sm:gap-[50px]">
                         <h2 className="text-white text-[12px] sm:text-2xl font-semibold">
                             {FOOTER.name}
@@ -20,7 +20,7 @@ export const Footer: FC = () => {
                                 src="/icons/telegram.svg"
                                 width={30}
                                 height={30}
-                                className="w-[15px] h-[15px]"
+                                className="w-[15px] h-[15px] sm:w-[30px] sm:h-[30px]"
                                 alt="telegram"
                             />
                             <Image

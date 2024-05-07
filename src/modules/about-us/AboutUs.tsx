@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";
 import { ActorsCarousel } from "../main/Main";
+import { MAIN } from "../main/string";
 import { ABOUTUS } from "./string";
 
 export const AboutUs: FC = () => {
@@ -66,7 +67,7 @@ export const AboutUs: FC = () => {
     return (
         <div>
             <section>
-                <MainBanner />
+                <MainBanner2 />
             </section>
             <section>
                 <ActorsCarousel
@@ -84,6 +85,43 @@ export const AboutUs: FC = () => {
     );
 };
 
+const MainBanner2 = () => {
+    return (
+        <div className="bg-secondary flex gap-[25px] sm:gap-[140px] justify-center px-[25px] sm:px-[140px] py-[40px] sm:py-[110px]">
+            <div className="flex flex-col max-w-[175px] sm:max-w-[424px] justify-between">
+                <div className="flex flex-col">
+                    {" "}
+                    <h2 className="text-white font-semibold text-[20px] sm:text-[48px] flex leading-normal flex-col">
+                        {MAIN.selection}
+                        <span className="underline whitespace-nowrap text-[#6E9CF2]">
+                            {MAIN.best_actor}
+                        </span>
+                        {MAIN.from_all_world}
+                    </h2>
+                    <h2 className="text-white text-[8px] sm:text-base">
+                        {MAIN.inter_platform}
+                    </h2>
+                </div>
+                <div>
+                    <button
+                        className={`bg-button_color text-[8px] sm:text-base text-white font-bold w-[80px] sm:w-[200px] h-[20px] sm:h-[50px] rounded-lg`}
+                    >
+                        {MAIN.find}
+                    </button>
+                </div>
+            </div>
+            <div className="flex ">
+                <Image
+                    src="/images/Illustration1.png"
+                    width={180}
+                    height={157}
+                    className="w-[180px] h-[157px] sm:w-[590px] sm:h-[463px]"
+                    alt="Illustration1"
+                />
+            </div>
+        </div>
+    );
+};
 const MainBanner = () => {
     return (
         <div className="bg-secondary flex flex-col justify-center items-center min-h-[554px]">
@@ -101,7 +139,7 @@ const MainBanner = () => {
 };
 const Manifest = () => {
     return (
-        <div className="bg-secondary flex flex-col gap-10 justify-between px-[146px] py-[80px]">
+        <div className="hidden bg-secondary sm:flex flex-col gap-10 justify-between px-[146px] py-[80px]">
             <div className="flex gap-[144px] text-white">
                 <div className="flex flex-col max-w-[502px] min-h-[283px] gap-[10px] ">
                     <h2 className="underline text-[32px] font-medium leading-[130%]">
@@ -192,14 +230,14 @@ const Manifest = () => {
 
 const OurProjects = () => {
     return (
-        <div className="bg-secondary flex flex-col gap-10 justify-between px-[146px] py-[80px]">
+        <div className="bg-secondary flex flex-col gap-10 justify-between py-10 sm:py-20 px-[25px] sm:px-[146px]">
             <div className="flex justify-between">
-                <h2 className="text-white text-[32px] font-medium leading-[130%]">
+                <h2 className="text-white text-[15px] sm:text-[32px] font-medium leading-[130%]">
                     Наши проекты
                 </h2>
                 <Link
                     href="our-projects"
-                    className="text-[#6E9CF2] text-[18px] font-medium leading-[130%] cursor-pointer"
+                    className="text-[#6E9CF2] text-[10px] sm:text-[18px] font-medium leading-[130%] cursor-pointer"
                 >
                     Смотреть Всё
                 </Link>
@@ -207,17 +245,17 @@ const OurProjects = () => {
             <div className="relative">
                 <Image
                     src={"/images/532banner.png"}
-                    width={1148}
-                    height={500}
+                    width={380}
+                    height={190}
                     alt="actor"
-                    className="w-[1148px] h-[500px] rounded-[9px] "
+                    className="w-[380px] h-[190px] sm:w-[1148px] sm:h-[500px] rounded-[9px] "
                     style={{ objectFit: "cover", objectPosition: "center" }}
                 />
-                <div className="absolute flex flex-col justify-center bottom-0 left-0 h-[134px] z-10 rounded-b-[9px] bg-gradient-to-r-gray">
-                    <h2 className="text-white text-5xl font-medium leading-[130%] ps-5">
+                <div className="absolute flex flex-col justify-center bottom-0 left-0 h-[50px] sm:h-[134px] z-10 rounded-b-[9px] bg-gradient-to-r-gray">
+                    <h2 className="text-white text-base sm:text-5xl font-medium leading-[130%] ps-5">
                         2021-2022 “5:32” (Salem Social Media)
                     </h2>
-                    <h2 className="text-white text-4xl font-medium leading-[130%] ps-5">
+                    <h2 className="text-white text-[10px] sm:text-4xl font-medium leading-[130%] ps-5">
                         В главных ролях: Абильмансур Сериков
                     </h2>
                 </div>
