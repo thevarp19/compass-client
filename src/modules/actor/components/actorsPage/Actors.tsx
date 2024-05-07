@@ -19,12 +19,27 @@ export const Actors: FC = () => {
     const debouncedSearch = useDebounce(filters.search, 1000);
     const debouncedAgeMin = useDebounce(filters.age_min, 1000);
     const debouncedAgeMax = useDebounce(filters.age_max, 1000);
-
+    const debouncedPhotoMin = useDebounce(filters.userPhotoCount_min, 1000);
+    const debouncedPhotoMax = useDebounce(filters.userPhotoCount_max, 1000);
+    const debouncedVideoMin = useDebounce(filters.userVideoCount_min, 1000);
+    const debouncedVideoMax = useDebounce(filters.userVideoCount_max, 1000);
+    const debouncedWeightMin = useDebounce(filters.weight_min, 1000);
+    const debouncedWeightMax = useDebounce(filters.weight_max, 1000);
+    const debouncedHeightMin = useDebounce(filters.height_min, 1000);
+    const debouncedHeightMax = useDebounce(filters.height_max, 1000);
     const { data: actors, isLoading } = useGetActors({
         ...filters,
         search: debouncedSearch,
         age_min: debouncedAgeMin,
         age_max: debouncedAgeMax,
+        userPhotoCount_min: debouncedPhotoMin,
+        userPhotoCount_max: debouncedPhotoMax,
+        userVideoCount_min: debouncedVideoMin,
+        userVideoCount_max: debouncedVideoMax,
+        weight_min: debouncedWeightMin,
+        weight_max: debouncedWeightMax,
+        height_min: debouncedHeightMin,
+        height_max: debouncedHeightMax,
     });
 
     const handleSearchChange = (newSearch: string): void => {
@@ -50,7 +65,7 @@ export const Actors: FC = () => {
             </div>
             <div className="flex flex-col sm:flex-row gap-10">
                 {actors?.length === 0 ? (
-                    <div className="flex justify-center items-center min-w-[830px] w-full">
+                    <div className="flex justify-center items-center min-w-[830px] w-full h-max">
                         <h2 className="text-2xl font-medium text-center text-black w-64">
                             {ACTORS.no_data}
                         </h2>

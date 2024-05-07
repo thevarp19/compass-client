@@ -29,7 +29,7 @@ export const FormikProfileProvider = ({
     const { data: profile, isLoading } = useGetProfile();
 
     const formik = useFormik({
-        initialValues: createActorValues, // Set to default values initially
+        initialValues: createActorValues,
         onSubmit: async (values, { setSubmitting }) => {
             console.log("values", values);
             try {

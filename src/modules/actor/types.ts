@@ -84,7 +84,25 @@ export interface GetActorDetailResponse {
 export interface ActorFilters {
     search: string;
     sortBy: string;
+    isCompassActor: boolean | undefined;
     gender: string;
+    citizenship: string[];
+    specialization: string[];
+    cityAccommodation: string[];
+    legalStatus: string[];
+    agency: string[];
+    hairColor: string[];
+    sport: string[];
+    dancing: string[];
+    right: string[];
+    foreignLanguage: string[];
+    singing: string[];
+    musicalInstrument: string[];
+    hairLength: string[];
+    eyeColor: string[];
+    bodyType: string[];
+    peculiarities: string[];
+    typeOfAppearance: string[];
     age_min?: number;
     age_max?: number;
     weight_min?: number;

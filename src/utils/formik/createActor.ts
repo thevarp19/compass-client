@@ -40,12 +40,12 @@ export const createActorValues: GetActorDetailResponse = {
     peculiarities: "",
     additionalInformation: "",
     comments: "",
-    sports: [""],
-    foreignLanguages: [""],
-    rights: [""],
-    dancings: [""],
-    musicalInstruments: [""],
-    singing: [""],
+    sports: [],
+    foreignLanguages: [],
+    rights: [],
+    dancings: [],
+    musicalInstruments: [],
+    singing: [],
 
     userVideos: [
         {

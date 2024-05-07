@@ -1,6 +1,27 @@
 "use client";
+import { MultiSelectInput } from "@/components/shared/multi-select/MultiSelectInput";
+import {
+    agencies,
+    appearanceTypes,
+    bodyTypes,
+    citizenships,
+    dances,
+    drivingLicense,
+    eyeColors,
+    features,
+    foreignLanguages,
+    formatOptions,
+    hairColors,
+    hairLengths,
+    kazakhstanCities,
+    legalStatuses,
+    musicalInstruments,
+    singing,
+    specializations,
+    sports,
+} from "@/modules/create-profile/const/data";
 import Image from "next/image";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { ActorFilters } from "../../types";
 import { ACTOR_FILTER } from "./string";
 
@@ -20,20 +41,63 @@ export const ActorFilter: FC<ActorFilterProps> = ({
     const handleResetFilter = () => {
         setView("grid");
         setFilters({
+            isCompassActor: undefined,
             search: "",
             sortBy: "",
             gender: "",
             age_max: undefined,
             age_min: undefined,
+            weight_min: undefined,
+            weight_max: undefined,
+            height_min: undefined,
+            height_max: undefined,
+            userVideoCount_min: undefined,
+            userVideoCount_max: undefined,
+            userPhotoCount_min: undefined,
+            userPhotoCount_max: undefined,
+            citizenship: [],
+            specialization: [],
+            cityAccommodation: [],
+            legalStatus: [],
+            agency: [],
+            hairColor: [],
+            sport: [],
+            dancing: [],
+            right: [],
+            foreignLanguage: [],
+            singing: [],
+            musicalInstrument: [],
+            hairLength: [],
+            eyeColor: [],
+            bodyType: [],
+            peculiarities: [],
+            typeOfAppearance: [],
         });
     };
 
-    const [isAdvancedSearchOpen, setIsAdvancedSearchOpen] = useState(false);
+    const [isAdvancedSearchOpen, setIsAdvancedSearchOpen] = useState(() => {
+        return JSON.parse(
+            localStorage.getItem("isAdvancedSearchOpen") || "false"
+        );
+    });
+
+    useEffect(() => {
+        localStorage.setItem(
+            "isAdvancedSearchOpen",
+            JSON.stringify(isAdvancedSearchOpen)
+        );
+    }, [isAdvancedSearchOpen]);
     const hideAdvancedSearch = () => {
         setIsAdvancedSearchOpen(false);
     };
     const showAdvancedSearch = () => {
         setIsAdvancedSearchOpen(true);
+    };
+    const handleMultiSelectChange = (name: string, value: string[]) => {
+        setFilters((prevFilters) => ({
+            ...prevFilters,
+            [name]: value,
+        }));
     };
 
     const handleSortByChange = (newSortBy: string): void => {
@@ -43,6 +107,12 @@ export const ActorFilter: FC<ActorFilterProps> = ({
         setFilters((prevFilters) => ({
             ...prevFilters,
             gender: prevFilters.gender === selectedGender ? "" : selectedGender,
+        }));
+    };
+    const handleIsCompassToggle = () => {
+        setFilters((prevFilters) => ({
+            ...prevFilters,
+            isCompassActor: !prevFilters.isCompassActor,
         }));
     };
 
@@ -55,7 +125,11 @@ export const ActorFilter: FC<ActorFilterProps> = ({
     };
 
     return (
-        <div className="w-full h-max flex border-[1px] border-gray_border rounded-[5px] flex-col gap-5 text-black">
+        <div
+            className={`w-full h-max flex border-[1px] border-gray_border ${
+                isAdvancedSearchOpen && "pb-5"
+            }  rounded-[5px] flex-col gap-5 text-black`}
+        >
             <div
                 className="flex gap-[5px] justify-center items-center w-full h-max py-[11px] px-[64px] border-b-[1px] border-gray_border cursor-pointer"
                 onClick={handleResetFilter}
@@ -160,9 +234,27 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                 </div>
             </div>
             <div className="flex flex-col gap-5 px-5">
-                <h2 className="font-medium text-black">
-                    {ACTOR_FILTER.main_info}
-                </h2>
+                <div
+                    className="flex justify-between items-center"
+                    onClick={hideAdvancedSearch}
+                >
+                    <h2 className="font-medium text-black">
+                        {ACTOR_FILTER.main_info}
+                    </h2>
+                    {isAdvancedSearchOpen && (
+                        <Image
+                            src={`/icons/up.svg`}
+                            width={10}
+                            height={10}
+                            alt={"cross"}
+                            className="w-[14px] h-[14px] cursor-pointer"
+                            style={{
+                                objectFit: "contain",
+                                objectPosition: "center",
+                            }}
+                        />
+                    )}
+                </div>
                 <div className="flex">
                     <h2 className="text-sm leading-[130%] w-full">
                         {ACTOR_FILTER.gender}
@@ -222,11 +314,429 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                 </div>
             </div>
             <div className="flex justify-center px-5">
-                <button className="bg-gray text-sm border-[1px] w-full border-gray_border rounded-[3px] p-1 leading-[130%]">
+                <button
+                    className={`bg-gray text-sm border-[1px] w-full ${
+                        filters.isCompassActor
+                            ? "border-button_color bg-gray_border"
+                            : "border-gray_border"
+                    }  rounded-[3px] p-1 leading-[130%]`}
+                    onClick={handleIsCompassToggle}
+                >
                     {ACTOR_FILTER.actors_compass}
                 </button>
             </div>
-            <div className="flex justify-center items-center border-t-[1px] gap-1 border-gray_border py-[11px] px-[54px]">
+            {isAdvancedSearchOpen && (
+                <div className="flex flex-col gap-5 px-5">
+                    <div className="flex flex-col gap-[10px]">
+                        <h2 className="text-sm text-black">
+                            {ACTOR_FILTER.cityOfResidence}
+                        </h2>
+                        <MultiSelectInput
+                            maxTagCount="responsive"
+                            mode="multiple"
+                            className="min-w-[237px]"
+                            value={filters.cityAccommodation}
+                            options={formatOptions(kazakhstanCities)}
+                            onChange={(value) =>
+                                handleMultiSelectChange(
+                                    `cityAccommodation`,
+                                    value
+                                )
+                            }
+                        />
+                    </div>
+                    <div className="flex flex-col gap-[10px]">
+                        <h2 className="text-sm text-black">
+                            {ACTOR_FILTER.nationality}
+                        </h2>
+                        <MultiSelectInput
+                            maxTagCount="responsive"
+                            mode="multiple"
+                            className="min-w-[237px]"
+                            value={filters.citizenship}
+                            options={formatOptions(citizenships)}
+                            onChange={(value) =>
+                                handleMultiSelectChange(`citizenship`, value)
+                            }
+                        />
+                    </div>
+                    <div className="flex flex-col gap-[10px]">
+                        <h2 className="text-sm text-black">
+                            {ACTOR_FILTER.specialization}
+                        </h2>
+                        <MultiSelectInput
+                            maxTagCount="responsive"
+                            mode="multiple"
+                            className="min-w-[237px]"
+                            value={filters.specialization}
+                            options={formatOptions(specializations)}
+                            onChange={(value) =>
+                                handleMultiSelectChange(`specialization`, value)
+                            }
+                        />
+                    </div>
+                    <div className="flex flex-col gap-[10px]">
+                        <h2 className="text-sm text-black">
+                            {ACTOR_FILTER.legalStatus}
+                        </h2>
+                        <MultiSelectInput
+                            maxTagCount="responsive"
+                            mode="multiple"
+                            className="min-w-[237px]"
+                            value={filters.legalStatus}
+                            options={formatOptions(legalStatuses)}
+                            onChange={(value) =>
+                                handleMultiSelectChange(`legalStatus`, value)
+                            }
+                        />
+                    </div>
+
+                    {/* MEDIAA */}
+                    <h2 className="font-semibold text-black">
+                        {ACTOR_FILTER.media}
+                    </h2>
+                    <div className="flex">
+                        <h2 className="text-sm leading-[130%] w-full">
+                            {ACTOR_FILTER.quantityPhoto}
+                        </h2>
+                        <div className="flex w-2/3 max-w-[102px] gap-[2px] items-center">
+                            <input
+                                className="w-[48px] h-[24px] border border-gray_border text-[12px] text-center rounded-[3px] outline-grayDark-text text-black"
+                                type="number"
+                                placeholder="0"
+                                onChange={(e) =>
+                                    handleMinMaxChange(
+                                        "userPhotoCount_min",
+                                        e.target.value
+                                    )
+                                }
+                                value={filters.userPhotoCount_min || ""}
+                            />
+                            <div className="w-[2px] h-[1px] bg-gray_border"></div>
+                            <input
+                                className="w-[48px] h-[24px] border border-gray_border text-[12px] text-center rounded-[3px] outline-grayDark-text text-black"
+                                type="number"
+                                placeholder="100"
+                                onChange={(e) =>
+                                    handleMinMaxChange(
+                                        "userPhotoCount_max",
+                                        e.target.value
+                                    )
+                                }
+                                value={filters.userPhotoCount_max || ""}
+                            />
+                        </div>
+                    </div>
+                    <div className="flex">
+                        <h2 className="text-sm leading-[130%] w-full">
+                            {ACTOR_FILTER.quantityVideo}
+                        </h2>
+                        <div className="flex w-2/3 max-w-[102px] gap-[2px] items-center">
+                            <input
+                                className="w-[48px] h-[24px] border border-gray_border text-[12px] text-center rounded-[3px] outline-grayDark-text text-black"
+                                type="number"
+                                placeholder="0"
+                                onChange={(e) =>
+                                    handleMinMaxChange(
+                                        "userVideoCount_min",
+                                        e.target.value
+                                    )
+                                }
+                                value={filters.userVideoCount_min || ""}
+                            />
+                            <div className="w-[2px] h-[1px] bg-gray_border"></div>
+                            <input
+                                className="w-[48px] h-[24px] border border-gray_border text-[12px] text-center rounded-[3px] outline-grayDark-text text-black"
+                                type="number"
+                                placeholder="100"
+                                onChange={(e) =>
+                                    handleMinMaxChange(
+                                        "userVideoCount_max",
+                                        e.target.value
+                                    )
+                                }
+                                value={filters.userVideoCount_max || ""}
+                            />
+                        </div>
+                    </div>
+                    <div className="flex flex-col gap-[10px]">
+                        <h2 className="text-sm text-black">
+                            {ACTOR_FILTER.agency}
+                        </h2>
+                        <MultiSelectInput
+                            maxTagCount="responsive"
+                            mode="multiple"
+                            className="min-w-[237px]"
+                            value={filters.agency}
+                            options={formatOptions(agencies)}
+                            onChange={(value) =>
+                                handleMultiSelectChange(`agency`, value)
+                            }
+                        />
+                    </div>
+                    <h2 className="font-semibold text-black">
+                        {ACTOR_FILTER.externalData}
+                    </h2>
+                    <div className="flex flex-col gap-[10px]">
+                        <h2 className="text-sm text-black">
+                            {ACTOR_FILTER.hairLength}
+                        </h2>
+                        <MultiSelectInput
+                            maxTagCount="responsive"
+                            mode="multiple"
+                            className="min-w-[237px]"
+                            value={filters.hairLength}
+                            options={formatOptions(hairLengths)}
+                            onChange={(value) =>
+                                handleMultiSelectChange(`hairLength`, value)
+                            }
+                        />
+                    </div>
+                    <div className="flex flex-col gap-[10px]">
+                        <h2 className="text-sm text-black">
+                            {ACTOR_FILTER.hairColor}
+                        </h2>
+                        <MultiSelectInput
+                            maxTagCount="responsive"
+                            mode="multiple"
+                            className="min-w-[237px]"
+                            value={filters.hairColor}
+                            options={formatOptions(hairColors)}
+                            onChange={(value) =>
+                                handleMultiSelectChange(`hairColor`, value)
+                            }
+                        />
+                    </div>
+                    <div className="flex flex-col gap-[10px]">
+                        <h2 className="text-sm text-black">
+                            {ACTOR_FILTER.eyeColor}
+                        </h2>
+                        <MultiSelectInput
+                            maxTagCount="responsive"
+                            mode="multiple"
+                            className="min-w-[237px]"
+                            value={filters.eyeColor}
+                            options={formatOptions(eyeColors)}
+                            onChange={(value) =>
+                                handleMultiSelectChange(`eyeColor`, value)
+                            }
+                        />
+                    </div>
+                    <div className="flex flex-col gap-[10px]">
+                        <h2 className="text-sm text-black">
+                            {ACTOR_FILTER.appearanceType}
+                        </h2>
+                        <MultiSelectInput
+                            maxTagCount="responsive"
+                            mode="multiple"
+                            className="min-w-[237px]"
+                            value={filters.typeOfAppearance}
+                            options={formatOptions(appearanceTypes)}
+                            onChange={(value) =>
+                                handleMultiSelectChange(
+                                    `typeOfAppearance`,
+                                    value
+                                )
+                            }
+                        />
+                    </div>
+                    <div className="flex flex-col gap-[10px]">
+                        <h2 className="text-sm text-black">
+                            {ACTOR_FILTER.bodyPosition}
+                        </h2>
+                        <MultiSelectInput
+                            maxTagCount="responsive"
+                            mode="multiple"
+                            className="min-w-[237px]"
+                            value={filters.bodyType}
+                            options={formatOptions(bodyTypes)}
+                            onChange={(value) =>
+                                handleMultiSelectChange(`bodyType`, value)
+                            }
+                        />
+                    </div>
+                    <div className="flex flex-col gap-[10px]">
+                        <h2 className="text-sm text-black">
+                            {ACTOR_FILTER.features}
+                        </h2>
+                        <MultiSelectInput
+                            maxTagCount="responsive"
+                            mode="multiple"
+                            className="min-w-[237px]"
+                            value={filters.peculiarities}
+                            options={formatOptions(features)}
+                            onChange={(value) =>
+                                handleMultiSelectChange(`peculiarities`, value)
+                            }
+                        />
+                    </div>
+                    <div className="flex">
+                        <h2 className="text-sm leading-[130%] w-full">
+                            {ACTOR_FILTER.height}
+                        </h2>
+                        <div className="flex w-2/3 max-w-[102px] gap-[2px] items-center">
+                            <input
+                                className="w-[48px] h-[24px] border border-gray_border text-[12px] text-center rounded-[3px] outline-grayDark-text text-black"
+                                type="number"
+                                onChange={(e) =>
+                                    handleMinMaxChange(
+                                        "height_min",
+                                        e.target.value
+                                    )
+                                }
+                                value={filters.height_min || ""}
+                            />
+                            <div className="w-[2px] h-[1px] bg-gray_border"></div>
+                            <input
+                                className="w-[48px] h-[24px] border border-gray_border text-[12px] text-center rounded-[3px] outline-grayDark-text text-black"
+                                type="number"
+                                onChange={(e) =>
+                                    handleMinMaxChange(
+                                        "height_max",
+                                        e.target.value
+                                    )
+                                }
+                                value={filters.height_max || ""}
+                            />
+                        </div>
+                    </div>
+                    <div className="flex">
+                        <h2 className="text-sm leading-[130%] w-full">
+                            {ACTOR_FILTER.weight}
+                        </h2>
+                        <div className="flex w-2/3 max-w-[102px] gap-[2px] items-center">
+                            <input
+                                className="w-[48px] h-[24px] border border-gray_border text-[12px] text-center rounded-[3px] outline-grayDark-text text-black"
+                                type="number"
+                                onChange={(e) =>
+                                    handleMinMaxChange(
+                                        "weight_min",
+                                        e.target.value
+                                    )
+                                }
+                                value={filters.weight_min || ""}
+                            />
+                            <div className="w-[2px] h-[1px] bg-gray_border"></div>
+                            <input
+                                className="w-[48px] h-[24px] border border-gray_border text-[12px] text-center rounded-[3px] outline-grayDark-text text-black"
+                                type="number"
+                                onChange={(e) =>
+                                    handleMinMaxChange(
+                                        "weight_max",
+                                        e.target.value
+                                    )
+                                }
+                                value={filters.weight_max || ""}
+                            />
+                        </div>
+                    </div>
+                    <h2 className="font-semibold text-black">
+                        {ACTOR_FILTER.skills}
+                    </h2>
+                    <div className="flex flex-col gap-[10px]">
+                        <h2 className="text-sm text-black">
+                            {ACTOR_FILTER.sport}
+                        </h2>
+                        <MultiSelectInput
+                            maxTagCount="responsive"
+                            mode="multiple"
+                            className="min-w-[237px]"
+                            value={filters.sport}
+                            options={formatOptions(sports)}
+                            onChange={(value) =>
+                                handleMultiSelectChange(`sport`, value)
+                            }
+                        />
+                    </div>
+                    <div className="flex flex-col gap-[10px]">
+                        <h2 className="text-sm text-black">
+                            {ACTOR_FILTER.dance}
+                        </h2>
+                        <MultiSelectInput
+                            maxTagCount="responsive"
+                            mode="multiple"
+                            className="min-w-[237px]"
+                            value={filters.dancing}
+                            options={formatOptions(dances)}
+                            onChange={(value) =>
+                                handleMultiSelectChange(`dancing`, value)
+                            }
+                        />
+                    </div>
+                    <div className="flex flex-col gap-[10px]">
+                        <h2 className="text-sm text-black">
+                            {ACTOR_FILTER.musicalInstruments}
+                        </h2>
+                        <MultiSelectInput
+                            maxTagCount="responsive"
+                            mode="multiple"
+                            className="min-w-[237px]"
+                            value={filters.musicalInstrument}
+                            options={formatOptions(musicalInstruments)}
+                            onChange={(value) =>
+                                handleMultiSelectChange(
+                                    `musicalInstrument`,
+                                    value
+                                )
+                            }
+                        />
+                    </div>
+                    <div className="flex flex-col gap-[10px]">
+                        <h2 className="text-sm text-black">
+                            {ACTOR_FILTER.singing}
+                        </h2>
+                        <MultiSelectInput
+                            maxTagCount="responsive"
+                            mode="multiple"
+                            className="min-w-[237px]"
+                            value={filters.singing}
+                            options={formatOptions(singing)}
+                            onChange={(value) =>
+                                handleMultiSelectChange(`singing`, value)
+                            }
+                        />
+                    </div>
+                    <div className="flex flex-col gap-[10px]">
+                        <h2 className="text-sm text-black">
+                            {ACTOR_FILTER.foreignLanguages}
+                        </h2>
+                        <MultiSelectInput
+                            maxTagCount="responsive"
+                            mode="multiple"
+                            className="min-w-[237px]"
+                            value={filters.foreignLanguage}
+                            options={formatOptions(foreignLanguages)}
+                            onChange={(value) =>
+                                handleMultiSelectChange(
+                                    `foreignLanguage`,
+                                    value
+                                )
+                            }
+                        />
+                    </div>
+                    <div className="flex flex-col gap-[10px]">
+                        <h2 className="text-sm text-black">
+                            {ACTOR_FILTER.drivingLicenses}
+                        </h2>
+                        <MultiSelectInput
+                            maxTagCount="responsive"
+                            mode="multiple"
+                            className="min-w-[237px]"
+                            value={filters.right}
+                            options={formatOptions(drivingLicense)}
+                            onChange={(value) =>
+                                handleMultiSelectChange(`right`, value)
+                            }
+                        />
+                    </div>
+                </div>
+            )}
+            <div
+                className={`${
+                    isAdvancedSearchOpen ? "hidden" : "flex"
+                }  justify-center items-center border-t-[1px] gap-1 border-gray_border py-[11px] px-[54px]`}
+                onClick={showAdvancedSearch}
+            >
                 <h2 className="text-sm font-normal leading-[130%]">
                     {ACTOR_FILTER.advanced_search}
                 </h2>

@@ -1,7 +1,7 @@
 import { FORM_TEXT } from "@/modules/create-profile/strings/string";
 import { FC } from "react";
 import { AllInfoProps } from "../AllInfo";
-import { MovieAndAwards } from "../Movie";
+import { MovieAndAwards } from "../MovieAndAwards";
 import { ImageAndVideo } from "./photo/ImageAndVideo";
 
 export const MediaInfo: FC<AllInfoProps> = ({ actor, isEdit }) => {

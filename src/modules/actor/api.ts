@@ -7,12 +7,20 @@ import {
 
 export const getActors = async (filters: ActorFilters) => {
     const params = new URLSearchParams();
+
     Object.keys(filters).forEach((key) => {
         const filterKey = key as keyof ActorFilters;
-        if (filters[filterKey] !== undefined && filters[filterKey] !== "") {
-            params.append(filterKey, filters[filterKey]?.toString() ?? "");
+        const value = filters[filterKey];
+
+        if (Array.isArray(value)) {
+            value.forEach((item) => {
+                if (item) params.append(filterKey, item);
+            });
+        } else if (value !== undefined && value !== "") {
+            params.append(filterKey, value.toString());
         }
     });
+
     return axiosAuthorized.get<GetActorResponse[]>(
         `/user/actors?${params.toString()}`
     );
