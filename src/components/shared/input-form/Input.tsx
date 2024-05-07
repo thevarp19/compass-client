@@ -19,7 +19,7 @@ export const Input: FC<InputProps> = ({ helpText, className, ...props }) => {
                 <Image
                     src={props?.image}
                     alt="input icon"
-                    className="absolute left-3"
+                    className="absolute left-3 w-[13px] h-[13px] sm:w-[20px] sm:h-[20px]"
                     width={20}
                     height={20}
                 />
@@ -38,7 +38,7 @@ export const Input: FC<InputProps> = ({ helpText, className, ...props }) => {
             {props.type === "password" && (
                 <Image
                     src={showPassword ? "/icons/eye-off.svg" : "/icons/eye.svg"}
-                    className={`cursor-pointer ${
+                    className={`cursor-pointer w-[13px] h-[13px] sm:w-[20px] sm:h-[20px] ${
                         props.type !== "password"
                             ? "hidden"
                             : "absolute right-4"
@@ -52,7 +52,7 @@ export const Input: FC<InputProps> = ({ helpText, className, ...props }) => {
             {helpText && (
                 <span
                     className={
-                        "absolute -bottom-[16px] left-[10px] tracking-normal leading-3 text-[10px] text-red max-sm:text-[10px]"
+                        "absolute -bottom-[16px] left-[10px] tracking-normal leading-3 text-[8px] sm:text-[10px] text-red max-sm:text-[10px]"
                     }
                 >
                     {helpText}

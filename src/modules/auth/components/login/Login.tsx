@@ -29,18 +29,18 @@ const Login: React.FC = () => {
     const { formik, mutation } = useLogin(success);
 
     return (
-        <div className="flex justify-center items-center h-screen">
+        <div className="flex justify-center items-center pb-[100px] sm:pb-0 pt-[30px] sm:pt-0 h-max sm:h-screen">
             <form
-                className="bg-white w-[427px] h-[600px] border border-[#D9D9D9] rounded-lg p-10"
+                className="bg-white w-[290px] h-[478px] sm:w-[427px] sm:h-[600px] border border-[#D9D9D9] rounded-lg p-5 sm:p-10"
                 onSubmit={formik.handleSubmit}
             >
                 <div className="flex flex-col gap-10">
-                    <label className="font-bold text-black font-montserrat text-[26px]">
+                    <label className="font-bold text-black font-montserrat text-base sm:text-[26px]">
                         {LOGIN.login}
                     </label>
                     <div className="flex flex-col gap-[20px]">
                         <div className="flex flex-col gap-4">
-                            <label className="text-black font-semibold text-base">
+                            <label className="text-black font-semibold text-[10px] sm:text-base">
                                 {LOGIN.mail}
                             </label>
                             <Input
@@ -49,10 +49,11 @@ const Login: React.FC = () => {
                                 image="/icons/email.svg"
                                 name="email"
                                 value={formik.values.email}
+                                className="text-[10px] sm:text-base"
                             />
                         </div>
                         <div className="flex flex-col gap-4">
-                            <label className="text-black font-semibold text-base">
+                            <label className="text-black font-semibold text-[10px] sm:text-base">
                                 {LOGIN.password}
                             </label>
                             <Input
@@ -62,30 +63,31 @@ const Login: React.FC = () => {
                                 type="password"
                                 name="password"
                                 value={formik.values.password}
+                                className="text-[10px] sm:text-base"
                             />
                         </div>
                         <div>
                             <Button text={LOGIN.enter} type="submit" />
                         </div>
                         <div className="flex justify-end">
-                            <label className="text-xs font-medium font-montserrat text-black">
+                            <label className="font-medium font-montserrat text-black text-[8px] sm:text-xs">
                                 {LOGIN.forgot_pass}
                             </label>
                         </div>
                         <div className="flex justify-center gap-2">
-                            <label className="text-xs font-medium font-montserrat text-black">
+                            <label className="font-medium font-montserrat text-black text-[8px] sm:text-xs">
                                 {LOGIN.dont_have_acc}
                             </label>
                             <Link
                                 href="/auth/registration"
-                                className="text-xs text-button_color"
+                                className="text-button_color text-[8px] sm:text-xs"
                             >
                                 {LOGIN.registraton}
                             </Link>
                         </div>
                         <div className="flex items-center ">
                             <hr className="flex-grow border-0 h-px bg-gray_border mx-2"></hr>
-                            <label className="text-black text-xs">
+                            <label className="text-black text-[8px] sm:text-xs">
                                 {LOGIN.or}
                             </label>
                             <hr className="flex-grow border-0 h-px bg-gray_border mx-2"></hr>
