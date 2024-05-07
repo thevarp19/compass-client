@@ -8,10 +8,11 @@
         --color-secondary: #0e273a;
         --color-red: #ff6666;
         --color-green: #199a26;
-        --color-button: #00518f;
+        --color-button: #0e2956;
         --color-gray: #f5f5f5;
         --color-gray-text: #c1c1c1;
         --color-grayDark-text: #434343;
+        --color-gray-border: #d9d9d9;
     }
 }
 
@@ -38,4 +39,13 @@ body {
     .text-balance {
         text-wrap: balance;
     }
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
 }

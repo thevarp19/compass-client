@@ -1,9 +1,5 @@
-import Registration from "@/modules/auth/register/Registration";
+import { Main } from "@/modules/main/Main";
 
 export default function Home() {
-    return (
-        <div>
-            <Registration />
-        </div>
-    );
+    return <Main />;
 }

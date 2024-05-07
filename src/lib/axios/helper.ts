@@ -1,7 +1,7 @@
 import axios, { Axios } from "axios";
 import jwtService from "../jwt";
 
-const refreshJwtUrl = "/refresh";
+const refreshJwtUrl = "/auth/login/refresh";
 
 const setAuthHeader = (config: any) => {
     const access = jwtService.getAccessToken();
@@ -17,7 +17,7 @@ const isAxiosUnauthorized = (error: any) => {
 
 const refreshJwt = (axiosApi: any) => {
     const options = {
-        refreshToken: jwtService.getRefreshToken() || "refresh",
+        refresh: jwtService.getRefreshToken() || "refresh",
     };
     return axiosApi.post(refreshJwtUrl, options, { _retry: true });
 };
@@ -25,16 +25,16 @@ const refreshJwt = (axiosApi: any) => {
 const refreshAndRetry = async (axiosApi: any, originalRequest: Axios) => {
     try {
         const refreshResponse = await refreshJwt(axiosApi);
-        const newAccessToken = refreshResponse.data.data.accessToken;
-        const newRefreshToken = refreshResponse.data.data.refreshToken;
+        const newAccessToken = refreshResponse.data.access;
+
         jwtService.saveJwt({
             access: newAccessToken,
-            refresh: newRefreshToken,
+            refresh: "",
         });
         setAuthHeader(originalRequest);
         return axiosApi(originalRequest);
     } catch (refreshError) {
-        window.location.href = "/auth";
+        // window.location.href = "/auth/login";
     }
 };
 

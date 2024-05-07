@@ -1,6 +1,6 @@
+import { baseURL } from "@/config";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-// Interfaces
 interface RegisterRequest {
     email: string;
     password: string;
@@ -19,7 +19,7 @@ interface AuthResponse {
 export const authApi = createApi({
     reducerPath: "auth",
     baseQuery: fetchBaseQuery({
-        baseUrl: "http://localhost:8080/api/auth/",
+        baseUrl: baseURL,
     }),
     endpoints: (builder) => ({
         postRegister: builder.mutation<AuthResponse, RegisterRequest>({

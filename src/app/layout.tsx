@@ -1,6 +1,10 @@
+import { Footer } from "@/components/shared/footer/Footer";
 import Navbar from "@/components/shared/navbar/Navbar";
+import { AuthProvider } from "@/context/AuthContext";
+import { QueryWrapper } from "@/context/QueryProvider";
 import "@/styles/globals.css";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
+import { App } from "antd";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import StoreProvider from "./StoreProvider";
@@ -23,14 +27,19 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={montserrat.className}>
-                <AntdRegistry>
+                <QueryWrapper>
                     <StoreProvider>
-                        <div>
-                            <Navbar />
-                            {children}
-                        </div>
+                        <AntdRegistry>
+                            <App>
+                                <AuthProvider>
+                                    <Navbar />
+                                    {children}
+                                    <Footer />
+                                </AuthProvider>
+                            </App>
+                        </AntdRegistry>
                     </StoreProvider>
-                </AntdRegistry>
+                </QueryWrapper>
             </body>
         </html>
     );

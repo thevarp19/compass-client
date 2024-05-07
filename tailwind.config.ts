@@ -14,9 +14,13 @@ const config: Config = {
             gray: "var(--color-gray)",
             gray_text: "var(--color-gray-text)",
             grayDark_text: "var(--color-grayDark-text)",
+            gray_border: "var(--color-gray-border)",
         },
         extend: {
             backgroundImage: {
+                "gradient-to-r-gray":
+                    "linear-gradient(90deg, rgba(217, 217, 217, 0.28) 0%, rgba(115, 115, 115, 0.28) 100%)",
+
                 "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
                 "gradient-conic":
                     "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",

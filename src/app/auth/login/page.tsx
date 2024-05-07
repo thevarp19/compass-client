@@ -1,9 +1,5 @@
-import Login from "@/modules/auth/login/Login";
+import Login from "@/modules/auth/components/login/Login";
 
-export default function page() {
-    return (
-        <div>
-            <Login />
-        </div>
-    );
+export default function LoginPage() {
+    return <Login />;
 }

@@ -1,99 +1,50 @@
+import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
-import jwtService from ".";
 
-interface DecodedJwt {
+interface DecodedToken {
     exp: number;
     iat: number;
-    jti: string;
-    iss: string;
-    aud: string;
-    sub: string;
-    typ: string;
-    azp: string;
-    session_state: string;
-    acr: string;
-    realm_access: {
-        roles: string[];
-    };
-    resource_access: {
-        wonder: {
-            roles: string[];
-        };
-        account: {
-            roles: string[];
-        };
-    };
-    scope: string;
-    sid: string;
-    email_verified: boolean;
-    user_id: string;
-    name: string;
-    preferred_username: string;
-    given_name: string;
-    family_name: string;
-    email: string;
+    userType: string;
 }
 
-interface DecodedRefreshJwt {
-    exp: number;
-    iat: number;
-    jti: string;
-    iss: string;
-    aud: string;
-    sub: string;
-    typ: string;
-    azp: string;
-    session_state: string;
-    scope: string;
-    sid: string;
-}
-
-const decode = () => {
+const decodeToken = (token: string): DecodedToken | null => {
     try {
-        const token = jwtService.getAccessToken();
-        const decodedJwt = jwtDecode<DecodedJwt>(token);
-        return decodedJwt;
+        return jwtDecode<DecodedToken>(token);
     } catch (error) {
         return null;
     }
 };
 
-const decodeRefresh = () => {
-    try {
-        const token = jwtService.getAccessToken();
-        const decodedJwt = jwtDecode<DecodedRefreshJwt>(token);
-        return decodedJwt;
-    } catch (error) {
-        return null;
-    }
-};
-
-export const getRoles = () => {
-    const decodedJwt = decode();
-    if (!decodedJwt) {
-        return null;
-    }
-    return decodedJwt.resource_access.wonder.roles;
-};
-
-export const getUserData = () => {
-    const decodedJwt = decode();
-    if (!decodedJwt) {
-        return null;
-    }
-
-    return {
-        email: decodedJwt.email,
-        name: decodedJwt.name,
-        userId: decodedJwt.user_id,
-    };
-};
-
-export const isJwtExpired = () => {
-    const decodedJwt = decodeRefresh();
-    if (!decodedJwt) {
+const isTokenExpired = (token: string): boolean => {
+    const decoded = decodeToken(token);
+    if (!decoded) {
         return true;
     }
     const currentTime = Date.now() / 1000;
-    return decodedJwt.exp < currentTime;
+    return decoded.exp < currentTime;
+};
+const isTokenTypeNone = (token: string): boolean => {
+    const decoded = decodeToken(token);
+    console.log(decoded);
+
+    if (!decoded) {
+        return true;
+    }
+    return decoded.userType === "none";
+};
+
+export const isUserAuthorized = (): boolean => {
+    const accessToken = Cookies.get("jwt-access");
+    if (!accessToken) {
+        return false;
+    }
+    return !isTokenExpired(accessToken);
+};
+
+export const isUserHasProfile = (): boolean => {
+    const accessToken = Cookies.get("jwt-access");
+    if (!accessToken) {
+        return false;
+    }
+    return !isTokenTypeNone(accessToken);
 };

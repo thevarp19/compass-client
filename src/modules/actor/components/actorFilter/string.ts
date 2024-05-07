@@ -1,0 +1,15 @@
+export const ACTOR_FILTER = {
+    reset_filter: "Сбросить Фильтр",
+    view: "Вид",
+    sort: "Сортировка",
+    relevant: "Релевантно",
+    alphabet: "А-Я",
+    by_age: "По возрасту",
+    main_info: "Основная Информация",
+    gender: "Пол",
+    male: "Муж.",
+    female: "Жен.",
+    age: "Возраст",
+    actors_compass: "Актёры Compass",
+    advanced_search: "Расширенный Поиск",
+};
