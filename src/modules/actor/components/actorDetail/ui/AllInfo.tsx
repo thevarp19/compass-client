@@ -22,12 +22,12 @@ const socialMediaIcons = [
 
 export const AllInfo: FC<AllInfoProps> = ({ actor, isEdit }) => {
     return (
-        <div className="flex py-[60px]">
-            <div className="flex flex-col gap-10">
-                <div className="flex gap-10">
+        <div className="flex py-[25px] sm:py-[60px]">
+            <div className="flex flex-col">
+                <div className="flex gap-[10px] sm:gap-10">
                     <div className="flex flex-col gap-12 ">
                         <div className="flex flex-col gap-5">
-                            <div className="flex justify-center items-center bg-gray_border w-[250px] h-[350px] rounded-lg overflow-hidden relative">
+                            <div className="flex justify-center items-center bg-gray_border w-[100px] sm:w-[250px] h-[135px] sm:h-[350px] rounded-lg overflow-hidden relative">
                                 <Image
                                     src={actor?.abstract_user_data.avatar || ""}
                                     fill
@@ -35,7 +35,7 @@ export const AllInfo: FC<AllInfoProps> = ({ actor, isEdit }) => {
                                     className="object-cover w-full h-full"
                                 />
                             </div>
-                            <div className="grid grid-cols-4 gap-[15px] px-5">
+                            <div className="grid grid-cols-4 gap-[6px] sm:gap-[15px] sm:px-5">
                                 {socialMediaIcons.map((social, index) => {
                                     const socialMediaUrl =
                                         actor?.abstract_user_data.userSocialMedias?.find(
@@ -48,10 +48,10 @@ export const AllInfo: FC<AllInfoProps> = ({ actor, isEdit }) => {
                                         <Link key={index} href={socialMediaUrl}>
                                             <Image
                                                 src={social.imageSrc}
-                                                width={40}
-                                                height={40}
+                                                width={20}
+                                                height={20}
                                                 alt={`${social.name} icon`}
-                                                className="object-cover w-[40px] h-[40px]"
+                                                className="object-cover w-[20px] sm:w-[40px] h-[20px] sm:h-[40px]"
                                             />
                                         </Link>
                                     );
@@ -61,20 +61,20 @@ export const AllInfo: FC<AllInfoProps> = ({ actor, isEdit }) => {
 
                         {actor?.userContacts && (
                             <div className="flex flex-col gap-5 w-full">
-                                <h2 className="text-xl font-semibold text-black">
-                                    {FORM_TEXT.contactInfo}
+                                <h2 className="text-[10px] sm:text-xl font-semibold text-black">
+                                    {FORM_TEXT.contacts}
                                 </h2>
 
                                 {actor?.userContacts?.map((contact, index) => (
                                     <div
                                         key={index}
-                                        className="flex justify-between items-center"
+                                        className="flex justify-between flex-wrap sm:flex-nowrap items-center"
                                     >
-                                        <h2 className="text-grayDark_text">
+                                        <h2 className="sm:text-base text-[8px] text-grayDark_text">
                                             {contact.number}{" "}
                                         </h2>
                                         <div className="w-max">
-                                            <h2 className="text-grayDark_text w-max">
+                                            <h2 className="sm:text-base text-[8px] text-grayDark_text w-max">
                                                 {contact.name}
                                             </h2>
                                         </div>
@@ -83,23 +83,10 @@ export const AllInfo: FC<AllInfoProps> = ({ actor, isEdit }) => {
                             </div>
                         )}
                     </div>
-                    <div className="flex flex-col gap-5 min-w-[540px] max-w-[540px]">
+                    <div className="flex flex-col gap-5 min-w-[162px] max-w-[162px] sm:min-w-[540px] sm:max-w-[540px] overflow-hidden">
                         <GeneralInformation actor={actor} />
                     </div>
                     <MediaInfo actor={actor} isEdit={isEdit} />
-                </div>
-                <div className="flex justify-end text-center">
-                    {/* <button
-                        type="submit"
-                        // onClick={(e) => {
-                        //     e.preventDefault();
-                        //     setIsConfirmDrawerVisible(true);
-                        // }}
-                        className="bg-button_color text-base text-white font-bold rounded-[5px] w-[160px] h-[40px] text-center"
-                    >
-                        Сохранить
-                         {mutation.isPending && <Loading />} 
-                    </button> */}
                 </div>
             </div>
         </div>

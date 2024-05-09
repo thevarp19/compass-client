@@ -55,7 +55,7 @@ export const Form = () => {
                     onSubmit={formik.handleSubmit}
                     className="flex flex-col gap-10"
                 >
-                    <div className="flex gap-10">
+                    <div className="flex gap-[10px] sm:gap-10">
                         <UploadImage
                             link={formik.values.abstract_user_data.avatar}
                             setLink={(newLink) => {

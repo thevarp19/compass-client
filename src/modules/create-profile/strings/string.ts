@@ -63,6 +63,7 @@ export const FORM_TEXT = {
     socialNetworkName: "Название",
     socialNetworkLink: "Ссылка",
     contactInfo: "Контактная Информация",
+    contacts: "Контакты",
     contactName: "Имя",
     contactNumber: "Номер",
     addMoreContact: "Добавить ещё",

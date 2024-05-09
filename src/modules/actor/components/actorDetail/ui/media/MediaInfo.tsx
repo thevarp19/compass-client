@@ -6,8 +6,8 @@ import { ImageAndVideo } from "./photo/ImageAndVideo";
 
 export const MediaInfo: FC<AllInfoProps> = ({ actor, isEdit }) => {
     return (
-        <div className="border border-gray_border h-max max-w-[268px] rounded-[5px] p-[10px] flex flex-col gap-5 pb-40">
-            <h2 className="text-xl font-semibold text-black">
+        <div className="border border-gray_border h-max max-w-[100px] sm:max-w-[268px] rounded-[5px] p-[5px] sm:p-[10px] flex flex-col gap-[10px] sm:gap-5 pb-20 sm:pb-40">
+            <h2 className="text-[10px] sm:text-xl font-semibold text-black">
                 {FORM_TEXT.media}
             </h2>
             <ImageAndVideo actor={actor} isEdit={isEdit} />

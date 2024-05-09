@@ -9,7 +9,7 @@ export const CreateProfilePage = () => {
     const { isHasProfile } = useAuthContext();
     return (
         <div className="bg-gray flex flex-col px-[146px] py-[60px]">
-            <span className="text-[32px] font-semibold text-black">
+            <span className="text-[20px] sm:text-[32px] font-semibold text-black">
                 {isHasProfile
                     ? FORM_TEXT.edit_profile
                     : FORM_TEXT.create_profile}

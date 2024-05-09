@@ -2,6 +2,7 @@
 
 import { Loading } from "@/components/shared/loading/Loading";
 import { useAuthContext } from "@/context/AuthContext";
+import { ActorDetail } from "@/modules/actor/components/actorDetail/ActorDetail";
 import { useGetProfile } from "@/modules/actor/queries";
 import { SelectProfileType } from "@/modules/selectProfileType/SelectProfileType";
 import { useAppSelector } from "@/redux/utils";
@@ -29,9 +30,8 @@ export default function ProfileType() {
     return (
         <div>
             {isHasProfile ? (
-                <SelectProfileType />
+                <ActorDetail details={profile} isEdit />
             ) : (
-                // <ActorDetail details={profile} isEdit />
                 <SelectProfileType />
             )}
         </div>

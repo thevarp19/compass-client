@@ -17,9 +17,9 @@ export const ActorDetail: FC<ActorDetailProps> = ({ details, isEdit }) => {
     };
 
     return (
-        <div className="bg-gray flex flex-col px-[146px] py-[60px]">
+        <div className="bg-gray flex flex-col px-[25px] sm:px-[146px] py-[30px] sm:py-[60px]">
             <div className="flex justify-between">
-                <span className="text-[32px] font-semibold text-black">
+                <span className="text-[20px] sm:text-[32px] font-semibold text-black">
                     {details?.abstract_user_data.firstName}{" "}
                     {details?.abstract_user_data.thirdName}{" "}
                     {details?.abstract_user_data.lastName}
@@ -31,7 +31,7 @@ export const ActorDetail: FC<ActorDetailProps> = ({ details, isEdit }) => {
                             width={24}
                             height={24}
                             alt="edit"
-                            className="object-cover w-[24px] h-[24px]"
+                            className="object-cover w-[12px] sm:w-[24px] h-[12px] sm:h-[24px]"
                         />
                     </Link>
                 )}
@@ -41,7 +41,7 @@ export const ActorDetail: FC<ActorDetailProps> = ({ details, isEdit }) => {
                 <div className="flex justify-end">
                     <span
                         onClick={handleLogout}
-                        className="bg-[#F66] cursor-pointer text-base flex items-center justify-center text-white font-semibold w-[160px] h-[40px] rounded-lg"
+                        className="bg-[#F66] cursor-pointer text-[8px] sm:text-base flex items-center justify-center text-white font-semibold w-[80px] sm:w-[160px] h-[20px] sm:h-[40px] rounded-lg"
                     >
                         {FORM_TEXT.logout}
                     </span>

@@ -6,7 +6,7 @@ export const MovieAndAwards: FC<AllInfoProps> = ({ actor }) => {
     return (
         <>
             <div className="flex flex-col gap-5 w-full">
-                <h2 className="text-xl font-semibold text-black">
+                <h2 className="text-[10px] sm:text-xl font-semibold text-black">
                     {FORM_TEXT.movies}
                 </h2>
 
@@ -15,14 +15,14 @@ export const MovieAndAwards: FC<AllInfoProps> = ({ actor }) => {
                         key={index}
                         className="flex justify-between items-center"
                     >
-                        <h2 className="text-grayDark_text">
+                        <h2 className="text-[7px] sm:text-base text-grayDark_text">
                             {movie.releasedYear}{" "}
                         </h2>
                         <div className="w-max">
-                            <h2 className="text-grayDark_text w-max">
+                            <h2 className="text-[7px] sm:text-base text-grayDark_text w-max">
                                 {movie.name}
                             </h2>
-                            <h2 className="text-grayDark_text w-max">
+                            <h2 className="text-[7px] sm:text-base grayDark_text w-max">
                                 {movie.role}{" "}
                             </h2>
                         </div>
@@ -30,7 +30,7 @@ export const MovieAndAwards: FC<AllInfoProps> = ({ actor }) => {
                 ))}
             </div>
             <div className="flex flex-col gap-5 w-full">
-                <h2 className="text-xl font-semibold text-black">
+                <h2 className="text-[10px] sm:text-xl font-semibold text-black">
                     {FORM_TEXT.awards}
                 </h2>
 
@@ -39,12 +39,14 @@ export const MovieAndAwards: FC<AllInfoProps> = ({ actor }) => {
                         key={index}
                         className="flex justify-between items-center"
                     >
-                        <h2 className="text-grayDark_text">{award.year} </h2>
+                        <h2 className="text-[7px] sm:text-base text-grayDark_text">
+                            {award.year}{" "}
+                        </h2>
                         <div className="w-max">
-                            <h2 className="text-grayDark_text w-max">
+                            <h2 className="text-[7px] sm:text-base text-grayDark_text w-max">
                                 {award.name}
                             </h2>
-                            <h2 className="text-grayDark_text w-max">
+                            <h2 className="text-[7px] sm:text-base text-grayDark_text w-max">
                                 {award.position}{" "}
                             </h2>
                         </div>
