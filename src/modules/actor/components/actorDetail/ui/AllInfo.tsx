@@ -27,7 +27,7 @@ export const AllInfo: FC<AllInfoProps> = ({ actor, isEdit }) => {
                 <div className="flex gap-[10px] sm:gap-10">
                     <div className="flex flex-col gap-12 ">
                         <div className="flex flex-col gap-5">
-                            <div className="flex justify-center items-center bg-gray_border w-[100px] sm:w-[250px] h-[135px] sm:h-[350px] rounded-lg overflow-hidden relative">
+                            <div className="flex justify-center items-center bg-gray_border w-[70px] h-[100px] min-[425px]:w-[100px] sm:w-[250px] min-[425px]:h-[135px] sm:h-[350px] rounded-lg overflow-hidden relative">
                                 <Image
                                     src={actor?.abstract_user_data.avatar || ""}
                                     fill
@@ -83,7 +83,7 @@ export const AllInfo: FC<AllInfoProps> = ({ actor, isEdit }) => {
                             </div>
                         )}
                     </div>
-                    <div className="flex flex-col gap-5 min-w-[162px] max-w-[162px] sm:min-w-[540px] sm:max-w-[540px] overflow-hidden">
+                    <div className="flex flex-col gap-5 min-w-[162px] max-w-[132px] min-[425px]:max-w-[162px] sm:min-w-[540px] sm:max-w-[540px] overflow-hidden">
                         <GeneralInformation actor={actor} />
                     </div>
                     <MediaInfo actor={actor} isEdit={isEdit} />

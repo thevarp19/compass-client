@@ -17,7 +17,7 @@ export const ActorDetail: FC<ActorDetailProps> = ({ details, isEdit }) => {
     };
 
     return (
-        <div className="bg-gray flex flex-col px-[25px] sm:px-[146px] py-[30px] sm:py-[60px]">
+        <div className="bg-gray flex flex-col px-[10px] min-[425px]:px-[25px] sm:px-[146px] py-[30px] sm:py-[60px]">
             <div className="flex justify-between">
                 <span className="text-[20px] sm:text-[32px] font-semibold text-black">
                     {details?.abstract_user_data.firstName}{" "}
