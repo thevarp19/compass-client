@@ -126,15 +126,15 @@ export const ActorFilter: FC<ActorFilterProps> = ({
 
     return (
         <div
-            className={`w-full h-max flex border-[1px] border-gray_border ${
+            className={`w-full max-w-[100px] min-[375px]:max-w-[130px] sm:max-w-[278px] h-max flex border-[1px] border-gray_border ${
                 isAdvancedSearchOpen && "pb-5"
-            }  rounded-[5px] flex-col gap-5 text-black`}
+            }  rounded-[5px] flex-col gap-[10px] sm:gap-5 text-black`}
         >
             <div
-                className="flex gap-[5px] justify-center items-center w-full h-max py-[11px] px-[64px] border-b-[1px] border-gray_border cursor-pointer"
+                className="flex gap-[5px] justify-center items-center w-full h-max py-[6px] px-[13px] sm:py-[11px] sm:px-[64px] border-b-[1px] border-gray_border cursor-pointer"
                 onClick={handleResetFilter}
             >
-                <h2 className="text-sm leading-[130%]">
+                <h2 className="text-[7px] sm:text-sm whitespace-nowrap">
                     {ACTOR_FILTER.reset_filter}
                 </h2>
                 <Image
@@ -142,16 +142,16 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                     width={14}
                     height={14}
                     alt={"cross"}
-                    className="w-[14px] h-[14px]"
+                    className="w-[7px] h-[7px] sm:w-[14px] sm:h-[14px]"
                     style={{ objectFit: "cover", objectPosition: "center" }}
                 />
             </div>
-            <div className="flex flex-col gap-5 px-5">
-                <div className="flex justify-between">
-                    <h2 className="text-sm leading-[130%] w-full">
+            <div className="flex flex-col gap-[10px] sm:gap-5 px-[5px] sm:px-5">
+                <div className="flex justify-between items-center">
+                    <h2 className="text-[7px] sm:text-sm leading-[130%] w-full">
                         {ACTOR_FILTER.view}
                     </h2>
-                    <div className="flex gap-[7px] w-2/3 min-w-[102px]">
+                    <div className="flex gap-[4px] sm:gap-[7px] sm:w-2/3 min-w-[42px] sm:min-w-[102px]">
                         <div className="border-[1px] rounded-[2px] border-gray_text p-1 ">
                             <Image
                                 src={`/icons/grid${
@@ -161,7 +161,7 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                                 height={17}
                                 alt={"cross"}
                                 onClick={() => setView("grid")}
-                                className="w-[17px] h-[17px] cursor-pointer"
+                                className="w-[7px] h-[7px] sm:w-[17px] sm:h-[17px] cursor-pointer"
                                 style={{
                                     objectFit: "cover",
                                     objectPosition: "center",
@@ -177,7 +177,7 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                                 height={17}
                                 alt={"cross"}
                                 onClick={() => setView("list")}
-                                className="w-[17px] h-[17px] cursor-pointer"
+                                className="w-[7px] h-[7px] sm:w-[17px] sm:h-[17px] cursor-pointer"
                                 style={{
                                     objectFit: "cover",
                                     objectPosition: "center",
@@ -188,17 +188,17 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                 </div>
 
                 <div className="flex">
-                    <h2 className="text-sm leading-[130%] w-full">
+                    <h2 className="text-[7px] sm:text-sm sm:leading-[130%] w-full">
                         {ACTOR_FILTER.sort}
                     </h2>
-                    <div className="flex w-2/3 min-w-[102px]">
-                        <div className="flex flex-col">
+                    <div className="flex sm:w-2/3 min-w-[42px] sm:min-w-[102px]">
+                        <div className="flex flex-col  w-full">
                             <div
                                 className={`border-x-[1px] border-t-[1px] text-center border-${
                                     filters.sortBy === ""
                                         ? "button_color border-b-[1px]"
                                         : "gray_text"
-                                } rounded-t-[3px] text-[12px] p-[4px]`}
+                                } rounded-t-[3px] text-[5px] font-light sm:text-[12px] py-[2px] sm:py-[4px] sm:px-[4px]`}
                                 onClick={() => {
                                     handleSortByChange("");
                                 }}
@@ -210,7 +210,7 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                                     filters.sortBy === "name"
                                         ? "button_color border-[1px]"
                                         : "gray_text"
-                                } text-[12px] p-[4px]`}
+                                } text-[5px] font-light sm:text-[12px] py-[2px] sm:py-[4px] sm:px-[4px]`}
                                 onClick={() => {
                                     handleSortByChange("name");
                                 }}
@@ -222,7 +222,7 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                                     filters.sortBy === "age"
                                         ? "button_color border-t-[1px]"
                                         : "gray_text"
-                                } rounded-b-[3px] text-[12px] py-[4px]`}
+                                } rounded-b-[3px] font-light text-[5px] sm:text-[12px] py-[2px] sm:py-[4px] sm:px-[4px]`}
                                 onClick={() => {
                                     handleSortByChange("age");
                                 }}
@@ -233,12 +233,12 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                     </div>
                 </div>
             </div>
-            <div className="flex flex-col gap-5 px-5">
+            <div className="flex flex-col gap-[10px] sm:gap-5 px-[5px] sm:px-5">
                 <div
                     className="flex justify-between items-center"
                     onClick={hideAdvancedSearch}
                 >
-                    <h2 className="font-medium text-black">
+                    <h2 className="font-medium text-[8px] sm:text-base text-black">
                         {ACTOR_FILTER.main_info}
                     </h2>
                     {isAdvancedSearchOpen && (
@@ -247,7 +247,7 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                             width={10}
                             height={10}
                             alt={"cross"}
-                            className="w-[14px] h-[14px] cursor-pointer"
+                            className="w-[7px] h-[7px] sm:w-[14px] sm:h-[14px] cursor-pointer"
                             style={{
                                 objectFit: "contain",
                                 objectPosition: "center",
@@ -256,12 +256,12 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                     )}
                 </div>
                 <div className="flex">
-                    <h2 className="text-sm leading-[130%] w-full">
+                    <h2 className="text-[7px] sm:text-sm leading-[130%] w-full">
                         {ACTOR_FILTER.gender}
                     </h2>
                     <div className="flex w-2/3 max-w-[102px]">
                         <div
-                            className={`border-[1px] rounded-s-[3px] py-1 text-xs font-light px-[10px] text-center border-${
+                            className={`flex items-center border-[1px] rounded-s-[3px] text-[5px] sm:text-sm font-light px-[4px] sm:px-[10px] py-[3px] sm:py-1 text-center border-${
                                 filters.gender === "MALE"
                                     ? "button_color"
                                     : "gray_text border-0 border-y-[1px] border-s-[1px] border-e-[0px]"
@@ -273,7 +273,7 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                             {ACTOR_FILTER.male}
                         </div>
                         <div
-                            className={`border-y-[1px] border-r-[1px] rounded-e-[3px] py-1 text-xs font-light px-[10px] text-center border-${
+                            className={`flex items-center border-y-[1px] border-r-[1px] rounded-e-[3px] text-[5px] sm:text-sm font-light px-[4px] sm:px-[10px] py-[3px] sm:py-1 text-center border-${
                                 filters.gender === "FEMALE"
                                     ? "button_color border-[1px]"
                                     : "gray_text"
@@ -287,12 +287,12 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                     </div>
                 </div>
                 <div className="flex">
-                    <h2 className="text-sm leading-[130%] w-full">
+                    <h2 className="text-[7px] sm:text-sm leading-[130%] w-full">
                         {ACTOR_FILTER.age}
                     </h2>
                     <div className="flex w-2/3 max-w-[102px] gap-[2px] items-center">
                         <input
-                            className="w-[48px] h-[24px] border border-gray_border text-[12px] text-center rounded-[3px] outline-grayDark-text text-black"
+                            className="w-[20px] sm:w-[48px] h-[14px] sm:h-[24px] border border-gray_border text-[5px] sm:text-[12px] text-center rounded-[3px] outline-grayDark-text text-black"
                             type="number"
                             placeholder="0"
                             onChange={(e) =>
@@ -302,7 +302,7 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                         />
                         <div className="w-[2px] h-[1px] bg-gray_border"></div>
                         <input
-                            className="w-[48px] h-[24px] border border-gray_border text-[12px] text-center rounded-[3px] outline-grayDark-text text-black"
+                            className="w-[20px] sm:w-[48px] h-[14px] sm:h-[24px] border border-gray_border text-[5px] sm:text-[12px] text-center rounded-[3px] outline-grayDark-text text-black"
                             type="number"
                             placeholder="100"
                             onChange={(e) =>
@@ -313,9 +313,9 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                     </div>
                 </div>
             </div>
-            <div className="flex justify-center px-5">
+            <div className="flex justify-center px-[5px] sm:px-5">
                 <button
-                    className={`bg-gray text-sm border-[1px] w-full ${
+                    className={`bg-gray text-[7px] sm:text-sm border-[1px] w-full ${
                         filters.isCompassActor
                             ? "border-button_color bg-gray_border"
                             : "border-gray_border"
@@ -326,7 +326,7 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                 </button>
             </div>
             {isAdvancedSearchOpen && (
-                <div className="flex flex-col gap-5 px-5">
+                <div className="flex flex-col gap-[10px] sm:gap-5 px-[5px] sm:px-5">
                     <div className="flex flex-col gap-[10px]">
                         <h2 className="text-sm text-black">
                             {ACTOR_FILTER.cityOfResidence}
@@ -734,10 +734,10 @@ export const ActorFilter: FC<ActorFilterProps> = ({
             <div
                 className={`${
                     isAdvancedSearchOpen ? "hidden" : "flex"
-                }  justify-center items-center border-t-[1px] gap-1 border-gray_border py-[11px] px-[54px]`}
+                }  justify-center items-center border-t-[1px] gap-1 border-gray_border py-[6px] sm:py-[11px] px-[7px] sm:px-[54px]`}
                 onClick={showAdvancedSearch}
             >
-                <h2 className="text-sm font-normal leading-[130%]">
+                <h2 className="text-[7px] sm:text-sm font-normal leading-[130%]">
                     {ACTOR_FILTER.advanced_search}
                 </h2>
                 <Image
@@ -745,7 +745,7 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                     width={8}
                     height={5}
                     alt={"down arrow"}
-                    className="w-[8px] h-[5px]"
+                    className="w-[4px] sm:w-[8px] h-[3px] sm:h-[5px]"
                     style={{ objectFit: "cover", objectPosition: "center" }}
                 />
             </div>

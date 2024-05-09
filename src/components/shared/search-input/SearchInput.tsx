@@ -2,7 +2,7 @@ import Image from "next/image";
 import { ChangeEvent, FC, InputHTMLAttributes } from "react";
 
 export interface ISearchInput extends InputHTMLAttributes<HTMLInputElement> {
-    onSearchChange?: (value: string) => void; // Add a callback function for handling changes
+    onSearchChange?: (value: string) => void;
 }
 
 export const SearchInput: FC<ISearchInput> = ({
@@ -17,7 +17,7 @@ export const SearchInput: FC<ISearchInput> = ({
     };
 
     return (
-        <div className="flex justify-between items-center pr-5 w-[468px] h-38px bg-white border-[1px] border-gray_border rounded-[5px] shadow-sm">
+        <div className="hidden flex justify-between items-center pr-5 w-[468px] [h-38px] bg-white border-[1px] border-gray_border rounded-[5px] shadow-sm">
             <input
                 className={`flex-grow p-[10px] text-sm text-button_color bg-transparent border-none rounded-[5px] focus:outline-none ${className}`}
                 type="search"
@@ -27,7 +27,7 @@ export const SearchInput: FC<ISearchInput> = ({
             <Image
                 src={"/icons/search.svg"}
                 alt="Search icon"
-                className="cursor-pointer w-[15px] h-[15px]"
+                className="cursor-pointer w-[7px] h-[7px] sm:w-[15px] sm:h-[15px]"
                 width={15}
                 height={15}
             />
