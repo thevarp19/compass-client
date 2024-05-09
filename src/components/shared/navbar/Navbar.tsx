@@ -60,7 +60,7 @@ export default function Navbar() {
                                 width={40}
                                 height={40}
                                 style={{ objectFit: "cover" }}
-                                className="w-[14px] h-[9px] sm:w-[40px] sm:h-[40px] rounded-full"
+                                className="w-[20px] h-[20px] sm:w-[40px] sm:h-[40px] rounded-full"
                                 alt="profile"
                             />
                         </Link>
