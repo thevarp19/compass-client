@@ -31,7 +31,7 @@ export const ActorDetail: FC<ActorDetailProps> = ({ details, isEdit }) => {
                             width={24}
                             height={24}
                             alt="edit"
-                            className="object-cover w-[12px] sm:w-[24px] h-[12px] sm:h-[24px]"
+                            className="w-[12px] sm:w-[24px] h-[12px] sm:h-[24px]"
                         />
                     </Link>
                 )}

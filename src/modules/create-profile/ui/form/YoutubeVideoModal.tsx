@@ -53,7 +53,7 @@ export const YouTubeVideoModal: FC<ModalProps> = ({
         <div className="fixed inset-0 bg-opacity-50 flex items-center justify-center p-4 backdrop-filter backdrop-blur-sm">
             <div className="bg-white rounded-lg shadow-xl overflow-hidden max-w-sm w-full">
                 <div className="p-4">
-                    <h3 className="text-lg font-semibold text-gray mb-4">
+                    <h3 className="text-lg font-semibold text-black mb-4">
                         Добавьте ссылку на видео
                     </h3>
                     <input

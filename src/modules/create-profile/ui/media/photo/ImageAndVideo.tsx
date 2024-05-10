@@ -8,13 +8,13 @@ import { YouTubeVideoModal } from "../../form/YoutubeVideoModal";
 export const ImageAndVideo: FC<FormProps> = ({ formik }) => {
     const [imageURLs, setImageURLs] = useState<string[]>(
         formik.values.abstract_user_data.userPhotos
-            .slice(0, 4)
+            .slice(-4)
             .map((photo) => photo.url)
     );
     useEffect(() => {
         if (formik.values.abstract_user_data.userPhotos) {
             const urls = formik.values.abstract_user_data.userPhotos
-                .slice(0, 4)
+                .slice(-4)
                 .filter((photo) => photo.url)
                 .map((photo) => photo.url);
             setImageURLs(urls);

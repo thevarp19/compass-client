@@ -51,7 +51,7 @@ export const AllInfo: FC<AllInfoProps> = ({ actor, isEdit }) => {
                                                 width={20}
                                                 height={20}
                                                 alt={`${social.name} icon`}
-                                                className="object-cover w-[20px] sm:w-[40px] h-[20px] sm:h-[40px]"
+                                                className="object-contain w-[20px] sm:w-[40px] h-[20px] sm:h-[40px]"
                                             />
                                         </Link>
                                     );
