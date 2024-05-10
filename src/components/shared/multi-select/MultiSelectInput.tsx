@@ -1,7 +1,7 @@
 import type { SelectProps } from "antd";
 import { ConfigProvider, Select } from "antd";
 import { DefaultOptionType } from "antd/es/select";
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 
 interface SelectInputProps extends SelectProps<any, DefaultOptionType> {
     placeholder?: string;
@@ -15,12 +15,28 @@ export const MultiSelectInput: FC<SelectInputProps> = ({
     options,
     ...props
 }) => {
+    const [fontSize, setFontSize] = useState(6);
+    const [controlHeight, setControlHeight] = useState(24);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setFontSize(window.innerWidth < 640 ? 6 : 14);
+            setControlHeight(window.innerWidth < 640 ? 18 : 24);
+        };
+
+        handleResize();
+
+        window.addEventListener("resize", handleResize);
+
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
     return (
         <ConfigProvider
             theme={{
                 token: {
                     borderRadius: 3,
-                    controlHeight: 24,
+                    controlHeight: controlHeight,
+                    fontSize: fontSize,
                 },
             }}
         >

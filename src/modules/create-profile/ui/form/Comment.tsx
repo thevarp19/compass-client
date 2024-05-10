@@ -5,15 +5,15 @@ import { FormProps } from "../../types";
 
 export const Comment: FC<FormProps> = ({ formik }) => {
     return (
-        <div className="flex flex-col gap-5 w-full">
-            <h2 className="text-xl font-semibold text-black">
+        <div className="flex flex-col gap-[10px] sm:gap-5 w-full">
+            <h2 className="text-[10px] sm:text-xl font-semibold text-black">
                 {FORM_TEXT.comments}
             </h2>
             <TextArea
                 name="comments"
                 value={formik.values.comments}
                 onChange={formik.handleChange}
-                className="w-full text-black !h-[150px] shadow-md border border-gray_color"
+                className="w-full !text-[8px] sm:!text-[14px] text-black !h-[50px] sm:!h-[150px] shadow-md border border-gray_color"
             />
         </div>
     );

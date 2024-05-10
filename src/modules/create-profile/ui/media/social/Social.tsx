@@ -13,29 +13,29 @@ export const Social: FC<FormProps> = ({ formik }) => {
         formik.setFieldValue(name, value);
     };
     return (
-        <div className="flex flex-col gap-5 w-full">
-            <h2 className="text-xl font-semibold text-black">
+        <div className="flex flex-col gap-[10px] sm:gap-5 w-full">
+            <h2 className="text-[10px] sm:text-xl font-semibold text-black">
                 {FORM_TEXT.socialNetworks}
             </h2>
             <FieldArray name="abstract_user_data.userSocialMedias">
                 {({ remove, push }) => (
-                    <div className="flex flex-col gap-5 ">
+                    <div className="flex flex-col gap-[10px] sm:gap-5 ">
                         {formik.values.abstract_user_data.userSocialMedias.map(
                             (social, index) => (
                                 <div
-                                    className={`flex flex-col gap-5 w-full ${
+                                    className={`flex flex-col gap-[10px] sm:gap-5 w-full ${
                                         index > 0 &&
                                         "border-t-[1px] border-gray_border pt-5"
                                     }`}
                                     key={index}
                                 >
-                                    <div className="flex flex-col gap-[10px]">
-                                        <h2 className="text-grayDark_text text-sm leading-[130%]">
+                                    <div className="flex flex-col gap-[5px] sm:gap-[10px]">
+                                        <h2 className="text-grayDark_text text-[7px] sm:text-sm leading-[130%]">
                                             {FORM_TEXT.socialNetworkName}
                                         </h2>
                                         <div className="flex">
                                             <SelectInput
-                                                className="min-w-[248px]"
+                                                className="min-w-[90px] max-h-[14px] sm:max-h-none sm:min-w-[248px] text-[7px] sm:text-sm"
                                                 value={social.name}
                                                 options={socialMediaOptions}
                                                 onSelect={(value) =>
@@ -54,12 +54,12 @@ export const Social: FC<FormProps> = ({ formik }) => {
                                         </div>
                                     </div>
                                     <div className="flex flex-col gap-[10px]">
-                                        <h2 className="text-grayDark_text text-sm leading-[130%]">
+                                        <h2 className="text-grayDark_text text-[7px] sm:text-sm leading-[130%]">
                                             {FORM_TEXT.socialNetworkLink}
                                         </h2>
                                         <div className="flex">
                                             <input
-                                                className={`!w-[237px] h-[24px] px-[10px] py-[4px] !indent-0 text-xs border border-gray_border !rounded-[2px] outline-none text-grayDark_text`}
+                                                className={`w-[90px] sm:!w-[237px] h-[14px] sm:h-[24px] px-[4px] sm:px-[10px] py-[3px] sm:py-[4px] !indent-0 text-[6px] sm:text-xs border border-gray_border !rounded-[2px] outline-none text-grayDark_text`}
                                                 value={social.url}
                                                 type="text"
                                                 onChange={handleInputChange}
@@ -72,7 +72,7 @@ export const Social: FC<FormProps> = ({ formik }) => {
                                         <div className="flex justify-end">
                                             <button
                                                 type="button"
-                                                className="border border-gray_border text-xs text-white bg-[#f32013] rounded-[3px] px-2 py-1"
+                                                className="border border-gray_border text-[6px] sm:text-xs bg-[#f32013] text-white rounded-[3px] px-1 sm:px-2 py-[2px] sm:py-1"
                                                 onClick={() => remove(index)}
                                             >
                                                 {FORM_TEXT.remove}
@@ -86,7 +86,7 @@ export const Social: FC<FormProps> = ({ formik }) => {
                         <div className="flex justify-end ">
                             <button
                                 type="button"
-                                className="text-xs text-button_color"
+                                className="text-[6px] sm:text-xs text-button_color"
                                 onClick={() =>
                                     push({
                                         name: "",

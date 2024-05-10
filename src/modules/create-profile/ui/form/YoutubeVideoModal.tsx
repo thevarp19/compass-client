@@ -50,8 +50,8 @@ export const YouTubeVideoModal: FC<ModalProps> = ({
     if (!isOpen) return null;
 
     return (
-        <div className="fixed inset-0 bg-opacity-50 flex items-center justify-center p-4 backdrop-filter backdrop-blur-sm">
-            <div className="bg-white rounded-lg shadow-xl overflow-hidden max-w-sm w-full">
+        <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center p-4 backdrop-filter backdrop-blur-sm">
+            <div className="bg-white rounded-lg shadow-xl overflow-hidden max-w-full sm:max-w-md w-full">
                 <div className="p-4">
                     <h3 className="text-lg font-semibold text-black mb-4">
                         Добавьте ссылку на видео
@@ -62,7 +62,7 @@ export const YouTubeVideoModal: FC<ModalProps> = ({
                         onChange={(e) => setUrl(e.target.value)}
                         onKeyDown={handleKeyDown}
                         placeholder="YouTube URL"
-                        className="w-full p-2 border border-gray_border rounded focus:outline-none focus:border-button_color"
+                        className="w-full p-2 border border-gray rounded focus:outline-button_color focus:border-blue-500"
                         aria-label="YouTube URL"
                     />
                     {error && (

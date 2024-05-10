@@ -50,7 +50,7 @@ export const Form = () => {
                     },
                 }}
             />
-            <div className="flex py-[60px]">
+            <div className="flex py-[30px] sm:py-[60px]">
                 <form
                     onSubmit={formik.handleSubmit}
                     className="flex flex-col gap-10"
@@ -65,7 +65,7 @@ export const Form = () => {
                                 );
                             }}
                         />
-                        <div className="flex flex-col gap-5 min-w-[466px] max-w-[466px]">
+                        <div className="flex flex-col gap-[10px] sm:gap-5 min-[425px]:min-w-[162px] max-w-[142px] min-[425px]:max-w-[162px] sm:min-w-[466px] sm:max-w-[466px]">
                             <GeneralInformation formik={formik} />
                             <External formik={formik} />
                             <Skills formik={formik} />
@@ -85,7 +85,7 @@ export const Form = () => {
                             //     e.preventDefault();
                             //     setIsConfirmDrawerVisible(true);
                             // }}
-                            className="bg-button_color text-base text-white font-bold rounded-[5px] w-[160px] h-[40px] text-center"
+                            className="bg-button_color text-[8px] sm:text-base text-white font-bold rounded-[5px] w-[80px] sm:w-[160px] h-[20px] sm:h-[40px] text-center"
                         >
                             Сохранить
                             {/* {mutation.isPending && <Loading />} */}

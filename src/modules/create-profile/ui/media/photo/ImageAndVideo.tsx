@@ -57,13 +57,15 @@ export const ImageAndVideo: FC<FormProps> = ({ formik }) => {
     };
 
     return (
-        <div className="flex flex-col gap-5">
-            <div className="flex flex-col gap-[10px]">
+        <div className="flex flex-col gap-[10px] sm:gap-5">
+            <div className="flex flex-col gap-[5px] sm:gap-[10px]">
                 <div className="flex items-center justify-between">
-                    <h2 className="text-black ">{FORM_TEXT.photos}</h2>
+                    <h2 className="text-black text-[8px] sm:text-base">
+                        {FORM_TEXT.photos}
+                    </h2>
                     <label
                         htmlFor="image-uploads"
-                        className="text-center text-xs text-button_color rounded cursor-pointer"
+                        className="text-center text-[6px] sm:text-xs text-button_color rounded cursor-pointer"
                     >
                         {FORM_TEXT.add}
                     </label>
@@ -75,13 +77,13 @@ export const ImageAndVideo: FC<FormProps> = ({ formik }) => {
                         onChange={handleFileChange}
                     />
                 </div>
-                <div className="flex gap-2">
+                <div className="flex gap-[2px] sm:gap-2">
                     {imageURLs.length > 0
                         ? imageURLs
                               .map((url, index) => (
                                   <div
                                       key={index}
-                                      className="relative bg-gray_border rounded-[3px] w-[57px] h-[57px]"
+                                      className="relative bg-gray_border rounded-[3px] w-[21px] sm:w-[57px] h-[21px] sm:h-[57px]"
                                   >
                                       <Image
                                           src={url}
@@ -98,7 +100,7 @@ export const ImageAndVideo: FC<FormProps> = ({ formik }) => {
                                       (_, i) => (
                                           <div
                                               key={`placeholder-${i}`}
-                                              className="relative bg-gray_border rounded-[3px] w-[57px] h-[57px]"
+                                              className="relative bg-gray_border rounded-[3px] w-[21px] sm:w-[57px] h-[21px] sm:h-[57px]"
                                           ></div>
                                       )
                                   )
@@ -106,33 +108,36 @@ export const ImageAndVideo: FC<FormProps> = ({ formik }) => {
                         : Array.from({ length: 4 }, (_, index) => (
                               <div
                                   key={index}
-                                  className="relative bg-gray_border rounded-[3px] w-[57px] h-[57px]"
+                                  className="relative bg-gray_border rounded-[3px] w-[21px] sm:w-[57px] h-[21px] sm:h-[57px]"
                               ></div>
                           ))}
                 </div>
             </div>
             <div className="flex flex-col gap-[10px]">
                 <div className="flex items-center justify-between">
-                    <h2 className="text-black">{FORM_TEXT.videos}</h2>
+                    <h2 className="text-[8px] sm:text-base text-black">
+                        {FORM_TEXT.videos}
+                    </h2>
                     <button
                         type="button"
-                        className="text-center text-xs text-button_color rounded cursor-pointer"
+                        className="text-center text-[6px] sm:text-xs text-button_color rounded cursor-pointer"
                         onClick={openModal}
                     >
                         {FORM_TEXT.add}
                     </button>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex sm:justify-between gap-[2px] sm:gap-0">
                     {videoSlots.map((video, index) => (
                         <div
                             key={index}
-                            className="bg-gray_border rounded-[3px] w-[121px] h-[80px] relative flex items-center justify-center"
+                            className="bg-gray_border rounded-[3px] w-[44px] sm:w-[121px] h-[21px] sm:h-[80px] relative flex items-center justify-center"
                         >
                             {video.url ? (
                                 <Image
                                     src={`https://img.youtube.com/vi/${getYoutubeId(
                                         video.url
                                     )}/0.jpg`}
+                                    className="rounded-[3px]"
                                     alt={`Video preview ${index}`}
                                     layout="fill"
                                     objectFit="cover"
