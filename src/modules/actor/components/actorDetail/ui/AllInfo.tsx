@@ -22,12 +22,12 @@ const socialMediaIcons = [
 
 export const AllInfo: FC<AllInfoProps> = ({ actor, isEdit }) => {
     return (
-        <div className="flex py-[25px] sm:py-[60px]">
+        <div className="flex justify-center sm:justify-normal py-[25px] sm:py-[60px]">
             <div className="flex flex-col">
                 <div className="flex gap-[10px] sm:gap-10">
                     <div className="flex flex-col gap-12 ">
                         <div className="flex flex-col gap-[10px] sm:gap-5">
-                            <div className="flex justify-center items-center bg-gray_border w-[70px] h-[100px] min-[425px]:w-[100px] sm:w-[250px] min-[425px]:h-[135px] sm:h-[350px] rounded-lg overflow-hidden relative">
+                            <div className="flex justify-center items-center bg-gray_border w-[70px] h-[100px] min-[415px]:w-[100px] sm:w-[250px] min-[415px]:h-[135px] sm:h-[350px] rounded-lg overflow-hidden relative">
                                 <Image
                                     src={actor?.abstract_user_data.avatar || ""}
                                     fill
@@ -51,7 +51,7 @@ export const AllInfo: FC<AllInfoProps> = ({ actor, isEdit }) => {
                                                 width={20}
                                                 height={20}
                                                 alt={`${social.name} icon`}
-                                                className="object-contain w-[20px] sm:w-[40px] h-[20px] sm:h-[40px]"
+                                                className="object-contain w-[12px] h-[12px] min-[415px]:w-[20px] sm:w-[40px] min-[415px]:h-[20px] sm:h-[40px]"
                                             />
                                         </Link>
                                     );
@@ -68,7 +68,7 @@ export const AllInfo: FC<AllInfoProps> = ({ actor, isEdit }) => {
                                 {actor?.userContacts?.map((contact, index) => (
                                     <div
                                         key={index}
-                                        className="flex justify-between flex-wrap sm:flex-nowrap items-center"
+                                        className="flex flex-col sm:flex-row justify-between sm:items-center"
                                     >
                                         <h2 className="sm:text-base text-[8px] text-grayDark_text">
                                             {contact.number}{" "}
@@ -83,7 +83,7 @@ export const AllInfo: FC<AllInfoProps> = ({ actor, isEdit }) => {
                             </div>
                         )}
                     </div>
-                    <div className="flex flex-col min-w-[162px] max-w-[132px] min-[425px]:max-w-[162px] sm:min-w-[540px] sm:max-w-[540px] overflow-hidden">
+                    <div className="flex flex-col max-w-[132px] gap-[10px] sm:gap-[15px] min-[425px]:max-w-[162px] sm:min-w-[540px] sm:max-w-[540px] overflow-hidden">
                         <GeneralInformation actor={actor} />
                     </div>
                     <MediaInfo actor={actor} isEdit={isEdit} />

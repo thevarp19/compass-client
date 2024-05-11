@@ -11,7 +11,7 @@ interface ActorGridProps {
 
 export const ActorGrid: React.FC<ActorGridProps> = ({ actors }) => {
     return (
-        <div className="grid grid-cols-3 min-[425px]:grid-cols-4 lg:grid-cols-4 min-[1250px]:grid-cols-5 gap-[5px] sm:gap-5 w-max h-max">
+        <div className="grid grid-cols-3 min-[425px]:grid-cols-4 lg:grid-cols-4 min-[1250px]:grid-cols-5 sm:min-w-[830px] gap-[5px] sm:gap-5 w-max h-max">
             {actors.map((actor, key) => (
                 <Link key={key} href={`/actors/${actor.id}`}>
                     <div

@@ -1,7 +1,6 @@
 "use client";
 import { SearchInput } from "@/components/shared/search-input/SearchInput";
 // import { actors } from "@/lib/const/actors";
-import { Loading } from "@/components/shared/loading/Loading";
 import { useDebounce } from "@/hooks/useDebounce";
 import { initialFilters } from "@/utils/actorFilter/initialData";
 import { FC, useState } from "react";
@@ -27,7 +26,7 @@ export const Actors: FC = () => {
     const debouncedWeightMax = useDebounce(filters.weight_max, 1000);
     const debouncedHeightMin = useDebounce(filters.height_min, 1000);
     const debouncedHeightMax = useDebounce(filters.height_max, 1000);
-    const { data: actors, isLoading } = useGetActors({
+    const { data: actors, isPending } = useGetActors({
         ...filters,
         search: debouncedSearch,
         age_min: debouncedAgeMin,
@@ -48,9 +47,9 @@ export const Actors: FC = () => {
             search: newSearch,
         }));
     };
-    if (isLoading) {
-        return <Loading className="h-screen" />;
-    }
+    // if (isPending) {
+    //     return <Loading className="h-screen" />;
+    // }
     return (
         <div className="bg-gray flex flex-col gap-10 justify-between p-4 pb-12 sm:pb-0 sm:px-20 sm:py-10 md:px-[146px] md:py-[80px] w-full h-full">
             <div className="flex justify-between items-start">
@@ -65,8 +64,8 @@ export const Actors: FC = () => {
             </div>
             <div className="flex justify-between sm:justify-around gap-[10px] sm:gap-10">
                 {actors?.length === 0 ? (
-                    <div className="flex justify-center items-center min-w-[830px] w-full h-max">
-                        <h2 className="text-[12px] sm:text-2xl font-medium text-center text-black w-64">
+                    <div className="flex justify-center items-center max-w-[215px] sm:max-w-none min-[415px]:min-w-[253px] sm:min-w-[830px] w-max h-max">
+                        <h2 className="text-[8px] sm:text-2xl font-medium text-center text-black sm:w-64">
                             {ACTORS.no_data}
                         </h2>
                     </div>

@@ -12,6 +12,7 @@ export default function LoginPage() {
     const router = useRouter();
     useEffect(() => {
         dispatch(logout());
+        localStorage.removeItem("isAdvancedSearchOpen");
         queryClient.invalidateQueries({ queryKey: ["profile"] });
         router.push("/");
     }, []);

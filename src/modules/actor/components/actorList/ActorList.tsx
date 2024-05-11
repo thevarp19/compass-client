@@ -14,9 +14,9 @@ export const ActorList: FC<ActorListProps> = ({ actors }) => {
                 <Link key={key} href={`/actors/${actor.id}`}>
                     <div className="flex">
                         <div
-                            className={`bg-gray shadow-lg flex flex-col rounded-[5px] min-w-[60px] sm:min-w-[150px] max-w-[150px] max-h-[280px] w-max ${
+                            className={`bg-gray shadow-lg flex flex-col rounded-[5px] rounded-s-[5px] rounded-b-none rounded-tr-none  min-w-[60px] sm:min-w-[150px] max-w-[150px] max-h-[280px] w-max ${
                                 actor.isCompassActor
-                                    ? "border-2 border-[#6E9CF2]"
+                                    ? "border border-[#6E9CF2]"
                                     : ""
                             }`}
                         >
@@ -26,7 +26,7 @@ export const ActorList: FC<ActorListProps> = ({ actors }) => {
                                     width={150}
                                     height={200}
                                     alt={actor?.firstName}
-                                    className="w-[60px] h-[75px] sm:w-[150px] sm:h-[200px] rounded-t-[5px] rounded-b-none rounded-tr-none "
+                                    className="w-[60px] h-[75px] sm:w-[150px] sm:h-[200px] rounded-t-[4px] rounded-b-none rounded-tr-none "
                                     style={{
                                         objectFit: "cover",
                                         objectPosition: "center",
@@ -41,7 +41,7 @@ export const ActorList: FC<ActorListProps> = ({ actors }) => {
                             <div
                                 className={`flex flex-col justify-center items-center gap-[10px] text-center h-full ${
                                     actor.isCompassActor
-                                        ? "border-t-2 border-[#6E9CF2] min-h-[31px] sm:min-h-[76px]"
+                                        ? "border-t border-[#6E9CF2] min-h-[31px] sm:min-h-[76px]"
                                         : "min-h-[35px] sm:min-h-[80px] border-x-[1px] border-b-[1px] border-t sm:border-t-0 border-gray_border rounded-x-[5px] rounded-b-[5px] sm:rounded-x-[5px] sm:rounded-b-[5px]"
                                 }`}
                             >

@@ -1,75 +1,47 @@
+"use client";
+import { Loading } from "@/components/shared/loading/Loading";
 import { Actor } from "@/types/actor";
 import Image from "next/image";
 import Link from "next/link";
-import { FC } from "react";
+import { FC, useRef } from "react";
 import { ActorCard } from "../actor/components/actorCard/ActorCard";
+import { useGetActors } from "../actor/queries";
 import { MAIN } from "./string";
 
 export const Main: FC = () => {
-    const popularActors: Actor[] = [
-        {
-            id: 1,
-            firstName: "Абильмансур Сериков",
-            age: 32,
-            avatar: "/images/mansur.png",
-            isCompassActor: false,
-            lastName: "",
-            thirdName: "",
-            educations: [],
-            movies: [],
-        },
-        {
-            id: 2,
-            firstName: "Данияр Алшинов",
-            age: 32,
-            avatar: "/images/daniar.png",
-            isCompassActor: false,
-            lastName: "",
-            thirdName: "",
-            educations: [],
-            movies: [],
-        },
-        {
-            id: 3,
-            firstName: "Берик Айтжанов",
-            age: 32,
-            avatar: "/images/berik.png",
-            isCompassActor: false,
-            lastName: "",
-            thirdName: "",
-            educations: [],
-            movies: [],
-        },
-        {
-            id: 4,
-            firstName: "Куралай Анарбекова",
-            age: 32,
-            avatar: "/images/kuralay.png",
-            isCompassActor: false,
-            lastName: "",
-            thirdName: "",
-            educations: [],
-            movies: [],
-        },
-        {
-            id: 5,
-            firstName: "Динара Бактыбаева",
-            age: 32,
-            avatar: "/images/dinara.png",
-            isCompassActor: false,
-            lastName: "",
-            thirdName: "",
-            educations: [],
-            movies: [],
-        },
-    ];
+    const { data: actors, isPending } = useGetActors({
+        search: "",
+        sortBy: "",
+        isCompassActor: undefined,
+        gender: "",
+        citizenship: [],
+        specialization: [],
+        cityAccommodation: [],
+        legalStatus: [],
+        agency: [],
+        hairColor: [],
+        sport: [],
+        dancing: [],
+        right: [],
+        foreignLanguage: [],
+        singing: [],
+        musicalInstrument: [],
+        hairLength: [],
+        eyeColor: [],
+        bodyType: [],
+        peculiarities: [],
+        typeOfAppearance: [],
+    });
+    if (isPending) {
+        return <Loading className="h-screen w-screen" />;
+    }
     return (
         <main>
             <section>
                 <MainBanner />
             </section>
             <section>
-                <ActorsCarousel title={MAIN.popular} actors={popularActors} />
+                <ActorsCarousel title={MAIN.popular} actors={actors || []} />
             </section>
             <section>
                 <Questionnaire />
@@ -99,11 +71,13 @@ const MainBanner = () => {
                     </h2>
                 </div>
                 <div>
-                    <button
-                        className={`bg-button_color text-[8px] sm:text-base text-white font-bold w-[80px] sm:w-[200px] h-[20px] sm:h-[50px] rounded-lg`}
-                    >
-                        {MAIN.find}
-                    </button>
+                    <Link href="/actors">
+                        <button
+                            className={`bg-button_color text-[8px] sm:text-base text-white font-bold w-[80px] sm:w-[200px] h-[20px] sm:h-[50px] rounded-lg`}
+                        >
+                            {MAIN.find}
+                        </button>
+                    </Link>
                 </div>
             </div>
             <div className="flex ">
@@ -123,6 +97,26 @@ export const ActorsCarousel: FC<{ actors: Actor[]; title: string }> = ({
     actors,
     title,
 }) => {
+    const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+    const scrollLeft = () => {
+        if (scrollContainerRef.current) {
+            scrollContainerRef.current.scrollBy({
+                left: -200,
+                behavior: "smooth",
+            });
+        }
+    };
+
+    const scrollRight = () => {
+        if (scrollContainerRef.current) {
+            scrollContainerRef.current.scrollBy({
+                left: 200,
+                behavior: "smooth",
+            });
+        }
+    };
+
     return (
         <div className="bg-primary py-10 sm:py-20 px-[25px] sm:px-[146px] flex flex-col gap-[40px] sm:gap-[50px]">
             <div className="flex justify-between">
@@ -130,27 +124,36 @@ export const ActorsCarousel: FC<{ actors: Actor[]; title: string }> = ({
                     {title}
                 </h2>
                 <div className="flex gap-5">
-                    <Image
-                        src={"/icons/left.svg"}
-                        width={40}
-                        height={40}
-                        alt="left"
-                        className="w-[20px] h-[20px] sm:w-[40px] sm:h-[40px] "
-                        style={{ objectFit: "cover" }}
-                    />
-                    <Image
-                        src={"/icons/right.svg"}
-                        width={40}
-                        height={40}
-                        alt="actor"
-                        className="w-[20px] h-[20px] sm:w-[40px] sm:h-[40px] "
-                        style={{ objectFit: "cover" }}
-                    />
+                    <button onClick={scrollLeft}>
+                        <Image
+                            src={"/icons/left.svg"}
+                            width={40}
+                            height={40}
+                            alt="left"
+                            className="w-[20px] h-[20px] sm:w-[40px] sm:h-[40px]"
+                            style={{ objectFit: "cover" }}
+                        />
+                    </button>
+                    <button onClick={scrollRight}>
+                        <Image
+                            src={"/icons/right.svg"}
+                            width={40}
+                            height={40}
+                            alt="right"
+                            className="w-[20px] h-[20px] sm:w-[40px] sm:h-[40px]"
+                            style={{ objectFit: "cover" }}
+                        />
+                    </button>
                 </div>
             </div>
-            <div className="flex gap-[20px] sm:gap-[37px] overflow-x-scroll min-w-[290px] sm:min-w-auto">
+            <div
+                ref={scrollContainerRef}
+                className="flex gap-[20px] sm:gap-[37px] overflow-x-scroll min-w-[290px] sm:min-w-auto"
+            >
                 {actors.map((actor, index) => (
-                    <ActorCard key={index} actor={actor} />
+                    <Link key={index} href={`/actors/${actor.id}`}>
+                        <ActorCard actor={actor} />
+                    </Link>
                 ))}
             </div>
         </div>
@@ -203,11 +206,13 @@ const Questionnaire = () => {
                     </div>
                 </div>
                 <div>
-                    <button
-                        className={`bg-button_color text-[8px] sm:text-base text-white font-bold w-[80px] h-[20px] sm:w-[240px] sm:h-[50px] rounded-[3px]`}
-                    >
-                        {MAIN.registration}
-                    </button>
+                    <Link href="/auth/registration">
+                        <button
+                            className={`bg-button_color text-[8px] sm:text-base text-white font-bold w-[80px] h-[20px] sm:w-[240px] sm:h-[50px] rounded-[3px]`}
+                        >
+                            {MAIN.registration}
+                        </button>
+                    </Link>
                 </div>
             </div>
 

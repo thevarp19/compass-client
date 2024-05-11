@@ -49,3 +49,16 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
     -moz-appearance: textfield;
 }
+
+::-webkit-scrollbar {
+    width: 2px;
+    height: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #0e273a;
+}
+
+::-webkit-scrollbar-track {
+    background: #d9d9d9;
+}

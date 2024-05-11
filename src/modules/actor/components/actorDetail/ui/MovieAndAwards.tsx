@@ -15,14 +15,14 @@ export const MovieAndAwards: FC<AllInfoProps> = ({ actor }) => {
                         key={index}
                         className="flex justify-between items-center"
                     >
-                        <h2 className="text-[7px] sm:text-base text-grayDark_text">
+                        <h2 className="text-[7px] min-w-[30%] sm:min-w-none sm:text-base text-grayDark_text">
                             {movie.releasedYear}{" "}
                         </h2>
-                        <div className="w-max">
-                            <h2 className="text-[7px] sm:text-base text-grayDark_text w-max">
+                        <div className="w-full sm:w-max">
+                            <h2 className="text-[7px] text-end sm:text-base text-grayDark_text">
                                 {movie.name}
                             </h2>
-                            <h2 className="text-[7px] sm:text-base grayDark_text w-max">
+                            <h2 className="text-[7px] text-end sm:text-base grayDark_text">
                                 {movie.role}{" "}
                             </h2>
                         </div>
@@ -39,14 +39,14 @@ export const MovieAndAwards: FC<AllInfoProps> = ({ actor }) => {
                         key={index}
                         className="flex justify-between items-center"
                     >
-                        <h2 className="text-[7px] sm:text-base text-grayDark_text">
+                        <h2 className="text-[7px] min-w-[30%] sm:min-w-none sm:text-base text-grayDark_text">
                             {award.year}{" "}
                         </h2>
                         <div className="w-max">
-                            <h2 className="text-[7px] sm:text-base text-grayDark_text w-max">
+                            <h2 className="text-[7px] text-end sm:text-base text-grayDark_text">
                                 {award.name}
                             </h2>
-                            <h2 className="text-[7px] sm:text-base text-grayDark_text w-max">
+                            <h2 className="text-[7px]  text-end sm:text-base text-grayDark_text">
                                 {award.position}{" "}
                             </h2>
                         </div>

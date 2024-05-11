@@ -86,6 +86,9 @@ export const ActorFilter: FC<ActorFilterProps> = ({
             "isAdvancedSearchOpen",
             JSON.stringify(isAdvancedSearchOpen)
         );
+        // return function cleanup() {
+        //     localStorage.removeItem("isAdvancedSearchOpen");
+        // };
     }, [isAdvancedSearchOpen]);
     const hideAdvancedSearch = () => {
         setIsAdvancedSearchOpen(false);
