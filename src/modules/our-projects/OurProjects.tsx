@@ -2,6 +2,13 @@ import Image from "next/image";
 import { FC } from "react";
 
 export const OurProjects: FC = () => {
+    // const {data} = useQuery<GetProjects[]>({
+    //             queryKey: [`projects`],
+    //             queryFn: async () => {
+    //                 const { data } = await axios.get("/user/profile");
+    //                 return data;
+    //             },
+    //         });
     return (
         <div className="bg-gray flex flex-col gap-5 sm:gap-10 py-10 sm:py-20 px-[25px] sm:px-[146px] text-black">
             <h2 className="text-[15px] sm:text-[32px] font-medium leading-[130%]">

@@ -328,13 +328,13 @@ export const ActorFilter: FC<ActorFilterProps> = ({
             {isAdvancedSearchOpen && (
                 <div className="flex flex-col gap-[10px] sm:gap-5 px-[5px] sm:px-5">
                     <div className="flex flex-col gap-[10px]">
-                        <h2 className="text-sm text-black">
+                        <h2 className="text-[7px] sm:text-sm text-black">
                             {ACTOR_FILTER.cityOfResidence}
                         </h2>
                         <MultiSelectInput
                             maxTagCount="responsive"
                             mode="multiple"
-                            className="min-w-[237px]"
+                            className="min-w-[90px] sm:min-w-[237px]"
                             value={filters.cityAccommodation}
                             options={formatOptions(kazakhstanCities)}
                             onChange={(value) =>
@@ -346,13 +346,13 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                         />
                     </div>
                     <div className="flex flex-col gap-[10px]">
-                        <h2 className="text-sm text-black">
+                        <h2 className="text-[7px] sm:text-sm text-black">
                             {ACTOR_FILTER.nationality}
                         </h2>
                         <MultiSelectInput
                             maxTagCount="responsive"
                             mode="multiple"
-                            className="min-w-[237px]"
+                            className="min-w-[90px] sm:min-w-[237px]"
                             value={filters.citizenship}
                             options={formatOptions(citizenships)}
                             onChange={(value) =>
@@ -361,13 +361,13 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                         />
                     </div>
                     <div className="flex flex-col gap-[10px]">
-                        <h2 className="text-sm text-black">
+                        <h2 className="text-[7px] sm:text-sm text-black">
                             {ACTOR_FILTER.specialization}
                         </h2>
                         <MultiSelectInput
                             maxTagCount="responsive"
                             mode="multiple"
-                            className="min-w-[237px]"
+                            className="min-w-[90px] sm:min-w-[237px]"
                             value={filters.specialization}
                             options={formatOptions(specializations)}
                             onChange={(value) =>
@@ -376,13 +376,13 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                         />
                     </div>
                     <div className="flex flex-col gap-[10px]">
-                        <h2 className="text-sm text-black">
+                        <h2 className="text-[7px] sm:text-sm text-black">
                             {ACTOR_FILTER.legalStatus}
                         </h2>
                         <MultiSelectInput
                             maxTagCount="responsive"
                             mode="multiple"
-                            className="min-w-[237px]"
+                            className="min-w-[90px] sm:min-w-[237px]"
                             value={filters.legalStatus}
                             options={formatOptions(legalStatuses)}
                             onChange={(value) =>
@@ -392,16 +392,16 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                     </div>
 
                     {/* MEDIAA */}
-                    <h2 className="font-semibold text-black">
+                    <h2 className="text-[8px] sm:text-base font-semibold text-black">
                         {ACTOR_FILTER.media}
                     </h2>
                     <div className="flex">
-                        <h2 className="text-sm leading-[130%] w-full">
+                        <h2 className="text-[7px] sm:text-sm leading-[130%] w-full">
                             {ACTOR_FILTER.quantityPhoto}
                         </h2>
-                        <div className="flex w-2/3 max-w-[102px] gap-[2px] items-center">
+                        <div className="flex w-2/3 max-w-[90px] sm:max-w-[102px] gap-[2px] items-center">
                             <input
-                                className="w-[48px] h-[24px] border border-gray_border text-[12px] text-center rounded-[3px] outline-grayDark-text text-black"
+                                className="w-[20px] h-[14px] sm:w-[48px] sm:h-[24px] border border-gray_border text-[5px] sm:text-[12px] text-center rounded-[3px] outline-grayDark-text text-black"
                                 type="number"
                                 placeholder="0"
                                 onChange={(e) =>
@@ -414,7 +414,7 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                             />
                             <div className="w-[2px] h-[1px] bg-gray_border"></div>
                             <input
-                                className="w-[48px] h-[24px] border border-gray_border text-[12px] text-center rounded-[3px] outline-grayDark-text text-black"
+                                className="w-[20px] h-[14px] sm:w-[48px] sm:h-[24px] border border-gray_border text-[5px] sm:text-[12px] text-center rounded-[3px] outline-grayDark-text text-black"
                                 type="number"
                                 placeholder="100"
                                 onChange={(e) =>
@@ -428,12 +428,12 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                         </div>
                     </div>
                     <div className="flex">
-                        <h2 className="text-sm leading-[130%] w-full">
+                        <h2 className="text-[7px] sm:text-sm leading-[130%] w-full">
                             {ACTOR_FILTER.quantityVideo}
                         </h2>
-                        <div className="flex w-2/3 max-w-[102px] gap-[2px] items-center">
+                        <div className="flex w-2/3 max-w-[90px] sm:max-w-[102px] gap-[2px] items-center">
                             <input
-                                className="w-[48px] h-[24px] border border-gray_border text-[12px] text-center rounded-[3px] outline-grayDark-text text-black"
+                                className="w-[20px] h-[14px] sm:w-[48px] sm:h-[24px] border border-gray_border text-[5px] sm:text-[12px] text-center rounded-[3px] outline-grayDark-text text-black"
                                 type="number"
                                 placeholder="0"
                                 onChange={(e) =>
@@ -446,7 +446,7 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                             />
                             <div className="w-[2px] h-[1px] bg-gray_border"></div>
                             <input
-                                className="w-[48px] h-[24px] border border-gray_border text-[12px] text-center rounded-[3px] outline-grayDark-text text-black"
+                                className="w-[20px] h-[14px] sm:w-[48px] sm:h-[24px] border border-gray_border text-[5px] sm:text-[12px] text-center rounded-[3px] outline-grayDark-text text-black"
                                 type="number"
                                 placeholder="100"
                                 onChange={(e) =>
@@ -460,13 +460,13 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                         </div>
                     </div>
                     <div className="flex flex-col gap-[10px]">
-                        <h2 className="text-sm text-black">
+                        <h2 className="text-[7px] sm:text-sm text-black">
                             {ACTOR_FILTER.agency}
                         </h2>
                         <MultiSelectInput
                             maxTagCount="responsive"
                             mode="multiple"
-                            className="min-w-[237px]"
+                            className="min-w-[90px] sm:min-w-[237px]"
                             value={filters.agency}
                             options={formatOptions(agencies)}
                             onChange={(value) =>
@@ -474,7 +474,7 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                             }
                         />
                     </div>
-                    <h2 className="font-semibold text-black">
+                    <h2 className="text-[8px] sm:text-base font-semibold text-black">
                         {ACTOR_FILTER.externalData}
                     </h2>
                     <div className="flex flex-col gap-[10px]">
@@ -484,7 +484,7 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                         <MultiSelectInput
                             maxTagCount="responsive"
                             mode="multiple"
-                            className="min-w-[237px]"
+                            className="min-w-[90px] sm:min-w-[237px]"
                             value={filters.hairLength}
                             options={formatOptions(hairLengths)}
                             onChange={(value) =>
@@ -493,13 +493,13 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                         />
                     </div>
                     <div className="flex flex-col gap-[10px]">
-                        <h2 className="text-sm text-black">
+                        <h2 className="text-[7px] sm:text-sm text-black">
                             {ACTOR_FILTER.hairColor}
                         </h2>
                         <MultiSelectInput
                             maxTagCount="responsive"
                             mode="multiple"
-                            className="min-w-[237px]"
+                            className="min-w-[90px] sm:min-w-[237px]"
                             value={filters.hairColor}
                             options={formatOptions(hairColors)}
                             onChange={(value) =>
@@ -508,13 +508,13 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                         />
                     </div>
                     <div className="flex flex-col gap-[10px]">
-                        <h2 className="text-sm text-black">
+                        <h2 className="text-[7px] sm:text-sm text-black">
                             {ACTOR_FILTER.eyeColor}
                         </h2>
                         <MultiSelectInput
                             maxTagCount="responsive"
                             mode="multiple"
-                            className="min-w-[237px]"
+                            className="min-w-[90px] sm:min-w-[237px]"
                             value={filters.eyeColor}
                             options={formatOptions(eyeColors)}
                             onChange={(value) =>
@@ -523,13 +523,13 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                         />
                     </div>
                     <div className="flex flex-col gap-[10px]">
-                        <h2 className="text-sm text-black">
+                        <h2 className="text-[7px] sm:text-sm text-black">
                             {ACTOR_FILTER.appearanceType}
                         </h2>
                         <MultiSelectInput
                             maxTagCount="responsive"
                             mode="multiple"
-                            className="min-w-[237px]"
+                            className="min-w-[90px] sm:min-w-[237px]"
                             value={filters.typeOfAppearance}
                             options={formatOptions(appearanceTypes)}
                             onChange={(value) =>
@@ -541,13 +541,13 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                         />
                     </div>
                     <div className="flex flex-col gap-[10px]">
-                        <h2 className="text-sm text-black">
+                        <h2 className="text-[7px] sm:text-sm text-black">
                             {ACTOR_FILTER.bodyPosition}
                         </h2>
                         <MultiSelectInput
                             maxTagCount="responsive"
                             mode="multiple"
-                            className="min-w-[237px]"
+                            className="min-w-[90px] sm:min-w-[237px]"
                             value={filters.bodyType}
                             options={formatOptions(bodyTypes)}
                             onChange={(value) =>
@@ -556,13 +556,13 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                         />
                     </div>
                     <div className="flex flex-col gap-[10px]">
-                        <h2 className="text-sm text-black">
+                        <h2 className="text-[7px] sm:text-sm text-black">
                             {ACTOR_FILTER.features}
                         </h2>
                         <MultiSelectInput
                             maxTagCount="responsive"
                             mode="multiple"
-                            className="min-w-[237px]"
+                            className="min-w-[90px] sm:min-w-[237px]"
                             value={filters.peculiarities}
                             options={formatOptions(features)}
                             onChange={(value) =>
@@ -571,12 +571,12 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                         />
                     </div>
                     <div className="flex">
-                        <h2 className="text-sm leading-[130%] w-full">
+                        <h2 className="text-[7px] sm:text-sm leading-[130%] w-full">
                             {ACTOR_FILTER.height}
                         </h2>
-                        <div className="flex w-2/3 max-w-[102px] gap-[2px] items-center">
+                        <div className="flex w-2/3 max-w-[90px] sm:max-w-[102px] gap-[2px] items-center">
                             <input
-                                className="w-[48px] h-[24px] border border-gray_border text-[12px] text-center rounded-[3px] outline-grayDark-text text-black"
+                                className="w-[20px] h-[14px] sm:w-[48px] sm:h-[24px] border border-gray_border text-[5px] sm:text-[12px] text-center rounded-[3px] outline-grayDark-text text-black"
                                 type="number"
                                 onChange={(e) =>
                                     handleMinMaxChange(
@@ -588,7 +588,7 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                             />
                             <div className="w-[2px] h-[1px] bg-gray_border"></div>
                             <input
-                                className="w-[48px] h-[24px] border border-gray_border text-[12px] text-center rounded-[3px] outline-grayDark-text text-black"
+                                className="w-[20px] h-[14px] sm:w-[48px] sm:h-[24px] border border-gray_border text-[5px] sm:text-[12px] text-center rounded-[3px] outline-grayDark-text text-black"
                                 type="number"
                                 onChange={(e) =>
                                     handleMinMaxChange(
@@ -601,12 +601,12 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                         </div>
                     </div>
                     <div className="flex">
-                        <h2 className="text-sm leading-[130%] w-full">
+                        <h2 className="text-[7px] sm:text-sm leading-[130%] w-full">
                             {ACTOR_FILTER.weight}
                         </h2>
-                        <div className="flex w-2/3 max-w-[102px] gap-[2px] items-center">
+                        <div className="flex w-2/3 max-w-[90px] sm:max-w-[102px] gap-[2px] items-center">
                             <input
-                                className="w-[48px] h-[24px] border border-gray_border text-[12px] text-center rounded-[3px] outline-grayDark-text text-black"
+                                className="w-[20px] h-[14px] sm:w-[48px] sm:h-[24px] border border-gray_border text-[5px] sm:text-[12px] text-center rounded-[3px] outline-grayDark-text text-black"
                                 type="number"
                                 onChange={(e) =>
                                     handleMinMaxChange(
@@ -618,7 +618,7 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                             />
                             <div className="w-[2px] h-[1px] bg-gray_border"></div>
                             <input
-                                className="w-[48px] h-[24px] border border-gray_border text-[12px] text-center rounded-[3px] outline-grayDark-text text-black"
+                                className="w-[20px] h-[14px] sm:w-[48px] sm:h-[24px] border border-gray_border text-[5px] sm:text-[12px] text-center rounded-[3px] outline-grayDark-text text-black"
                                 type="number"
                                 onChange={(e) =>
                                     handleMinMaxChange(
@@ -630,17 +630,17 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                             />
                         </div>
                     </div>
-                    <h2 className="font-semibold text-black">
+                    <h2 className="text-[8px] sm:text-base font-semibold text-black">
                         {ACTOR_FILTER.skills}
                     </h2>
                     <div className="flex flex-col gap-[10px]">
-                        <h2 className="text-sm text-black">
+                        <h2 className="text-[7px] sm:text-sm text-black">
                             {ACTOR_FILTER.sport}
                         </h2>
                         <MultiSelectInput
                             maxTagCount="responsive"
                             mode="multiple"
-                            className="min-w-[237px]"
+                            className="min-w-[90px] sm:min-w-[237px]"
                             value={filters.sport}
                             options={formatOptions(sports)}
                             onChange={(value) =>
@@ -649,13 +649,13 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                         />
                     </div>
                     <div className="flex flex-col gap-[10px]">
-                        <h2 className="text-sm text-black">
+                        <h2 className="text-[7px] sm:text-sm text-black">
                             {ACTOR_FILTER.dance}
                         </h2>
                         <MultiSelectInput
                             maxTagCount="responsive"
                             mode="multiple"
-                            className="min-w-[237px]"
+                            className="min-w-[90px] sm:min-w-[237px]"
                             value={filters.dancing}
                             options={formatOptions(dances)}
                             onChange={(value) =>
@@ -664,13 +664,13 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                         />
                     </div>
                     <div className="flex flex-col gap-[10px]">
-                        <h2 className="text-sm text-black">
+                        <h2 className="text-[7px] sm:text-sm text-black">
                             {ACTOR_FILTER.musicalInstruments}
                         </h2>
                         <MultiSelectInput
                             maxTagCount="responsive"
                             mode="multiple"
-                            className="min-w-[237px]"
+                            className="min-w-[90px] sm:min-w-[237px]"
                             value={filters.musicalInstrument}
                             options={formatOptions(musicalInstruments)}
                             onChange={(value) =>
@@ -682,13 +682,13 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                         />
                     </div>
                     <div className="flex flex-col gap-[10px]">
-                        <h2 className="text-sm text-black">
+                        <h2 className="text-[7px] sm:text-sm text-black">
                             {ACTOR_FILTER.singing}
                         </h2>
                         <MultiSelectInput
                             maxTagCount="responsive"
                             mode="multiple"
-                            className="min-w-[237px]"
+                            className="min-w-[90px] sm:min-w-[237px]"
                             value={filters.singing}
                             options={formatOptions(singing)}
                             onChange={(value) =>
@@ -697,13 +697,13 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                         />
                     </div>
                     <div className="flex flex-col gap-[10px]">
-                        <h2 className="text-sm text-black">
+                        <h2 className="text-[7px] sm:text-sm text-black">
                             {ACTOR_FILTER.foreignLanguages}
                         </h2>
                         <MultiSelectInput
                             maxTagCount="responsive"
                             mode="multiple"
-                            className="min-w-[237px]"
+                            className="min-w-[90px] sm:min-w-[237px]"
                             value={filters.foreignLanguage}
                             options={formatOptions(foreignLanguages)}
                             onChange={(value) =>
@@ -715,13 +715,13 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                         />
                     </div>
                     <div className="flex flex-col gap-[10px]">
-                        <h2 className="text-sm text-black">
+                        <h2 className="text-[7px] sm:text-sm text-black">
                             {ACTOR_FILTER.drivingLicenses}
                         </h2>
                         <MultiSelectInput
                             maxTagCount="responsive"
                             mode="multiple"
-                            className="min-w-[237px]"
+                            className="min-w-[90px] sm:min-w-[237px]"
                             value={filters.right}
                             options={formatOptions(drivingLicense)}
                             onChange={(value) =>

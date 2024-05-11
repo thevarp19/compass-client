@@ -15,7 +15,7 @@ export const ActorGrid: React.FC<ActorGridProps> = ({ actors }) => {
             {actors.map((actor, key) => (
                 <Link key={key} href={`/actors/${actor.id}`}>
                     <div
-                        className={`bg-gray flex flex-col rounded-[10px] max-w-[60px] max-h-[110px] sm:max-w-[150px] sm:max-h-[280px] w-max ${
+                        className={`bg-gray flex flex-col rounded-[5px] sm:rounded-[10px] max-w-[60px] max-h-[110px] sm:max-w-[150px] sm:max-h-[280px] w-max ${
                             actor.isCompassActor
                                 ? "border border-[#6E9CF2]"
                                 : ""
@@ -27,7 +27,7 @@ export const ActorGrid: React.FC<ActorGridProps> = ({ actors }) => {
                                 width={60}
                                 height={75}
                                 alt={actor?.firstName}
-                                className="w-[60px] h-[75px] sm:w-[150px] sm:h-[200px] rounded-t-[8px] "
+                                className="w-[60px] h-[75px] sm:w-[150px] sm:h-[200px] rounded-t-[4px] sm:rounded-t-[9px] "
                                 style={{
                                     objectFit: "cover",
                                     objectPosition: "center",
