@@ -1,19 +1,20 @@
 // components/ActorGrid.tsx
+import { useLanguage } from "@/context/LanguageProvider";
 import { Actor } from "@/types/actor";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { ACTORCARD } from "../actorCard/string";
 
 interface ActorGridProps {
     actors: Actor[];
 }
 
 export const ActorGrid: React.FC<ActorGridProps> = ({ actors }) => {
+    const { language, getHref } = useLanguage();
     return (
         <div className="grid grid-cols-3 min-[425px]:grid-cols-4 lg:grid-cols-4 min-[1250px]:grid-cols-5 sm:min-w-[830px] gap-[5px] sm:gap-5 w-max h-max">
             {actors.map((actor, key) => (
-                <Link key={key} href={`/actors/${actor.id}`}>
+                <Link key={key} href={getHref(`/actors/${actor.id}`)}>
                     <div
                         className={`bg-gray flex flex-col rounded-[5px] sm:rounded-[10px] max-w-[60px] max-h-[110px] sm:max-w-[150px] sm:max-h-[280px] w-max ${
                             actor.isCompassActor
@@ -50,7 +51,7 @@ export const ActorGrid: React.FC<ActorGridProps> = ({ actors }) => {
                                 {actor?.firstName} {actor?.lastName}
                             </h2>
                             <h2 className="text-[5px] sm:text-[12px] leading-[130%] text-gray_text">
-                                {actor?.age} {ACTORCARD.years_old}
+                                {actor?.age} {language.ACTORCARD.years_old}
                             </h2>
                         </div>
                     </div>

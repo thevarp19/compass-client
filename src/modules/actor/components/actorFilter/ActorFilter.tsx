@@ -1,5 +1,6 @@
 "use client";
 import { MultiSelectInput } from "@/components/shared/multi-select/MultiSelectInput";
+import { useLanguage } from "@/context/LanguageProvider";
 import {
     agencies,
     appearanceTypes,
@@ -23,7 +24,6 @@ import {
 import Image from "next/image";
 import { FC, useEffect, useState } from "react";
 import { ActorFilters } from "../../types";
-import { ACTOR_FILTER } from "./string";
 
 export interface ActorFilterProps {
     view: string;
@@ -38,6 +38,7 @@ export const ActorFilter: FC<ActorFilterProps> = ({
     filters,
     setFilters,
 }) => {
+    const { language } = useLanguage();
     const handleResetFilter = () => {
         setView("grid");
         setFilters({
@@ -75,20 +76,21 @@ export const ActorFilter: FC<ActorFilterProps> = ({
         });
     };
 
-    const [isAdvancedSearchOpen, setIsAdvancedSearchOpen] = useState(() => {
-        return JSON.parse(
-            localStorage.getItem("isAdvancedSearchOpen") || "false"
-        );
-    });
+    const [isAdvancedSearchOpen, setIsAdvancedSearchOpen] =
+        useState<boolean>(false);
 
+    useEffect(() => {
+        setIsAdvancedSearchOpen(() => {
+            return JSON.parse(
+                localStorage.getItem("isAdvancedSearchOpen") || "false"
+            );
+        });
+    }, []);
     useEffect(() => {
         localStorage.setItem(
             "isAdvancedSearchOpen",
             JSON.stringify(isAdvancedSearchOpen)
         );
-        // return function cleanup() {
-        //     localStorage.removeItem("isAdvancedSearchOpen");
-        // };
     }, [isAdvancedSearchOpen]);
     const hideAdvancedSearch = () => {
         setIsAdvancedSearchOpen(false);
@@ -138,7 +140,7 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                 onClick={handleResetFilter}
             >
                 <h2 className="text-[7px] sm:text-sm whitespace-nowrap">
-                    {ACTOR_FILTER.reset_filter}
+                    {language.ACTOR_FILTER.reset_filter}
                 </h2>
                 <Image
                     src={"/icons/cross-X.svg"}
@@ -152,7 +154,7 @@ export const ActorFilter: FC<ActorFilterProps> = ({
             <div className="flex flex-col gap-[10px] sm:gap-5 px-[5px] sm:px-5">
                 <div className="flex justify-between items-center">
                     <h2 className="text-[7px] sm:text-sm leading-[130%] w-full">
-                        {ACTOR_FILTER.view}
+                        {language.ACTOR_FILTER.view}
                     </h2>
                     <div className="flex gap-[4px] sm:gap-[7px] sm:w-2/3 min-w-[42px] sm:min-w-[102px]">
                         <div className="border-[1px] rounded-[2px] border-gray_text p-1 ">
@@ -192,7 +194,7 @@ export const ActorFilter: FC<ActorFilterProps> = ({
 
                 <div className="flex">
                     <h2 className="text-[7px] sm:text-sm sm:leading-[130%] w-full">
-                        {ACTOR_FILTER.sort}
+                        {language.ACTOR_FILTER.sort}
                     </h2>
                     <div className="flex sm:w-2/3 min-w-[42px] sm:min-w-[102px]">
                         <div className="flex flex-col  w-full">
@@ -206,7 +208,7 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                                     handleSortByChange("");
                                 }}
                             >
-                                {ACTOR_FILTER.relevant}
+                                {language.ACTOR_FILTER.relevant}
                             </div>
                             <div
                                 className={`border-[1px]  text-center border-${
@@ -218,7 +220,7 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                                     handleSortByChange("name");
                                 }}
                             >
-                                {ACTOR_FILTER.alphabet}
+                                {language.ACTOR_FILTER.alphabet}
                             </div>
                             <div
                                 className={`border-x-[1px] border-b-[1px] text-center border-${
@@ -230,7 +232,7 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                                     handleSortByChange("age");
                                 }}
                             >
-                                {ACTOR_FILTER.by_age}
+                                {language.ACTOR_FILTER.by_age}
                             </div>
                         </div>
                     </div>
@@ -242,7 +244,7 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                     onClick={hideAdvancedSearch}
                 >
                     <h2 className="font-medium text-[8px] sm:text-base text-black">
-                        {ACTOR_FILTER.main_info}
+                        {language.ACTOR_FILTER.main_info}
                     </h2>
                     {isAdvancedSearchOpen && (
                         <Image
@@ -260,7 +262,7 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                 </div>
                 <div className="flex">
                     <h2 className="text-[7px] sm:text-sm leading-[130%] w-full">
-                        {ACTOR_FILTER.gender}
+                        {language.ACTOR_FILTER.gender}
                     </h2>
                     <div className="flex w-2/3 max-w-[102px]">
                         <div
@@ -273,7 +275,7 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                                 handleGenderToggle("MALE");
                             }}
                         >
-                            {ACTOR_FILTER.male}
+                            {language.ACTOR_FILTER.male}
                         </div>
                         <div
                             className={`flex items-center border-y-[1px] border-r-[1px] rounded-e-[3px] text-[5px] sm:text-sm font-light px-[4px] sm:px-[10px] py-[3px] sm:py-1 text-center border-${
@@ -285,13 +287,13 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                                 handleGenderToggle("FEMALE");
                             }}
                         >
-                            {ACTOR_FILTER.female}
+                            {language.ACTOR_FILTER.female}
                         </div>
                     </div>
                 </div>
                 <div className="flex">
                     <h2 className="text-[7px] sm:text-sm leading-[130%] w-full">
-                        {ACTOR_FILTER.age}
+                        {language.ACTOR_FILTER.age}
                     </h2>
                     <div className="flex w-2/3 max-w-[102px] gap-[2px] items-center">
                         <input
@@ -325,14 +327,14 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                     }  rounded-[3px] p-1 leading-[130%]`}
                     onClick={handleIsCompassToggle}
                 >
-                    {ACTOR_FILTER.actors_compass}
+                    {language.ACTOR_FILTER.actors_compass}
                 </button>
             </div>
             {isAdvancedSearchOpen && (
                 <div className="flex flex-col gap-[10px] sm:gap-5 px-[5px] sm:px-5">
                     <div className="flex flex-col gap-[10px]">
                         <h2 className="text-[7px] sm:text-sm text-black">
-                            {ACTOR_FILTER.cityOfResidence}
+                            {language.ACTOR_FILTER.cityOfResidence}
                         </h2>
                         <MultiSelectInput
                             maxTagCount="responsive"
@@ -350,7 +352,7 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                     </div>
                     <div className="flex flex-col gap-[10px]">
                         <h2 className="text-[7px] sm:text-sm text-black">
-                            {ACTOR_FILTER.nationality}
+                            {language.ACTOR_FILTER.nationality}
                         </h2>
                         <MultiSelectInput
                             maxTagCount="responsive"
@@ -365,7 +367,7 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                     </div>
                     <div className="flex flex-col gap-[10px]">
                         <h2 className="text-[7px] sm:text-sm text-black">
-                            {ACTOR_FILTER.specialization}
+                            {language.ACTOR_FILTER.specialization}
                         </h2>
                         <MultiSelectInput
                             maxTagCount="responsive"
@@ -380,7 +382,7 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                     </div>
                     <div className="flex flex-col gap-[10px]">
                         <h2 className="text-[7px] sm:text-sm text-black">
-                            {ACTOR_FILTER.legalStatus}
+                            {language.ACTOR_FILTER.legalStatus}
                         </h2>
                         <MultiSelectInput
                             maxTagCount="responsive"
@@ -396,11 +398,11 @@ export const ActorFilter: FC<ActorFilterProps> = ({
 
                     {/* MEDIAA */}
                     <h2 className="text-[8px] sm:text-base font-semibold text-black">
-                        {ACTOR_FILTER.media}
+                        {language.ACTOR_FILTER.media}
                     </h2>
                     <div className="flex">
                         <h2 className="text-[7px] sm:text-sm leading-[130%] w-full">
-                            {ACTOR_FILTER.quantityPhoto}
+                            {language.ACTOR_FILTER.quantityPhoto}
                         </h2>
                         <div className="flex w-2/3 max-w-[90px] sm:max-w-[102px] gap-[2px] items-center">
                             <input
@@ -432,7 +434,7 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                     </div>
                     <div className="flex">
                         <h2 className="text-[7px] sm:text-sm leading-[130%] w-full">
-                            {ACTOR_FILTER.quantityVideo}
+                            {language.ACTOR_FILTER.quantityVideo}
                         </h2>
                         <div className="flex w-2/3 max-w-[90px] sm:max-w-[102px] gap-[2px] items-center">
                             <input
@@ -464,7 +466,7 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                     </div>
                     <div className="flex flex-col gap-[10px]">
                         <h2 className="text-[7px] sm:text-sm text-black">
-                            {ACTOR_FILTER.agency}
+                            {language.ACTOR_FILTER.agency}
                         </h2>
                         <MultiSelectInput
                             maxTagCount="responsive"
@@ -478,11 +480,11 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                         />
                     </div>
                     <h2 className="text-[8px] sm:text-base font-semibold text-black">
-                        {ACTOR_FILTER.externalData}
+                        {language.ACTOR_FILTER.externalData}
                     </h2>
                     <div className="flex flex-col gap-[10px]">
                         <h2 className="text-sm text-black">
-                            {ACTOR_FILTER.hairLength}
+                            {language.ACTOR_FILTER.hairLength}
                         </h2>
                         <MultiSelectInput
                             maxTagCount="responsive"
@@ -497,7 +499,7 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                     </div>
                     <div className="flex flex-col gap-[10px]">
                         <h2 className="text-[7px] sm:text-sm text-black">
-                            {ACTOR_FILTER.hairColor}
+                            {language.ACTOR_FILTER.hairColor}
                         </h2>
                         <MultiSelectInput
                             maxTagCount="responsive"
@@ -512,7 +514,7 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                     </div>
                     <div className="flex flex-col gap-[10px]">
                         <h2 className="text-[7px] sm:text-sm text-black">
-                            {ACTOR_FILTER.eyeColor}
+                            {language.ACTOR_FILTER.eyeColor}
                         </h2>
                         <MultiSelectInput
                             maxTagCount="responsive"
@@ -527,7 +529,7 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                     </div>
                     <div className="flex flex-col gap-[10px]">
                         <h2 className="text-[7px] sm:text-sm text-black">
-                            {ACTOR_FILTER.appearanceType}
+                            {language.ACTOR_FILTER.appearanceType}
                         </h2>
                         <MultiSelectInput
                             maxTagCount="responsive"
@@ -545,7 +547,7 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                     </div>
                     <div className="flex flex-col gap-[10px]">
                         <h2 className="text-[7px] sm:text-sm text-black">
-                            {ACTOR_FILTER.bodyPosition}
+                            {language.ACTOR_FILTER.bodyPosition}
                         </h2>
                         <MultiSelectInput
                             maxTagCount="responsive"
@@ -560,7 +562,7 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                     </div>
                     <div className="flex flex-col gap-[10px]">
                         <h2 className="text-[7px] sm:text-sm text-black">
-                            {ACTOR_FILTER.features}
+                            {language.ACTOR_FILTER.features}
                         </h2>
                         <MultiSelectInput
                             maxTagCount="responsive"
@@ -575,7 +577,7 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                     </div>
                     <div className="flex">
                         <h2 className="text-[7px] sm:text-sm leading-[130%] w-full">
-                            {ACTOR_FILTER.height}
+                            {language.ACTOR_FILTER.height}
                         </h2>
                         <div className="flex w-2/3 max-w-[90px] sm:max-w-[102px] gap-[2px] items-center">
                             <input
@@ -605,7 +607,7 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                     </div>
                     <div className="flex">
                         <h2 className="text-[7px] sm:text-sm leading-[130%] w-full">
-                            {ACTOR_FILTER.weight}
+                            {language.ACTOR_FILTER.weight}
                         </h2>
                         <div className="flex w-2/3 max-w-[90px] sm:max-w-[102px] gap-[2px] items-center">
                             <input
@@ -634,11 +636,11 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                         </div>
                     </div>
                     <h2 className="text-[8px] sm:text-base font-semibold text-black">
-                        {ACTOR_FILTER.skills}
+                        {language.ACTOR_FILTER.skills}
                     </h2>
                     <div className="flex flex-col gap-[10px]">
                         <h2 className="text-[7px] sm:text-sm text-black">
-                            {ACTOR_FILTER.sport}
+                            {language.ACTOR_FILTER.sport}
                         </h2>
                         <MultiSelectInput
                             maxTagCount="responsive"
@@ -653,7 +655,7 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                     </div>
                     <div className="flex flex-col gap-[10px]">
                         <h2 className="text-[7px] sm:text-sm text-black">
-                            {ACTOR_FILTER.dance}
+                            {language.ACTOR_FILTER.dance}
                         </h2>
                         <MultiSelectInput
                             maxTagCount="responsive"
@@ -668,7 +670,7 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                     </div>
                     <div className="flex flex-col gap-[10px]">
                         <h2 className="text-[7px] sm:text-sm text-black">
-                            {ACTOR_FILTER.musicalInstruments}
+                            {language.ACTOR_FILTER.musicalInstruments}
                         </h2>
                         <MultiSelectInput
                             maxTagCount="responsive"
@@ -686,7 +688,7 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                     </div>
                     <div className="flex flex-col gap-[10px]">
                         <h2 className="text-[7px] sm:text-sm text-black">
-                            {ACTOR_FILTER.singing}
+                            {language.ACTOR_FILTER.singing}
                         </h2>
                         <MultiSelectInput
                             maxTagCount="responsive"
@@ -701,7 +703,7 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                     </div>
                     <div className="flex flex-col gap-[10px]">
                         <h2 className="text-[7px] sm:text-sm text-black">
-                            {ACTOR_FILTER.foreignLanguages}
+                            {language.ACTOR_FILTER.foreignLanguages}
                         </h2>
                         <MultiSelectInput
                             maxTagCount="responsive"
@@ -719,7 +721,7 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                     </div>
                     <div className="flex flex-col gap-[10px]">
                         <h2 className="text-[7px] sm:text-sm text-black">
-                            {ACTOR_FILTER.drivingLicenses}
+                            {language.ACTOR_FILTER.drivingLicenses}
                         </h2>
                         <MultiSelectInput
                             maxTagCount="responsive"
@@ -741,7 +743,7 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                 onClick={showAdvancedSearch}
             >
                 <h2 className="text-[7px] sm:text-sm font-normal leading-[130%]">
-                    {ACTOR_FILTER.advanced_search}
+                    {language.ACTOR_FILTER.advanced_search}
                 </h2>
                 <Image
                     src={"/icons/down.svg"}

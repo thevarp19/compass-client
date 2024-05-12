@@ -1,6 +1,7 @@
 "use client";
 import { SearchInput } from "@/components/shared/search-input/SearchInput";
 // import { actors } from "@/lib/const/actors";
+import { useLanguage } from "@/context/LanguageProvider";
 import { useDebounce } from "@/hooks/useDebounce";
 import { initialFilters } from "@/utils/actorFilter/initialData";
 import { FC, useState } from "react";
@@ -9,11 +10,11 @@ import { ActorFilters } from "../../types";
 import { ActorFilter } from "../actorFilter/ActorFilter";
 import { ActorGrid } from "../actorGrid/ActorGrid";
 import { ActorList } from "../actorList/ActorList";
-import { ACTORS } from "./string";
 
 export const Actors: FC = () => {
     const [view, setView] = useState("grid");
     const [filters, setFilters] = useState<ActorFilters>(initialFilters);
+    const { language } = useLanguage();
 
     const debouncedSearch = useDebounce(filters.search, 1000);
     const debouncedAgeMin = useDebounce(filters.age_min, 1000);
@@ -54,7 +55,7 @@ export const Actors: FC = () => {
         <div className="bg-gray flex flex-col gap-10 justify-between p-4 pb-12 sm:pb-0 sm:px-20 sm:py-10 md:px-[146px] md:py-[80px] w-full h-full">
             <div className="flex justify-between items-start">
                 <h2 className="text-black text-[15px] sm:text-[32px] font-medium leading-[130%] whitespace-nowrap">
-                    {ACTORS.title}
+                    {language.ACTORS.title}
                 </h2>
                 <SearchInput
                     value={filters.search}
@@ -66,7 +67,7 @@ export const Actors: FC = () => {
                 {actors?.length === 0 ? (
                     <div className="flex justify-center items-center max-w-[215px] sm:max-w-none min-[415px]:min-w-[253px] sm:min-w-[830px] w-max h-max">
                         <h2 className="text-[8px] sm:text-2xl font-medium text-center text-black sm:w-64">
-                            {ACTORS.no_data}
+                            {language.ACTORS.no_data}
                         </h2>
                     </div>
                 ) : (

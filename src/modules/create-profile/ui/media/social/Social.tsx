@@ -1,6 +1,6 @@
 import { SelectInput } from "@/components/shared/select-input/SelectInput";
+import { useLanguage } from "@/context/LanguageProvider";
 import { socialMediaOptions } from "@/modules/create-profile/const/data";
-import { FORM_TEXT } from "@/modules/create-profile/strings/string";
 import { FormProps } from "@/modules/create-profile/types";
 import { FieldArray } from "formik";
 import { ChangeEvent, FC } from "react";
@@ -9,18 +9,19 @@ export const Social: FC<FormProps> = ({ formik }) => {
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
         formik.setFieldValue(e.target.name, e.target.value);
     };
+    const { language } = useLanguage();
     const handleSelectChange = (name: string, value: string) => {
         formik.setFieldValue(name, value);
     };
     return (
         <div className="flex flex-col gap-[10px] sm:gap-5 w-full">
             <h2 className="text-[10px] sm:text-xl font-semibold text-black">
-                {FORM_TEXT.socialNetworks}
+                {language.FORM_TEXT.socialNetworks}
             </h2>
             <FieldArray name="abstract_user_data.userSocialMedias">
                 {({ remove, push }) => (
                     <div className="flex flex-col gap-[10px] sm:gap-5 ">
-                        {formik.values.abstract_user_data.userSocialMedias.map(
+                        {formik.values.abstract_user_data.userSocialMedias?.map(
                             (social, index) => (
                                 <div
                                     className={`flex flex-col gap-[10px] sm:gap-5 w-full ${
@@ -31,7 +32,10 @@ export const Social: FC<FormProps> = ({ formik }) => {
                                 >
                                     <div className="flex flex-col gap-[5px] sm:gap-[10px]">
                                         <h2 className="text-grayDark_text text-[7px] sm:text-sm leading-[130%]">
-                                            {FORM_TEXT.socialNetworkName}
+                                            {
+                                                language.FORM_TEXT
+                                                    .socialNetworkName
+                                            }
                                         </h2>
                                         <div className="flex">
                                             <SelectInput
@@ -55,7 +59,10 @@ export const Social: FC<FormProps> = ({ formik }) => {
                                     </div>
                                     <div className="flex flex-col gap-[10px]">
                                         <h2 className="text-grayDark_text text-[7px] sm:text-sm leading-[130%]">
-                                            {FORM_TEXT.socialNetworkLink}
+                                            {
+                                                language.FORM_TEXT
+                                                    .socialNetworkLink
+                                            }
                                         </h2>
                                         <div className="flex">
                                             <input
@@ -75,7 +82,7 @@ export const Social: FC<FormProps> = ({ formik }) => {
                                                 className="border border-gray_border text-[6px] sm:text-xs bg-[#f32013] text-white rounded-[3px] px-1 sm:px-2 py-[2px] sm:py-1"
                                                 onClick={() => remove(index)}
                                             >
-                                                {FORM_TEXT.remove}
+                                                {language.FORM_TEXT.remove}
                                             </button>
                                         </div>
                                     )}
@@ -94,7 +101,7 @@ export const Social: FC<FormProps> = ({ formik }) => {
                                     })
                                 }
                             >
-                                {FORM_TEXT.addMore}
+                                {language.FORM_TEXT.addMore}
                             </button>
                         </div>
                     </div>

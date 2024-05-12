@@ -1,12 +1,12 @@
+import { useLanguage } from "@/context/LanguageProvider";
 import { Actor } from "@/types/actor";
 import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";
 import { ActorsCarousel } from "../main/Main";
-import { MAIN } from "../main/string";
-import { ABOUTUS } from "./string";
 
 export const AboutUs: FC = () => {
+    const { language } = useLanguage();
     const popularActors: Actor[] = [
         {
             id: 1,
@@ -71,7 +71,7 @@ export const AboutUs: FC = () => {
             </section>
             <section>
                 <ActorsCarousel
-                    title={ABOUTUS.compass_actor}
+                    title={language.ABOUTUS.compass_actor}
                     actors={popularActors}
                 />
             </section>
@@ -86,27 +86,28 @@ export const AboutUs: FC = () => {
 };
 
 const MainBanner2 = () => {
+    const { language } = useLanguage();
     return (
         <div className="bg-secondary flex gap-[25px] sm:gap-[140px] justify-center px-[25px] sm:px-[140px] py-[40px] sm:py-[110px]">
             <div className="flex flex-col max-w-[175px] sm:max-w-[424px] justify-between">
                 <div className="flex flex-col">
                     {" "}
                     <h2 className="text-white font-semibold text-[20px] sm:text-[48px] flex leading-normal flex-col">
-                        {MAIN.selection}
+                        {language.MAIN.selection}
                         <span className="underline whitespace-nowrap text-[#6E9CF2]">
-                            {MAIN.best_actor}
+                            {language.MAIN.best_actor}
                         </span>
-                        {MAIN.from_all_world}
+                        {language.MAIN.from_all_world}
                     </h2>
                     <h2 className="text-white text-[8px] sm:text-base">
-                        {MAIN.inter_platform}
+                        {language.MAIN.inter_platform}
                     </h2>
                 </div>
                 <div>
                     <button
                         className={`bg-button_color text-[8px] sm:text-base text-white font-bold w-[80px] sm:w-[200px] h-[20px] sm:h-[50px] rounded-lg`}
                     >
-                        {MAIN.find}
+                        {language.MAIN.find}
                     </button>
                 </div>
             </div>
@@ -123,21 +124,25 @@ const MainBanner2 = () => {
     );
 };
 const MainBanner = () => {
+    const { language } = useLanguage();
     return (
         <div className="bg-secondary flex flex-col justify-center items-center min-h-[554px]">
             <div className="flex flex-col text-white text-[52px] font-semibold text-center">
                 <h2>
-                    {ABOUTUS.title}
+                    {language.ABOUTUS.title}
                     <span className="text-[#6E9CF2] underline">
-                        {ABOUTUS.compass}
+                        {language.ABOUTUS.compass}
                     </span>
                 </h2>
-                <div className="w-[516px] text-center">{ABOUTUS.some_text}</div>
+                <div className="w-[516px] text-center">
+                    {language.ABOUTUS.some_text}
+                </div>
             </div>
         </div>
     );
 };
 const Manifest = () => {
+    const { language } = useLanguage();
     return (
         <div className="hidden bg-secondary sm:flex flex-col gap-10 justify-between px-[146px] py-[80px]">
             <div className="flex gap-[144px] text-white">
@@ -229,17 +234,18 @@ const Manifest = () => {
 };
 
 const OurProjects = () => {
+    const { language, getHref } = useLanguage();
     return (
         <div className="bg-secondary flex flex-col gap-10 justify-between py-10 sm:py-20 px-[25px] sm:px-[146px]">
             <div className="flex justify-between">
                 <h2 className="text-white text-[15px] sm:text-[32px] font-medium leading-[130%]">
-                    Наши проекты
+                    {language.PROJECTS.our_projects}
                 </h2>
                 <Link
-                    href="our-projects"
+                    href={getHref("our-projects")}
                     className="text-[#6E9CF2] text-[10px] sm:text-[18px] font-medium leading-[130%] cursor-pointer"
                 >
-                    Смотреть Всё
+                    {language.PROJECTS.showAll}
                 </Link>
             </div>
             <div className="relative">

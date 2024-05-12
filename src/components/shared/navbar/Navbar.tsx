@@ -1,56 +1,63 @@
 "use client";
 import { useAuthContext } from "@/context/AuthContext";
+import { useLanguage } from "@/context/LanguageProvider";
 import { useAppSelector } from "@/redux/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { NAVBAR } from "./string";
+import { LanguageSelector } from "../language-selector/LanguageSelector";
 
 export default function Navbar() {
     const auth = useAppSelector((state) => state.user.auth);
     const [clientLoaded, setClientLoaded] = useState(false);
     const { isHasProfile, avatar } = useAuthContext();
+    const { language, getHref } = useLanguage();
     useEffect(() => {
         setClientLoaded(true);
-        // console.log(isHasProfile, avatar);
     }, []);
     return (
         <nav className="bg-primary flex justify-around h-12 sm:h-24 items-center">
             <div>
                 <Link
-                    href="/"
+                    href={getHref("/")}
                     className="text-xs sm:text-2xl font-montserrat font-bold text-white"
                 >
-                    {NAVBAR.text}
+                    {language.NAVBAR.text}
                 </Link>
             </div>
             <div className="flex gap-[10px] sm:gap-10 items-center text-[8px] sm:text-lg text-white font-medium">
                 <div className="flex gap-[10px] sm:gap-10 items-center">
-                    <Link href="/about-us" className="text-white">
-                        {NAVBAR.about_us}
+                    <Link href={getHref("/about-us")} className="text-white">
+                        {language.NAVBAR.about_us}
                     </Link>
-                    <Link href="/actors" className="text-white">
-                        {NAVBAR.actors}
+                    <Link href={getHref("/actors")} className="text-white">
+                        {language.NAVBAR.actors}
                     </Link>
-                    <Link href="/our-projects" className="text-white">
-                        {NAVBAR.our_project}
+                    <Link
+                        href={getHref("/our-projects")}
+                        className="text-white"
+                    >
+                        {language.NAVBAR.our_project}
                     </Link>
                 </div>
                 {clientLoaded ? (
                     !auth.isLoggedIn ? (
                         <div className="flex gap-[10px] sm:gap-10 items-center">
-                            <Link href="/auth/login" className="text-white">
-                                {NAVBAR.login}
+                            <Link
+                                href={getHref("/auth/login")}
+                                className="text-white"
+                            >
+                                {language.NAVBAR.login}
                             </Link>
                             <Link
-                                href="/auth/registration"
+                                href={getHref("/auth/registration")}
                                 className={`bg-button_color rounded-[5px] py-[5px] px-[12px] sm:py-[10px] sm:px-6 cursor-pointer text-[8px] text-white font-semibold  sm:text-lg`}
                             >
-                                {NAVBAR.registration}
+                                {language.NAVBAR.registration}
                             </Link>
                         </div>
                     ) : (
-                        <Link href="/profile" className="block">
+                        <Link href={getHref("/profile")} className="block">
                             <Image
                                 src={
                                     isHasProfile && avatar
@@ -69,16 +76,7 @@ export default function Navbar() {
                     <div className="w-[40px] h-[40px]"></div>
                 )}
 
-                <div className="flex justify-center items-center border-[1px] rounded-[7px] w-[20px] h-[20px] sm:w-[40px] sm:h-[40px]">
-                    <Image
-                        src="/images/kazakh.png"
-                        width={32}
-                        style={{ objectFit: "contain" }}
-                        height={21.33}
-                        alt="Kazakh flag"
-                        className=""
-                    />
-                </div>
+                <LanguageSelector />
             </div>
         </nav>
     );

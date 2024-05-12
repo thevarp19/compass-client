@@ -1,4 +1,4 @@
-import { FORM_TEXT } from "@/modules/create-profile/strings/string";
+import { useLanguage } from "@/context/LanguageProvider";
 import { FormProps } from "@/modules/create-profile/types";
 import axios from "axios";
 import Image from "next/image";
@@ -6,10 +6,11 @@ import { FC, useEffect, useState } from "react";
 import { YouTubeVideoModal } from "../../form/YoutubeVideoModal";
 
 export const ImageAndVideo: FC<FormProps> = ({ formik }) => {
+    const { language } = useLanguage();
     const [imageURLs, setImageURLs] = useState<string[]>(
         formik.values.abstract_user_data.userPhotos
-            .slice(-4)
-            .map((photo) => photo.url)
+            ?.slice(-4)
+            ?.map((photo) => photo.url)
     );
     useEffect(() => {
         if (formik.values.abstract_user_data.userPhotos) {
@@ -21,9 +22,9 @@ export const ImageAndVideo: FC<FormProps> = ({ formik }) => {
         }
     }, [formik.values.abstract_user_data.userPhotos]);
     const [showModal, setShowModal] = useState(false);
-    const videoSlots = formik.values.userVideos
-        .slice(-2)
-        .concat(
+    const videoSlots = formik.values?.userVideos
+        ?.slice(-2)
+        ?.concat(
             Array.from({ length: 2 - formik.values.userVideos.length }).map(
                 (_, i) => ({ url: "" })
             )
@@ -61,13 +62,13 @@ export const ImageAndVideo: FC<FormProps> = ({ formik }) => {
             <div className="flex flex-col gap-[5px] sm:gap-[10px]">
                 <div className="flex items-center justify-between">
                     <h2 className="text-black text-[8px] sm:text-base">
-                        {FORM_TEXT.photos}
+                        {language.FORM_TEXT.photos}
                     </h2>
                     <label
                         htmlFor="image-uploads"
                         className="text-center text-[6px] sm:text-xs text-button_color rounded cursor-pointer"
                     >
-                        {FORM_TEXT.add}
+                        {language.FORM_TEXT.add}
                     </label>
                     <input
                         id="image-uploads"
@@ -116,18 +117,18 @@ export const ImageAndVideo: FC<FormProps> = ({ formik }) => {
             <div className="flex flex-col gap-[10px]">
                 <div className="flex items-center justify-between">
                     <h2 className="text-[8px] sm:text-base text-black">
-                        {FORM_TEXT.videos}
+                        {language.FORM_TEXT.videos}
                     </h2>
                     <button
                         type="button"
                         className="text-center text-[6px] sm:text-xs text-button_color rounded cursor-pointer"
                         onClick={openModal}
                     >
-                        {FORM_TEXT.add}
+                        {language.FORM_TEXT.add}
                     </button>
                 </div>
                 <div className="flex sm:justify-between gap-[2px] sm:gap-0">
-                    {videoSlots.map((video, index) => (
+                    {videoSlots?.map((video, index) => (
                         <div
                             key={index}
                             className="bg-gray_border rounded-[3px] w-[44px] sm:w-[121px] h-[21px] sm:h-[80px] relative flex items-center justify-center"

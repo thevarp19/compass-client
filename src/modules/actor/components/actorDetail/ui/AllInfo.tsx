@@ -1,5 +1,6 @@
 import { GetActorDetailResponse } from "@/modules/actor/types";
-import { FORM_TEXT } from "@/modules/create-profile/strings/string";
+
+import { useLanguage } from "@/context/LanguageProvider";
 import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";
@@ -21,6 +22,8 @@ const socialMediaIcons = [
 ];
 
 export const AllInfo: FC<AllInfoProps> = ({ actor, isEdit }) => {
+    const { language, getHref } = useLanguage();
+
     return (
         <div className="flex justify-center sm:justify-normal py-[25px] sm:py-[60px]">
             <div className="flex flex-col">
@@ -29,7 +32,9 @@ export const AllInfo: FC<AllInfoProps> = ({ actor, isEdit }) => {
                         <div className="flex flex-col gap-[10px] sm:gap-5">
                             <div className="flex justify-center items-center bg-gray_border w-[70px] h-[100px] min-[415px]:w-[100px] sm:w-[250px] min-[415px]:h-[135px] sm:h-[350px] rounded-lg overflow-hidden relative">
                                 <Image
-                                    src={actor?.abstract_user_data.avatar || ""}
+                                    src={
+                                        actor?.abstract_user_data?.avatar || ""
+                                    }
                                     fill
                                     alt="Uploaded photo"
                                     className="object-cover w-full h-full"
@@ -38,14 +43,17 @@ export const AllInfo: FC<AllInfoProps> = ({ actor, isEdit }) => {
                             <div className="grid grid-cols-4 gap-[6px] sm:gap-[15px] sm:px-5">
                                 {socialMediaIcons.map((social, index) => {
                                     const socialMediaUrl =
-                                        actor?.abstract_user_data.userSocialMedias?.find(
+                                        actor?.abstract_user_data?.userSocialMedias?.find(
                                             (media) =>
                                                 media.name.toLowerCase() ===
                                                 social.name.toLowerCase()
                                         )?.url || "#";
 
                                     return (
-                                        <Link key={index} href={socialMediaUrl}>
+                                        <Link
+                                            key={index}
+                                            href={getHref(socialMediaUrl)}
+                                        >
                                             <Image
                                                 src={social.imageSrc}
                                                 width={20}
@@ -62,7 +70,7 @@ export const AllInfo: FC<AllInfoProps> = ({ actor, isEdit }) => {
                         {actor?.userContacts && (
                             <div className="flex flex-col gap-[10px] sm:gap-5 w-full">
                                 <h2 className="text-[10px] sm:text-xl font-semibold text-black">
-                                    {FORM_TEXT.contacts}
+                                    {language.FORM_TEXT.contacts}
                                 </h2>
 
                                 {actor?.userContacts?.map((contact, index) => (

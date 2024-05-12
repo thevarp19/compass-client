@@ -1,16 +1,17 @@
-import { FORM_TEXT } from "@/modules/create-profile/strings/string";
+import { useLanguage } from "@/context/LanguageProvider";
 import { FC } from "react";
 import { AllInfoProps } from "./AllInfo";
 
 export const MovieAndAwards: FC<AllInfoProps> = ({ actor }) => {
+    const { language, getHref } = useLanguage();
     return (
         <>
             <div className="flex flex-col gap-5 w-full">
                 <h2 className="text-[10px] sm:text-xl font-semibold text-black">
-                    {FORM_TEXT.movies}
+                    {language.FORM_TEXT.movies}
                 </h2>
 
-                {actor?.movies.map((movie, index) => (
+                {actor?.movies?.map((movie, index) => (
                     <div
                         key={index}
                         className="flex justify-between items-center"
@@ -31,10 +32,10 @@ export const MovieAndAwards: FC<AllInfoProps> = ({ actor }) => {
             </div>
             <div className="flex flex-col gap-5 w-full">
                 <h2 className="text-[10px] sm:text-xl font-semibold text-black">
-                    {FORM_TEXT.awards}
+                    {language.FORM_TEXT.awards}
                 </h2>
 
-                {actor?.awards.map((award, index) => (
+                {actor?.awards?.map((award, index) => (
                     <div
                         key={index}
                         className="flex justify-between items-center"

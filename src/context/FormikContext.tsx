@@ -5,6 +5,7 @@ import { FormikProvider, useFormik } from "formik";
 import { useRouter } from "next/navigation";
 import { createContext, useContext, useEffect } from "react";
 import { useAuthContext } from "./AuthContext";
+import { useLanguage } from "./LanguageProvider";
 
 const FormikContext = createContext<any>(null);
 
@@ -27,14 +28,14 @@ export const FormikProfileProvider = ({
     const router = useRouter();
     const { isHasProfile } = useAuthContext();
     const { data: profile, isLoading } = useGetProfile();
-
+    const { getHref } = useLanguage();
     const formik = useFormik({
         initialValues: createActorValues,
         onSubmit: async (values, { setSubmitting }) => {
             console.log("values", values);
             try {
                 await mutation.mutateAsync(values);
-                router.push("/profile");
+                router.push(getHref("/profile"));
             } catch (error) {
                 console.error("Error creating profile:", error);
             } finally {

@@ -6,25 +6,24 @@ import Link from "next/link";
 import React from "react";
 
 import { Input } from "@/components/shared/input-form/Input";
-import { useAuthContext } from "@/context/AuthContext";
+import { useLanguage } from "@/context/LanguageProvider";
 import { loginSuccess } from "@/redux/user/auth/actions";
 import { useAppDispatch } from "@/redux/utils";
 import { useRouter } from "next/navigation";
 import { useLogin } from "../../forms";
 import { LoginResponse } from "../../types";
-import { LOGIN } from "./string";
 
 const Login: React.FC = () => {
+    const { language, getHref } = useLanguage();
     const dispatch = useAppDispatch();
     const router = useRouter();
     const navigateToProfile = () => {
-        router.push("/");
+        router.push(getHref("/"));
     };
-    const { handleLogin } = useAuthContext();
+    // const { handleLogin } = useAuthContext();
     const success = (data: LoginResponse) => {
         dispatch(loginSuccess(data));
         navigateToProfile();
-        handleLogin();
     };
     const { formik, mutation } = useLogin(success);
 
@@ -36,12 +35,12 @@ const Login: React.FC = () => {
             >
                 <div className="flex flex-col gap-10">
                     <label className="font-bold text-black font-montserrat text-base sm:text-[26px]">
-                        {LOGIN.login}
+                        {language.LOGIN.login}
                     </label>
                     <div className="flex flex-col gap-[20px]">
                         <div className="flex flex-col gap-4">
                             <label className="text-black font-semibold text-[10px] sm:text-base">
-                                {LOGIN.mail}
+                                {language.LOGIN.mail}
                             </label>
                             <Input
                                 placeholder="Введите ваш email"
@@ -54,7 +53,7 @@ const Login: React.FC = () => {
                         </div>
                         <div className="flex flex-col gap-4">
                             <label className="text-black font-semibold text-[10px] sm:text-base">
-                                {LOGIN.password}
+                                {language.LOGIN.password}
                             </label>
                             <Input
                                 placeholder="Введите пароль"
@@ -67,28 +66,28 @@ const Login: React.FC = () => {
                             />
                         </div>
                         <div>
-                            <Button text={LOGIN.enter} type="submit" />
+                            <Button text={language.LOGIN.enter} type="submit" />
                         </div>
                         <div className="flex justify-end">
                             <label className="font-medium font-montserrat text-black text-[8px] sm:text-xs">
-                                {LOGIN.forgot_pass}
+                                {language.LOGIN.forgot_pass}
                             </label>
                         </div>
                         <div className="flex justify-center gap-2">
                             <label className="font-medium font-montserrat text-black text-[8px] sm:text-xs">
-                                {LOGIN.dont_have_acc}
+                                {language.LOGIN.dont_have_acc}
                             </label>
                             <Link
-                                href="/auth/registration"
+                                href={getHref("/auth/registration")}
                                 className="text-button_color text-[8px] sm:text-xs"
                             >
-                                {LOGIN.registraton}
+                                {language.LOGIN.registraton}
                             </Link>
                         </div>
                         <div className="flex items-center ">
                             <hr className="flex-grow border-0 h-px bg-gray_border mx-2"></hr>
                             <label className="text-black text-[8px] sm:text-xs">
-                                {LOGIN.or}
+                                {language.LOGIN.or}
                             </label>
                             <hr className="flex-grow border-0 h-px bg-gray_border mx-2"></hr>
                         </div>

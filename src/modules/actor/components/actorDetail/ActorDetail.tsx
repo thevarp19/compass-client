@@ -1,5 +1,5 @@
 "use client";
-import { FORM_TEXT } from "@/modules/create-profile/strings/string";
+import { useLanguage } from "@/context/LanguageProvider";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -12,20 +12,21 @@ interface ActorDetailProps {
 }
 export const ActorDetail: FC<ActorDetailProps> = ({ details, isEdit }) => {
     const router = useRouter();
+    const { language, getHref } = useLanguage();
     const handleLogout = () => {
-        router.push("/auth/logout");
+        router.push(getHref("/auth/logout"));
     };
 
     return (
         <div className="bg-gray flex flex-col px-[10px] min-[425px]:px-[25px] sm:px-[146px] py-[30px] sm:py-[60px]">
             <div className="flex justify-between">
                 <span className="text-[20px] sm:text-[32px] font-semibold text-black">
-                    {details?.abstract_user_data.firstName}{" "}
-                    {details?.abstract_user_data.thirdName}{" "}
-                    {details?.abstract_user_data.lastName}
+                    {details?.abstract_user_data?.firstName}{" "}
+                    {details?.abstract_user_data?.thirdName}{" "}
+                    {details?.abstract_user_data?.lastName}
                 </span>
                 {isEdit && (
-                    <Link href={`/profile/edit`}>
+                    <Link href={getHref(`/profile/edit`)}>
                         <Image
                             src={"/icons/edit.svg"}
                             width={24}
@@ -43,7 +44,7 @@ export const ActorDetail: FC<ActorDetailProps> = ({ details, isEdit }) => {
                         onClick={handleLogout}
                         className="bg-[#F66] cursor-pointer text-[8px] sm:text-base flex items-center justify-center text-white font-semibold w-[80px] sm:w-[160px] h-[20px] sm:h-[40px] rounded-lg"
                     >
-                        {FORM_TEXT.logout}
+                        {language.FORM_TEXT.logout}
                     </span>
                 </div>
             )}

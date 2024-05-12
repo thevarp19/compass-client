@@ -1,9 +1,11 @@
 import { FieldArray } from "formik";
 import { ChangeEvent, FC } from "react";
-import { FORM_TEXT } from "../../strings/string";
+
+import { useLanguage } from "@/context/LanguageProvider";
 import { FormProps } from "../../types";
 
 export const Theatres: FC<FormProps> = ({ formik }) => {
+    const { language } = useLanguage();
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value, type } = e.target;
         if (
@@ -20,12 +22,12 @@ export const Theatres: FC<FormProps> = ({ formik }) => {
     return (
         <div className="flex flex-col gap-[10px] sm:gap-5 w-full">
             <h2 className="text-[10px] sm:text-xl font-semibold text-black">
-                {FORM_TEXT.theaterWork}
+                {language.FORM_TEXT.theaterWork}
             </h2>
             <FieldArray name="theaters">
                 {({ remove, push }) => (
                     <div className="flex flex-col gap-[10px] sm:gap-5">
-                        {formik.values.theaters.map((theaters, index) => (
+                        {formik.values.theaters?.map((theaters, index) => (
                             <div
                                 className={`flex flex-col gap-[10px] sm:gap-5 w-full ${
                                     index > 0 &&
@@ -35,7 +37,7 @@ export const Theatres: FC<FormProps> = ({ formik }) => {
                             >
                                 <div className="flex justify-between items-center">
                                     <h2 className="text-[8px] sm:text-base text-grayDark_text">
-                                        {FORM_TEXT.theater}
+                                        {language.FORM_TEXT.theater}
                                     </h2>
                                     <input
                                         className={`!w-[92px] h-[14px] sm:!w-[237px] sm:h-[24px] px-[4px] sm:px-[10px] py-[3px] sm:py-[4px]  !indent-0 text-[6px] sm:text-xs border border-gray_border !rounded-[2px] outline-none text-grayDark_text`}
@@ -47,7 +49,7 @@ export const Theatres: FC<FormProps> = ({ formik }) => {
                                 </div>
                                 <div className="flex justify-between items-center">
                                     <h2 className="text-[8px] sm:text-base text-grayDark_text">
-                                        {FORM_TEXT.performances}
+                                        {language.FORM_TEXT.performances}
                                     </h2>
                                     <input
                                         className={`!w-[92px] h-[14px] sm:!w-[237px] sm:h-[24px] px-[4px] sm:px-[10px] py-[3px] sm:py-[4px]  !indent-0 text-[6px] sm:text-xs border border-gray_border !rounded-[2px] outline-none text-grayDark_text`}
@@ -59,7 +61,7 @@ export const Theatres: FC<FormProps> = ({ formik }) => {
                                 </div>
                                 <div className="flex justify-between items-center">
                                     <h2 className="text-[8px] sm:text-base text-grayDark_text">
-                                        {FORM_TEXT.yearsOfPerformance}
+                                        {language.FORM_TEXT.yearsOfPerformance}
                                     </h2>
                                     <div className="flex gap-[6px] justify-end items-center">
                                         <input
@@ -98,7 +100,7 @@ export const Theatres: FC<FormProps> = ({ formik }) => {
                                             className="border border-gray_border text-[6px] sm:text-xs bg-[#f32013] text-white rounded-[3px] px-1 sm:px-2 py-[2px] sm:py-1"
                                             onClick={() => remove(index)}
                                         >
-                                            {FORM_TEXT.remove}
+                                            {language.FORM_TEXT.remove}
                                         </button>
                                     </div>
                                 )}
@@ -118,7 +120,7 @@ export const Theatres: FC<FormProps> = ({ formik }) => {
                                     })
                                 }
                             >
-                                {FORM_TEXT.addMore}
+                                {language.FORM_TEXT.addMore}
                             </button>
                         </div>
                     </div>

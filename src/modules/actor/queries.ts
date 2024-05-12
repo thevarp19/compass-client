@@ -14,7 +14,6 @@ export const useGetActors = (filters: ActorFilters) => {
             const { data } = await getActors(filters);
             return data;
         },
-
         enabled: !!filters,
     });
 };

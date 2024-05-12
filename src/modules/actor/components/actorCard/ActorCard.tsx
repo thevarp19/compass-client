@@ -1,12 +1,14 @@
+import { useLanguage } from "@/context/LanguageProvider";
 import { Actor } from "@/types/actor";
 import Image from "next/image";
 import { FC } from "react";
-import { ACTORCARD } from "./string";
 interface ActorCardProps {
     actor: Actor;
     className?: string;
 }
 export const ActorCard: FC<ActorCardProps> = ({ actor, className }) => {
+    const { language } = useLanguage();
+
     return (
         <div
             className={`bg-secondary shadow-lg flex flex-col rounded-[10px] max-w-[80px] sm:max-w-auto min-w-[80px] sm:min-w-max w-max ${className}`}
@@ -24,7 +26,7 @@ export const ActorCard: FC<ActorCardProps> = ({ actor, className }) => {
                     {actor?.firstName} {actor.lastName}
                 </h2>
                 <h2 className="text-[6px] sm:text-[12px] leading-[130%] text-gray_text">
-                    {actor?.age} {ACTORCARD.years_old}
+                    {actor?.age} {language.ACTORCARD.years_old}
                 </h2>
             </div>
         </div>

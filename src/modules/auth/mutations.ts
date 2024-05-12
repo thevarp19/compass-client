@@ -1,4 +1,5 @@
 "use client";
+import { useLanguage } from "@/context/LanguageProvider";
 import { useMutation } from "@tanstack/react-query";
 import { App } from "antd";
 import { AxiosError } from "axios";
@@ -30,6 +31,7 @@ export const loginMutation = (success: (data: LoginResponse) => void) => {
 export const registerMutation = () => {
     const { message } = App.useApp();
     const router = useRouter();
+    const { getHref } = useLanguage();
     return useMutation<RegisterResponse, AxiosError<any>, RegisterRequest>({
         async mutationFn(values) {
             const { data } = await register(values);
@@ -38,7 +40,7 @@ export const registerMutation = () => {
         onSuccess() {
             // console.log("Success!");
             message.success("Success!");
-            router.push("/auth/login");
+            router.push(getHref("/auth/login"));
         },
         onError(error) {
             message.error(`${error?.response?.data.message}`);

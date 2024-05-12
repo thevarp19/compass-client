@@ -1,5 +1,5 @@
-import { Main } from "@/modules/main/Main";
+import { redirect } from "next/navigation";
 
-export default function Home() {
-    return <Main />;
+export default function RootPage() {
+    redirect("/ru");
 }

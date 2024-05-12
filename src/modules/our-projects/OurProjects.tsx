@@ -1,4 +1,5 @@
 "use client";
+import { useLanguage } from "@/context/LanguageProvider";
 import { axios } from "@/lib/axios";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
@@ -49,11 +50,12 @@ export const OurProjects: FC = () => {
             return response.data;
         },
     });
+    const { language, getHref } = useLanguage();
 
     return (
         <div className="bg-gray flex flex-col gap-5 sm:gap-10 py-10 sm:py-20 px-[25px] sm:px-[146px] text-black">
             <h2 className="text-[15px] sm:text-[32px] font-medium leading-[130%]">
-                Наши Проекты
+                {language.PROJECTS.our_projects}
             </h2>
 
             {projects?.map((project, index) => (
@@ -63,8 +65,12 @@ export const OurProjects: FC = () => {
                             {`${project.startYear} - ${project.endYear} "${project.name}"`}
                         </h2>
                         <h2 className="text-[9px] sm:text-[18px] font-medium leading-[130%]">
-                            В главных ролях:{" "}
-                            <Link href={`/actors/${project?.actors[0].id}`}>
+                            {language.PROJECTS.main_actors}{" "}
+                            <Link
+                                href={getHref(
+                                    `/actors/${project?.actors[0].id}`
+                                )}
+                            >
                                 <span className="text-[#6E9CF2]">
                                     {project.actors[0]?.firstName}{" "}
                                     {project.actors[0]?.lastName}

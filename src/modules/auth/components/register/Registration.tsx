@@ -6,12 +6,12 @@ import Link from "next/link";
 import React from "react";
 
 import { Input } from "@/components/shared/input-form/Input";
+import { useLanguage } from "@/context/LanguageProvider";
 import { useRegister } from "../../forms";
-import { REGISTRATION } from "./string";
 
 const Registration: React.FC = () => {
     const { formik, mutation } = useRegister();
-
+    const { language, getHref } = useLanguage();
     return (
         <div className="flex justify-center items-center pb-[100px] sm:pb-0 pt-[30px] sm:pt-0 h-max sm:h-screen">
             <form
@@ -20,12 +20,12 @@ const Registration: React.FC = () => {
             >
                 <div className="flex flex-col gap-5 sm:gap-10">
                     <label className="font-bold text-black text-base sm:text-[26px]">
-                        {REGISTRATION.registration}
+                        {language.REGISTRATION.registration}
                     </label>
                     <div className="flex flex-col gap-[20px]">
                         <div className="flex flex-col gap-4">
                             <label className="text-black font-semibold text-[10px] sm:text-base">
-                                {REGISTRATION.mail}
+                                {language.REGISTRATION.mail}
                             </label>
                             <Input
                                 placeholder="Введите ваш email"
@@ -38,7 +38,7 @@ const Registration: React.FC = () => {
                         </div>
                         <div className="flex flex-col gap-4">
                             <label className="text-black font-semibold text-[10px] sm:text-base">
-                                {REGISTRATION.password}
+                                {language.REGISTRATION.password}
                             </label>
                             <Input
                                 placeholder="Введите пароль"
@@ -52,7 +52,7 @@ const Registration: React.FC = () => {
                         </div>
                         <div className="flex flex-col gap-4">
                             <label className="text-black font-semibold text-[10px] sm:text-base">
-                                {REGISTRATION.confirm_password}
+                                {language.REGISTRATION.confirm_password}
                             </label>
                             <Input
                                 placeholder="Подтвердите ваш пароль"
@@ -69,19 +69,19 @@ const Registration: React.FC = () => {
                         </div>
                         <div className="flex justify-center gap-2">
                             <label className="text-[8px] sm:text-xs font-medium font-montserrat text-black">
-                                {REGISTRATION.already_have_account}
+                                {language.REGISTRATION.already_have_account}
                             </label>
                             <Link
-                                href="/auth/login"
+                                href={getHref("/auth/login")}
                                 className="text-[8px] sm:text-xs text-button_color"
                             >
-                                {REGISTRATION.login}
+                                {language.REGISTRATION.login}
                             </Link>
                         </div>
                         <div className="flex items-center">
                             <hr className="flex-grow border-0 h-px bg-gray_border mx-2"></hr>
                             <label className="text-black text-[8px] sm:text-xs">
-                                {REGISTRATION.or}
+                                {language.REGISTRATION.or}
                             </label>
                             <hr className="flex-grow border-0 h-px bg-gray_border mx-2"></hr>
                         </div>

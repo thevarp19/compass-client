@@ -1,19 +1,21 @@
+"use client";
+import { useLanguage } from "@/context/LanguageProvider";
 import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";
-import { FOOTER } from "./string";
 
 export const Footer: FC = () => {
+    const { language, getHref } = useLanguage();
     return (
         <div className="bg-primary border-t-[0.25px] border-gray_text">
             <div className="flex justify-center pt-[25px] sm:pt-12 pb-[46px] sm:pb-[88px]">
                 <div className="flex gap-[15px] sm:gap-[170px] items-center">
                     <div className="max-w-[84px] sm:max-w-[167px] flex flex-col gap-[15px] sm:gap-[50px]">
                         <h2 className="text-white text-[12px] sm:text-2xl font-semibold">
-                            {FOOTER.name}
+                            {language.FOOTER.name}
                         </h2>
                         <h3 className="text-gray_text text-[8px] sm:text-base">
-                            {FOOTER.description}
+                            {language.FOOTER.description}
                         </h3>
                         <div className="flex gap-[10px] sm:gap-5">
                             <Image
@@ -41,31 +43,31 @@ export const Footer: FC = () => {
                     </div>
                     <div className="flex flex-col gap-[10px] sm:gap-5">
                         <h2 className="text-white text-[8px] sm:text-base">
-                            {FOOTER.navigation}
+                            {language.FOOTER.navigation}
                         </h2>
                         <Link
-                            href="/actors"
+                            href={getHref("/actors")}
                             className="text-gray_text text-[8px] sm:text-base"
                         >
-                            {FOOTER.actors}
+                            {language.FOOTER.actors}
                         </Link>
                         <Link
-                            href="/our-projects"
+                            href={getHref("/our-projects")}
                             className="text-gray_text text-[8px] sm:text-base"
                         >
-                            {FOOTER.our_project}
+                            {language.FOOTER.our_project}
                         </Link>
                         <Link
-                            href="/about-us"
+                            href={getHref("/about-us")}
                             className="text-gray_text text-[8px] sm:text-base"
                         >
                             {" "}
-                            {FOOTER.about_us}
+                            {language.FOOTER.about_us}
                         </Link>
                     </div>
                     <div className="flex flex-col gap-[10px] sm:gap-5">
                         <h2 className="text-white text-[8px] sm:text-base">
-                            {FOOTER.for_casting_directors}
+                            {language.FOOTER.for_casting_directors}
                         </h2>
                         <div className="flex flex-col gap-[15px]">
                             <h2 className="flex gap-[25px] text-gray_text text-[8px] sm:text-base">
@@ -108,23 +110,23 @@ export const Footer: FC = () => {
                     </div>
                     <div className="flex flex-col gap-[10px] sm:gap-5">
                         <h2 className="text-white text-[8px] sm:text-base">
-                            {FOOTER.for_parents}
+                            {language.FOOTER.for_parents}
                         </h2>
                         <h2 className="text-gray_text text-[8px] sm:text-base">
-                            {FOOTER.name}
+                            {language.FOOTER.name}
                         </h2>
                         <h2 className="text-gray_text text-[8px] sm:text-base">
-                            {FOOTER.instagram}
+                            {language.FOOTER.instagram}
                         </h2>
                         <h2 className="text-gray_text text-[8px] sm:text-base">
-                            {FOOTER.telegram}
+                            {language.FOOTER.telegram}
                         </h2>
                     </div>
                 </div>
             </div>
             <div className="flex justify-center border-t-[0.25px] border-gray_text py-[20px] sm:py-8">
                 <h2 className="text-[8px] sm:text-base leading-5 text-gray_text">
-                    2024 Compass. Все Права Защищены.
+                    {language.FOOTER.rights}
                 </h2>
             </div>
         </div>

@@ -1,17 +1,18 @@
+import { useLanguage } from "@/context/LanguageProvider";
 import { Actor } from "@/types/actor";
 import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";
-import { ACTORCARD } from "../actorCard/string";
-import { ACTORLIST } from "./string";
+
 interface ActorListProps {
     actors: Actor[];
 }
 export const ActorList: FC<ActorListProps> = ({ actors }) => {
+    const { language, getHref } = useLanguage();
     return (
         <div className="flex flex-col gap-5 sm:min-w-[830px] w-full">
             {actors.map((actor, key) => (
-                <Link key={key} href={`/actors/${actor.id}`}>
+                <Link key={key} href={getHref(`/actors/${actor.id}`)}>
                     <div className="flex">
                         <div
                             className={`bg-gray shadow-lg flex flex-col rounded-[5px] rounded-s-[5px] rounded-b-none rounded-tr-none  min-w-[60px] sm:min-w-[150px] max-w-[150px] max-h-[280px] w-max ${
@@ -49,14 +50,14 @@ export const ActorList: FC<ActorListProps> = ({ actors }) => {
                                     {actor?.firstName} {actor?.lastName}{" "}
                                 </h2>
                                 <h2 className="text-[5px] sm:text-[12px] leading-[130%] text-gray_text">
-                                    {actor?.age} {ACTORCARD.years_old}
+                                    {actor?.age} {language.ACTORCARD.years_old}
                                 </h2>
                             </div>
                         </div>
                         <div className="w-full border-y-[1px] border-e-[1px] border-gray_border rounded-e-[5px] flex flex-col gap-5 py-5 pl-5">
                             <div className="flex flex-col gap-[10px]">
                                 <h2 className="text-[7px] sm:text-sm font-medium leading-[130%] text-black">
-                                    {ACTORLIST.education}
+                                    {language.ACTORLIST.education}
                                 </h2>
                                 <h2 className="text-[6px] sm:text-xs leading-[130%] text-grayDark_text">
                                     {actor?.educations[0].university}{" "}
@@ -65,7 +66,7 @@ export const ActorList: FC<ActorListProps> = ({ actors }) => {
                             </div>
                             <div className="flex flex-col gap-[10px]">
                                 <h2 className="text-[7px] sm:text-sm  font-medium leading-[130%] text-black">
-                                    {ACTORLIST.best_movies}
+                                    {language.ACTORLIST.best_movies}
                                 </h2>
                                 {actor?.movies?.map((movie, key) => (
                                     <h2

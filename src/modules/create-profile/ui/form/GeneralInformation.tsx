@@ -1,5 +1,6 @@
 import { FormikInput } from "@/components/shared/formik-input/FormikInput";
 import { SelectInput } from "@/components/shared/select-input/SelectInput";
+import { useLanguage } from "@/context/LanguageProvider";
 import { ChangeEvent, FC, useEffect, useState } from "react";
 import {
     agencies,
@@ -9,7 +10,6 @@ import {
     legalStatuses,
     specializations,
 } from "../../const/data";
-import { FORM_TEXT } from "../../strings/string";
 import { FormProps } from "../../types";
 
 type DateState = {
@@ -20,6 +20,7 @@ type DateState = {
 
 export const GeneralInformation: FC<FormProps> = ({ formik }) => {
     const [gender, setGender] = useState("");
+    const { language } = useLanguage();
     const [date, setDate] = useState<DateState>({
         day: "",
         month: "",
@@ -66,11 +67,11 @@ export const GeneralInformation: FC<FormProps> = ({ formik }) => {
     return (
         <div className="flex flex-col gap-5 w-full">
             <h2 className="text-[10px] sm:text-xl font-semibold text-black">
-                {FORM_TEXT.generalInfo}
+                {language.FORM_TEXT.generalInfo}
             </h2>
             <div className="flex justify-between items-center">
                 <h2 className="text-[8px] sm:text-base text-grayDark_text">
-                    {FORM_TEXT.firstName}
+                    {language.FORM_TEXT.firstName}
                 </h2>
                 <FormikInput
                     className="!text-[6px] sm:!text-base"
@@ -81,7 +82,7 @@ export const GeneralInformation: FC<FormProps> = ({ formik }) => {
             </div>
             <div className="flex justify-between items-center">
                 <h2 className="text-[8px] sm:text-base text-grayDark_text">
-                    {FORM_TEXT.lastName}
+                    {language.FORM_TEXT.lastName}
                 </h2>
                 <FormikInput
                     className="!text-[6px] sm:!text-base"
@@ -92,7 +93,7 @@ export const GeneralInformation: FC<FormProps> = ({ formik }) => {
             </div>
             <div className="flex justify-between items-center">
                 <h2 className="text-[8px] sm:text-base text-grayDark_text">
-                    {FORM_TEXT.middleName}
+                    {language.FORM_TEXT.middleName}
                 </h2>
                 <FormikInput
                     className="!text-[6px] sm:!text-base"
@@ -103,7 +104,7 @@ export const GeneralInformation: FC<FormProps> = ({ formik }) => {
             </div>
             <div className="flex justify-between items-center">
                 <h2 className="text-[8px] sm:text-base text-grayDark_text leading-[130%]">
-                    {FORM_TEXT.gender}
+                    {language.FORM_TEXT.gender}
                 </h2>
                 <div className="flex items-center min-w-[92px] sm:min-w-[237px]">
                     <div
@@ -116,7 +117,7 @@ export const GeneralInformation: FC<FormProps> = ({ formik }) => {
                             handleOnClick("male");
                         }}
                     >
-                        {FORM_TEXT.male}
+                        {language.FORM_TEXT.male}
                     </div>
                     <div
                         className={`border-y-[1px] border-r-[1px] rounded-e-[3px] py-[3px] sm:py-1 font-light px-[7px] sm:px-[10px] text-[6px] sm:text-xs text-grayDark_text text-center border-${
@@ -128,13 +129,13 @@ export const GeneralInformation: FC<FormProps> = ({ formik }) => {
                             handleOnClick("female");
                         }}
                     >
-                        {FORM_TEXT.female}
+                        {language.FORM_TEXT.female}
                     </div>
                 </div>
             </div>
             <div className="flex justify-between items-center">
                 <h2 className="text-[8px] sm:text-base text-grayDark_text leading-[130%]">
-                    {FORM_TEXT.birthDate}
+                    {language.FORM_TEXT.birthDate}
                 </h2>
                 <div className="flex gap-[1px] sm:gap-[6px] min-w-[92px] sm:min-w-[237px]">
                     <input
@@ -168,7 +169,7 @@ export const GeneralInformation: FC<FormProps> = ({ formik }) => {
             </div>
             <div className="flex justify-between items-center">
                 <h2 className="text-[8px] sm:text-base text-grayDark_text leading-[130%]">
-                    {FORM_TEXT.nationality}
+                    {language.FORM_TEXT.nationality}
                 </h2>
                 <div className="flex ">
                     <SelectInput
@@ -186,7 +187,7 @@ export const GeneralInformation: FC<FormProps> = ({ formik }) => {
             </div>
             <div className="flex justify-between items-center">
                 <h2 className="text-[8px] sm:text-base text-grayDark_text leading-[130%]">
-                    {FORM_TEXT.specialization}
+                    {language.FORM_TEXT.specialization}
                 </h2>
                 <div className="flex ">
                     <SelectInput
@@ -204,7 +205,7 @@ export const GeneralInformation: FC<FormProps> = ({ formik }) => {
             </div>
             <div className="flex justify-between items-center">
                 <h2 className="text-[8px] sm:text-base text-grayDark_text leading-[130%]">
-                    {FORM_TEXT.cityOfResidence}
+                    {language.FORM_TEXT.cityOfResidence}
                 </h2>
                 <div className="flex ">
                     <SelectInput
@@ -222,7 +223,7 @@ export const GeneralInformation: FC<FormProps> = ({ formik }) => {
             </div>
             <div className="flex justify-between items-center">
                 <h2 className="text-[8px] sm:text-base text-grayDark_text leading-[130%]">
-                    {FORM_TEXT.legalStatus}
+                    {language.FORM_TEXT.legalStatus}
                 </h2>
                 <div className="flex ">
                     <SelectInput
@@ -240,7 +241,7 @@ export const GeneralInformation: FC<FormProps> = ({ formik }) => {
             </div>
             <div className="flex justify-between items-center">
                 <h2 className="text-[8px] sm:text-base text-grayDark_text leading-[130%]">
-                    {FORM_TEXT.agency}
+                    {language.FORM_TEXT.agency}
                 </h2>
                 <div className="flex">
                     <SelectInput

@@ -10,21 +10,23 @@ import {
     hairColors,
     hairLengths,
 } from "../../const/data";
-import { FORM_TEXT } from "../../strings/string";
+
+import { useLanguage } from "@/context/LanguageProvider";
 import { FormProps } from "../../types";
 
 export const External: FC<FormProps> = ({ formik }) => {
+    const { language } = useLanguage();
     const handleSelectChange = (name: string, value: string) => {
         formik.setFieldValue(name, value);
     };
     return (
         <div className="flex flex-col gap-5 w-full">
             <h2 className="text-[10px] sm:text-xl font-semibold text-black">
-                {FORM_TEXT.externalData}
+                {language.FORM_TEXT.externalData}
             </h2>
             <div className="flex justify-between items-center">
                 <h2 className="text-[8px] sm:text-base text-grayDark_text">
-                    {FORM_TEXT.height}
+                    {language.FORM_TEXT.height}
                 </h2>
                 <FormikInput
                     className="!text-[6px] sm:!text-base"
@@ -36,7 +38,7 @@ export const External: FC<FormProps> = ({ formik }) => {
             </div>
             <div className="flex justify-between items-center">
                 <h2 className="text-[8px] sm:text-base text-grayDark_text">
-                    {FORM_TEXT.weight}
+                    {language.FORM_TEXT.weight}
                 </h2>
                 <FormikInput
                     className="!text-[6px] sm:!text-base"
@@ -48,7 +50,7 @@ export const External: FC<FormProps> = ({ formik }) => {
             </div>
             <div className="flex justify-between items-center">
                 <h2 className="text-[8px] sm:text-base text-grayDark_text">
-                    {FORM_TEXT.clothingSize}
+                    {language.FORM_TEXT.clothingSize}
                 </h2>
                 <FormikInput
                     className="!text-[6px] sm:!text-base"
@@ -59,7 +61,7 @@ export const External: FC<FormProps> = ({ formik }) => {
             </div>
             <div className="flex justify-between items-center">
                 <h2 className="text-[8px] sm:text-base text-grayDark_text">
-                    {FORM_TEXT.shoeSize}
+                    {language.FORM_TEXT.shoeSize}
                 </h2>
                 <FormikInput
                     className="!text-[6px] sm:!text-base"
@@ -70,7 +72,7 @@ export const External: FC<FormProps> = ({ formik }) => {
             </div>
             <div className="flex justify-between items-center">
                 <h2 className="text-[8px] sm:text-base text-grayDark_text">
-                    {FORM_TEXT.hairLength}
+                    {language.FORM_TEXT.hairLength}
                 </h2>
                 <SelectInput
                     className="min-w-[92px]  sm:min-w-[237px]"
@@ -86,7 +88,7 @@ export const External: FC<FormProps> = ({ formik }) => {
             </div>
             <div className="flex justify-between items-center">
                 <h2 className="text-[8px] sm:text-base text-grayDark_text">
-                    {FORM_TEXT.hairColor}
+                    {language.FORM_TEXT.hairColor}
                 </h2>
                 <SelectInput
                     className="min-w-[92px]  sm:min-w-[237px]"
@@ -98,7 +100,7 @@ export const External: FC<FormProps> = ({ formik }) => {
             </div>
             <div className="flex justify-between items-center">
                 <h2 className="text-[8px] sm:text-base text-grayDark_text">
-                    {FORM_TEXT.eyeColor}
+                    {language.FORM_TEXT.eyeColor}
                 </h2>
                 <SelectInput
                     className="min-w-[92px]  sm:min-w-[237px]"
@@ -110,7 +112,7 @@ export const External: FC<FormProps> = ({ formik }) => {
             </div>
             <div className="flex justify-between items-center">
                 <h2 className="text-[8px] sm:text-base text-grayDark_text">
-                    {FORM_TEXT.bodyPosition}
+                    {language.FORM_TEXT.bodyPosition}
                 </h2>
                 <SelectInput
                     className="min-w-[92px]  sm:min-w-[237px]"
@@ -122,7 +124,7 @@ export const External: FC<FormProps> = ({ formik }) => {
             </div>
             <div className="flex justify-between items-center">
                 <h2 className="text-[8px] sm:text-base text-grayDark_text">
-                    {FORM_TEXT.appearanceType}
+                    {language.FORM_TEXT.appearanceType}
                 </h2>
                 <SelectInput
                     className="min-w-[92px]  sm:min-w-[237px]"
@@ -138,7 +140,7 @@ export const External: FC<FormProps> = ({ formik }) => {
             </div>
             <div className="flex justify-between items-center">
                 <h2 className="text-[8px] sm:text-base text-grayDark_text">
-                    {FORM_TEXT.features}
+                    {language.FORM_TEXT.features}
                 </h2>
                 <SelectInput
                     className="min-w-[92px]  sm:min-w-[237px]"

@@ -1,9 +1,9 @@
 import { Drawer, DrawerProps } from "@/components/shared/drawer/Drawer";
 import { useFormikContext } from "@/context/FormikContext";
+import { useLanguage } from "@/context/LanguageProvider";
 import Image from "next/image";
 import { FC, useState } from "react";
 import { UploadImage } from "../../../../components/shared/upload-image/UploadImage";
-import { FORM_TEXT } from "../../strings/string";
 import { Media } from "../media/Media";
 import { Award } from "./Award";
 import { Comment } from "./Comment";
@@ -23,7 +23,7 @@ export const Form = () => {
     const [isSuccessDrawerVisible, setIsSuccessDrawerVisible] =
         useState<boolean>(false);
     const formik = useFormikContext();
-
+    const { language } = useLanguage();
     return (
         <>
             <FormConfirmationDrawer
@@ -33,6 +33,7 @@ export const Form = () => {
                         setIsConfirmDrawerVisible(false);
                     },
                 }}
+                submitForm={formik.submitForm}
             />
             <FormSuccessDrawer
                 drawerProps={{
@@ -79,17 +80,15 @@ export const Form = () => {
                         <Media formik={formik} />
                     </div>
                     <div className="flex justify-end text-center">
-                        <button
-                            type="submit"
-                            // onClick={(e) => {
-                            //     e.preventDefault();
-                            //     setIsConfirmDrawerVisible(true);
-                            // }}
-                            className="bg-button_color text-[8px] sm:text-base text-white font-bold rounded-[5px] w-[80px] sm:w-[160px] h-[20px] sm:h-[40px] text-center"
+                        <div
+                            onClick={(e) => {
+                                setIsConfirmDrawerVisible(true);
+                            }}
+                            className="bg-button_color text-[8px] flex justify-center items-center sm:text-base text-white font-bold rounded-[5px] w-[80px] sm:w-[160px] h-[20px] sm:h-[40px] text-center"
                         >
                             Сохранить
                             {/* {mutation.isPending && <Loading />} */}
-                        </button>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -103,40 +102,49 @@ interface FormDrawerProps {
 interface FormConfirmDrawerProps {
     drawerProps: DrawerProps;
 }
-export const FormConfirmationDrawer: FC<FormConfirmDrawerProps> = ({
-    drawerProps: { isVisible, closeDrawer },
-}) => {
+export const FormConfirmationDrawer: FC<
+    FormConfirmDrawerProps & { submitForm: () => void }
+> = ({ drawerProps: { isVisible, closeDrawer }, submitForm }) => {
+    const { language } = useLanguage();
     return (
         <Drawer isVisible={isVisible} closeDrawer={closeDrawer}>
-            <div className="flex flex-col gap-[88px]">
-                <div className="relative pt-5 flex justify-center">
-                    <h2 className="text-[20px] font-semibold text-black">
-                        {FORM_TEXT.confirm_title}
+            <div className="flex flex-col gap-14 sm:gap-20">
+                <div className="relative pt-3 sm:pt-5 flex justify-center">
+                    <h2 className="text-[16px] sm:text-[20px] font-semibold text-black">
+                        {language.FORM_TEXT.confirm_title}
                     </h2>
                     <Image
                         src={"/icons/cross-X.svg"}
-                        width={26}
-                        height={26}
+                        width={20}
+                        height={20}
                         alt={"cross"}
                         onClick={closeDrawer}
-                        className="absolute top-5 right-[18px] w-[26px] h-[26px] cursor-pointer"
+                        className="absolute top-3 right-3 sm:top-5 sm:right-5 w-[20px] h-[20px] sm:w-[26px] sm:h-[26px] cursor-pointer"
                         style={{
                             objectFit: "cover",
                             objectPosition: "center",
                         }}
                     />
                 </div>
-                <div className="flex flex-col items-center gap-[76px]">
-                    <h2 className="text-[15px]">{FORM_TEXT.data_correct}</h2>
-                    <div className="flex gap-[17px]">
-                        <button className="bg-button_color py-[10px] px-[22px] flex justify-center cursor-pointer font-semibold text-white rounded-[5px]">
-                            {FORM_TEXT.accept}
+                <div className="flex flex-col items-center gap-14 sm:gap-20">
+                    <h2 className="text-[12px] sm:text-[15px]">
+                        {language.FORM_TEXT.data_correct}
+                    </h2>
+                    <div className="flex gap-3 sm:gap-17">
+                        <button
+                            className="bg-button_color w-[100px] h-[20px] sm:w-[160px] sm:h-[40px] flex justify-center items-center cursor-pointer font-semibold text-white rounded-[3px] sm:rounded-[5px] text-[8px] sm:text-base"
+                            onClick={() => {
+                                submitForm();
+                                closeDrawer();
+                            }}
+                        >
+                            {language.FORM_TEXT.accept}
                         </button>
                         <div
                             onClick={closeDrawer}
-                            className="bg-gray py-[10px] px-[46px] flex justify-center cursor-pointer font-semibold text-black rounded-[5px]"
+                            className="bg-gray w-[100px] h-[20px] sm:w-[160px] sm:h-[40px] flex justify-center items-center cursor-pointer font-semibold text-black rounded-[3px] sm:rounded-[5px] text-[8px] sm:text-base"
                         >
-                            {FORM_TEXT.cancel}
+                            {language.FORM_TEXT.cancel}
                         </div>
                     </div>
                 </div>
@@ -148,12 +156,13 @@ export const FormConfirmationDrawer: FC<FormConfirmDrawerProps> = ({
 export const FormSuccessDrawer: FC<FormDrawerProps> = ({
     drawerProps: { isVisible, closeDrawer },
 }) => {
+    const { language } = useLanguage();
     return (
         <Drawer isVisible={isVisible} closeDrawer={closeDrawer}>
             <div className="flex flex-col gap-[37px]">
                 <div className="relative pt-5 flex justify-center">
                     <h2 className="text-[20px] font-semibold text-black">
-                        {FORM_TEXT.success}
+                        {language.FORM_TEXT.success}
                     </h2>
                     <Image
                         src={"/icons/cross-X.svg"}
@@ -186,7 +195,7 @@ export const FormSuccessDrawer: FC<FormDrawerProps> = ({
                             onClick={closeDrawer}
                             className="bg-button_color px-[67.5px] py-[10px] flex justify-center cursor-pointer font-semibold text-white rounded-[5px]"
                         >
-                            {FORM_TEXT.ok}
+                            {language.FORM_TEXT.ok}
                         </div>
                     </div>
                 </div>
@@ -197,12 +206,13 @@ export const FormSuccessDrawer: FC<FormDrawerProps> = ({
 export const FormFailureDrawer: FC<FormDrawerProps> = ({
     drawerProps: { isVisible, closeDrawer },
 }) => {
+    const { language } = useLanguage();
     return (
         <Drawer isVisible={isVisible} closeDrawer={closeDrawer}>
             <div className="flex flex-col gap-[37px]">
                 <div className="relative pt-5 flex justify-center">
                     <h2 className="text-[20px] font-semibold text-black">
-                        {FORM_TEXT.failure}
+                        {language.FORM_TEXT.failure}
                     </h2>
                     <Image
                         src={"/icons/cross-X.svg"}
@@ -235,7 +245,7 @@ export const FormFailureDrawer: FC<FormDrawerProps> = ({
                             onClick={closeDrawer}
                             className="bg-button_color px-[67.5px] py-[10px] flex justify-center cursor-pointer font-semibold text-white rounded-[5px]"
                         >
-                            {FORM_TEXT.ok}
+                            {language.FORM_TEXT.ok}
                         </div>
                     </div>
                 </div>

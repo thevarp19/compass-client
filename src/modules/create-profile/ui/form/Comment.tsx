@@ -1,13 +1,15 @@
 import TextArea from "antd/es/input/TextArea";
 import { FC } from "react";
-import { FORM_TEXT } from "../../strings/string";
+
+import { useLanguage } from "@/context/LanguageProvider";
 import { FormProps } from "../../types";
 
 export const Comment: FC<FormProps> = ({ formik }) => {
+    const { language } = useLanguage();
     return (
         <div className="flex flex-col gap-[10px] sm:gap-5 w-full">
             <h2 className="text-[10px] sm:text-xl font-semibold text-black">
-                {FORM_TEXT.comments}
+                {language.FORM_TEXT.comments}
             </h2>
             <TextArea
                 name="comments"

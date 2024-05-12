@@ -1,9 +1,10 @@
 "use client";
+import { useLanguage } from "@/context/LanguageProvider";
 import { Spin } from "antd";
 import axios from "axios";
 import Image from "next/image";
 import { ChangeEvent, FC, useRef, useState } from "react";
-import { FORM_TEXT } from "../../../modules/create-profile/strings/string";
+
 interface PhotoUploadProps {
     link: string | null;
     setLink: (newLink: string) => void;
@@ -11,7 +12,7 @@ interface PhotoUploadProps {
 export const UploadImage: FC<PhotoUploadProps> = ({ link, setLink }) => {
     const [loading, setLoading] = useState(false);
     const inputRef = useRef<HTMLInputElement>(null);
-
+    const { language } = useLanguage();
     const handlePhotoInputChange = async (
         event: ChangeEvent<HTMLInputElement>
     ) => {
@@ -65,7 +66,7 @@ export const UploadImage: FC<PhotoUploadProps> = ({ link, setLink }) => {
                 htmlFor="profile-image-upload"
                 className="text-center flex justify-center items-center  py-[5px] sm:py-2 sm:px-4 cursor-pointer bg-button_color text-[8px] sm:text-base text-white font-bold w-[70px] h-[20px] min-[410px]:w-[100px] min-[410px]:h-[20px] sm:w-[250px]  sm:h-[40px] rounded-[5px]"
             >
-                {FORM_TEXT.uploadButton}
+                {language.FORM_TEXT.uploadButton}
             </label>
             <input
                 id="profile-image-upload"

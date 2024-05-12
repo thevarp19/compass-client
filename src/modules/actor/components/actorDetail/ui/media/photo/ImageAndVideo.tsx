@@ -1,20 +1,21 @@
-import { FORM_TEXT } from "@/modules/create-profile/strings/string";
+import { useLanguage } from "@/context/LanguageProvider";
 import Image from "next/image";
 import Link from "next/link";
 import { FC, useEffect, useState } from "react";
 import { AllInfoProps } from "../../AllInfo";
 export const ImageAndVideo: FC<AllInfoProps> = ({ actor, isEdit }) => {
     const [imageURLs, setImageURLs] = useState<string[]>(
-        actor?.abstract_user_data.userPhotos.map((photo) => photo.url) || []
+        actor?.abstract_user_data.userPhotos?.map((photo) => photo.url) || []
     );
-    const videoSlots = actor?.userVideos.slice(-2).concat(
+    const videoSlots = actor?.userVideos?.slice(-2).concat(
         Array.from({ length: 2 - actor.userVideos.length }).map((_, i) => ({
             url: "",
         }))
     );
+    const { language, getHref } = useLanguage();
     const [actorId, setActorId] = useState<string | undefined>();
-    const imageLength = imageURLs.length;
-    const videoLength = actor?.userVideos.length || 0;
+    const imageLength = imageURLs?.length;
+    const videoLength = actor?.userVideos?.length || 0;
     useEffect(() => {
         setActorId(localStorage.getItem("actorId") ?? undefined);
     }, []);
@@ -23,17 +24,21 @@ export const ImageAndVideo: FC<AllInfoProps> = ({ actor, isEdit }) => {
             <div className="flex flex-col gap-[5px] sm:gap-[10px]">
                 <div className="flex items-center justify-between">
                     <h2 className="text-[8px] sm:text-base text-black">
-                        {FORM_TEXT.photos}({imageLength})
+                        {language.FORM_TEXT.photos}({imageLength})
                     </h2>
                     <Link
-                        href={isEdit ? "/profile/media" : `${actorId}/media`}
+                        href={
+                            isEdit
+                                ? getHref("/profile/media")
+                                : getHref(`${actorId}/media`)
+                        }
                         className="flex items-center"
                     >
                         <label
                             htmlFor="image-uploads"
                             className="text-center text-[6px] sm:text-xs text-button_color rounded cursor-pointer"
                         >
-                            {FORM_TEXT.showAll}
+                            {language.FORM_TEXT.showAll}
                         </label>
                     </Link>
                 </div>
@@ -64,17 +69,21 @@ export const ImageAndVideo: FC<AllInfoProps> = ({ actor, isEdit }) => {
             <div className="flex flex-col gap-[5px] sm:gap-[10px]">
                 <div className="flex items-center justify-between">
                     <h2 className="text-[8px] sm:text-base text-black">
-                        {FORM_TEXT.videos}({videoLength})
+                        {language.FORM_TEXT.videos}({videoLength})
                     </h2>
                     <Link
-                        href={isEdit ? "/profile/media" : `${actorId}/media`}
+                        href={
+                            isEdit
+                                ? getHref("/profile/media")
+                                : getHref(`${actorId}/media`)
+                        }
                         className="flex items-center"
                     >
                         <button
                             type="button"
                             className="text-center text-[6px] sm:text-xs text-button_color rounded cursor-pointer"
                         >
-                            {FORM_TEXT.showAll}
+                            {language.FORM_TEXT.showAll}
                         </button>
                     </Link>
                 </div>

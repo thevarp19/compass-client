@@ -1,3 +1,4 @@
+import { useLanguage } from "@/context/LanguageProvider";
 import { GetActorDetailResponse } from "@/modules/actor/types";
 import { FormikProps } from "formik";
 import { FC, useEffect, useState } from "react";
@@ -46,7 +47,7 @@ export const YouTubeVideoModal: FC<ModalProps> = ({
             onClose();
         }
     };
-
+    const { language } = useLanguage();
     if (!isOpen) return null;
 
     return (
@@ -54,7 +55,7 @@ export const YouTubeVideoModal: FC<ModalProps> = ({
             <div className="bg-white rounded-lg shadow-xl overflow-hidden max-w-full sm:max-w-md w-full">
                 <div className="p-4">
                     <h3 className="text-lg font-semibold text-black mb-4">
-                        Добавьте ссылку на видео
+                        {language.FORM_TEXT.add_link}
                     </h3>
                     <input
                         type="text"
@@ -75,14 +76,14 @@ export const YouTubeVideoModal: FC<ModalProps> = ({
                         className="px-4 py-2 bg-gray text-black rounded focus:outline-none"
                         aria-label="Close"
                     >
-                        Close
+                        {language.FORM_TEXT.close}
                     </button>
                     <button
                         onClick={handleSubmit}
                         className="px-4 py-2 bg-button_color text-white rounded focus:outline-none"
                         aria-label="Add Video"
                     >
-                        Add Video
+                        {language.FORM_TEXT.addVideo}
                     </button>
                 </div>
             </div>

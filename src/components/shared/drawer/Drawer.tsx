@@ -40,7 +40,7 @@ const DrawerUI: FC<DrawerProps> = ({ closeDrawer, children }) => {
             />
             <div
                 className={clsx(
-                    "bg-white absolute w-[486px] h-[296px] shadow-lg rounded-[9px]"
+                    "bg-white absolute w-[290px] h-[200px] sm:w-[486px] sm:h-[296px] shadow-lg rounded-[9px]"
                     // "max-sm:min-h-[50px]"
                 )}
             >

@@ -1,7 +1,7 @@
 "use client";
-import jwtService from "@/lib/jwt";
 import { GetActorDetailResponse } from "@/modules/actor/types";
-import { getProfile, verifyAuth } from "@/modules/auth/api";
+import { getProfile } from "@/modules/auth/api";
+import { useAppSelector } from "@/redux/utils";
 import {
     FC,
     ReactNode,
@@ -15,7 +15,7 @@ interface AuthContextType {
     isAuth: boolean;
     isHasProfile: boolean | undefined;
     avatar: string | undefined;
-    handleLogin: () => Promise<void>;
+    // handleLogin: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -34,23 +34,45 @@ interface AuthProviderProps {
 
 export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     const [isAuth, setAuth] = useState<boolean>(false);
-    const [isLoading, setIsLoading] = useState<boolean>(true);
+    const auth = useAppSelector((state) => state.user.auth);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
     const [profileData, setProfileData] = useState<
         GetActorDetailResponse | undefined
     >();
-    const handleLogin = async () => {
+
+    async function handleLogin() {
+        setIsLoading(true);
         try {
-            const token = jwtService.getAccessToken();
-            await verifyAuth(token);
+            const isValid = auth.isLoggedIn;
+
+            if (!isValid) {
+                throw new Error("Auth credentials are not valid");
+            }
             setAuth(true);
         } catch (error) {
-            console.error(error);
             setAuth(false);
+        } finally {
+            setIsLoading(false);
         }
-    };
+    }
+
     useEffect(() => {
         handleLogin();
     }, []);
+
+    // const handleLogin = async () => {
+    //     try {
+    //         const token = jwtService.getAccessToken();
+    //         await verifyAuth(token);
+    //         setAuth(true);
+    //     } catch (error) {
+    //         console.error(error);
+    //         setAuth(false);
+    //     }
+    // };
+    // useEffect(() => {
+    //     handleLogin();
+    // }, []);
 
     useEffect(() => {
         const fetchProfile = async () => {
@@ -71,16 +93,16 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     }, [isAuth]);
 
     // if (isLoading) {
-    //     return <Loading className="h-screen" />;
+    //     return <Loading className="w-screen h-screen" />;
     // }
 
     return (
         <AuthContext.Provider
             value={{
-                isAuth,
+                isAuth: isAuth,
                 isHasProfile: profileData?.abstract_user_data.type !== "none",
                 avatar: profileData?.abstract_user_data.avatar,
-                handleLogin,
+                // handleLogin,
             }}
         >
             {children}

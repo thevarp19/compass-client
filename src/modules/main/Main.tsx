@@ -1,14 +1,16 @@
 "use client";
 import { Loading } from "@/components/shared/loading/Loading";
+import { useLanguage } from "@/context/LanguageProvider";
 import { Actor } from "@/types/actor";
 import Image from "next/image";
 import Link from "next/link";
 import { FC, useRef } from "react";
 import { ActorCard } from "../actor/components/actorCard/ActorCard";
 import { useGetActors } from "../actor/queries";
-import { MAIN } from "./string";
 
 export const Main: FC = () => {
+    const { language } = useLanguage();
+
     const { data: actors, isPending } = useGetActors({
         search: "",
         sortBy: "",
@@ -32,6 +34,7 @@ export const Main: FC = () => {
         peculiarities: [],
         typeOfAppearance: [],
     });
+
     if (isPending) {
         return <Loading className="h-screen w-screen" />;
     }
@@ -41,7 +44,10 @@ export const Main: FC = () => {
                 <MainBanner />
             </section>
             <section>
-                <ActorsCarousel title={MAIN.popular} actors={actors || []} />
+                <ActorsCarousel
+                    title={language.MAIN.popular}
+                    actors={actors || []}
+                />
             </section>
             <section>
                 <Questionnaire />
@@ -54,28 +60,29 @@ export const Main: FC = () => {
     );
 };
 const MainBanner = () => {
+    const { language, getHref } = useLanguage();
     return (
         <div className="bg-secondary flex gap-[25px] sm:gap-[140px] justify-center px-[25px] sm:px-[140px] py-[40px] sm:py-[110px]">
             <div className="flex flex-col max-w-[175px] sm:max-w-[424px] justify-between">
                 <div className="flex flex-col">
                     {" "}
                     <h2 className="text-white font-semibold text-[20px] sm:text-[48px] flex leading-normal flex-col">
-                        {MAIN.selection}
+                        {language.MAIN.selection}
                         <span className="underline whitespace-nowrap text-[#6E9CF2]">
-                            {MAIN.best_actor}
+                            {language.MAIN.best_actor}
                         </span>
-                        {MAIN.from_all_world}
+                        {language.MAIN.from_all_world}
                     </h2>
                     <h2 className="text-white text-[8px] sm:text-base">
-                        {MAIN.inter_platform}
+                        {language.MAIN.inter_platform}
                     </h2>
                 </div>
                 <div>
-                    <Link href="/actors">
+                    <Link href={getHref("/actors")}>
                         <button
                             className={`bg-button_color text-[8px] sm:text-base text-white font-bold w-[80px] sm:w-[200px] h-[20px] sm:h-[50px] rounded-lg`}
                         >
-                            {MAIN.find}
+                            {language.MAIN.find}
                         </button>
                     </Link>
                 </div>
@@ -97,6 +104,7 @@ export const ActorsCarousel: FC<{ actors: Actor[]; title: string }> = ({
     actors,
     title,
 }) => {
+    const { getHref } = useLanguage();
     const scrollContainerRef = useRef<HTMLDivElement>(null);
 
     const scrollLeft = () => {
@@ -151,7 +159,7 @@ export const ActorsCarousel: FC<{ actors: Actor[]; title: string }> = ({
                 className="flex gap-[20px] sm:gap-[37px] overflow-x-scroll min-w-[290px] sm:min-w-auto"
             >
                 {actors.map((actor, index) => (
-                    <Link key={index} href={`/actors/${actor.id}`}>
+                    <Link key={index} href={getHref(`/actors/${actor.id}`)}>
                         <ActorCard actor={actor} />
                     </Link>
                 ))}
@@ -160,12 +168,13 @@ export const ActorsCarousel: FC<{ actors: Actor[]; title: string }> = ({
     );
 };
 const Questionnaire = () => {
+    const { language, getHref } = useLanguage();
     return (
         <div className="bg-secondary flex gap-5 sm:gap-[140px] justify-center py-10 sm:py-20 px-[25px] sm:px-[146px]">
             <div className="flex flex-col justify-between gap-10 sm:gap-[80px] max-w-[190px] sm:max-w-[543px]">
                 <div className="flex flex-col gap-10 font-semibold">
                     <div className="text-white text-[15px] sm:text-4xl leading-[130%]">
-                        {MAIN.for_actor}
+                        {language.MAIN.for_actor}
                     </div>
 
                     <div className="flex justify-between w-full">
@@ -206,11 +215,11 @@ const Questionnaire = () => {
                     </div>
                 </div>
                 <div>
-                    <Link href="/auth/registration">
+                    <Link href={getHref("/auth/registration")}>
                         <button
                             className={`bg-button_color text-[8px] sm:text-base text-white font-bold w-[80px] h-[20px] sm:w-[240px] sm:h-[50px] rounded-[3px]`}
                         >
-                            {MAIN.registration}
+                            {language.MAIN.registration}
                         </button>
                     </Link>
                 </div>
@@ -230,6 +239,7 @@ const Questionnaire = () => {
     );
 };
 const CreateProfilePart = () => {
+    const { language, getHref } = useLanguage();
     return (
         <div className="bg-secondary flex gap-[140px] justify-between py-10 sm:py-20 px-[25px] sm:px-[146px]">
             <div className="flex">
@@ -244,32 +254,32 @@ const CreateProfilePart = () => {
             <div className="flex flex-col justify-between max-w-[511px]">
                 <div className="flex flex-col gap-5 font-semibold">
                     <div className="text-white text-4xl leading-[130%]">
-                        {MAIN.for_casting}
+                        {language.MAIN.for_casting}
                     </div>
 
                     <div className="flex flex-col gap-[10px]">
                         <h2 className="text-white text-2xl leading-[130%]">
-                            {MAIN.actor_list}
+                            {language.MAIN.actor_list}
                         </h2>
                         <h2 className="text-gray_text leading-[130%]">
-                            {MAIN.use_search}
+                            {language.MAIN.use_search}
                         </h2>
                     </div>
                     <div className="flex flex-col gap-[10px]">
                         <h2 className="text-white text-2xl leading-[130%]">
-                            {MAIN.actual_info}
+                            {language.MAIN.actual_info}
                         </h2>
                         <h2 className="text-gray_text leading-[130%]">
-                            {MAIN.refresh_info}
+                            {language.MAIN.refresh_info}
                         </h2>
                     </div>
                 </div>
                 <div className="flex justify-end">
-                    <Link href="profile">
+                    <Link href={getHref("profile")}>
                         <button
                             className={`bg-button_color text-base text-white font-bold w-[240px] h-[50px] rounded-lg`}
                         >
-                            {MAIN.create_profile}
+                            {language.MAIN.create_profile}
                         </button>
                     </Link>
                 </div>
@@ -279,47 +289,48 @@ const CreateProfilePart = () => {
 };
 
 const FAQ = () => {
+    const { language } = useLanguage();
     return (
         <div className="bg-primary flex flex-col gap-10 sm:gap-20 py-10 sm:py-20 px-[25px] sm:px-[146px]">
             <div className="flex flex-col gap-10">
                 <h2 className="text-white text-[15px] sm:text-[32px] font-medium leading-[130%]">
-                    {MAIN.faq}
+                    {language.MAIN.faq}
                 </h2>
                 <div className="flex gap-[10px] sm:gap-[50px]">
                     <div className="bg-button_color w-[120px] h-[120px] sm:w-[350px] sm:h-[350px] rounded-[10px] p-[7px] sm:p-5 flex flex-col gap-[10px] sm:gap-[30px] overflow-clip">
                         <h2 className="text-white text-[8px] sm:text-2xl leading-[130%] font-medium">
-                            {MAIN.who_see_contact}
+                            {language.MAIN.who_see_contact}
                         </h2>
                         <h2 className="text-gray text-[6px] sm:text-base leading-[130%] font-medium">
-                            {MAIN.contact_info}
+                            {language.MAIN.contact_info}
                         </h2>
                     </div>
                     <div className="bg-button_color w-[120px] h-[120px] sm:w-[350px] sm:h-[350px] rounded-[10px] p-[7px] sm:p-5 flex flex-col gap-[10px] sm:gap-[30px] overflow-clip">
                         <h2 className="text-white text-[8px] sm:text-2xl leading-[130%] font-medium">
-                            {MAIN.who_see_contact}
+                            {language.MAIN.who_see_contact}
                         </h2>
                         <h2 className="text-gray text-[6px] sm:text-base leading-[130%] font-medium">
-                            {MAIN.contact_info}
+                            {language.MAIN.contact_info}
                         </h2>
                     </div>
                     <div className="bg-button_color w-[120px] h-[120px] sm:w-[350px] sm:h-[350px] rounded-[10px] p-[7px] sm:p-5 flex flex-col gap-[10px] sm:gap-[30px] overflow-clip">
                         <h2 className="text-white text-[8px] sm:text-2xl leading-[130%] font-medium">
-                            {MAIN.who_see_contact}
+                            {language.MAIN.who_see_contact}
                         </h2>
                         <h2 className="text-gray text-[6px] sm:text-base leading-[130%] font-medium">
-                            {MAIN.contact_info}
+                            {language.MAIN.contact_info}
                         </h2>
                     </div>
                 </div>
             </div>
             <div className="flex flex-col gap-[10px] sm:gap-[30px] items-center">
                 <h2 className="text-white text-[15px] sm:text-[32px] font-medium leading-[130%]">
-                    {MAIN.any_questions}
+                    {language.MAIN.any_questions}
                 </h2>
                 <button
                     className={`bg-button_color text-[8px] sm:text-base text-white font-bold w-[90px] sm:w-[240px] h-[20px] sm:h-[50px] rounded-[3px]`}
                 >
-                    {MAIN.ask_question}
+                    {language.MAIN.ask_question}
                 </button>
             </div>
         </div>
