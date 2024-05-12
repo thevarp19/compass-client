@@ -1,12 +1,11 @@
 import { useLanguage } from "@/context/LanguageProvider";
 
 import { FormProps } from "@/modules/create-profile/types";
-import { FieldArray } from "formik";
 import { ChangeEvent, FC } from "react";
 
 export const ContactInformation: FC<FormProps> = ({ formik }) => {
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-        formik.setFieldValue(e.target.name, e.target.value);
+        formik.handleChange(e);
     };
     const { language } = useLanguage();
     return (
@@ -14,7 +13,7 @@ export const ContactInformation: FC<FormProps> = ({ formik }) => {
             <h2 className="text-[10px] sm:text-xl font-semibold text-black">
                 {language.FORM_TEXT.contactInfo}
             </h2>
-            <FieldArray name="userContacts">
+            {/* <FieldArray name="userContacts">
                 {({ remove, push }) => (
                     <div className="flex flex-col gap-[10px] sm:gap-5">
                         {formik.values.userContacts?.map((contact, index) => (
@@ -23,7 +22,7 @@ export const ContactInformation: FC<FormProps> = ({ formik }) => {
                                     index > 0 &&
                                     "border-t-[1px] border-gray_border pt-5"
                                 }`}
-                                key={index}
+                                key={`contact-${index}`}
                             >
                                 <div className="flex flex-col gap-[5px] sm:gap-[10px]">
                                     <h2 className="text-[8px] sm:text-base text-grayDark_text">
@@ -82,7 +81,7 @@ export const ContactInformation: FC<FormProps> = ({ formik }) => {
                         </div>
                     </div>
                 )}
-            </FieldArray>
+            </FieldArray> */}
         </div>
     );
 };

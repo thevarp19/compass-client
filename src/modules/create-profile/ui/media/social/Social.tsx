@@ -1,8 +1,5 @@
-import { SelectInput } from "@/components/shared/select-input/SelectInput";
 import { useLanguage } from "@/context/LanguageProvider";
-import { socialMediaOptions } from "@/modules/create-profile/const/data";
 import { FormProps } from "@/modules/create-profile/types";
-import { FieldArray } from "formik";
 import { ChangeEvent, FC } from "react";
 
 export const Social: FC<FormProps> = ({ formik }) => {
@@ -18,7 +15,7 @@ export const Social: FC<FormProps> = ({ formik }) => {
             <h2 className="text-[10px] sm:text-xl font-semibold text-black">
                 {language.FORM_TEXT.socialNetworks}
             </h2>
-            <FieldArray name="abstract_user_data.userSocialMedias">
+            {/* <FieldArray name="abstract_user_data.userSocialMedias">
                 {({ remove, push }) => (
                     <div className="flex flex-col gap-[10px] sm:gap-5 ">
                         {formik.values.abstract_user_data.userSocialMedias?.map(
@@ -106,7 +103,7 @@ export const Social: FC<FormProps> = ({ formik }) => {
                         </div>
                     </div>
                 )}
-            </FieldArray>
+            </FieldArray> */}
         </div>
     );
 };

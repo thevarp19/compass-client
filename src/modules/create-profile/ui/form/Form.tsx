@@ -1,5 +1,4 @@
 import { Drawer, DrawerProps } from "@/components/shared/drawer/Drawer";
-import { useFormikContext } from "@/context/FormikContext";
 import { useLanguage } from "@/context/LanguageProvider";
 import Image from "next/image";
 import { FC, useState } from "react";
@@ -14,16 +13,13 @@ import { GeneralInformation } from "./GeneralInformation";
 import { Movie } from "./Movie";
 import { Skills } from "./Skills";
 import { Theatres } from "./Theater";
-
-export const Form = () => {
+export const Form = ({ formik }: { formik: any }) => {
     const [isConfirmDrawerVisible, setIsConfirmDrawerVisible] =
         useState<boolean>(false);
     const [isFailureDrawerVisible, setIsFailureDrawerVisible] =
         useState<boolean>(false);
     const [isSuccessDrawerVisible, setIsSuccessDrawerVisible] =
         useState<boolean>(false);
-    const formik = useFormikContext();
-    const { language } = useLanguage();
     return (
         <>
             <FormConfirmationDrawer
@@ -52,10 +48,7 @@ export const Form = () => {
                 }}
             />
             <div className="flex py-[30px] sm:py-[60px]">
-                <form
-                    onSubmit={formik.handleSubmit}
-                    className="flex flex-col gap-10"
-                >
+                <div className="flex flex-col gap-10">
                     <div className="flex gap-[10px] sm:gap-10">
                         <UploadImage
                             link={formik.values.abstract_user_data.avatar}
@@ -90,7 +83,7 @@ export const Form = () => {
                             {/* {mutation.isPending && <Loading />} */}
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
         </>
     );

@@ -1,18 +1,63 @@
-// import { createActorValues } from "@/utils/formik/createActor";
-// import { useFormik } from "formik";
-// import { createActorMutation } from "./mutations";
+import { useAuthContext } from "@/context/AuthContext";
+import { useLanguage } from "@/context/LanguageProvider";
+import { createActorValues } from "@/utils/formik/createActor";
+import { useFormik } from "formik";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import { GetActorDetailResponse } from "../actor/types";
+import { createActorMutation } from "./mutations";
 
-// export const useProfile = () => {
-//     const mutation = createActorMutation();
+export const useCreateProfile = () => {
+    const mutation = createActorMutation();
+    const router = useRouter();
+    const { getHref } = useLanguage();
+    const formik = useFormik({
+        initialValues: createActorValues,
+        onSubmit: async (values, { setSubmitting }) => {
+            console.log("values", values);
+            try {
+                await mutation.mutateAsync(values);
+                router.push(getHref("/profile"));
+            } catch (error) {
+                console.error("Error creating profile:", error);
+            } finally {
+                setSubmitting(false);
+            }
+        },
+        validateOnChange: false,
+    });
+    return { formik, mutation };
+};
 
-//     const formik = useFormik({
-//         initialValues: createActorValues,
-//         onSubmit: handleSubmit,
-//         validateOnChange: false,
-//     });
-//     async function handleSubmit() {
-//         await mutation.mutateAsync(formik.values);
-//     }
+export const useUpdateProfile = (
+    initialValues: GetActorDetailResponse | undefined
+) => {
+    const mutation = createActorMutation();
+    const router = useRouter();
+    const { isHasProfile } = useAuthContext();
+    const { getHref } = useLanguage();
+    const formik = useFormik({
+        initialValues: createActorValues,
+        onSubmit: async (values, { setSubmitting }) => {
+            console.log("values", values);
+            try {
+                await mutation.mutateAsync(values);
+                router.push(getHref("/profile"));
+            } catch (error) {
+                console.error("Error creating profile:", error);
+            } finally {
+                setSubmitting(false);
+            }
+        },
+    });
 
-//     return { formik, mutation };
-// };
+    useEffect(() => {
+        if (isHasProfile && initialValues) {
+            formik.resetForm({
+                values: initialValues,
+            });
+        }
+    }, [initialValues]);
+
+    return { formik, mutation };
+};

@@ -1,4 +1,3 @@
-import { FieldArray } from "formik";
 import { ChangeEvent, FC } from "react";
 
 import { useLanguage } from "@/context/LanguageProvider";
@@ -15,7 +14,7 @@ export const Movie: FC<FormProps> = ({ formik }) => {
             <h2 className="text-[10px] sm:text-xl font-semibold text-black">
                 {language.FORM_TEXT.movies}
             </h2>
-            <FieldArray name="movies">
+            {/* <FieldArray name="movies">
                 {({ remove, push }) => (
                     <div className="flex flex-col gap-[10px] sm:gap-5">
                         {formik.values.movies?.map((movies, index) => (
@@ -101,7 +100,7 @@ export const Movie: FC<FormProps> = ({ formik }) => {
                         </div>
                     </div>
                 )}
-            </FieldArray>
+            </FieldArray> */}
         </div>
     );
 };

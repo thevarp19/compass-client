@@ -29,8 +29,8 @@ export const createActorValues: GetActorDetailResponse = {
     legalStatus: "",
     agency: "",
     clothingSize: "",
-    weight: 0,
-    height: 0,
+    weight: undefined,
+    height: undefined,
     shoeSize: "",
     hairLength: "",
     hairColor: "",
@@ -63,14 +63,14 @@ export const createActorValues: GetActorDetailResponse = {
         {
             name: "",
             position: "",
-            year: 0,
+            year: undefined,
         },
     ],
     movies: [
         {
             name: "",
             role: "",
-            releasedYear: 0,
+            releasedYear: undefined,
         },
     ],
 
@@ -78,16 +78,16 @@ export const createActorValues: GetActorDetailResponse = {
         {
             university: "",
             faculty: "",
-            startYear: 0,
-            graduationYear: 0,
+            startYear: undefined,
+            graduationYear: undefined,
         },
     ],
     theaters: [
         {
             name: "",
             performances: "",
-            startYear: 0,
-            graduationYear: 0,
+            startYear: undefined,
+            graduationYear: undefined,
         },
     ],
 };

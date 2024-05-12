@@ -36,7 +36,7 @@ export interface GetActorDetailResponse {
     abstract_user_data: AbstractUserData;
     userVideos: { id?: number; url: string }[];
     gender: string;
-    age: number;
+    age: number | undefined;
     birthday: string;
     citizenship: string;
     specialization: string;
@@ -44,8 +44,8 @@ export interface GetActorDetailResponse {
     legalStatus: string;
     agency: string;
     clothingSize: string;
-    weight: number;
-    height: number;
+    weight: number | undefined;
+    height: number | undefined;
     shoeSize: string;
     hairLength: string;
     hairColor: string;
@@ -64,21 +64,31 @@ export interface GetActorDetailResponse {
 
     userContacts: { id?: number; name: string; number: string }[];
 
-    awards: { id?: number; name: string; position: string; year: number }[];
-    movies: { id?: number; name: string; role: string; releasedYear: number }[];
+    awards: {
+        id?: number;
+        name: string;
+        position: string;
+        year: number | undefined;
+    }[];
+    movies: {
+        id?: number;
+        name: string;
+        role: string;
+        releasedYear: number | undefined;
+    }[];
     educations: {
         id?: number;
         university: string;
         faculty: string;
-        startYear: number;
-        graduationYear: number;
+        startYear: number | undefined;
+        graduationYear: number | undefined;
     }[];
     theaters: {
         id?: number;
         name: string;
         performances: string;
-        startYear: number;
-        graduationYear: number;
+        startYear: number | undefined;
+        graduationYear: number | undefined;
     }[];
 }
 export interface ActorFilters {

@@ -1,4 +1,3 @@
-import { FieldArray } from "formik";
 import { ChangeEvent, FC } from "react";
 
 import { useLanguage } from "@/context/LanguageProvider";
@@ -16,7 +15,7 @@ export const Theatres: FC<FormProps> = ({ formik }) => {
             <h2 className="text-[10px] sm:text-xl font-semibold text-black">
                 {language.FORM_TEXT.theaterWork}
             </h2>
-            <FieldArray name="theaters">
+            {/* <FieldArray name="theaters">
                 {({ remove, push }) => (
                     <div className="flex flex-col gap-[10px] sm:gap-5">
                         {formik.values.theaters?.map((theaters, index) => (
@@ -117,7 +116,7 @@ export const Theatres: FC<FormProps> = ({ formik }) => {
                         </div>
                     </div>
                 )}
-            </FieldArray>
+            </FieldArray> */}
         </div>
     );
 };
