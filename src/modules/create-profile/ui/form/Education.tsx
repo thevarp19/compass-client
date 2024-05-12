@@ -11,10 +11,14 @@ export const Education: FC<FormProps> = ({ formik }) => {
         index: number,
         e: ChangeEvent<HTMLInputElement>
     ) => {
+        const { name, value } = e.target;
+        const numericValue =
+            name === "startYear" || name === "graduationYear"
+                ? parseInt(value, 10) || undefined
+                : value;
+
         const newEducations = educations.map((education, idx) =>
-            idx === index
-                ? { ...education, [e.target.name]: e.target.value }
-                : education
+            idx === index ? { ...education, [name]: numericValue } : education
         );
         setEducations(newEducations);
         formik.setFieldValue("educations", newEducations);
@@ -51,42 +55,77 @@ export const Education: FC<FormProps> = ({ formik }) => {
                     }`}
                 >
                     <div className="flex justify-between items-center">
+                        <h2 className="text-[8px] sm:text-base text-grayDark_text">
+                            {language.FORM_TEXT.university}
+                        </h2>
                         <input
-                            className="!w-full sm:!w-auto"
+                            className={`!w-[92px] h-[14px] sm:!w-[237px] sm:h-[24px] px-[4px] sm:px-[10px] py-[3px] sm:py-[4px]  !indent-0 text-[6px] sm:text-xs border border-gray_border !rounded-[2px] outline-none text-grayDark_text`}
                             value={education.university}
+                            type="text"
                             onChange={(e) => handleInputChange(index, e)}
                             name="university"
                         />
+                    </div>
+                    <div className="flex justify-between items-center">
+                        <h2 className="text-[8px] sm:text-base text-grayDark_text">
+                            {language.FORM_TEXT.faculty}
+                        </h2>
                         <input
-                            className="!w-full sm:!w-auto"
+                            className={`!w-[92px] h-[14px] sm:!w-[237px] sm:h-[24px] px-[4px] sm:px-[10px] py-[3px] sm:py-[4px]  !indent-0 text-[6px] sm:text-xs border border-gray_border !rounded-[2px] outline-none text-grayDark_text`}
                             value={education.faculty}
                             onChange={(e) => handleInputChange(index, e)}
                             name="faculty"
                         />
-                        <input
-                            type="number"
-                            value={education.startYear}
-                            onChange={(e) => handleInputChange(index, e)}
-                            name="startYear"
-                        />
-                        <input
-                            type="number"
-                            value={education.graduationYear}
-                            onChange={(e) => handleInputChange(index, e)}
-                            name="graduationYear"
-                        />
-                        {index > 0 && (
+                    </div>
+                    <div className="flex justify-between items-center">
+                        <h2 className="text-[8px] sm:text-base text-grayDark_text">
+                            {language.FORM_TEXT.yearsOfStudy}
+                        </h2>
+                        <div className="flex gap-[6px] justify-end items-center">
+                            <input
+                                className="w-[28px] sm:w-[48px] h-[14px] sm:h-[24px] border border-gray_border text-[6px] sm:text-xs text-center rounded-[3px] outline-none text-grayDark_text"
+                                type="number"
+                                value={education.startYear}
+                                onChange={(e) => handleInputChange(index, e)}
+                                name="startYear"
+                                placeholder="YYYY"
+                                maxLength={4}
+                            />
+                            <div className="w-[2px] h-[1px] bg-gray_border"></div>
+                            <input
+                                className="w-[28px] sm:w-[48px] h-[14px] sm:h-[24px] border border-gray_border text-[6px] sm:text-xs text-center rounded-[3px] outline-none text-grayDark_text"
+                                type="number"
+                                placeholder="YYYY"
+                                maxLength={4}
+                                value={education.graduationYear}
+                                onChange={(e) => handleInputChange(index, e)}
+                                name="graduationYear"
+                            />
+                        </div>
+                    </div>
+
+                    {index > 0 && (
+                        <div className="flex justify-end">
                             <button
                                 type="button"
+                                className="border border-gray_border text-[6px] sm:text-xs bg-[#f32013] text-white rounded-[3px] px-1 sm:px-2 py-[2px] sm:py-1"
                                 onClick={() => removeEducation(index)}
                             >
-                                Remove
+                                {language.FORM_TEXT.remove}
                             </button>
-                        )}
-                    </div>
+                        </div>
+                    )}
                 </div>
             ))}
-            <button onClick={addEducation}>Add More</button>
+            <div className="flex justify-end ">
+                <button
+                    type="button"
+                    className="text-[6px] sm:text-xs text-button_color"
+                    onClick={addEducation}
+                >
+                    {language.FORM_TEXT.addMore}
+                </button>
+            </div>
         </div>
     );
 };

@@ -3,51 +3,46 @@ import { ChangeEvent, FC, useState } from "react";
 import { useLanguage } from "@/context/LanguageProvider";
 import { FormProps } from "../../types";
 
-export const Theatres: FC<FormProps> = ({ formik }) => {
+export const Movie: FC<FormProps> = ({ formik }) => {
     const { language } = useLanguage();
-    const [theaters, setTheaters] = useState(formik.values.theaters);
+    const [movies, setMovies] = useState(formik.values.movies);
 
     const handleInputChange = (
         index: number,
         e: ChangeEvent<HTMLInputElement>
     ) => {
-        const { name, value } = e.target;
-        const numericValue =
-            name === "startYear" || name === "graduationYear"
-                ? parseInt(value, 10) || undefined
-                : value;
-
-        const newTheaters = theaters.map((theater, idx) =>
-            idx === index ? { ...theater, [name]: numericValue } : theater
+        const newMovies = movies.map((movie, idx) =>
+            idx === index
+                ? { ...movie, [e.target.name]: e.target.value }
+                : movie
         );
-        setTheaters(newTheaters);
-        formik.setFieldValue("theaters", newTheaters);
+        setMovies(newMovies);
+        formik.setFieldValue("movies", newMovies);
     };
 
-    const addTheater = () => {
-        const newTheater = {
+    const addMovie = () => {
+        const newMovie = {
             name: "",
-            performances: "",
-            startYear: undefined,
-            graduationYear: undefined,
+            role: "",
+            releasedYear: undefined,
         };
-        const newTheaters = [...theaters, newTheater];
-        setTheaters(newTheaters);
-        formik.setFieldValue("theaters", newTheaters);
+        const newMovies = [...movies, newMovie];
+        setMovies(newMovies);
+        formik.setFieldValue("movies", newMovies);
     };
 
-    const removeTheater = (index: number) => {
-        const newTheaters = theaters.filter((_, idx) => idx !== index);
-        setTheaters(newTheaters);
-        formik.setFieldValue("theaters", newTheaters);
+    const removeMovie = (index: number) => {
+        const newMovies = movies.filter((_, idx) => idx !== index);
+        setMovies(newMovies);
+        formik.setFieldValue("movies", newMovies);
     };
 
     return (
-        <div className="flex flex-col gap-[10px] sm:gap-5 w-full">
+        <div className="flex flex-col gap-5 w-full">
             <h2 className="text-[10px] sm:text-xl font-semibold text-black">
-                {language.FORM_TEXT.theaterWork}
+                {language.FORM_TEXT.movies}
             </h2>
-            {theaters.map((theater, index) => (
+            {movies.map((movie, index) => (
                 <div
                     key={index}
                     className={`flex flex-col gap-[10px] sm:gap-5 w-full ${
@@ -56,11 +51,11 @@ export const Theatres: FC<FormProps> = ({ formik }) => {
                 >
                     <div className="flex justify-between items-center">
                         <h2 className="text-[8px] sm:text-base text-grayDark_text">
-                            {language.FORM_TEXT.theater}
+                            {language.FORM_TEXT.movieTitle}
                         </h2>
                         <input
                             className={`!w-[92px] h-[14px] sm:!w-[237px] sm:h-[24px] px-[4px] sm:px-[10px] py-[3px] sm:py-[4px]  !indent-0 text-[6px] sm:text-xs border border-gray_border !rounded-[2px] outline-none text-grayDark_text`}
-                            value={theater.name}
+                            value={movie.name}
                             type="text"
                             onChange={(e) => handleInputChange(index, e)}
                             name="name"
@@ -68,38 +63,28 @@ export const Theatres: FC<FormProps> = ({ formik }) => {
                     </div>
                     <div className="flex justify-between items-center">
                         <h2 className="text-[8px] sm:text-base text-grayDark_text">
-                            {language.FORM_TEXT.performances}
+                            {language.FORM_TEXT.role}
                         </h2>
                         <input
                             className={`!w-[92px] h-[14px] sm:!w-[237px] sm:h-[24px] px-[4px] sm:px-[10px] py-[3px] sm:py-[4px]  !indent-0 text-[6px] sm:text-xs border border-gray_border !rounded-[2px] outline-none text-grayDark_text`}
-                            value={theater.performances}
+                            value={movie.role}
                             onChange={(e) => handleInputChange(index, e)}
-                            name="performances"
+                            name="role"
                         />
                     </div>
                     <div className="flex justify-between items-center">
                         <h2 className="text-[8px] sm:text-base text-grayDark_text">
-                            {language.FORM_TEXT.yearsOfPerformance}
+                            {language.FORM_TEXT.releaseYear}
                         </h2>
                         <div className="flex gap-[6px] justify-end items-center">
                             <input
                                 className="w-[28px] sm:w-[48px] h-[14px] sm:h-[24px] border border-gray_border text-[6px] sm:text-xs text-center rounded-[3px] outline-none text-grayDark_text"
                                 type="number"
-                                value={theater.startYear}
+                                value={movie.releasedYear}
                                 onChange={(e) => handleInputChange(index, e)}
-                                name="startYear"
+                                name="releasedYear"
                                 placeholder="YYYY"
                                 maxLength={4}
-                            />
-                            <div className="w-[2px] h-[1px] bg-gray_border"></div>
-                            <input
-                                className="w-[28px] sm:w-[48px] h-[14px] sm:h-[24px] border border-gray_border text-[6px] sm:text-xs text-center rounded-[3px] outline-none text-grayDark_text"
-                                type="number"
-                                placeholder="YYYY"
-                                maxLength={4}
-                                value={theater.graduationYear}
-                                onChange={(e) => handleInputChange(index, e)}
-                                name="graduationYear"
                             />
                         </div>
                     </div>
@@ -109,7 +94,7 @@ export const Theatres: FC<FormProps> = ({ formik }) => {
                             <button
                                 type="button"
                                 className="border border-gray_border text-[6px] sm:text-xs bg-[#f32013] text-white rounded-[3px] px-1 sm:px-2 py-[2px] sm:py-1"
-                                onClick={() => removeTheater(index)}
+                                onClick={() => removeMovie(index)}
                             >
                                 {language.FORM_TEXT.remove}
                             </button>
@@ -117,12 +102,11 @@ export const Theatres: FC<FormProps> = ({ formik }) => {
                     )}
                 </div>
             ))}
-
             <div className="flex justify-end ">
                 <button
                     type="button"
                     className="text-[6px] sm:text-xs text-button_color"
-                    onClick={addTheater}
+                    onClick={addMovie}
                 >
                     {language.FORM_TEXT.addMore}
                 </button>
