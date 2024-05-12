@@ -7,13 +7,8 @@ import { FormProps } from "../../types";
 export const Award: FC<FormProps> = ({ formik }) => {
     const { language } = useLanguage();
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-        const { name, value, type } = e.target;
-        if (name.includes("year") && type === "number") {
-            const numberValue = value === "" ? "" : Number(value);
-            formik.setFieldValue(name, numberValue);
-        } else {
-            formik.setFieldValue(name, value);
-        }
+        const { name, value } = e.target;
+        formik.setFieldValue(name, value);
     };
     return (
         <div className="flex flex-col gap-[10px] sm:gap-5 w-full">

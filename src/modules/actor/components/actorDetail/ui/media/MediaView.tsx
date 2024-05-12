@@ -1,5 +1,6 @@
 "use client";
-import { FORM_TEXT } from "@/modules/create-profile/strings/string";
+import { useLanguage } from "@/context/LanguageProvider";
+
 import Image from "next/image";
 import { FC, useState } from "react";
 import ReactIframe from "react-iframe";
@@ -15,6 +16,7 @@ export const MediaView: FC<AllInfoProps> = ({ actor }) => {
     );
 
     const [isOpen, setIsOpen] = useState(false);
+    const { language } = useLanguage();
     const [isVideoOpen, setIsVideoOpen] = useState(false);
     const [selectedVideoUrl, setSelectedVideoUrl] = useState("");
 
@@ -37,7 +39,7 @@ export const MediaView: FC<AllInfoProps> = ({ actor }) => {
             <div className="flex flex-col gap-[20px] sm:gap-10">
                 <div className="flex items-center">
                     <h2 className="text-black text-[8px] sm:text-[20px] font-medium">
-                        {FORM_TEXT.photos}({imageLength})
+                        {language.FORM_TEXT.photos}({imageLength})
                     </h2>
                 </div>
                 <div className="grid grid-cols-5 min-[420px]:grid-cols-6 sm:grid-cols-7 gap-[10px] sm:gap-4">
@@ -61,7 +63,7 @@ export const MediaView: FC<AllInfoProps> = ({ actor }) => {
             <div className="flex flex-col gap-[20px] sm:gap-10">
                 <div className="flex items-center justify-between">
                     <h2 className="text-black text-[8px] sm:text-[20px] font-medium">
-                        {FORM_TEXT.videos}({videoLength})
+                        {language.FORM_TEXT.videos}({videoLength})
                     </h2>
                 </div>
                 <div className="grid grid-cols-2 min-[420px]:grid-cols-3 sm:grid-cols-4 gap-[10px] sm:gap-[35px]">

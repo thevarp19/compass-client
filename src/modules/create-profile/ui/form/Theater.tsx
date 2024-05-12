@@ -7,16 +7,8 @@ import { FormProps } from "../../types";
 export const Theatres: FC<FormProps> = ({ formik }) => {
     const { language } = useLanguage();
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-        const { name, value, type } = e.target;
-        if (
-            name.includes("startYear") ||
-            (name.includes("graduationYear") && type === "number")
-        ) {
-            const numberValue = value === "" ? "" : Number(value);
-            formik.setFieldValue(name, numberValue);
-        } else {
-            formik.setFieldValue(name, value);
-        }
+        const { name, value } = e.target;
+        formik.setFieldValue(name, value);
     };
 
     return (
