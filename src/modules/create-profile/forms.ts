@@ -19,14 +19,14 @@ export const useCreateProfile = () => {
                 await mutation.mutateAsync(values);
                 router.push(getHref("/profile"));
             } catch (error) {
-                console.error("Error creating profile:", error);
+                console.error("Error creating profile:");
             } finally {
                 setSubmitting(false);
             }
         },
         validateOnChange: false,
     });
-    return { formik, mutation };
+    return { formik, mutation, isDirty: formik.dirty };
 };
 
 export const useUpdateProfile = (
@@ -44,7 +44,7 @@ export const useUpdateProfile = (
                 await mutation.mutateAsync(values);
                 router.push(getHref("/profile"));
             } catch (error) {
-                console.error("Error creating profile:", error);
+                console.error("Error creating profile:");
             } finally {
                 setSubmitting(false);
             }

@@ -49,7 +49,7 @@ export const UploadImage: FC<PhotoUploadProps> = ({ link, setLink }) => {
 
     return (
         <div className="flex flex-col items-center gap-[10px] sm:gap-5">
-            <div className="flex justify-center items-center bg-gray_border w-[70px] h-[100px] min-[410px]:w-[100px] min-[410px]:h-[135px] sm:w-[250px] sm:h-[350px] rounded-lg overflow-hidden relative">
+            <div className="flex justify-center items-center bg-gray_border w-[70px] h-[100px] min-[400px]:w-[100px] min-[400px]:h-[135px] sm:w-[250px] sm:h-[350px] rounded-lg overflow-hidden relative">
                 {loading && <Spin size="large" />}
                 {link ? (
                     <Image
@@ -64,7 +64,7 @@ export const UploadImage: FC<PhotoUploadProps> = ({ link, setLink }) => {
             </div>
             <label
                 htmlFor="profile-image-upload"
-                className="text-center flex justify-center items-center  py-[5px] sm:py-2 sm:px-4 cursor-pointer bg-button_color text-[8px] sm:text-base text-white font-bold w-[70px] h-[20px] min-[410px]:w-[100px] min-[410px]:h-[20px] sm:w-[250px]  sm:h-[40px] rounded-[5px]"
+                className="text-center flex justify-center items-center  py-[5px] sm:py-2 sm:px-4 cursor-pointer bg-button_color text-[8px] sm:text-base text-white font-bold w-[70px] h-[20px] min-[400px]:w-[100px] min-[400px]:h-[20px] sm:w-[250px]  sm:h-[40px] rounded-[5px]"
             >
                 {language.FORM_TEXT.uploadButton}
             </label>

@@ -20,6 +20,7 @@ export const Form = ({ formik }: { formik: any }) => {
         useState<boolean>(false);
     const [isSuccessDrawerVisible, setIsSuccessDrawerVisible] =
         useState<boolean>(false);
+
     return (
         <>
             <FormConfirmationDrawer
@@ -49,7 +50,7 @@ export const Form = ({ formik }: { formik: any }) => {
             />
             <div className="flex py-[30px] sm:py-[60px]">
                 <div className="flex flex-col gap-10">
-                    <div className="flex gap-[10px] sm:gap-10">
+                    <div className="flex gap-[5px] min-[425px]:gap-[10px] sm:gap-10">
                         <UploadImage
                             link={formik.values.abstract_user_data.avatar}
                             setLink={(newLink) => {
@@ -59,7 +60,7 @@ export const Form = ({ formik }: { formik: any }) => {
                                 );
                             }}
                         />
-                        <div className="flex flex-col gap-[10px] sm:gap-5 min-[425px]:min-w-[162px] max-w-[142px] min-[425px]:max-w-[162px] sm:min-w-[466px] sm:max-w-[466px]">
+                        <div className="flex flex-col gap-[10px] sm:gap-5 max-[425px]:min-w-[162px] max-w-[142px] min-[425px]:max-w-[162px] sm:min-w-[466px] sm:max-w-[466px]">
                             <GeneralInformation formik={formik} />
                             <External formik={formik} />
                             <Skills formik={formik} />
