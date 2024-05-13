@@ -181,12 +181,12 @@ async function uploadFileAndGetURL(file: any) {
     }
 }
 function getYoutubeId(url: any) {
-    var results, video;
-    if (url === null) {
-        return "";
-    }
-    results = url.match("[\\?&]v=([^&#]*)");
-    video = results === null ? url : results[1];
+    if (!url) return "";
 
-    return video;
+    const pattern =
+        /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+
+    const match = url.match(pattern);
+
+    return match ? match[1] : "";
 }

@@ -2,7 +2,7 @@ import { useLanguage } from "@/context/LanguageProvider";
 import { FC } from "react";
 import { AllInfoProps } from "../AllInfo";
 import { MovieAndAwards } from "../MovieAndAwards";
-import { ImageAndVideo } from "./photo/ImageAndVideo";
+import { ImageAndVideoList } from "./photo/ImageAndVideoList";
 
 export const MediaInfo: FC<AllInfoProps> = ({ actor, isEdit }) => {
     const { language, getHref } = useLanguage();
@@ -12,7 +12,7 @@ export const MediaInfo: FC<AllInfoProps> = ({ actor, isEdit }) => {
             <h2 className="text-[10px] sm:text-xl font-semibold text-black">
                 {language.FORM_TEXT.media}
             </h2>
-            <ImageAndVideo actor={actor} isEdit={isEdit} />
+            <ImageAndVideoList actor={actor} isEdit={isEdit} />
             <MovieAndAwards actor={actor} />
             {/* <Award actor={actor} /> */}
         </div>

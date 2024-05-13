@@ -1,9 +1,10 @@
+"use client";
 import { useLanguage } from "@/context/LanguageProvider";
 import Image from "next/image";
 import Link from "next/link";
 import { FC, useEffect, useState } from "react";
 import { AllInfoProps } from "../../AllInfo";
-export const ImageAndVideo: FC<AllInfoProps> = ({ actor, isEdit }) => {
+export const ImageAndVideoList: FC<AllInfoProps> = ({ actor, isEdit }) => {
     const [imageURLs, setImageURLs] = useState<string[]>(
         actor?.abstract_user_data.userPhotos?.map((photo) => photo.url) || []
     );
@@ -12,6 +13,7 @@ export const ImageAndVideo: FC<AllInfoProps> = ({ actor, isEdit }) => {
             url: "",
         }))
     );
+
     const { language, getHref } = useLanguage();
     const [actorId, setActorId] = useState<string | undefined>();
     const imageLength = imageURLs?.length;
@@ -114,13 +116,11 @@ export const ImageAndVideo: FC<AllInfoProps> = ({ actor, isEdit }) => {
     );
 };
 
-function getYoutubeId(url: string) {
-    if (!url) {
-        return "";
-    }
+function getYoutubeId(url: any) {
+    if (!url) return "";
+    const pattern =
+        /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
 
-    let idMatch = url.match(
-        /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/
-    );
-    return (idMatch && idMatch[1]) || "";
+    const match = url.match(pattern);
+    return match ? match[1] : "";
 }
