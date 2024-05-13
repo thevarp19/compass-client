@@ -1,11 +1,13 @@
 import { useLanguage } from "@/context/LanguageProvider";
-import { ChangeEvent, FC, useState } from "react";
+import { ChangeEvent, FC, useEffect, useState } from "react";
 import { FormProps } from "../../types";
 
 export const Education: FC<FormProps> = ({ formik }) => {
     const { language } = useLanguage();
-
     const [educations, setEducations] = useState(formik.values.educations);
+    useEffect(() => {
+        setEducations(formik.values.educations || []);
+    }, [formik.values.educations]);
 
     const handleInputChange = (
         index: number,

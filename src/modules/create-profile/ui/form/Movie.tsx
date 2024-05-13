@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, useState } from "react";
+import { ChangeEvent, FC, useEffect, useState } from "react";
 
 import { useLanguage } from "@/context/LanguageProvider";
 import { FormProps } from "../../types";
@@ -6,7 +6,9 @@ import { FormProps } from "../../types";
 export const Movie: FC<FormProps> = ({ formik }) => {
     const { language } = useLanguage();
     const [movies, setMovies] = useState(formik.values.movies);
-
+    useEffect(() => {
+        setMovies(formik.values.movies || []);
+    }, [formik.values.movies]);
     const handleInputChange = (
         index: number,
         e: ChangeEvent<HTMLInputElement>

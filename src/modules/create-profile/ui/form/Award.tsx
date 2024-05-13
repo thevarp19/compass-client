@@ -1,5 +1,5 @@
 import { useLanguage } from "@/context/LanguageProvider";
-import { ChangeEvent, FC, useState } from "react";
+import { ChangeEvent, FC, useEffect, useState } from "react";
 
 import { FormProps } from "../../types";
 interface AwardProps {
@@ -11,7 +11,9 @@ interface AwardProps {
 export const Award: FC<FormProps> = ({ formik }) => {
     const { language } = useLanguage();
     const [awards, setAwards] = useState<AwardProps[]>(formik.values.awards);
-
+    useEffect(() => {
+        setAwards(formik.values.awards || []);
+    }, [formik.values.awards]);
     const handleInputChange = (
         index: number,
         e: ChangeEvent<HTMLInputElement>

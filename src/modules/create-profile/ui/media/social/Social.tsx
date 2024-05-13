@@ -2,13 +2,18 @@ import { SelectInput } from "@/components/shared/select-input/SelectInput";
 import { useLanguage } from "@/context/LanguageProvider";
 import { socialMediaOptions } from "@/modules/create-profile/const/data";
 import { FormProps } from "@/modules/create-profile/types";
-import { ChangeEvent, FC, useState } from "react";
+import { ChangeEvent, FC, useEffect, useState } from "react";
 
 export const Social: FC<FormProps> = ({ formik }) => {
     const { language } = useLanguage();
+
     const [socials, setSocials] = useState(
         formik.values.abstract_user_data.userSocialMedias
     );
+    useEffect(() => {
+        setSocials(formik.values.abstract_user_data.userSocialMedias || []);
+    }, [formik.values.abstract_user_data.userSocialMedias]);
+
     const handleSelectChange = (index: number, name: string, value: string) => {
         const newSocials = socials.map((social, idx) =>
             idx === index ? { ...social, name: value } : social

@@ -1,11 +1,14 @@
 import { useLanguage } from "@/context/LanguageProvider";
 
 import { FormProps } from "@/modules/create-profile/types";
-import { ChangeEvent, FC, useState } from "react";
+import { ChangeEvent, FC, useEffect, useState } from "react";
 
 export const ContactInformation: FC<FormProps> = ({ formik }) => {
     const { language } = useLanguage();
     const [contacts, setContacts] = useState(formik.values.userContacts);
+    useEffect(() => {
+        setContacts(formik.values.userContacts || []);
+    }, [formik.values.userContacts]);
 
     const handleInputChange = (
         index: number,

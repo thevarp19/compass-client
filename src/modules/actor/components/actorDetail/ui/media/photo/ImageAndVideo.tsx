@@ -114,13 +114,13 @@ export const ImageAndVideo: FC<AllInfoProps> = ({ actor, isEdit }) => {
     );
 };
 
-function getYoutubeId(url: any) {
-    var results, video;
-    if (url === null) {
+function getYoutubeId(url: string) {
+    if (!url) {
         return "";
     }
-    results = url.match("[\\?&]v=([^&#]*)");
-    video = results === null ? url : results[1];
 
-    return video;
+    let idMatch = url.match(
+        /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/
+    );
+    return (idMatch && idMatch[1]) || "";
 }
