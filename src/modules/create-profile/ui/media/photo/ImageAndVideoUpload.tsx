@@ -5,7 +5,7 @@ import Image from "next/image";
 import { FC, useEffect, useState } from "react";
 import { YouTubeVideoModal } from "../../form/YoutubeVideoModal";
 
-export const ImageAndVideo: FC<FormProps> = ({ formik }) => {
+export const ImageAndVideoUpload: FC<FormProps> = ({ formik }) => {
     const { language } = useLanguage();
     const [imageURLs, setImageURLs] = useState<string[]>(
         formik.values.abstract_user_data.userPhotos

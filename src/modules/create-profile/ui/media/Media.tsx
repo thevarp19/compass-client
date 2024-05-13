@@ -2,7 +2,7 @@ import { useLanguage } from "@/context/LanguageProvider";
 import { FC } from "react";
 import { FormProps } from "../../types";
 import { ContactInformation } from "./contact-information/ContactInformation";
-import { ImageAndVideo } from "./photo/ImageAndVideo";
+import { ImageAndVideoUpload } from "./photo/ImageAndVideoUpload";
 import { Social } from "./social/Social";
 
 export const Media: FC<FormProps> = ({ formik }) => {
@@ -12,7 +12,7 @@ export const Media: FC<FormProps> = ({ formik }) => {
             <h2 className="text-[10px] sm:text-xl font-semibold text-black">
                 {language.FORM_TEXT.media}
             </h2>
-            <ImageAndVideo formik={formik} />
+            <ImageAndVideoUpload formik={formik} />
             <Social formik={formik} />
             <ContactInformation formik={formik} />
         </div>
