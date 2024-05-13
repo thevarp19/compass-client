@@ -5,7 +5,6 @@ export const createActorValues: GetActorDetailResponse = {
         lastName: "",
         firstName: "",
         thirdName: "",
-        type: "",
         avatar: "",
         userPhotos: [
             {
@@ -21,7 +20,6 @@ export const createActorValues: GetActorDetailResponse = {
     },
 
     gender: "",
-    age: 0,
     birthday: "",
     citizenship: "",
     specialization: "",

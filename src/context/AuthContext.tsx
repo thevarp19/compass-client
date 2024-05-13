@@ -100,7 +100,8 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         <AuthContext.Provider
             value={{
                 isAuth: isAuth,
-                isHasProfile: profileData?.abstract_user_data.type !== "none",
+                isHasProfile:
+                    profileData?.abstract_user_data.type !== "none" || false,
                 avatar: profileData?.abstract_user_data.avatar,
                 // handleLogin,
             }}

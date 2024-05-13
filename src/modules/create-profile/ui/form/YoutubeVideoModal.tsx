@@ -83,7 +83,7 @@ export const YouTubeVideoModal: FC<ModalProps> = ({
                         className="px-4 py-2 bg-button_color text-white rounded focus:outline-none"
                         aria-label="Add Video"
                     >
-                        {language.FORM_TEXT.addVideo}
+                        {language.FORM_TEXT.add_video}
                     </button>
                 </div>
             </div>

@@ -50,10 +50,7 @@ export const AllInfo: FC<AllInfoProps> = ({ actor, isEdit }) => {
                                         )?.url || "#";
 
                                     return (
-                                        <Link
-                                            key={index}
-                                            href={getHref(socialMediaUrl)}
-                                        >
+                                        <Link key={index} href={socialMediaUrl}>
                                             <Image
                                                 src={social.imageSrc}
                                                 width={20}
@@ -76,7 +73,7 @@ export const AllInfo: FC<AllInfoProps> = ({ actor, isEdit }) => {
                                 {actor?.userContacts?.map((contact, index) => (
                                     <div
                                         key={index}
-                                        className="flex flex-col sm:flex-row justify-between sm:items-center"
+                                        className="flex flex-col sm:flex-row sm:gap-5 justify-between sm:items-center"
                                     >
                                         <h2 className="sm:text-base text-[8px] text-grayDark_text">
                                             {contact.number}{" "}

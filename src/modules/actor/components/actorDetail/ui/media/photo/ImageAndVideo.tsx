@@ -30,7 +30,7 @@ export const ImageAndVideo: FC<AllInfoProps> = ({ actor, isEdit }) => {
                         href={
                             isEdit
                                 ? getHref("/profile/media")
-                                : getHref(`${actorId}/media`)
+                                : getHref(`actors/${actorId}/media`)
                         }
                         className="flex items-center"
                     >
@@ -75,7 +75,7 @@ export const ImageAndVideo: FC<AllInfoProps> = ({ actor, isEdit }) => {
                         href={
                             isEdit
                                 ? getHref("/profile/media")
-                                : getHref(`${actorId}/media`)
+                                : getHref(`actors/${actorId}/media`)
                         }
                         className="flex items-center"
                     >

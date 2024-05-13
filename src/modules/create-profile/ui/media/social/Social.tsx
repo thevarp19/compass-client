@@ -36,7 +36,7 @@ export const Social: FC<FormProps> = ({ formik }) => {
         };
         const newSocials = [...socials, newSocial];
         setSocials(newSocials);
-        formik.setFieldValue("movies", newSocials);
+        formik.setFieldValue("abstract_user_data.userSocialMedias", newSocials);
     };
 
     const removeSocial = (index: number) => {

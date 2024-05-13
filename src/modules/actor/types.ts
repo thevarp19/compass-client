@@ -14,7 +14,7 @@ export interface ActorMovie {
 }
 export interface AbstractUserData {
     lastName: string;
-    type: string;
+    type?: string;
     firstName: string;
     thirdName: string;
     avatar: string;
@@ -36,7 +36,7 @@ export interface GetActorDetailResponse {
     abstract_user_data: AbstractUserData;
     userVideos: { id?: number; url: string }[];
     gender: string;
-    age: number | undefined;
+    age?: number | undefined;
     birthday: string;
     citizenship: string;
     specialization: string;

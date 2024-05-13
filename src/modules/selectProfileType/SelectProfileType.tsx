@@ -6,7 +6,7 @@ import { FC } from "react";
 export const SelectProfileType: FC = () => {
     const { language, getHref } = useLanguage();
     return (
-        <div className="bg-gray flex flex-col gap-10 items-center justify-center pt-[30px] sm:pt-[60px] pb-16 sm:pb-52">
+        <div className="bg-gray flex flex-col gap-10 items-center sm:justify-center pt-[30px] sm:pt-[60px] pb-16 sm:pb-52 w-full h-screen sm:w-auto sm:h-auto">
             <div className="bg-white flex flex-col gap-[50px] px-5 sm:px-10 rounded-[9px] border border-gray_border sm:w-[427px] sm:h-[250px] py-[14px] sm:py-[27px]">
                 <div>
                     <Link
