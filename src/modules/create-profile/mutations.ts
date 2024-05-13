@@ -15,7 +15,7 @@ export const createActorMutation = () => {
             message.success("Success!");
         },
         onError(error) {
-            message.error(`${error?.response?.data.message}`);
+            message.error(`Error creating profile`);
         },
     });
 };
