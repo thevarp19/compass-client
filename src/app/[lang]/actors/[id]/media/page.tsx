@@ -15,8 +15,8 @@ export default function ActorMedia({ params }: any) {
             {isPending ? (
                 <Loading className="h-screen" />
             ) : (
-                <div className="bg-gray flex flex-col px-[146px] py-[60px] gap-10 pb-96">
-                    <span className="text-[32px] font-semibold text-black">
+                <div className="bg-gray flex flex-col px-[25px] sm:px-[146px] py-[30px] sm:py-[60px] gap-[10px] sm:gap-10 pb-32 sm:pb-96">
+                    <span className="text-[10px] sm:text-[32px] font-semibold text-black">
                         {language.FORM_TEXT.media}
                     </span>
                     <MediaView actor={actor} />

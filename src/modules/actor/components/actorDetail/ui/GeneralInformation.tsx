@@ -254,7 +254,7 @@ export const GeneralInformation: FC<AllInfoProps> = ({ actor }) => {
                         key={index}
                         className="flex justify-between items-center gap-1 sm:gap-0"
                     >
-                        <h2 className="text-[8px] sm:text-base text-grayDark_text">
+                        <h2 className="text-[8px] sm:text-base min-w-[50%] sm:min-w-none text-grayDark_text">
                             {education.startYear} - {education.graduationYear}
                         </h2>
                         <div className="min-w-[50%] sm:max-w-none sm:min-w-[311px]">
@@ -277,7 +277,7 @@ export const GeneralInformation: FC<AllInfoProps> = ({ actor }) => {
                         key={index}
                         className="flex justify-between items-center gap-1 sm:gap-0"
                     >
-                        <h2 className="text-[8px] sm:text-base text-grayDark_text">
+                        <h2 className="text-[8px] min-w-[50%] sm:min-w-none sm:text-base text-grayDark_text">
                             {theater.startYear} - {theater.graduationYear}
                         </h2>
                         <div className="min-w-[50%] sm:max-w-none  sm:min-w-[311px]">
@@ -291,8 +291,8 @@ export const GeneralInformation: FC<AllInfoProps> = ({ actor }) => {
                     </div>
                 ))}
             </div>
-            <div className="flex sm:flex-row flex-col gap-[10px] sm:gap-5 justify-between w-full border-b border-gray_border sm:leading-10">
-                <h2 className="text-[10px] sm:text-xl font-semibold text-black ">
+            <div className="flex sm:flex-row flex-col gap-[10px] sm:gap-0 justify-between w-full border-b border-gray_border sm:leading-10">
+                <h2 className="text-[10px] sm:text-xl min-w-[50%] sm:min-w-none font-semibold text-black ">
                     {language.FORM_TEXT.comments}
                 </h2>
                 <div className="min-w-[50%] sm:max-w-none sm:min-w-[311px]">
@@ -301,8 +301,8 @@ export const GeneralInformation: FC<AllInfoProps> = ({ actor }) => {
                     </h2>
                 </div>
             </div>
-            <div className="flex sm:flex-row flex-col gap-[10px] sm:gap-5 w-full ">
-                <h2 className="text-[10px] sm:text-xl font-semibold text-black whitespace-pre-wrap ">
+            <div className="flex sm:flex-row flex-col gap-[10px] sm:gap-0 w-full ">
+                <h2 className="text-[10px] sm:text-xl min-w-[50%] sm:min-w-none font-semibold text-black whitespace-pre-wrap ">
                     {language.FORM_TEXT.additionalInfo}
                 </h2>
                 <div className="min-w-[50%] sm:max-w-none sm:min-w-[311px]">
