@@ -1,12 +1,11 @@
 "use client";
 import jwtService, { JwtType } from "@/lib/jwt";
 import { App } from "antd";
-// import { useMessage } from "@/context/MessageContext";
-// import jwtService, { jwtType } from "@/lib/jwt";
+
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
-export default function CreatePasswordPage({ searchParams }: any) {
+export default function OauthPage() {
     const router = useRouter();
     const { message } = App.useApp();
 
@@ -17,8 +16,13 @@ export default function CreatePasswordPage({ searchParams }: any) {
             access: urlParams.get("access") || "",
             refresh: urlParams.get("refresh") || "",
         };
+        console.log("GOOGLE", jwtToken);
+
         if (jwtToken) {
-            jwtService.saveJwt(jwtToken);
+            jwtService.saveJwt({
+                access: urlParams.get("access") || "",
+                refresh: urlParams.get("refresh") || "",
+            });
             router.push(`/${oauthLanguage}/in/home/`);
         } else {
             message.error("Not authorized");
