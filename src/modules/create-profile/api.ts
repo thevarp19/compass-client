@@ -13,3 +13,6 @@ import { axiosAuthorized } from "@/lib/axios";
 export function createActor(data: any) {
     return axiosAuthorized.post(`/user/profile/actor/edit`, data);
 }
+export function createDirector(data: any) {
+    return axiosAuthorized.post(`/user/profile/director/edit`, data);
+}

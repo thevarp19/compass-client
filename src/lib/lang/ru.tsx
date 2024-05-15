@@ -118,6 +118,7 @@ const ru = {
         dont_have_acc: "Нет аккаунта?",
         registraton: "Регистрация",
         or: "ИЛИ",
+        google_auth: "Войти с помощью Google",
     },
     REGISTRATION: {
         registration: "Регистрация",
@@ -208,6 +209,7 @@ const ru = {
         add_video: "Добавить Видео",
         add_link: "Добавьте ссылку на видео",
         close: "Закрыть",
+        create_director: "Создать Кастинг Директора",
     },
     PROJECTS: {
         our_projects: "Наши Проекты",

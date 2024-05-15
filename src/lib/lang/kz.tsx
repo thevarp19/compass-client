@@ -119,6 +119,7 @@ const kz = {
         dont_have_acc: "Аккаунт жоқ па?",
         registraton: "Тіркелу",
         or: "НЕМЕСЕ",
+        google_auth: "Google арқылы кіру",
     },
     REGISTRATION: {
         registration: "Тіркелу",
@@ -209,6 +210,7 @@ const kz = {
         add_video: "Бейне Қосу",
         add_link: "Бейне сілтемесін қосыңыз",
         close: "Жабу",
+        create_director: "Кастинг Директор Жасау",
     },
     PROJECTS: {
         our_projects: "Біздің Жобаларымыз",

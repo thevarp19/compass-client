@@ -32,7 +32,7 @@ export const SelectProfileType: FC = () => {
                             {language.PROFILE_TYPE.casting}
                         </div>
                     </Link>
-                    <Link href={getHref("profile/create-profile")}>
+                    <Link href={getHref("profile/create-actor")}>
                         <div className="bg-button_color text-[7px] sm:text-sm text-white rounded-[9px] font-medium text-center py-[6px] sm:py-[11px]">
                             {language.PROFILE_TYPE.actor}
                         </div>
