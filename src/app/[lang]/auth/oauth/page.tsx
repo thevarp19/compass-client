@@ -17,16 +17,17 @@ export default function OauthPage() {
             refresh: urlParams.get("refresh") || "",
         };
         console.log("GOOGLE", jwtToken);
+        console.log("url", urlParams);
 
         if (jwtToken) {
             jwtService.saveJwt({
                 access: urlParams.get("access") || "",
                 refresh: urlParams.get("refresh") || "",
             });
-            router.push(`/${oauthLanguage}/in/home/`);
+            router.push(`/${oauthLanguage}/`);
         } else {
             message.error("Not authorized");
-            router.push(`/${oauthLanguage}/auth`);
+            router.push(`/${oauthLanguage}/auth/login`);
         }
     }, []);
 
