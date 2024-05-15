@@ -16,14 +16,8 @@ export default function OauthPage() {
             access: urlParams.get("access") || "",
             refresh: urlParams.get("refresh") || "",
         };
-        console.log("GOOGLE", jwtToken);
-        console.log("url", urlParams);
-
         if (jwtToken) {
-            jwtService.saveJwt({
-                access: urlParams.get("access") || "",
-                refresh: urlParams.get("refresh") || "",
-            });
+            jwtService.saveJwt(jwtToken);
             router.push(`/${oauthLanguage}/`);
         } else {
             message.error("Not authorized");
