@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { getProfile } from "../auth/api";
-import { DirectorType } from "../create-director/types";
+import { GetDirectorType } from "../create-director/types";
 import { getActors, getActorsDetail } from "./api";
 import {
     ActorFilters,
@@ -39,7 +39,7 @@ export const useGetProfile = () => {
 };
 
 export const useGetDirector = () => {
-    return useQuery<DirectorType>({
+    return useQuery<GetDirectorType>({
         queryKey: ["director"],
         queryFn: async () => {
             const { data } = await getProfile();
