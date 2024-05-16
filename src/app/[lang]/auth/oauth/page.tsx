@@ -1,5 +1,7 @@
 "use client";
-import jwtService, { JwtType } from "@/lib/jwt";
+import { JwtType } from "@/lib/jwt";
+import { loginSuccess } from "@/redux/user/auth/actions";
+import { useAppDispatch } from "@/redux/utils";
 import { App } from "antd";
 
 import { useRouter } from "next/navigation";
@@ -8,7 +10,7 @@ import { useEffect } from "react";
 export default function OauthPage() {
     const router = useRouter();
     const { message } = App.useApp();
-
+    const dispatch = useAppDispatch();
     useEffect(() => {
         const oauthLanguage = localStorage.getItem("oauthLanguage") || "ru";
         const urlParams = new URLSearchParams(window.location.search);
@@ -17,7 +19,7 @@ export default function OauthPage() {
             refresh: urlParams.get("refresh") || "",
         };
         if (jwtToken) {
-            jwtService.saveJwt(jwtToken);
+            dispatch(loginSuccess(jwtToken));
             router.push(`/${oauthLanguage}/`);
         } else {
             message.error("Not authorized");
