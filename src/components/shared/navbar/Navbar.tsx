@@ -1,7 +1,6 @@
 "use client";
 import { useAuthContext } from "@/context/AuthContext";
 import { useLanguage } from "@/context/LanguageProvider";
-import { AbstractUserData } from "@/modules/actor/types";
 import { getProfile } from "@/modules/auth/api";
 import { useAppSelector } from "@/redux/utils";
 import Image from "next/image";
@@ -11,7 +10,7 @@ import { LanguageSelector } from "../language-selector/LanguageSelector";
 
 export default function Navbar() {
     const auth = useAppSelector((state) => state.user.auth);
-    const [profile, setProfile] = useState<AbstractUserData | undefined>();
+    const [profile, setProfile] = useState<any | undefined>();
     const [clientLoaded, setClientLoaded] = useState(false);
     const { isHasProfile } = useAuthContext();
     const { language, getHref } = useLanguage();
@@ -23,7 +22,7 @@ export default function Navbar() {
             // setIsLoading(true);
             try {
                 const { data } = await getProfile();
-                setProfile(data.abstract_user_data);
+                setProfile(data);
             } catch (error) {
                 console.error("Failed to fetch profile:", error);
             } finally {
@@ -81,8 +80,9 @@ export default function Navbar() {
                         <Link href={getHref("/profile")} className="block">
                             <Image
                                 src={
-                                    isHasProfile && profile?.avatar
-                                        ? profile?.avatar
+                                    isHasProfile &&
+                                    profile?.abstract_user_data?.avatar
+                                        ? profile?.abstract_user_data?.avatar
                                         : "/images/default-avatar.jpeg"
                                 }
                                 width={40}

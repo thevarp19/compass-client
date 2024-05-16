@@ -210,6 +210,7 @@ const ru = {
         add_link: "Добавьте ссылку на видео",
         close: "Закрыть",
         create_director: "Создать Кастинг Директора",
+        update_director: "Редактировать Кастинг Директора",
     },
     PROJECTS: {
         our_projects: "Наши Проекты",
