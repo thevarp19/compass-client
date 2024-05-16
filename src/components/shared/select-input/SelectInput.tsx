@@ -1,5 +1,5 @@
-import { AutoComplete, AutoCompleteProps, ConfigProvider } from "antd";
-import { DefaultOptionType } from "antd/es/select";
+import { AutoCompleteProps, ConfigProvider } from "antd";
+import Select, { DefaultOptionType } from "antd/es/select";
 import { FC, useEffect, useState } from "react";
 
 interface SelectInputProps extends AutoCompleteProps {
@@ -40,7 +40,7 @@ export const SelectInput: FC<SelectInputProps> = ({
                 },
             }}
         >
-            <AutoComplete
+            <Select
                 allowClear
                 filterOption={(inputValue, option) =>
                     option?.value

@@ -26,7 +26,7 @@ export const ActorDetail: FC<ActorDetailProps> = ({ details, isEdit }) => {
                     {details?.abstract_user_data?.lastName}
                 </span>
                 {isEdit && (
-                    <Link href={getHref(`/profile/edit`)}>
+                    <Link href={getHref(`/profile/edit-actor`)}>
                         <Image
                             src={"/icons/edit.svg"}
                             width={24}
