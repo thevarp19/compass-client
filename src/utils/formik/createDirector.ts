@@ -1,6 +1,6 @@
-import { DirectorType } from "@/modules/create-director/types";
+import { RequestDirectorType } from "@/modules/create-director/types";
 
-export const createDirectorValues: DirectorType = {
+export const createDirectorValues: RequestDirectorType = {
     lastName: "",
     firstName: "",
     thirdName: "",

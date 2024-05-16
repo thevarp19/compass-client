@@ -1,9 +1,9 @@
 "use client";
 import { Loading } from "@/components/shared/loading/Loading";
-import { useAuthContext } from "@/context/AuthContext";
 import { useLanguage } from "@/context/LanguageProvider";
 import { ActorDetail } from "@/modules/actor/components/actorDetail/ActorDetail";
 import { useGetProfile } from "@/modules/actor/queries";
+import { DirectorDetail } from "@/modules/create-director/ui/DirectorDetail";
 import { SelectProfileType } from "@/modules/selectProfileType/SelectProfileType";
 import { useAppSelector } from "@/redux/utils";
 import { useRouter } from "next/navigation";
@@ -13,9 +13,9 @@ export default function ProfileType() {
     const { auth } = useAppSelector((state) => state.user);
     const router = useRouter();
     const { getHref } = useLanguage();
-    const { isAuth } = useAuthContext();
-    const [isLoading, setIsLoading] = useState<boolean>(false);
-    const [isHasProfile, setHasProfile] = useState<boolean | undefined>(
+    // const { isAuth } = useAuthContext();
+    // const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [profileType, setProfileType] = useState<string | undefined>(
         undefined
     );
 
@@ -26,7 +26,7 @@ export default function ProfileType() {
             router.push(getHref("/auth/login"));
         }
         if (profile) {
-            setHasProfile(profile?.abstract_user_data.type !== "none");
+            setProfileType(profile?.abstract_user_data.type);
         }
     }, [auth.isLoggedIn, profile]);
 
@@ -36,8 +36,12 @@ export default function ProfileType() {
 
     return (
         <div>
-            {isHasProfile ? (
-                <ActorDetail details={profile} isEdit />
+            {profileType !== "none" ? (
+                profileType === "actor" ? (
+                    <ActorDetail details={profile} isEdit />
+                ) : (
+                    <DirectorDetail details={profile} />
+                )
             ) : (
                 <SelectProfileType />
             )}

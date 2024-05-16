@@ -6,7 +6,7 @@ import { useFormik } from "formik";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { GetActorDetailResponse } from "../actor/types";
-import { DirectorType } from "../create-director/types";
+import { GetDirectorType } from "../create-director/types";
 import { createActorMutation, createDirectorMutation } from "./mutations";
 
 export const useCreateProfile = () => {
@@ -85,7 +85,9 @@ export const useCreateDirector = () => {
     });
     return { formik, mutation, isDirty: formik.dirty };
 };
-export const useUpdateDirector = (initialValues: DirectorType | undefined) => {
+export const useUpdateDirector = (
+    initialValues: GetDirectorType | undefined
+) => {
     const mutation = createDirectorMutation();
     const router = useRouter();
     const { isHasProfile } = useAuthContext();
@@ -108,7 +110,7 @@ export const useUpdateDirector = (initialValues: DirectorType | undefined) => {
     useEffect(() => {
         if (isHasProfile && initialValues) {
             formik.resetForm({
-                values: initialValues,
+                values: initialValues.abstract_user_data,
             });
         }
     }, [initialValues]);
