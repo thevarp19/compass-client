@@ -3,7 +3,6 @@ import { SelectInput } from "@/components/shared/select-input/SelectInput";
 import { useLanguage } from "@/context/LanguageProvider";
 import { ChangeEvent, FC, useEffect, useState } from "react";
 import {
-    agencies,
     citizenships,
     formatOptions,
     kazakhstanCities,
@@ -244,16 +243,11 @@ export const GeneralInformation: FC<FormProps> = ({ formik }) => {
                     {language.FORM_TEXT.agency}
                 </h2>
                 <div className="flex">
-                    <SelectInput
-                        className="min-w-[92px] sm:min-w-[237px] "
+                    <FormikInput
+                        className="!text-[6px] sm:!text-base"
+                        formik={formik}
                         value={formik.values.agency}
-                        options={formatOptions(agencies)}
-                        onSelect={(value) =>
-                            handleSelectChange(`agency`, value)
-                        }
-                        onChange={(value) =>
-                            handleSelectChange(`agency`, value)
-                        }
+                        name="agency"
                     />
                 </div>
             </div>

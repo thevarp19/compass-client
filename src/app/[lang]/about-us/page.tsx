@@ -1,10 +1,11 @@
 "use client";
-import { AboutUs } from "@/modules/about-us/AboutUs";
+import { Main } from "@/modules/main/Main";
 
 export default function AboutUsPage() {
     return (
         <div>
-            <AboutUs />
+            <Main />
+            {/* <AboutUs /> */}
         </div>
     );
 }
