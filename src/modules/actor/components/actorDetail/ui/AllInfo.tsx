@@ -40,27 +40,40 @@ export const AllInfo: FC<AllInfoProps> = ({ actor, isEdit }) => {
                                     className="object-cover w-full h-full"
                                 />
                             </div>
-                            <div className="grid grid-cols-4 gap-[6px] sm:gap-[15px] sm:px-5">
-                                {socialMediaIcons.map((social, index) => {
-                                    const socialMediaUrl =
-                                        actor?.abstract_user_data?.userSocialMedias?.find(
-                                            (media) =>
-                                                media.name.toLowerCase() ===
-                                                social.name.toLowerCase()
-                                        )?.url || "#";
+                            <div className="flex justify-center flex-wrap gap-[6px] sm:gap-[15px] w-[70px] min-[415px]:w-[100px] sm:w-[250px] sm:px-5">
+                                {socialMediaIcons
+                                    .filter((social) => {
+                                        const url =
+                                            actor?.abstract_user_data?.userSocialMedias?.find(
+                                                (media) =>
+                                                    media.name.toLowerCase() ===
+                                                    social.name.toLowerCase()
+                                            )?.url;
+                                        return url; // Keeps the social media only if a URL is found
+                                    })
+                                    .map((social, index) => {
+                                        const socialMediaUrl =
+                                            actor?.abstract_user_data?.userSocialMedias?.find(
+                                                (media) =>
+                                                    media.name.toLowerCase() ===
+                                                    social.name.toLowerCase()
+                                            )?.url;
 
-                                    return (
-                                        <Link key={index} href={socialMediaUrl}>
-                                            <Image
-                                                src={social.imageSrc}
-                                                width={20}
-                                                height={20}
-                                                alt={`${social.name} icon`}
-                                                className="object-contain w-[12px] h-[12px] min-[415px]:w-[20px] sm:w-[40px] min-[415px]:h-[20px] sm:h-[40px]"
-                                            />
-                                        </Link>
-                                    );
-                                })}
+                                        return (
+                                            <Link
+                                                key={index}
+                                                href={socialMediaUrl ?? ""}
+                                            >
+                                                <Image
+                                                    src={social.imageSrc}
+                                                    width={20}
+                                                    height={20}
+                                                    alt={`${social.name} icon`}
+                                                    className="object-contain w-[12px] h-[12px] min-[415px]:w-[20px] sm:w-[40px] min-[415px]:h-[20px] sm:h-[40px]"
+                                                />
+                                            </Link>
+                                        );
+                                    })}
                             </div>
                         </div>
 

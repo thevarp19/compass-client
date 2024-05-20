@@ -34,7 +34,7 @@ export const GeneralInformation: FC<AllInfoProps> = ({ actor }) => {
                         </h2>
                     </div>
                 </div>
-                <div className="flex justify-between items-center gap-1 sm:gap-0">
+                {/* <div className="flex justify-between items-center gap-1 sm:gap-0">
                     <h2 className="text-[8px] min-w-[50%] sm:min-w-none sm:text-base text-grayDark_text sm:leading-[130%]">
                         {language.FORM_TEXT.specialization}
                     </h2>
@@ -43,7 +43,7 @@ export const GeneralInformation: FC<AllInfoProps> = ({ actor }) => {
                             {actor?.specialization}
                         </h2>
                     </div>
-                </div>
+                </div> */}
                 <div className="flex justify-between items-center gap-1 sm:gap-0">
                     <h2 className="text-[8px] min-w-[50%] sm:min-w-none sm:text-base text-grayDark_text sm:leading-[130%]">
                         {language.FORM_TEXT.cityOfResidence}
@@ -54,7 +54,7 @@ export const GeneralInformation: FC<AllInfoProps> = ({ actor }) => {
                         </h2>
                     </div>
                 </div>
-                <div className="flex justify-between items-center gap-1 sm:gap-0">
+                {/* <div className="flex justify-between items-center gap-1 sm:gap-0">
                     <h2 className="text-[8px] min-w-[50%] sm:min-w-none sm:text-base text-grayDark_text sm:leading-[130%]">
                         {language.FORM_TEXT.legalStatus}
                     </h2>
@@ -63,7 +63,7 @@ export const GeneralInformation: FC<AllInfoProps> = ({ actor }) => {
                             {actor?.legalStatus}
                         </h2>
                     </div>
-                </div>
+                </div> */}
                 <div className="flex justify-between items-center gap-1 sm:gap-0">
                     <h2 className="text-[8px] min-w-[50%] sm:min-w-none sm:text-base text-grayDark_text sm:leading-[130%]">
                         {language.FORM_TEXT.agency}

@@ -127,7 +127,7 @@ export const ImageAndVideoUpload: FC<FormProps> = ({ formik }) => {
                         {language.FORM_TEXT.add}
                     </button>
                 </div>
-                <div className="flex sm:justify-between gap-[2px] sm:gap-0">
+                <div className="flex sm:justify-between gap-[2px] sm:gap-2">
                     {videoSlots?.map((video, index) => (
                         <div
                             key={index}

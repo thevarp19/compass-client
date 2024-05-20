@@ -7,8 +7,6 @@ import {
     citizenships,
     formatOptions,
     kazakhstanCities,
-    legalStatuses,
-    specializations,
 } from "../../const/data";
 import { FormProps } from "../../types";
 
@@ -185,7 +183,7 @@ export const GeneralInformation: FC<FormProps> = ({ formik }) => {
                     />
                 </div>
             </div>
-            <div className="flex justify-between items-center">
+            {/* <div className="flex justify-between items-center">
                 <h2 className="text-[8px] sm:text-base text-grayDark_text leading-[130%]">
                     {language.FORM_TEXT.specialization}
                 </h2>
@@ -202,7 +200,7 @@ export const GeneralInformation: FC<FormProps> = ({ formik }) => {
                         }
                     />
                 </div>
-            </div>
+            </div> */}
             <div className="flex justify-between items-center">
                 <h2 className="text-[8px] sm:text-base text-grayDark_text leading-[130%]">
                     {language.FORM_TEXT.cityOfResidence}
@@ -221,7 +219,7 @@ export const GeneralInformation: FC<FormProps> = ({ formik }) => {
                     />
                 </div>
             </div>
-            <div className="flex justify-between items-center">
+            {/* <div className="flex justify-between items-center">
                 <h2 className="text-[8px] sm:text-base text-grayDark_text leading-[130%]">
                     {language.FORM_TEXT.legalStatus}
                 </h2>
@@ -238,7 +236,7 @@ export const GeneralInformation: FC<FormProps> = ({ formik }) => {
                         }
                     />
                 </div>
-            </div>
+            </div> */}
             <div className="flex justify-between items-center">
                 <h2 className="text-[8px] sm:text-base text-grayDark_text leading-[130%]">
                     {language.FORM_TEXT.agency}

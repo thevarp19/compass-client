@@ -15,10 +15,8 @@ import {
     hairColors,
     hairLengths,
     kazakhstanCities,
-    legalStatuses,
     musicalInstruments,
     singing,
-    specializations,
     sports,
 } from "@/modules/create-profile/const/data";
 import Image from "next/image";
@@ -57,9 +55,9 @@ export const ActorFilter: FC<ActorFilterProps> = ({
             userPhotoCount_min: undefined,
             userPhotoCount_max: undefined,
             citizenship: [],
-            specialization: [],
+            // specialization: [],
             cityAccommodation: [],
-            legalStatus: [],
+            // legalStatus: [],
             agency: [],
             hairColor: [],
             sport: [],
@@ -365,7 +363,7 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                             }
                         />
                     </div>
-                    <div className="flex flex-col gap-[10px]">
+                    {/* <div className="flex flex-col gap-[10px]">
                         <h2 className="text-[7px] sm:text-sm text-black">
                             {language.ACTOR_FILTER.specialization}
                         </h2>
@@ -379,8 +377,8 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                                 handleMultiSelectChange(`specialization`, value)
                             }
                         />
-                    </div>
-                    <div className="flex flex-col gap-[10px]">
+                    </div> */}
+                    {/* <div className="flex flex-col gap-[10px]">
                         <h2 className="text-[7px] sm:text-sm text-black">
                             {language.ACTOR_FILTER.legalStatus}
                         </h2>
@@ -394,7 +392,7 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                                 handleMultiSelectChange(`legalStatus`, value)
                             }
                         />
-                    </div>
+                    </div> */}
 
                     {/* MEDIAA */}
                     <h2 className="text-[8px] sm:text-base font-semibold text-black">

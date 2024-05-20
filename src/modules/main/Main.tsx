@@ -17,9 +17,9 @@ export const Main: FC = () => {
         isCompassActor: undefined,
         gender: "",
         citizenship: [],
-        specialization: [],
+        // specialization: [],
         cityAccommodation: [],
-        legalStatus: [],
+        // legalStatus: [],
         agency: [],
         hairColor: [],
         sport: [],
@@ -159,7 +159,11 @@ export const ActorsCarousel: FC<{ actors: Actor[]; title: string }> = ({
                 className="flex gap-[20px] sm:gap-[37px] overflow-x-scroll min-w-[290px] sm:min-w-auto"
             >
                 {actors.map((actor, index) => (
-                    <Link key={index} href={getHref(`/actors/${actor.id}`)}>
+                    <Link
+                        className="mb-1 sm:mb-2"
+                        key={index}
+                        href={getHref(`/actors/${actor.id}`)}
+                    >
                         <ActorCard actor={actor} />
                     </Link>
                 ))}

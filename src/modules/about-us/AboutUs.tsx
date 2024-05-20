@@ -63,11 +63,22 @@ export const AboutUs: FC = () => {
             educations: [],
             movies: [],
         },
+        {
+            id: 6,
+            firstName: "Данияр Алшинов",
+            age: 32,
+            avatar: "/images/daniar.png",
+            isCompassActor: false,
+            lastName: "",
+            thirdName: "",
+            educations: [],
+            movies: [],
+        },
     ];
     return (
         <div>
             <section>
-                <MainBanner2 />
+                <MainBanner />
             </section>
             <section>
                 <ActorsCarousel
@@ -127,14 +138,14 @@ const MainBanner = () => {
     const { language } = useLanguage();
     return (
         <div className="bg-secondary flex flex-col justify-center items-center min-h-[554px]">
-            <div className="flex flex-col text-white text-[52px] font-semibold text-center">
+            <div className="flex flex-col text-white text-[24px] sm:text-[52px] font-semibold text-center">
                 <h2>
                     {language.ABOUTUS.title}
                     <span className="text-[#6E9CF2] underline">
                         {language.ABOUTUS.compass}
                     </span>
                 </h2>
-                <div className="w-[516px] text-center">
+                <div className="w-auto sm:w-[516px]  text-center">
                     {language.ABOUTUS.some_text}
                 </div>
             </div>
