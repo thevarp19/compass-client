@@ -76,6 +76,7 @@ export const ImageAndVideoUpload: FC<FormProps> = ({ formik }) => {
                     <input
                         id="image-uploads"
                         multiple
+                        accept="image/*"
                         type="file"
                         style={{ display: "none" }}
                         onChange={handleFileChange}
