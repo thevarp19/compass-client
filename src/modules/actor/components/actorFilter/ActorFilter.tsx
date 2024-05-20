@@ -1,8 +1,8 @@
 "use client";
 import { MultiSelectInput } from "@/components/shared/multi-select/MultiSelectInput";
 import { useLanguage } from "@/context/LanguageProvider";
+import { useDebounce } from "@/hooks/useDebounce";
 import {
-    agencies,
     appearanceTypes,
     bodyTypes,
     citizenships,
@@ -19,6 +19,7 @@ import {
     singing,
     sports,
 } from "@/modules/create-profile/const/data";
+import { Input } from "antd";
 import Image from "next/image";
 import { FC, useEffect, useState } from "react";
 import { ActorFilters } from "../../types";
@@ -102,6 +103,14 @@ export const ActorFilter: FC<ActorFilterProps> = ({
             [name]: value,
         }));
     };
+    const [agency, setAgency] = useState("");
+    const dAgency = useDebounce(agency, 500);
+    useEffect(() => {
+        setFilters((prevFilters) => ({
+            ...prevFilters,
+            agency: [dAgency],
+        }));
+    }, [dAgency]);
 
     const handleSortByChange = (newSortBy: string): void => {
         setFilters((prev) => ({ ...prev, sortBy: newSortBy }));
@@ -466,15 +475,10 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                         <h2 className="text-[7px] sm:text-sm text-black">
                             {language.ACTOR_FILTER.agency}
                         </h2>
-                        <MultiSelectInput
-                            maxTagCount="responsive"
-                            mode="multiple"
-                            className="min-w-[90px] sm:min-w-[237px]"
-                            value={filters.agency}
-                            options={formatOptions(agencies)}
-                            onChange={(value) =>
-                                handleMultiSelectChange(`agency`, value)
-                            }
+                        <Input
+                            value={agency}
+                            onChange={(value) => setAgency(value.target.value)}
+                            className={`!w-[92px] sm:!w-[237px] h-[14px] sm:h-[24px] px-[10px] py-[4px] !indent-0 text-xs border border-gray_border !rounded-[2px] outline-none text-grayDark_text`}
                         />
                     </div>
                     <h2 className="text-[8px] sm:text-base font-semibold text-black">

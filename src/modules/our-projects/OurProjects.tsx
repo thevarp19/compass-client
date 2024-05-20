@@ -1,4 +1,5 @@
 "use client";
+import { Loading } from "@/components/shared/loading/Loading";
 import { useLanguage } from "@/context/LanguageProvider";
 import { axios } from "@/lib/axios";
 import { useQuery } from "@tanstack/react-query";
@@ -43,7 +44,7 @@ interface Project {
 }
 
 export const OurProjects: FC = () => {
-    const { data: projects } = useQuery<Project[]>({
+    const { data: projects, isPending } = useQuery<Project[]>({
         queryKey: ["projects"],
         queryFn: async () => {
             const response = await axios.get<Project[]>("/projects");
@@ -51,7 +52,7 @@ export const OurProjects: FC = () => {
         },
     });
     const { language, getHref } = useLanguage();
-
+    if (isPending) return <Loading className="h-[50vh]" />;
     return (
         <div className="bg-gray flex flex-col gap-5 sm:gap-10 py-10 sm:py-20 px-[25px] sm:px-[146px] text-black">
             <h2 className="text-[15px] sm:text-[32px] font-medium leading-[130%]">
