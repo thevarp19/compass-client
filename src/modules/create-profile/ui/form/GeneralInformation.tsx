@@ -64,11 +64,15 @@ export const GeneralInformation: FC<FormProps> = ({ formik }) => {
     return (
         <div className="flex flex-col gap-5 w-full">
             <h2 className="text-[10px] sm:text-xl font-semibold text-black">
-                {language.FORM_TEXT.generalInfo}
+                {language.FORM_TEXT.generalInfo}{" "}
+                <span className="text-[10px] sm:text-xl text-[#FF0000]">*</span>
             </h2>
             <div className="flex justify-between items-center">
                 <h2 className="text-[8px] sm:text-base text-grayDark_text">
-                    {language.FORM_TEXT.firstName}
+                    {language.FORM_TEXT.firstName}{" "}
+                    <span className="text-[8px] sm:text-base text-[#FF0000] ">
+                        *
+                    </span>
                 </h2>
                 <FormikInput
                     className="!text-[6px] sm:!text-base"
@@ -79,7 +83,10 @@ export const GeneralInformation: FC<FormProps> = ({ formik }) => {
             </div>
             <div className="flex justify-between items-center">
                 <h2 className="text-[8px] sm:text-base text-grayDark_text">
-                    {language.FORM_TEXT.lastName}
+                    {language.FORM_TEXT.lastName}{" "}
+                    <span className="text-[8px] sm:text-base text-[#FF0000] ">
+                        *
+                    </span>
                 </h2>
                 <FormikInput
                     className="!text-[6px] sm:!text-base"
@@ -90,7 +97,10 @@ export const GeneralInformation: FC<FormProps> = ({ formik }) => {
             </div>
             <div className="flex justify-between items-center">
                 <h2 className="text-[8px] sm:text-base text-grayDark_text">
-                    {language.FORM_TEXT.middleName}
+                    {language.FORM_TEXT.middleName}{" "}
+                    <span className="text-[8px] sm:text-base text-[#FF0000] ">
+                        *
+                    </span>
                 </h2>
                 <FormikInput
                     className="!text-[6px] sm:!text-base"
@@ -101,7 +111,10 @@ export const GeneralInformation: FC<FormProps> = ({ formik }) => {
             </div>
             <div className="flex justify-between items-center">
                 <h2 className="text-[8px] sm:text-base text-grayDark_text leading-[130%]">
-                    {language.FORM_TEXT.gender}
+                    {language.FORM_TEXT.gender}{" "}
+                    <span className="text-[8px] sm:text-base text-[#FF0000] ">
+                        *
+                    </span>
                 </h2>
                 <div className="flex items-center min-w-[92px] sm:min-w-[237px]">
                     <div
@@ -132,7 +145,10 @@ export const GeneralInformation: FC<FormProps> = ({ formik }) => {
             </div>
             <div className="flex justify-between items-center">
                 <h2 className="text-[8px] sm:text-base text-grayDark_text leading-[130%]">
-                    {language.FORM_TEXT.birthDate}
+                    {language.FORM_TEXT.birthDate}{" "}
+                    <span className="text-[8px] sm:text-base text-[#FF0000] ">
+                        *
+                    </span>
                 </h2>
                 <div className="flex gap-[1px] sm:gap-[6px] min-w-[92px] sm:min-w-[237px]">
                     <input
@@ -166,7 +182,10 @@ export const GeneralInformation: FC<FormProps> = ({ formik }) => {
             </div>
             <div className="flex justify-between items-center">
                 <h2 className="text-[8px] sm:text-base text-grayDark_text leading-[130%]">
-                    {language.FORM_TEXT.nationality}
+                    {language.FORM_TEXT.nationality}{" "}
+                    <span className="text-[8px] sm:text-base text-[#FF0000] ">
+                        *
+                    </span>
                 </h2>
                 <div className="flex ">
                     <SelectInput
@@ -202,7 +221,10 @@ export const GeneralInformation: FC<FormProps> = ({ formik }) => {
             </div> */}
             <div className="flex justify-between items-center">
                 <h2 className="text-[8px] sm:text-base text-grayDark_text leading-[130%]">
-                    {language.FORM_TEXT.cityOfResidence}
+                    {language.FORM_TEXT.cityOfResidence}{" "}
+                    <span className="text-[8px] sm:text-base text-[#FF0000] ">
+                        *
+                    </span>
                 </h2>
                 <div className="flex ">
                     <SelectInput
@@ -238,7 +260,10 @@ export const GeneralInformation: FC<FormProps> = ({ formik }) => {
             </div> */}
             <div className="flex justify-between items-center">
                 <h2 className="text-[8px] sm:text-base text-grayDark_text leading-[130%]">
-                    {language.FORM_TEXT.agency}
+                    {language.FORM_TEXT.agency}{" "}
+                    <span className="text-[8px] sm:text-base text-[#FF0000] ">
+                        *
+                    </span>
                 </h2>
                 <div className="flex">
                     <FormikInput

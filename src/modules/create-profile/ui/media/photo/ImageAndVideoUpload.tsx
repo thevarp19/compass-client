@@ -62,7 +62,10 @@ export const ImageAndVideoUpload: FC<FormProps> = ({ formik }) => {
             <div className="flex flex-col gap-[5px] sm:gap-[10px]">
                 <div className="flex items-center justify-between">
                     <h2 className="text-black text-[8px] sm:text-base">
-                        {language.FORM_TEXT.photos}
+                        {language.FORM_TEXT.photos}{" "}
+                        <span className="text-[8px] sm:text-[10px] text-[#FF0000] ">
+                            мин. 3 фото
+                        </span>
                     </h2>
                     <label
                         htmlFor="image-uploads"

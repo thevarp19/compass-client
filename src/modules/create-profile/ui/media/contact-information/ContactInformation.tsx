@@ -41,7 +41,10 @@ export const ContactInformation: FC<FormProps> = ({ formik }) => {
     return (
         <div className="flex flex-col gap-[10px] sm:gap-5 w-full">
             <h2 className="text-[10px] sm:text-xl font-semibold text-black">
-                {language.FORM_TEXT.contactInfo}
+                {language.FORM_TEXT.contactInfo}{" "}
+                <span className="text-[10px] sm:text-xl text-[#FF0000] ">
+                    *
+                </span>
             </h2>
             {contacts.map((contact, index) => (
                 <div
@@ -52,7 +55,10 @@ export const ContactInformation: FC<FormProps> = ({ formik }) => {
                 >
                     <div className="flex flex-col gap-[5px] sm:gap-[10px]">
                         <h2 className="text-[8px] sm:text-base text-grayDark_text">
-                            {language.FORM_TEXT.contactName}
+                            {language.FORM_TEXT.contactName}{" "}
+                            <span className="text-[8px] sm:text-base text-[#FF0000] ">
+                                *
+                            </span>
                         </h2>
                         <input
                             className={`w-[90px] sm:!w-[237px] h-[14px] sm:h-[24px] px-[4px] sm:px-[10px] py-[3px] sm:py-[4px] !indent-0 text-[6px] sm:text-xs border border-gray_border !rounded-[2px] outline-none text-grayDark_text`}
@@ -66,7 +72,10 @@ export const ContactInformation: FC<FormProps> = ({ formik }) => {
 
                     <div className="flex flex-col gap-[5px] sm:gap-[10px]">
                         <h2 className="text-[8px] sm:text-base text-grayDark_text">
-                            {language.FORM_TEXT.contactNumber}
+                            {language.FORM_TEXT.contactNumber}{" "}
+                            <span className="text-[8px] sm:text-base text-[#FF0000] ">
+                                *
+                            </span>
                         </h2>
                         <input
                             className={`w-[90px] sm:!w-[237px] h-[14px] sm:h-[24px] px-[4px] sm:px-[10px] py-[3px] sm:py-[4px] !indent-0 text-[6px] sm:text-xs border border-gray_border !rounded-[2px] outline-none text-grayDark_text`}

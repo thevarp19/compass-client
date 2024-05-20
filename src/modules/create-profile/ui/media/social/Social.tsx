@@ -53,7 +53,10 @@ export const Social: FC<FormProps> = ({ formik }) => {
     return (
         <div className="flex flex-col gap-[10px] sm:gap-5 w-full">
             <h2 className="text-[10px] sm:text-xl font-semibold text-black">
-                {language.FORM_TEXT.socialNetworks}
+                {language.FORM_TEXT.socialNetworks}{" "}
+                <span className="text-[10px] sm:text-xl text-[#FF0000] ">
+                    *
+                </span>
             </h2>
             {socials.map((social, index) => (
                 <div
@@ -64,7 +67,10 @@ export const Social: FC<FormProps> = ({ formik }) => {
                 >
                     <div className="flex flex-col gap-[5px] sm:gap-[10px]">
                         <h2 className="text-grayDark_text text-[7px] sm:text-sm leading-[130%]">
-                            {language.FORM_TEXT.socialNetworkName}
+                            {language.FORM_TEXT.socialNetworkName}{" "}
+                            <span className="text-[8px] sm:text-base text-[#FF0000] ">
+                                *
+                            </span>
                         </h2>
                         <div className="flex">
                             <SelectInput
@@ -82,7 +88,10 @@ export const Social: FC<FormProps> = ({ formik }) => {
                     </div>
                     <div className="flex flex-col gap-[10px]">
                         <h2 className="text-grayDark_text text-[7px] sm:text-sm leading-[130%]">
-                            {language.FORM_TEXT.socialNetworkLink}
+                            {language.FORM_TEXT.socialNetworkLink}{" "}
+                            <span className="text-[8px] sm:text-base text-[#FF0000] ">
+                                *
+                            </span>
                         </h2>
                         <div className="flex">
                             <input

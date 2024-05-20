@@ -2,6 +2,7 @@ import { useAuthContext } from "@/context/AuthContext";
 import { useLanguage } from "@/context/LanguageProvider";
 import { createActorValues } from "@/utils/formik/createActor";
 import { createDirectorValues } from "@/utils/formik/createDirector";
+import { message } from "antd";
 import { useFormik } from "formik";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
@@ -17,11 +18,19 @@ export const useCreateProfile = () => {
         initialValues: createActorValues,
         onSubmit: async (values, { setSubmitting }) => {
             console.log("values", values);
+            if (
+                !values.abstract_user_data.userPhotos ||
+                values.abstract_user_data.userPhotos.length < 3
+            ) {
+                message.error("Пожалуйста, загрузите как минимум 3 фотографии");
+                setSubmitting(false);
+                return;
+            }
             try {
                 await mutation.mutateAsync(values);
                 router.push(getHref("/profile"));
-            } catch (error) {
-                console.error("Error creating profile:");
+            } catch (error: any) {
+                console.error("Error creating profile:", error);
             } finally {
                 setSubmitting(false);
             }
@@ -46,7 +55,7 @@ export const useUpdateProfile = (
                 await mutation.mutateAsync(values);
                 router.push(getHref("/profile"));
             } catch (error) {
-                console.error("Error creating profile:");
+                console.error("Error updating profile:", error);
             } finally {
                 setSubmitting(false);
             }
@@ -76,7 +85,7 @@ export const useCreateDirector = () => {
                 await mutation.mutateAsync(values);
                 router.push(getHref("/profile"));
             } catch (error) {
-                console.error("Error creating profile:");
+                console.error("Error creating director:");
             } finally {
                 setSubmitting(false);
             }
@@ -100,7 +109,7 @@ export const useUpdateDirector = (
                 await mutation.mutateAsync(values);
                 router.push(getHref("/profile"));
             } catch (error) {
-                console.error("Error creating profile:");
+                console.error("Error updating profile:", error);
             } finally {
                 setSubmitting(false);
             }

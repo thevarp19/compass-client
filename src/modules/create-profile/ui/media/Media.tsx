@@ -10,7 +10,10 @@ export const Media: FC<FormProps> = ({ formik }) => {
     return (
         <div className="border border-gray_border h-max rounded-[5px] p-[5px] w-full sm:p-[10px] flex flex-col gap-[10px] sm:gap-5 pb-20 sm:pb-40">
             <h2 className="text-[10px] sm:text-xl font-semibold text-black">
-                {language.FORM_TEXT.media}
+                {language.FORM_TEXT.media}{" "}
+                <span className="text-[10px] sm:text-xl text-[#FF0000] ">
+                    *
+                </span>
             </h2>
             <ImageAndVideoUpload formik={formik} />
             <Social formik={formik} />

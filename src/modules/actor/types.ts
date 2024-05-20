@@ -76,6 +76,12 @@ export interface GetActorDetailResponse {
         role: string;
         releasedYear: number | undefined;
     }[];
+    serials: {
+        id?: number;
+        name: string;
+        role: string;
+        releasedYear: number | undefined;
+    }[];
     educations: {
         id?: number;
         university: string;

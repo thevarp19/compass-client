@@ -86,4 +86,11 @@ export const createActorValues: GetActorDetailResponse = {
             graduationYear: undefined,
         },
     ],
+    serials: [
+        {
+            name: "",
+            role: "",
+            releasedYear: undefined,
+        },
+    ],
 };

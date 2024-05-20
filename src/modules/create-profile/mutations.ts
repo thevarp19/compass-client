@@ -15,7 +15,7 @@ export const createActorMutation = () => {
             message.success("Success!");
         },
         onError(error) {
-            message.error(`Error creating profile`);
+            message.error(`${error?.response?.data.message[0]}`);
         },
     });
 };
@@ -31,7 +31,7 @@ export const createDirectorMutation = () => {
             message.success("Success!");
         },
         onError(error) {
-            message.error(`Error creating profile`);
+            message.error(`${error?.response?.data.message[0]}`);
         },
     });
 };

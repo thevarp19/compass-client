@@ -86,6 +86,8 @@ const ru = {
         actors_compass: "Актёры Compass",
         advanced_search: "Расширенный Поиск",
         nationality: "Национальность",
+        citizenships: "Гражданство",
+        serials: "Сериалы",
         // specialization: "Специализация",
         cityOfResidence: "Город Проживания",
         // legalStatus: "Правовой Статус",
@@ -135,6 +137,7 @@ const ru = {
         generalInfo: "Основная Информация",
         firstName: "Имя",
         lastName: "Фамилия",
+        serials: "Сериалы",
         middleName: "Отчество",
         showAll: "Смотреть Все",
         gender: "Пол",
@@ -142,13 +145,9 @@ const ru = {
         female: "Жен.",
         logout: "Выйти",
         birthDate: "Дата Рождения",
-<<<<<<< HEAD
-        nationality: "Гражданство",
-        // specialization: "Специализация",
-=======
         nationality: "Национальность",
-        specialization: "Специализация",
->>>>>>> ee475f08016194f966ce1226b1edd5e7ede1ad1b
+        citizenships: "Гражданство",
+        // specialization: "Специализация",
         cityOfResidence: "Город Проживания",
         // legalStatus: "Правовой Статус",
         agency: "Агентство",

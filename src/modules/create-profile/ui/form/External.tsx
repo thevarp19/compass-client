@@ -22,11 +22,15 @@ export const External: FC<FormProps> = ({ formik }) => {
     return (
         <div className="flex flex-col gap-5 w-full">
             <h2 className="text-[10px] sm:text-xl font-semibold text-black">
-                {language.FORM_TEXT.externalData}
+                {language.FORM_TEXT.externalData}{" "}
+                <span className="text-[10px] sm:text-xl text-[#FF0000]">*</span>
             </h2>
             <div className="flex justify-between items-center">
                 <h2 className="text-[8px] sm:text-base text-grayDark_text">
-                    {language.FORM_TEXT.height}
+                    {language.FORM_TEXT.height}{" "}
+                    <span className="text-[8px] sm:text-base text-[#FF0000] ">
+                        *
+                    </span>
                 </h2>
                 <FormikInput
                     className="!text-[6px] sm:!text-base"
@@ -38,7 +42,10 @@ export const External: FC<FormProps> = ({ formik }) => {
             </div>
             <div className="flex justify-between items-center">
                 <h2 className="text-[8px] sm:text-base text-grayDark_text">
-                    {language.FORM_TEXT.weight}
+                    {language.FORM_TEXT.weight}{" "}
+                    <span className="text-[8px] sm:text-base text-[#FF0000] ">
+                        *
+                    </span>
                 </h2>
                 <FormikInput
                     className="!text-[6px] sm:!text-base"
@@ -50,7 +57,10 @@ export const External: FC<FormProps> = ({ formik }) => {
             </div>
             <div className="flex justify-between items-center">
                 <h2 className="text-[8px] sm:text-base text-grayDark_text">
-                    {language.FORM_TEXT.clothingSize}
+                    {language.FORM_TEXT.clothingSize}{" "}
+                    <span className="text-[8px] sm:text-base text-[#FF0000] ">
+                        *
+                    </span>
                 </h2>
                 <FormikInput
                     className="!text-[6px] sm:!text-base"
@@ -61,7 +71,10 @@ export const External: FC<FormProps> = ({ formik }) => {
             </div>
             <div className="flex justify-between items-center">
                 <h2 className="text-[8px] sm:text-base text-grayDark_text">
-                    {language.FORM_TEXT.shoeSize}
+                    {language.FORM_TEXT.shoeSize}{" "}
+                    <span className="text-[8px] sm:text-base text-[#FF0000] ">
+                        *
+                    </span>
                 </h2>
                 <FormikInput
                     className="!text-[6px] sm:!text-base"
@@ -72,7 +85,10 @@ export const External: FC<FormProps> = ({ formik }) => {
             </div>
             <div className="flex justify-between items-center">
                 <h2 className="text-[8px] sm:text-base text-grayDark_text">
-                    {language.FORM_TEXT.hairLength}
+                    {language.FORM_TEXT.hairLength}{" "}
+                    <span className="text-[8px] sm:text-base text-[#FF0000] ">
+                        *
+                    </span>
                 </h2>
                 <SelectInput
                     className="min-w-[92px]  sm:min-w-[237px]"
@@ -88,7 +104,10 @@ export const External: FC<FormProps> = ({ formik }) => {
             </div>
             <div className="flex justify-between items-center">
                 <h2 className="text-[8px] sm:text-base text-grayDark_text">
-                    {language.FORM_TEXT.hairColor}
+                    {language.FORM_TEXT.hairColor}{" "}
+                    <span className="text-[8px] sm:text-base text-[#FF0000] ">
+                        *
+                    </span>
                 </h2>
                 <SelectInput
                     className="min-w-[92px]  sm:min-w-[237px]"
@@ -100,7 +119,10 @@ export const External: FC<FormProps> = ({ formik }) => {
             </div>
             <div className="flex justify-between items-center">
                 <h2 className="text-[8px] sm:text-base text-grayDark_text">
-                    {language.FORM_TEXT.eyeColor}
+                    {language.FORM_TEXT.eyeColor}{" "}
+                    <span className="text-[8px] sm:text-base text-[#FF0000] ">
+                        *
+                    </span>
                 </h2>
                 <SelectInput
                     className="min-w-[92px]  sm:min-w-[237px]"
@@ -112,7 +134,10 @@ export const External: FC<FormProps> = ({ formik }) => {
             </div>
             <div className="flex justify-between items-center">
                 <h2 className="text-[8px] sm:text-base text-grayDark_text">
-                    {language.FORM_TEXT.bodyPosition}
+                    {language.FORM_TEXT.bodyPosition}{" "}
+                    <span className="text-[8px] sm:text-base text-[#FF0000] ">
+                        *
+                    </span>
                 </h2>
                 <SelectInput
                     className="min-w-[92px]  sm:min-w-[237px]"
@@ -124,7 +149,10 @@ export const External: FC<FormProps> = ({ formik }) => {
             </div>
             <div className="flex justify-between items-center">
                 <h2 className="text-[8px] sm:text-base text-grayDark_text">
-                    {language.FORM_TEXT.appearanceType}
+                    {language.FORM_TEXT.appearanceType}{" "}
+                    <span className="text-[8px] sm:text-base text-[#FF0000] ">
+                        *
+                    </span>
                 </h2>
                 <SelectInput
                     className="min-w-[92px]  sm:min-w-[237px]"
@@ -140,7 +168,10 @@ export const External: FC<FormProps> = ({ formik }) => {
             </div>
             <div className="flex justify-between items-center">
                 <h2 className="text-[8px] sm:text-base text-grayDark_text">
-                    {language.FORM_TEXT.features}
+                    {language.FORM_TEXT.features}{" "}
+                    <span className="text-[8px] sm:text-base text-[#FF0000] ">
+                        *
+                    </span>
                 </h2>
                 <SelectInput
                     className="min-w-[92px]  sm:min-w-[237px]"

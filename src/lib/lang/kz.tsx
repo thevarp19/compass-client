@@ -81,7 +81,7 @@ const kz = {
         female: "Әйел.",
         quantityPhoto: "Фото саны",
         quantityVideo: "Бейне саны",
-
+        serials: "Сериалы",
         age: "Жасы",
         media: "Медиа",
         actors_compass: "Compass актерлері",
@@ -144,6 +144,7 @@ const kz = {
         logout: "Шығу",
         birthDate: "Туған Күні",
         nationality: "Азаматтығы",
+        serials: "Сериалдар",
         // specialization: "Мамандығы",
         cityOfResidence: "Тұратын Қаласы",
         // legalStatus: "Құқықтық Мәртебесі",

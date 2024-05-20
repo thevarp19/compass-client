@@ -11,6 +11,7 @@ import { External } from "./External";
 import { ExtraInformation } from "./ExtraInformation";
 import { GeneralInformation } from "./GeneralInformation";
 import { Movie } from "./Movie";
+import { Serial } from "./Serials";
 import { Skills } from "./Skills";
 import { Theatres } from "./Theater";
 export const Form = ({ formik }: { formik: any }) => {
@@ -67,6 +68,7 @@ export const Form = ({ formik }: { formik: any }) => {
                             <Education formik={formik} />
                             <Theatres formik={formik} />
                             <Movie formik={formik} />
+                            <Serial formik={formik} />
                             <Award formik={formik} />
                             <ExtraInformation formik={formik} />
                             <Comment formik={formik} />
