@@ -1,6 +1,6 @@
 "use client";
 import { useLanguage } from "@/context/LanguageProvider";
-import { Spin } from "antd";
+import { App, Spin } from "antd";
 import axios from "axios";
 import Image from "next/image";
 import { ChangeEvent, FC, useRef, useState } from "react";
@@ -12,11 +12,12 @@ interface PhotoUploadProps {
 export const UploadImage: FC<PhotoUploadProps> = ({ link, setLink }) => {
     const [loading, setLoading] = useState(false);
     const inputRef = useRef<HTMLInputElement>(null);
+    const { message } = App.useApp();
     const { language } = useLanguage();
     const handlePhotoInputChange = async (
         event: ChangeEvent<HTMLInputElement>
     ) => {
-        console.log(event, inputRef.current?.files);
+        // console.log(event, inputRef.current?.files);
         if (inputRef?.current?.files?.length) {
             setLoading(true);
             try {
@@ -35,14 +36,15 @@ export const UploadImage: FC<PhotoUploadProps> = ({ link, setLink }) => {
                     }
                 );
                 setLink(data.link);
+                message.success("Успешно загружено!");
             } catch (error) {
-                console.error("Upload failed:", error);
-                alert("Failed to upload image");
+                message.error("Ошибка загрузки");
+                // console.error("Upload failed:", error);
             } finally {
                 setLoading(false);
             }
         } else {
-            console.log("empty");
+            // console.log("empty");
             setLink("");
         }
     };
