@@ -33,6 +33,7 @@ export const Main: FC = () => {
         bodyType: [],
         peculiarities: [],
         typeOfAppearance: [],
+        nationationality: [],
     });
 
     if (isPending) {
@@ -303,26 +304,37 @@ const FAQ = () => {
                 <div className="flex gap-[10px] sm:gap-[50px]">
                     <div className="bg-button_color w-[120px] h-[120px] sm:w-[350px] sm:h-[350px] rounded-[10px] p-[7px] sm:p-5 flex flex-col gap-[10px] sm:gap-[30px] overflow-clip">
                         <h2 className="text-white text-[8px] sm:text-2xl leading-[130%] font-medium">
-                            {language.MAIN.who_see_contact}
+                            Что такое Compass?
                         </h2>
                         <h2 className="text-gray text-[6px] sm:text-base leading-[130%] font-medium">
-                            {language.MAIN.contact_info}
+                            Compass - это международная кастинг-платформа и
+                            киноагентство, базирующееся в Алматы, Казахстан.
+                            Компания занимается подбором лучших актёров со всего
+                            мира и помогает им найти роли в киноиндустрии.
                         </h2>
                     </div>
                     <div className="bg-button_color w-[120px] h-[120px] sm:w-[350px] sm:h-[350px] rounded-[10px] p-[7px] sm:p-5 flex flex-col gap-[10px] sm:gap-[30px] overflow-clip">
                         <h2 className="text-white text-[8px] sm:text-2xl leading-[130%] font-medium">
-                            {language.MAIN.who_see_contact}
+                            Как можно стать клиентом агентства Compass?
                         </h2>
                         <h2 className="text-gray text-[6px] sm:text-base leading-[130%] font-medium">
-                            {language.MAIN.contact_info}
+                            Чтобы стать клиентом агентства Compass, необходимо
+                            зарегистрироваться на их официальном сайте. Процесс
+                            включает заполнение анкеты с необходимой информацией
+                            и отправку заявки через онлайн-форму. После отправки
+                            заявки, команда Compass рассмотрит вашу кандидатуру.
                         </h2>
                     </div>
                     <div className="bg-button_color w-[120px] h-[120px] sm:w-[350px] sm:h-[350px] rounded-[10px] p-[7px] sm:p-5 flex flex-col gap-[10px] sm:gap-[30px] overflow-clip">
                         <h2 className="text-white text-[8px] sm:text-2xl leading-[130%] font-medium">
-                            {language.MAIN.who_see_contact}
+                            Как связаться с агентством Compass?
                         </h2>
                         <h2 className="text-gray text-[6px] sm:text-base leading-[130%] font-medium">
-                            {language.MAIN.contact_info}
+                            Вы можете связаться с агентством Compass через
+                            контактную форму на их официальном сайте или
+                            посетить их офис в Алматы. Также можно связаться с
+                            ними по телефону или электронной почте, указанным на
+                            сайте
                         </h2>
                     </div>
                 </div>
@@ -331,11 +343,13 @@ const FAQ = () => {
                 <h2 className="text-white text-[15px] sm:text-[32px] font-medium leading-[130%]">
                     {language.MAIN.any_questions}
                 </h2>
-                <button
-                    className={`bg-button_color text-[8px] sm:text-base text-white font-bold w-[90px] sm:w-[240px] h-[20px] sm:h-[50px] rounded-[3px]`}
-                >
-                    {language.MAIN.ask_question}
-                </button>
+                <Link href="https://wa.me/+77013468959">
+                    <button
+                        className={`bg-button_color text-[8px] sm:text-base text-white font-bold w-[90px] sm:w-[240px] h-[20px] sm:h-[50px] rounded-[3px]`}
+                    >
+                        {language.MAIN.ask_question}
+                    </button>
+                </Link>
             </div>
         </div>
     );

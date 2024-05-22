@@ -138,16 +138,8 @@ const MainBanner = () => {
     const { language } = useLanguage();
     return (
         <div className="bg-secondary flex flex-col justify-center items-center min-h-[554px]">
-            <div className="flex flex-col text-white text-[24px] sm:text-[52px] font-semibold text-center">
-                <h2>
-                    {language.ABOUTUS.title}
-                    <span className="text-[#6E9CF2] underline">
-                        {language.ABOUTUS.compass}
-                    </span>
-                </h2>
-                <div className="w-auto sm:w-[516px]  text-center">
-                    {language.ABOUTUS.some_text}
-                </div>
+            <div className="flex flex-col text-white text-[24px] sm:px-48 sm:text-[52px] font-semibold text-center">
+                <h2>{language.ABOUTUS.title}</h2>
             </div>
         </div>
     );
@@ -159,84 +151,53 @@ const Manifest = () => {
             <div className="flex gap-[144px] text-white">
                 <div className="flex flex-col max-w-[502px] min-h-[283px] gap-[10px] ">
                     <h2 className="underline text-[32px] font-medium leading-[130%]">
-                        What is Lorem Ipsum?
+                        Что такое Compass?
                     </h2>
                     <h2 className="text-gray_text leading-[130%]">
-                        Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry. Lorem Ipsum has been the
-                        industry's standard dummy text ever since the 1500s,
-                        when an unknown printer took a galley of type and
-                        scrambled it to make a type specimen book. It has
-                        survived not only five centuries, but also the leap into
-                        electronic typesetting, remaining essentially unchanged.
-                        It was popularised in the 1960s with the release of
-                        Letraset sheets containing Lorem Ipsum passages, and
-                        more recently with desktop publishing software like
-                        Aldus PageMaker including versions of Lorem Ipsum.
+                        Compass - это международная кастинг-платформа и
+                        киноагентство, базирующееся в Алматы, Казахстан.
+                        Компания занимается подбором лучших актёров со всего
+                        мира и помогает им найти роли в киноиндустрии.
                     </h2>
                 </div>
                 <div className="flex flex-col max-w-[502px] min-h-[283px] gap-[10px]">
                     <h2 className="underline text-[32px] font-medium leading-[130%]">
-                        Why do we use it?
+                        Какие услуги предоставляет Compass?
                     </h2>
                     <h2 className="text-gray_text leading-[130%]">
-                        It is a long established fact that a reader will be
-                        distracted by the readable content of a page when
-                        looking at its layout. The point of using Lorem Ipsum is
-                        that it has a more-or-less normal distribution of
-                        letters, as opposed to using 'Content here, content
-                        here', making it look like readable English. Many
-                        desktop publishing packages and web page editors now use
-                        Lorem Ipsum as their default model text, and a search
-                        for 'lorem ipsum' will uncover many web sites still in
-                        their infancy. Various versions have evolved over the
-                        years, sometimes by accident, sometimes on purpose
-                        (injected humour and the like).
+                        Compass предоставляет услуги по поиску и подбору актёров
+                        для различных кинопроектов. Это включает в себя
+                        организацию кастингов, создание актёрских портфолио, а
+                        также предоставление консультаций и профессиональной
+                        поддержки для актёров.
                     </h2>
                 </div>
             </div>
             <div className="flex gap-[144px] text-white">
                 <div className="flex flex-col max-w-[502px] min-h-[325px] gap-[10px]">
                     <h2 className="underline text-[32px] font-medium leading-[130%]">
-                        Where does it come from?
+                        Как можно стать клиентом агентства Compass?
                     </h2>
                     <h2 className="text-gray_text leading-[130%]">
-                        Contrary to popular belief, Lorem Ipsum is not simply
-                        random text. It has roots in a piece of classical Latin
-                        literature from 45 BC, making it over 2000 years old.
-                        Richard McClintock, a Latin professor at Hampden-Sydney
-                        College in Virginia, looked up one of the more obscure
-                        Latin words, consectetur, from a Lorem Ipsum passage,
-                        and going through the cites of the word in classical
-                        literature, discovered the undoubtable source. Lorem
-                        Ipsum comes from sections 1.10.32 and 1.10.33 of "de
-                        Finibus Bonorum et Malorum" (The Extremes of Good and
-                        Evil) by Cicero, written in 45 BC. This book is a
-                        treatise on the theory of ethics, very popular during
-                        the Renaissance. The first line of Lorem Ipsum, "Lorem
-                        ipsum dolor sit amet..", comes from a line in section
-                        1.10.32.
+                        Чтобы стать клиентом агентства Compass, необходимо
+                        зарегистрироваться на их официальном сайте. Процесс
+                        включает заполнение анкеты с необходимой информацией и
+                        отправку заявки через онлайн-форму. После отправки
+                        заявки, команда Compass рассмотрит вашу кандидатуру и
+                        свяжется с вами для дальнейших шагов.
                     </h2>
                 </div>
                 <div className="flex flex-col max-w-[502px] min-h-[325px] gap-[10px]">
                     <h2 className="underline text-[32px] font-medium leading-[130%]">
-                        Where can I get some?
+                        Какие проекты поддерживает агентство Compass?
                     </h2>
                     <h2 className="text-gray_text leading-[130%]">
-                        There are many variations of passages of Lorem Ipsum
-                        available, but the majority have suffered alteration in
-                        some form, by injected humour, or randomised words which
-                        don't look even slightly believable. If you are going to
-                        use a passage of Lorem Ipsum, you need to be sure there
-                        isn't anything embarrassing hidden in the middle of
-                        text. All the Lorem Ipsum generators on the Internet
-                        tend to repeat predefined chunks as necessary, making
-                        this the first true generator on the Internet. It uses a
-                        dictionary of over 200 Latin words, combined with a
-                        handful of model sentence structures, to generate Lorem
-                        Ipsum which looks reasonable. The generated Lorem Ipsum
-                        is therefore always free from repetition, injected
-                        humour, or non-characteristic words etc.
+                        Агентство Compass работает с широким спектром проектов,
+                        включая фильмы, телесериалы, рекламные ролики и
+                        театральные постановки. Компания сотрудничает как с
+                        местными, так и с международными продюсерами и
+                        режиссёрами, предоставляя актёров для различных жанров и
+                        форматов.
                     </h2>
                 </div>
             </div>

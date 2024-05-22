@@ -16,6 +16,7 @@ import {
     hairLengths,
     kazakhstanCities,
     musicalInstruments,
+    nationality,
     singing,
     sports,
 } from "@/modules/create-profile/const/data";
@@ -69,6 +70,7 @@ export const ActorFilter: FC<ActorFilterProps> = ({
             musicalInstrument: [],
             hairLength: [],
             eyeColor: [],
+            nationationality: [],
             bodyType: [],
             peculiarities: [],
             typeOfAppearance: [],
@@ -365,6 +367,24 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                             maxTagCount="responsive"
                             mode="multiple"
                             className="min-w-[90px] sm:min-w-[237px]"
+                            value={filters.nationationality}
+                            options={formatOptions(nationality)}
+                            onChange={(value) =>
+                                handleMultiSelectChange(
+                                    `nationationality`,
+                                    value
+                                )
+                            }
+                        />
+                    </div>
+                    <div className="flex flex-col gap-[10px]">
+                        <h2 className="text-[7px] sm:text-sm text-black">
+                            {language.ACTOR_FILTER.citizenships}
+                        </h2>
+                        <MultiSelectInput
+                            maxTagCount="responsive"
+                            mode="multiple"
+                            className="min-w-[90px] sm:min-w-[237px]"
                             value={filters.citizenship}
                             options={formatOptions(citizenships)}
                             onChange={(value) =>
@@ -372,36 +392,6 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                             }
                         />
                     </div>
-                    {/* <div className="flex flex-col gap-[10px]">
-                        <h2 className="text-[7px] sm:text-sm text-black">
-                            {language.ACTOR_FILTER.specialization}
-                        </h2>
-                        <MultiSelectInput
-                            maxTagCount="responsive"
-                            mode="multiple"
-                            className="min-w-[90px] sm:min-w-[237px]"
-                            value={filters.specialization}
-                            options={formatOptions(specializations)}
-                            onChange={(value) =>
-                                handleMultiSelectChange(`specialization`, value)
-                            }
-                        />
-                    </div> */}
-                    {/* <div className="flex flex-col gap-[10px]">
-                        <h2 className="text-[7px] sm:text-sm text-black">
-                            {language.ACTOR_FILTER.legalStatus}
-                        </h2>
-                        <MultiSelectInput
-                            maxTagCount="responsive"
-                            mode="multiple"
-                            className="min-w-[90px] sm:min-w-[237px]"
-                            value={filters.legalStatus}
-                            options={formatOptions(legalStatuses)}
-                            onChange={(value) =>
-                                handleMultiSelectChange(`legalStatus`, value)
-                            }
-                        />
-                    </div> */}
 
                     {/* MEDIAA */}
                     <h2 className="text-[8px] sm:text-base font-semibold text-black">

@@ -1,5 +1,6 @@
 import { useLanguage } from "@/context/LanguageProvider";
 import { FormProps } from "@/modules/create-profile/types";
+import { App } from "antd";
 import axios from "axios";
 import Image from "next/image";
 import { FC, useEffect, useState } from "react";
@@ -22,6 +23,7 @@ export const ImageAndVideoUpload: FC<FormProps> = ({ formik }) => {
         }
     }, [formik.values.abstract_user_data.userPhotos]);
     const [showModal, setShowModal] = useState(false);
+    const { message } = App.useApp();
     const videoSlots = formik.values?.userVideos
         ?.slice(-2)
         ?.concat(
@@ -52,7 +54,9 @@ export const ImageAndVideoUpload: FC<FormProps> = ({ formik }) => {
                 ...updatedPhotos,
             ]);
             setImageURLs((prevURLs) => [...prevURLs, ...urls].slice(-4));
+            message.success("Успешно загружено!");
         } catch (error) {
+            message.error("Ошибка загрузки");
             console.error("Error uploading files:", error);
         }
     };

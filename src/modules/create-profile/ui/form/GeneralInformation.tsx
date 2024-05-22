@@ -6,6 +6,7 @@ import {
     citizenships,
     formatOptions,
     kazakhstanCities,
+    nationality,
 } from "../../const/data";
 import { FormProps } from "../../types";
 
@@ -183,6 +184,27 @@ export const GeneralInformation: FC<FormProps> = ({ formik }) => {
             <div className="flex justify-between items-center">
                 <h2 className="text-[8px] sm:text-base text-grayDark_text leading-[130%]">
                     {language.FORM_TEXT.nationality}{" "}
+                    <span className="text-[8px] sm:text-base text-[#FF0000] ">
+                        *
+                    </span>
+                </h2>
+                <div className="flex ">
+                    <SelectInput
+                        className="min-w-[92px] sm:min-w-[237px]"
+                        value={formik.values.nationationality}
+                        options={formatOptions(nationality)}
+                        onSelect={(value) =>
+                            handleSelectChange(`nationationality`, value)
+                        }
+                        onChange={(value) =>
+                            handleSelectChange(`nationationality`, value)
+                        }
+                    />
+                </div>
+            </div>
+            <div className="flex justify-between items-center">
+                <h2 className="text-[8px] sm:text-base text-grayDark_text leading-[130%]">
+                    {language.FORM_TEXT.citizenships}{" "}
                     <span className="text-[8px] sm:text-base text-[#FF0000] ">
                         *
                     </span>

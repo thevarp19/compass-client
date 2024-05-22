@@ -43,8 +43,7 @@ const ru = {
         about_us: "О Нас",
         actors: "Актёры",
         our_project: "Наши Проекты",
-        for_casting_directors: "Для Кастинг-Директоров",
-        for_parents: "Для Родителей",
+        for_casting_directors: "Cвязаться с нами",
         instagram: "Instagram",
         telegram: "Telegram",
         rights: "2024 Compass. Все Права Защищены.",
@@ -58,9 +57,9 @@ const ru = {
         registration: "Регистрация",
     },
     ABOUTUS: {
-        title: "Мы - ",
-        compass: "Compass Agency",
-        some_text: " Some Text here and here",
+        title: "Compass - это киноагентство в Казахстане. Это ваш путь в киноиндустрии.",
+        compass: "",
+        some_text: "",
         compass_actor: "Актёры Compass",
     },
     ACTORLIST: {

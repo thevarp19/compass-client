@@ -39,6 +39,7 @@ export interface GetActorDetailResponse {
     age?: number | undefined;
     birthday: string;
     citizenship: string;
+    nationationality: string;
     // specialization: string;
     cityAccommodation: string;
     // legalStatus: string;
@@ -103,6 +104,7 @@ export interface ActorFilters {
     isCompassActor: boolean | undefined;
     gender: string;
     citizenship: string[];
+    nationationality: string[];
     // specialization: string[];
     cityAccommodation: string[];
     // legalStatus: string[];

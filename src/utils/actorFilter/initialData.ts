@@ -16,6 +16,7 @@ export const initialFilters: ActorFilters = {
     userPhotoCount_max: undefined,
     isCompassActor: undefined,
     citizenship: [],
+    nationationality: [],
     // specialization: [],
     cityAccommodation: [],
     // legalStatus: [],

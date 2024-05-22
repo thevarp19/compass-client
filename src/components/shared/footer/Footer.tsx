@@ -9,7 +9,7 @@ export const Footer: FC = () => {
     return (
         <div className="bg-primary border-t-[0.25px] border-gray_text">
             <div className="flex justify-center pt-[25px] sm:pt-12 pb-[46px] sm:pb-[88px]">
-                <div className="flex gap-[15px] sm:gap-[170px] items-center">
+                <div className="flex gap-[30px] sm:gap-[250px] jus items-center">
                     <div className="max-w-[84px] sm:max-w-[167px] flex flex-col gap-[15px] sm:gap-[50px]">
                         <h2 className="text-white text-[12px] sm:text-2xl font-semibold">
                             {language.FOOTER.name}
@@ -25,13 +25,19 @@ export const Footer: FC = () => {
                                 className="w-[15px] h-[15px] sm:w-[30px] sm:h-[30px]"
                                 alt="telegram"
                             />
-                            <Image
-                                src="/icons/instagram.svg"
-                                width={30}
-                                height={30}
-                                className="w-[15px] h-[15px] sm:w-[30px] sm:h-[30px]"
-                                alt="instagram"
-                            />
+                            <Link
+                                href={
+                                    "https://www.instagram.com/compass_agency?igsh=MXNsN3I3ZDNtNDRsbA%3D%3D&utm_source=qr"
+                                }
+                            >
+                                <Image
+                                    src="/icons/instagram.svg"
+                                    width={30}
+                                    height={30}
+                                    className="w-[15px] h-[15px] sm:w-[30px] sm:h-[30px]"
+                                    alt="instagram"
+                                />
+                            </Link>
                             <Image
                                 src="/icons/linkedin.svg"
                                 width={30}
@@ -70,7 +76,7 @@ export const Footer: FC = () => {
                             {language.FOOTER.for_casting_directors}
                         </h2>
                         <div className="flex flex-col gap-[15px]">
-                            <h2 className="flex gap-[25px] text-gray_text text-[8px] sm:text-base">
+                            <h2 className="flex gap-[25px] items-center text-gray_text text-[8px] sm:text-base">
                                 <span>
                                     <Image
                                         src="/icons/phone.svg"
@@ -80,9 +86,9 @@ export const Footer: FC = () => {
                                         className="w-[10px] h-[10px] sm:w-[20px] sm:h-[20px]"
                                     />
                                 </span>
-                                +8-(800)-555-3535
+                                +7 (701) 346-89-59
                             </h2>
-                            <h2 className="flex gap-[25px] text-gray_text text-[8px] sm:text-base">
+                            <h2 className="flex gap-[25px]  items-center text-gray_text text-[8px] sm:text-base">
                                 <span>
                                     <Image
                                         src="/icons/envelope.svg"
@@ -92,35 +98,27 @@ export const Footer: FC = () => {
                                         className="w-[10px] h-[10px] sm:w-[20px] sm:h-[20px]"
                                     />
                                 </span>
-                                info@compass.com
+                                Compass_agency1@mail.ru
                             </h2>
-                            <h2 className="flex gap-[25px] text-gray_text text-[8px] sm:text-base">
-                                <span>
-                                    <Image
-                                        src="/icons/telegram.svg"
-                                        width={20}
-                                        height={20}
-                                        alt="telegram"
-                                        className="w-[10px] h-[10px] sm:w-[20px] sm:h-[20px]"
-                                    />
-                                </span>
-                                @compasskz
-                            </h2>
+                            <Link
+                                href={
+                                    "https://www.instagram.com/compass_agency?igsh=MXNsN3I3ZDNtNDRsbA%3D%3D&utm_source=qr"
+                                }
+                            >
+                                <h2 className="flex gap-[25px]  items-center text-gray_text text-[8px] sm:text-base">
+                                    <span>
+                                        <Image
+                                            src="/icons/instagram.svg"
+                                            width={20}
+                                            height={20}
+                                            alt="insta"
+                                            className="w-[10px] h-[10px] sm:w-[20px] sm:h-[20px]"
+                                        />
+                                    </span>
+                                    @compass_agency
+                                </h2>
+                            </Link>
                         </div>
-                    </div>
-                    <div className="flex flex-col gap-[10px] sm:gap-5">
-                        <h2 className="text-white text-[8px] sm:text-base">
-                            {language.FOOTER.for_parents}
-                        </h2>
-                        <h2 className="text-gray_text text-[8px] sm:text-base">
-                            {language.FOOTER.name}
-                        </h2>
-                        <h2 className="text-gray_text text-[8px] sm:text-base">
-                            {language.FOOTER.instagram}
-                        </h2>
-                        <h2 className="text-gray_text text-[8px] sm:text-base">
-                            {language.FOOTER.telegram}
-                        </h2>
                     </div>
                 </div>
             </div>
