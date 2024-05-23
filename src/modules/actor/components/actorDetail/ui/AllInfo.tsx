@@ -40,7 +40,7 @@ export const AllInfo: FC<AllInfoProps> = ({ actor, isEdit }) => {
                                     className="object-cover w-full h-full"
                                 />
                             </div>
-                            <div className="flex justify-center flex-wrap gap-[6px] sm:gap-[15px] w-[70px] min-[415px]:w-[100px] sm:w-[250px] sm:px-5">
+                            <div className="flex flex-wrap gap-[6px] sm:gap-[15px] w-[70px] min-[415px]:w-[100px] sm:w-[250px] sm:px-5">
                                 {socialMediaIcons
                                     .filter((social) => {
                                         const url =
@@ -49,7 +49,7 @@ export const AllInfo: FC<AllInfoProps> = ({ actor, isEdit }) => {
                                                     media.name.toLowerCase() ===
                                                     social.name.toLowerCase()
                                             )?.url;
-                                        return url; // Keeps the social media only if a URL is found
+                                        return url;
                                     })
                                     .map((social, index) => {
                                         const socialMediaUrl =

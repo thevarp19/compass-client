@@ -37,27 +37,40 @@ export const ImageAndVideoUpload: FC<FormProps> = ({ formik }) => {
 
     const handleFileChange = async (event: any) => {
         const filesArray = Array.from(event.target.files);
-        try {
-            const uploadPromises = filesArray.map((file) =>
-                uploadFileAndGetURL(file)
-            );
-            const urls = await Promise.all(uploadPromises);
+        const validFiles = filesArray.filter(
+            (file: any) => file.size <= 5 * 1024 * 1024
+        );
+        const invalidFiles = filesArray.filter(
+            (file: any) => file.size > 5 * 1024 * 1024
+        );
 
-            const nonEmptyPhotos =
-                formik.values.abstract_user_data.userPhotos.filter(
-                    (photo) => photo.url
+        if (invalidFiles.length > 0) {
+            message.error("Размер файла превышает 5MB");
+        }
+
+        if (validFiles.length > 0) {
+            try {
+                const uploadPromises = validFiles.map((file) =>
+                    uploadFileAndGetURL(file)
                 );
-            const updatedPhotos = urls.map((url) => ({ url }));
+                const urls = await Promise.all(uploadPromises);
 
-            formik.setFieldValue("abstract_user_data.userPhotos", [
-                ...nonEmptyPhotos,
-                ...updatedPhotos,
-            ]);
-            setImageURLs((prevURLs) => [...prevURLs, ...urls].slice(-4));
-            message.success("Успешно загружено!");
-        } catch (error) {
-            message.error("Ошибка загрузки");
-            console.error("Error uploading files:", error);
+                const nonEmptyPhotos =
+                    formik.values.abstract_user_data.userPhotos.filter(
+                        (photo) => photo.url
+                    );
+                const updatedPhotos = urls.map((url) => ({ url }));
+
+                formik.setFieldValue("abstract_user_data.userPhotos", [
+                    ...nonEmptyPhotos,
+                    ...updatedPhotos,
+                ]);
+                setImageURLs((prevURLs) => [...prevURLs, ...urls].slice(-4));
+                message.success("Успешно загружено!");
+            } catch (error) {
+                message.error("Ошибка загрузки");
+                console.error("Error uploading files:", error);
+            }
         }
     };
 

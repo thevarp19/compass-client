@@ -283,9 +283,6 @@ export const GeneralInformation: FC<FormProps> = ({ formik }) => {
             <div className="flex justify-between items-center">
                 <h2 className="text-[8px] sm:text-base text-grayDark_text leading-[130%]">
                     {language.FORM_TEXT.agency}{" "}
-                    <span className="text-[8px] sm:text-base text-[#FF0000] ">
-                        *
-                    </span>
                 </h2>
                 <div className="flex">
                     <FormikInput

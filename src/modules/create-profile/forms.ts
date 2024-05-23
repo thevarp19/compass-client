@@ -25,10 +25,10 @@ export const useCreateProfile = () => {
             fieldErrors.lastName = "Last name is required";
             errors.push("Пожалуйста, введите вашу фамилию");
         }
-        if (!values.abstract_user_data.thirdName) {
-            fieldErrors.thirdName = "Middle name is required";
-            errors.push("Пожалуйста, введите ваше отчество");
-        }
+        // if (!values.abstract_user_data.thirdName) {
+        //     fieldErrors.thirdName = "Middle name is required";
+        //     errors.push("Пожалуйста, введите ваше отчество");
+        // }
         if (!values.gender) {
             fieldErrors.gender = "Gender is required";
             errors.push("Пожалуйста, выберите ваш пол");
@@ -49,10 +49,10 @@ export const useCreateProfile = () => {
             fieldErrors.cityAccommodation = "City of residence is required";
             errors.push("Пожалуйста, выберите ваш город проживания");
         }
-        if (!values.agency) {
-            fieldErrors.agency = "Agency is required";
-            errors.push("Пожалуйста, введите вашу организацию");
-        }
+        // if (!values.agency) {
+        //     fieldErrors.agency = "Agency is required";
+        //     errors.push("Пожалуйста, введите вашу организацию");
+        // }
         if (
             !values.abstract_user_data.userPhotos ||
             values.abstract_user_data.userPhotos.length < 3
@@ -98,10 +98,10 @@ export const useCreateProfile = () => {
             fieldErrors.typeOfAppearance = "Appearance type is required";
             errors.push("Пожалуйста, выберите тип вашей внешности");
         }
-        if (!values.peculiarities) {
-            fieldErrors.peculiarities = "Features are required";
-            errors.push("Пожалуйста, выберите особенности вашей внешности");
-        }
+        // if (!values.peculiarities) {
+        //     fieldErrors.peculiarities = "Features are required";
+        //     errors.push("Пожалуйста, выберите особенности вашей внешности");
+        // }
 
         // Social Media Validation
         if (
@@ -138,7 +138,6 @@ export const useCreateProfile = () => {
             );
         }
 
-        // Contact Information Validation
         if (!values.userContacts || values.userContacts.length === 0) {
             fieldErrors.userContacts = "Please add at least one contact";
             errors.push("Пожалуйста, добавьте хотя бы один контакт");

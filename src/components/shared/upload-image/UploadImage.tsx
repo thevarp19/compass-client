@@ -17,11 +17,15 @@ export const UploadImage: FC<PhotoUploadProps> = ({ link, setLink }) => {
     const handlePhotoInputChange = async (
         event: ChangeEvent<HTMLInputElement>
     ) => {
-        // console.log(event, inputRef.current?.files);
         if (inputRef?.current?.files?.length) {
+            const selectedFile = inputRef.current.files[0];
+            if (selectedFile.size > 5 * 1024 * 1024) {
+                // 5MB in bytes
+                message.error("Размер файла превышает 5MB");
+                return;
+            }
             setLoading(true);
             try {
-                const selectedFile = inputRef.current.files[0];
                 const formData = new FormData();
                 formData.append("image", selectedFile);
 
@@ -39,12 +43,10 @@ export const UploadImage: FC<PhotoUploadProps> = ({ link, setLink }) => {
                 message.success("Успешно загружено!");
             } catch (error) {
                 message.error("Ошибка загрузки");
-                // console.error("Upload failed:", error);
             } finally {
                 setLoading(false);
             }
         } else {
-            // console.log("empty");
             setLink("");
         }
     };
@@ -66,7 +68,7 @@ export const UploadImage: FC<PhotoUploadProps> = ({ link, setLink }) => {
             </div>
             <label
                 htmlFor="profile-image-upload"
-                className="text-center flex justify-center items-center  py-[5px] sm:py-2 sm:px-4 cursor-pointer bg-button_color text-[8px] sm:text-base text-white font-bold w-[70px] h-[20px] min-[400px]:w-[100px] min-[400px]:h-[20px] sm:w-[250px]  sm:h-[40px] rounded-[5px]"
+                className="text-center flex justify-center items-center py-[5px] sm:py-2 sm:px-4 cursor-pointer bg-button_color text-[8px] sm:text-base text-white font-bold w-[70px] h-[20px] min-[400px]:w-[100px] min-[400px]:h-[20px] sm:w-[250px] sm:h-[40px] rounded-[5px]"
             >
                 {language.FORM_TEXT.uploadButton}
             </label>
