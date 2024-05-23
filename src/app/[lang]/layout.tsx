@@ -27,10 +27,10 @@ export default async function LanguageLayout({
             <QueryWrapper>
                 <StoreProvider>
                     <AntdRegistry>
-                        <App>
+                        <App className="min-h-screen flex flex-col">
                             <AuthProvider>
                                 <Navbar />
-                                {children}
+                                <div className="flex-grow">{children}</div>
                                 <Footer />
                             </AuthProvider>
                         </App>

@@ -12,7 +12,7 @@ export const createActorMutation = () => {
             return data;
         },
         onSuccess() {
-            message.success("Success!");
+            message.success("Успешно!");
         },
         onError(error) {
             message.error(`${error?.response?.data.message[0]}`);
@@ -28,7 +28,7 @@ export const createDirectorMutation = () => {
             return data;
         },
         onSuccess() {
-            message.success("Success!");
+            message.success("Успешно!");
         },
         onError(error) {
             message.error(`${error?.response?.data.message[0]}`);

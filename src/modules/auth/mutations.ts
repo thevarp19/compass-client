@@ -21,7 +21,7 @@ export const loginMutation = (success: (data: LoginResponse) => void) => {
         },
         onSuccess(data) {
             success(data);
-            message.success("Success!");
+            message.success("Успешно!");
         },
         onError(error) {
             message.error(`${error?.response?.data.message}`);
@@ -38,8 +38,7 @@ export const registerMutation = () => {
             return data;
         },
         onSuccess() {
-            // console.log("Success!");
-            message.success("Success!");
+            message.success("Успешно!");
             router.push(getHref("/auth/login"));
         },
         onError(error) {

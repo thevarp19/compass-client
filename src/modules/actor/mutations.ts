@@ -13,7 +13,7 @@
 //             // return data;
 //         },
 //         onSuccess() {
-//             message.success("Success!");
+//             message.success("Успешно!");
 //         },
 //         onError(error) {
 //             message.error(`${error?.response?.data.message}`);
