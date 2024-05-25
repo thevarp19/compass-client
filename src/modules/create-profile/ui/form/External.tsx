@@ -12,12 +12,22 @@ import {
 } from "../../const/data";
 
 import { useLanguage } from "@/context/LanguageProvider";
+import { FormikProps } from "formik";
+import { get } from "lodash";
 import { FormProps } from "../../types";
 
 export const External: FC<FormProps> = ({ formik }) => {
     const { language } = useLanguage();
     const handleSelectChange = (name: string, value: string) => {
         formik.setFieldValue(name, value);
+    };
+    const getFormikHelpText = (formik: FormikProps<any>, name: string) => {
+        const error = get(formik.errors, name);
+        const touched = get(formik.touched, name);
+        if (touched && error) {
+            return error;
+        }
+        return "";
     };
     return (
         <div className="flex flex-col gap-5 w-full">
@@ -100,6 +110,7 @@ export const External: FC<FormProps> = ({ formik }) => {
                     onChange={(value) =>
                         handleSelectChange(`hairLength`, value)
                     }
+                    helpText={getFormikHelpText(formik, "hairLength") as string}
                 />
             </div>
             <div className="flex justify-between items-center">
@@ -115,6 +126,7 @@ export const External: FC<FormProps> = ({ formik }) => {
                     options={formatOptions(hairColors)}
                     onSelect={(value) => handleSelectChange(`hairColor`, value)}
                     onChange={(value) => handleSelectChange(`hairColor`, value)}
+                    helpText={getFormikHelpText(formik, "hairColor") as string}
                 />
             </div>
             <div className="flex justify-between items-center">
@@ -130,6 +142,7 @@ export const External: FC<FormProps> = ({ formik }) => {
                     options={formatOptions(eyeColors)}
                     onSelect={(value) => handleSelectChange(`eyeColor`, value)}
                     onChange={(value) => handleSelectChange(`eyeColor`, value)}
+                    helpText={getFormikHelpText(formik, "eyeColor") as string}
                 />
             </div>
             <div className="flex justify-between items-center">
@@ -145,6 +158,7 @@ export const External: FC<FormProps> = ({ formik }) => {
                     options={formatOptions(bodyTypes)}
                     onSelect={(value) => handleSelectChange(`bodyType`, value)}
                     onChange={(value) => handleSelectChange(`bodyType`, value)}
+                    helpText={getFormikHelpText(formik, "bodyType") as string}
                 />
             </div>
             <div className="flex justify-between items-center">
@@ -163,6 +177,9 @@ export const External: FC<FormProps> = ({ formik }) => {
                     }
                     onChange={(value) =>
                         handleSelectChange(`typeOfAppearance`, value)
+                    }
+                    helpText={
+                        getFormikHelpText(formik, "typeOfAppearance") as string
                     }
                 />
             </div>

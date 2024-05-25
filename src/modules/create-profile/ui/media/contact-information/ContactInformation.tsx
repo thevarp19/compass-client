@@ -1,5 +1,7 @@
 import { useLanguage } from "@/context/LanguageProvider";
 import { FormProps } from "@/modules/create-profile/types";
+import { FormikProps } from "formik";
+import { get } from "lodash";
 import { ChangeEvent, FC, useEffect, useState } from "react";
 
 export const ContactInformation: FC<FormProps> = ({ formik }) => {
@@ -24,7 +26,14 @@ export const ContactInformation: FC<FormProps> = ({ formik }) => {
         setContacts(newContact);
         formik.setFieldValue("userContacts", newContact);
     };
-
+    const getFormikHelpText = (formik: FormikProps<any>, name: string) => {
+        const error = get(formik.errors, name);
+        const touched = get(formik.touched, name);
+        if (touched && error) {
+            return error;
+        }
+        return "";
+    };
     const addContact = () => {
         const newContact = {
             name: "",
@@ -65,14 +74,35 @@ export const ContactInformation: FC<FormProps> = ({ formik }) => {
                                     *
                                 </span>
                             </h2>
-                            <input
-                                className={`w-[90px] sm:!w-[237px] h-[14px] sm:h-[24px] px-[4px] sm:px-[10px] py-[3px] sm:py-[4px] !indent-0 text-[6px] sm:text-xs border border-gray_border !rounded-[2px] outline-none text-grayDark_text`}
-                                value={contact.name}
-                                type="text"
-                                onChange={(e) => handleInputChange(index, e)}
-                                name="name"
-                                placeholder="Имя"
-                            />
+                            <div className="flex items-center relative">
+                                <input
+                                    className={`w-[90px] sm:!w-[237px] h-[14px] sm:h-[24px] px-[4px] sm:px-[10px] py-[3px] sm:py-[4px] !indent-0 text-[6px] sm:text-xs border border-gray_border !rounded-[2px] outline-none text-grayDark_text`}
+                                    value={contact.name}
+                                    type="text"
+                                    onChange={(e) =>
+                                        handleInputChange(index, e)
+                                    }
+                                    name="name"
+                                    placeholder="Имя"
+                                />
+                                {(getFormikHelpText(
+                                    formik,
+                                    `userContacts[${index}].name`
+                                ) as string) && (
+                                    <span
+                                        className={
+                                            "absolute -bottom-[10px] sm:-bottom-[14px] tracking-normal leading-3 text-[4px] sm:text-[10px] text-red whitespace-nowrap overflow-hidden max-w-max"
+                                        }
+                                    >
+                                        {
+                                            getFormikHelpText(
+                                                formik,
+                                                `userContacts[${index}].name`
+                                            ) as string
+                                        }
+                                    </span>
+                                )}
+                            </div>
                         </div>
 
                         <div className="flex flex-col gap-[5px] sm:gap-[10px]">
@@ -82,14 +112,35 @@ export const ContactInformation: FC<FormProps> = ({ formik }) => {
                                     *
                                 </span>
                             </h2>
-                            <input
-                                className={`w-[90px] sm:!w-[237px] h-[14px] sm:h-[24px] px-[4px] sm:px-[10px] py-[3px] sm:py-[4px] !indent-0 text-[6px] sm:text-xs border border-gray_border !rounded-[2px] outline-none text-grayDark_text`}
-                                value={contact.number}
-                                type="text"
-                                placeholder="Номер"
-                                onChange={(e) => handleInputChange(index, e)}
-                                name="number"
-                            />
+                            <div className="flex items-center relative">
+                                <input
+                                    className={`w-[90px] sm:!w-[237px] h-[14px] sm:h-[24px] px-[4px] sm:px-[10px] py-[3px] sm:py-[4px] !indent-0 text-[6px] sm:text-xs border border-gray_border !rounded-[2px] outline-none text-grayDark_text`}
+                                    value={contact.number}
+                                    type="text"
+                                    placeholder="Номер"
+                                    onChange={(e) =>
+                                        handleInputChange(index, e)
+                                    }
+                                    name="number"
+                                />
+                                {(getFormikHelpText(
+                                    formik,
+                                    `userContacts[${index}].number`
+                                ) as string) && (
+                                    <span
+                                        className={
+                                            "absolute -bottom-[10px] sm:-bottom-[14px] tracking-normal leading-3 text-[4px] sm:text-[10px] text-red whitespace-nowrap overflow-hidden max-w-max"
+                                        }
+                                    >
+                                        {
+                                            getFormikHelpText(
+                                                formik,
+                                                `userContacts[${index}].number`
+                                            ) as string
+                                        }
+                                    </span>
+                                )}
+                            </div>
                         </div>
 
                         {index > 0 && (

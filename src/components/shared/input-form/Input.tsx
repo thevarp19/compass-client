@@ -52,7 +52,7 @@ export const Input: FC<InputProps> = ({ helpText, className, ...props }) => {
             {helpText && (
                 <span
                     className={
-                        "absolute -bottom-[16px] left-[10px] tracking-normal leading-3 text-[8px] sm:text-[10px] text-red max-sm:text-[10px]"
+                        "absolute -bottom-[10px] sm:-bottom-[14px] tracking-normal leading-3 text-[4px] sm:text-[10px] text-red whitespace-nowrap overflow-hidden max-w-max"
                     }
                 >
                     {helpText}

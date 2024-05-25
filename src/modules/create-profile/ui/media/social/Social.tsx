@@ -2,6 +2,8 @@ import { SelectInput } from "@/components/shared/select-input/SelectInput";
 import { useLanguage } from "@/context/LanguageProvider";
 import { socialMediaOptions } from "@/modules/create-profile/const/data";
 import { FormProps } from "@/modules/create-profile/types";
+import { FormikProps } from "formik";
+import { get } from "lodash";
 import { ChangeEvent, FC, useEffect, useState } from "react";
 
 export const Social: FC<FormProps> = ({ formik }) => {
@@ -14,6 +16,14 @@ export const Social: FC<FormProps> = ({ formik }) => {
         setSocials(formik.values.abstract_user_data.userSocialMedias || []);
     }, [formik.values.abstract_user_data.userSocialMedias]);
 
+    const getFormikHelpText = (formik: FormikProps<any>, name: string) => {
+        const error = get(formik.errors, name);
+        const touched = get(formik.touched, name);
+        if (touched && error) {
+            return error;
+        }
+        return "";
+    };
     const handleSelectChange = (index: number, name: string, value: string) => {
         const newSocials = socials.map((social, idx) =>
             idx === index ? { ...social, name: value } : social
@@ -83,6 +93,12 @@ export const Social: FC<FormProps> = ({ formik }) => {
                                 onChange={(value) => {
                                     handleSelectChange(index, "name", value);
                                 }}
+                                helpText={
+                                    getFormikHelpText(
+                                        formik,
+                                        `abstract_user_data.userSocialMedias[${index}].name`
+                                    ) as string
+                                }
                             />
                         </div>
                     </div>
@@ -93,7 +109,7 @@ export const Social: FC<FormProps> = ({ formik }) => {
                                 *
                             </span>
                         </h2>
-                        <div className="flex">
+                        <div className="flex items-center relative">
                             <input
                                 className={`w-[90px] sm:!w-[248px] h-[14px] sm:h-[24px] px-[4px] sm:px-[10px] py-[3px] sm:py-[4px] !indent-0 text-[6px] sm:text-xs border border-gray_border !rounded-[2px] outline-none text-grayDark_text`}
                                 value={social.url}
@@ -101,6 +117,23 @@ export const Social: FC<FormProps> = ({ formik }) => {
                                 onChange={(e) => handleInputChange(index, e)}
                                 name="url"
                             />
+                            {(getFormikHelpText(
+                                formik,
+                                `abstract_user_data.userSocialMedias[${index}].url`
+                            ) as string) && (
+                                <span
+                                    className={
+                                        "absolute -bottom-[10px] sm:-bottom-[14px] tracking-normal leading-3 text-[4px] sm:text-[10px] text-red whitespace-nowrap overflow-hidden max-w-max"
+                                    }
+                                >
+                                    {
+                                        getFormikHelpText(
+                                            formik,
+                                            `abstract_user_data.userSocialMedias[${index}].url`
+                                        ) as string
+                                    }
+                                </span>
+                            )}
                         </div>
                     </div>
 

@@ -13,164 +13,99 @@ import { createActorMutation, createDirectorMutation } from "./mutations";
 
 export const useCreateProfile = () => {
     const validateValues = (values: any) => {
-        const errors = [];
-        const fieldErrors: { [key: string]: string } = {};
-
-        // General Information Validation
+        const errors: { [key: string]: string } = {};
         if (!values.abstract_user_data.firstName) {
-            fieldErrors.firstName = "First name is required";
-            errors.push("Пожалуйста, введите ваше имя");
+            errors["abstract_user_data.firstName"] = "Заполните поле";
         }
         if (!values.abstract_user_data.lastName) {
-            fieldErrors.lastName = "Last name is required";
-            errors.push("Пожалуйста, введите вашу фамилию");
+            errors["abstract_user_data.lastName"] = "Заполните поле";
         }
-        // if (!values.abstract_user_data.thirdName) {
-        //     fieldErrors.thirdName = "Middle name is required";
-        //     errors.push("Пожалуйста, введите ваше отчество");
-        // }
         if (!values.gender) {
-            fieldErrors.gender = "Gender is required";
-            errors.push("Пожалуйста, выберите ваш пол");
+            errors["gender"] = "Выберите пол";
         }
         if (!values.birthday) {
-            fieldErrors.birthday = "Birthdate is required";
-            errors.push("Пожалуйста, введите вашу дату рождения");
+            errors["birthday"] = "Заполните поле";
         }
         if (!values.nationationality) {
-            fieldErrors.nationationality = "Nationality is required";
-            errors.push("Пожалуйста, выберите вашу национальность");
+            errors["nationationality"] = "Заполните поле";
         }
         if (!values.citizenship) {
-            fieldErrors.citizenship = "Citizenship is required";
-            errors.push("Пожалуйста, выберите ваше гражданство");
+            errors["citizenship"] = "Заполните поле";
         }
         if (!values.cityAccommodation) {
-            fieldErrors.cityAccommodation = "City of residence is required";
-            errors.push("Пожалуйста, выберите ваш город проживания");
-        }
-        // if (!values.agency) {
-        //     fieldErrors.agency = "Agency is required";
-        //     errors.push("Пожалуйста, введите вашу организацию");
-        // }
-        if (
-            !values.abstract_user_data.userPhotos ||
-            values.abstract_user_data.userPhotos.length < 3
-        ) {
-            fieldErrors.userPhotos = "Please upload at least 3 photos";
-            errors.push("Пожалуйста, загрузите как минимум 3 фотографии");
+            errors["cityAccommodation"] = "Заполните поле";
         }
 
         // External Data Validation
         if (!values.height) {
-            fieldErrors.height = "Height is required";
-            errors.push("Пожалуйста, введите ваш рост");
+            errors["height"] = "Заполните поле";
         }
         if (!values.weight) {
-            fieldErrors.weight = "Weight is required";
-            errors.push("Пожалуйста, введите ваш вес");
+            errors["weight"] = "Заполните поле";
         }
         if (!values.clothingSize) {
-            fieldErrors.clothingSize = "Clothing size is required";
-            errors.push("Пожалуйста, введите ваш размер одежды");
+            errors["clothingSize"] = "Заполните поле";
         }
         if (!values.shoeSize) {
-            fieldErrors.shoeSize = "Shoe size is required";
-            errors.push("Пожалуйста, введите ваш размер обуви");
+            errors["shoeSize"] = "Заполните поле";
         }
         if (!values.hairLength) {
-            fieldErrors.hairLength = "Hair length is required";
-            errors.push("Пожалуйста, выберите длину ваших волос");
+            errors["hairLength"] = "Заполните поле";
         }
         if (!values.hairColor) {
-            fieldErrors.hairColor = "Hair color is required";
-            errors.push("Пожалуйста, выберите цвет ваших волос");
+            errors["hairColor"] = "Заполните поле";
         }
         if (!values.eyeColor) {
-            fieldErrors.eyeColor = "Eye color is required";
-            errors.push("Пожалуйста, выберите цвет ваших глаз");
+            errors["eyeColor"] = "Заполните поле";
         }
         if (!values.bodyType) {
-            fieldErrors.bodyType = "Body type is required";
-            errors.push("Пожалуйста, выберите тип вашего телосложения");
+            errors["bodyType"] = "Заполните поле";
         }
         if (!values.typeOfAppearance) {
-            fieldErrors.typeOfAppearance = "Appearance type is required";
-            errors.push("Пожалуйста, выберите тип вашей внешности");
+            errors["typeOfAppearance"] = "Заполните поле";
         }
-        // if (!values.peculiarities) {
-        //     fieldErrors.peculiarities = "Features are required";
-        //     errors.push("Пожалуйста, выберите особенности вашей внешности");
-        // }
 
         // Social Media Validation
         if (
             !values.abstract_user_data.userSocialMedias ||
             values.abstract_user_data.userSocialMedias.length === 0
         ) {
-            fieldErrors.userSocialMedias =
-                "Please add at least one social media link";
-            errors.push(
-                "Пожалуйста, добавьте хотя бы одну ссылку на социальную сеть"
-            );
+            errors["abstract_user_data.userSocialMedias"] = "Заполните поле";
         } else {
             values.abstract_user_data.userSocialMedias.forEach(
                 (social: { name: any; url: any }, index: number) => {
                     if (!social.name) {
-                        fieldErrors[`socialName_${index}`] =
-                            "Social media name is required";
-                        errors.push(
-                            `Пожалуйста, выберите название социальной сети для записи ${
-                                index + 1
-                            }`
-                        );
+                        errors[
+                            `abstract_user_data.userSocialMedias[${index}].name`
+                        ] = "Заполните поле";
                     }
                     if (!social.url) {
-                        fieldErrors[`socialUrl_${index}`] =
-                            "Social media URL is required";
-                        errors.push(
-                            `Пожалуйста, введите ссылку на социальную сеть для записи ${
-                                index + 1
-                            }`
-                        );
+                        errors[
+                            `abstract_user_data.userSocialMedias[${index}].url`
+                        ] = "Заполните поле";
                     }
                 }
             );
         }
 
         if (!values.userContacts || values.userContacts.length === 0) {
-            fieldErrors.userContacts = "Please add at least one contact";
-            errors.push("Пожалуйста, добавьте хотя бы один контакт");
+            errors["userContacts"] = "Заполните поле";
         } else {
             values.userContacts.forEach(
                 (contact: { name: any; number: any }, index: number) => {
                     if (!contact.name) {
-                        fieldErrors[`contactName_${index}`] =
-                            "Contact name is required";
-                        errors.push(
-                            `Пожалуйста, введите имя для контакта ${index + 1}`
-                        );
+                        errors[`userContacts[${index}].name`] =
+                            "Заполните поле";
                     }
                     if (!contact.number) {
-                        fieldErrors[`contactNumber_${index}`] =
-                            "Contact number is required";
-                        errors.push(
-                            `Пожалуйста, введите номер телефона для контакта ${
-                                index + 1
-                            }`
-                        );
+                        errors[`userContacts[${index}].number`] =
+                            "Заполните поле";
                     }
                 }
             );
         }
 
-        return { errors, fieldErrors };
-    };
-
-    const displayLastErrorMessage = (errors: any) => {
-        if (errors.length > 0) {
-            message.error(errors[0], 3);
-        }
+        return errors;
     };
 
     const mutation = createActorMutation();
@@ -178,12 +113,18 @@ export const useCreateProfile = () => {
     const { getHref } = useLanguage();
     const formik = useFormik({
         initialValues: createActorValues,
-        // validationSchema,
+        validate: validateValues,
         onSubmit: async (values, { setSubmitting }) => {
-            const { errors, fieldErrors } = validateValues(values);
-
-            if (errors.length > 0) {
-                displayLastErrorMessage(errors);
+            if (!values.abstract_user_data.avatar) {
+                message.error("Загрузите аватар!");
+                setSubmitting(false);
+                return;
+            }
+            if (
+                !values.abstract_user_data.userPhotos ||
+                values.abstract_user_data.userPhotos.length < 3
+            ) {
+                message.error("Пожалуйста, загрузите как минимум 3 фотографии");
                 setSubmitting(false);
                 return;
             }

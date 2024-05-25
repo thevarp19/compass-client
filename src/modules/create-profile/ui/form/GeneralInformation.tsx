@@ -1,7 +1,9 @@
 import { FormikInput } from "@/components/shared/formik-input/FormikInput";
 import { SelectInput } from "@/components/shared/select-input/SelectInput";
 import { useLanguage } from "@/context/LanguageProvider";
-import { ChangeEvent, FC, useEffect, useState } from "react";
+import { FormikProps } from "formik";
+import { get } from "lodash";
+import { ChangeEvent, FC, useEffect, useRef, useState } from "react";
 import {
     citizenships,
     formatOptions,
@@ -24,6 +26,17 @@ export const GeneralInformation: FC<FormProps> = ({ formik }) => {
         month: "",
         year: "",
     });
+    const dayRef = useRef<HTMLInputElement>(null);
+    const monthRef = useRef<HTMLInputElement>(null);
+    const yearRef = useRef<HTMLInputElement>(null);
+    const getFormikHelpText = (formik: FormikProps<any>, name: string) => {
+        const error = get(formik.errors, name);
+        const touched = get(formik.touched, name);
+        if (touched && error) {
+            return error;
+        }
+        return "";
+    };
     const handleOnClick = (value: string) => {
         setGender(value);
         formik.setFieldValue("gender", value);
@@ -47,6 +60,11 @@ export const GeneralInformation: FC<FormProps> = ({ formik }) => {
             ...prevState,
             [name]: value,
         }));
+        if (name === "day" && value.length === 2) {
+            monthRef.current?.focus();
+        } else if (name === "month" && value.length === 2) {
+            yearRef.current?.focus();
+        }
     };
     useEffect(() => {
         if (date.year.length === 4 && date.month && date.day) {
@@ -99,9 +117,6 @@ export const GeneralInformation: FC<FormProps> = ({ formik }) => {
             <div className="flex justify-between items-center">
                 <h2 className="text-[8px] sm:text-base text-grayDark_text">
                     {language.FORM_TEXT.middleName}{" "}
-                    <span className="text-[8px] sm:text-base text-[#FF0000] ">
-                        *
-                    </span>
                 </h2>
                 <FormikInput
                     className="!text-[6px] sm:!text-base"
@@ -117,7 +132,7 @@ export const GeneralInformation: FC<FormProps> = ({ formik }) => {
                         *
                     </span>
                 </h2>
-                <div className="flex items-center min-w-[92px] sm:min-w-[237px]">
+                <div className="flex items-center min-w-[92px] sm:min-w-[237px] relative">
                     <div
                         className={`border-[1px] rounded-s-[3px] py-[3px] sm:py-1 text-[6px] sm:text-xs font-light text-grayDark_text px-[7px] sm:px-[10px] text-center border-${
                             gender === "male"
@@ -142,6 +157,15 @@ export const GeneralInformation: FC<FormProps> = ({ formik }) => {
                     >
                         {language.FORM_TEXT.female}
                     </div>
+                    {(getFormikHelpText(formik, `gender`) as string) && (
+                        <span
+                            className={
+                                "absolute -bottom-[10px] sm:-bottom-[14px] tracking-normal leading-3 text-[4px] sm:text-[10px] text-red whitespace-nowrap overflow-hidden max-w-max"
+                            }
+                        >
+                            {getFormikHelpText(formik, `gender`) as string}
+                        </span>
+                    )}
                 </div>
             </div>
             <div className="flex justify-between items-center">
@@ -151,7 +175,7 @@ export const GeneralInformation: FC<FormProps> = ({ formik }) => {
                         *
                     </span>
                 </h2>
-                <div className="flex gap-[1px] sm:gap-[6px] min-w-[92px] sm:min-w-[237px]">
+                <div className="flex gap-[1px] sm:gap-[6px] min-w-[92px] sm:min-w-[237px] relative">
                     <input
                         className="w-[30px] sm:w-[48px] h-[14px] sm:h-[24px] border border-gray_border text-[6px] sm:text-[12px] text-center rounded-[3px] outline-grayDark-text text-grayDark_text"
                         type="text"
@@ -159,6 +183,7 @@ export const GeneralInformation: FC<FormProps> = ({ formik }) => {
                         placeholder="ДД"
                         value={date.day}
                         maxLength={2}
+                        ref={dayRef}
                         onChange={handleInputBirthdayChange}
                     />
                     <input
@@ -168,6 +193,7 @@ export const GeneralInformation: FC<FormProps> = ({ formik }) => {
                         placeholder="ММ"
                         value={date.month}
                         maxLength={2}
+                        ref={monthRef}
                         onChange={handleInputBirthdayChange}
                     />
                     <input
@@ -176,9 +202,20 @@ export const GeneralInformation: FC<FormProps> = ({ formik }) => {
                         name="year"
                         placeholder="ГГГГ"
                         maxLength={4}
+                        ref={yearRef}
                         value={date.year}
                         onChange={handleInputBirthdayChange}
                     />
+
+                    {(getFormikHelpText(formik, `birthday`) as string) && (
+                        <span
+                            className={
+                                "absolute -bottom-[10px] sm:-bottom-[14px] tracking-normal leading-3 text-[4px] sm:text-[10px] text-red whitespace-nowrap overflow-hidden max-w-max"
+                            }
+                        >
+                            {getFormikHelpText(formik, `birthday`) as string}
+                        </span>
+                    )}
                 </div>
             </div>
             <div className="flex justify-between items-center">
@@ -198,6 +235,12 @@ export const GeneralInformation: FC<FormProps> = ({ formik }) => {
                         }
                         onChange={(value) =>
                             handleSelectChange(`nationationality`, value)
+                        }
+                        helpText={
+                            getFormikHelpText(
+                                formik,
+                                "nationationality"
+                            ) as string
                         }
                     />
                 </div>
@@ -220,27 +263,13 @@ export const GeneralInformation: FC<FormProps> = ({ formik }) => {
                         onChange={(value) =>
                             handleSelectChange(`citizenship`, value)
                         }
+                        helpText={
+                            getFormikHelpText(formik, "citizenship") as string
+                        }
                     />
                 </div>
             </div>
-            {/* <div className="flex justify-between items-center">
-                <h2 className="text-[8px] sm:text-base text-grayDark_text leading-[130%]">
-                    {language.FORM_TEXT.specialization}
-                </h2>
-                <div className="flex ">
-                    <SelectInput
-                        className="min-w-[92px] sm:min-w-[237px] "
-                        value={formik.values.specialization}
-                        options={formatOptions(specializations)}
-                        onSelect={(value) =>
-                            handleSelectChange(`specialization`, value)
-                        }
-                        onChange={(value) =>
-                            handleSelectChange(`specialization`, value)
-                        }
-                    />
-                </div>
-            </div> */}
+
             <div className="flex justify-between items-center">
                 <h2 className="text-[8px] sm:text-base text-grayDark_text leading-[130%]">
                     {language.FORM_TEXT.cityOfResidence}{" "}
@@ -258,6 +287,12 @@ export const GeneralInformation: FC<FormProps> = ({ formik }) => {
                         }
                         onChange={(value) =>
                             handleSelectChange(`cityAccommodation`, value)
+                        }
+                        helpText={
+                            getFormikHelpText(
+                                formik,
+                                "cityAccommodation"
+                            ) as string
                         }
                     />
                 </div>
