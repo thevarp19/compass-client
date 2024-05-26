@@ -129,6 +129,15 @@ const kz = {
         login: "Кіру",
         or: "немесе",
     },
+    RESET: {
+        reset_title: "Құпия сөзді қалпына келтіру",
+        email: "Электронная Почта",
+        submit: "Жіберу",
+        go_back: "Артқа оралу",
+        new_password: "Жаңа құпия сөз ойлап табыңыз",
+        password: "Құпия сөз",
+        confirm_password: "Құпия сөзді растаңыз",
+    },
     FORM_TEXT: {
         create_profile: "Профиль Жасау",
         edit_profile: "Профильді Өңдеу",

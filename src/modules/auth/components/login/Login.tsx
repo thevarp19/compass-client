@@ -1,6 +1,5 @@
 "use client";
 
-import Button from "@/components/shared/button-form/Button";
 import GoogleInput from "@/components/shared/google-input/Input";
 import Link from "next/link";
 import React from "react";
@@ -29,10 +28,7 @@ const Login: React.FC = () => {
 
     return (
         <div className="flex justify-center items-center pb-[100px] sm:pb-0 pt-[30px] sm:pt-0 h-max sm:h-screen">
-            <form
-                className="bg-white w-[290px] h-[478px] sm:w-[427px] sm:h-[600px] border border-[#D9D9D9] rounded-lg p-5 sm:p-10"
-                onSubmit={formik.handleSubmit}
-            >
+            <div className="bg-white w-[290px] h-[478px] sm:w-[427px] sm:h-[600px] border border-[#D9D9D9] rounded-lg p-5 sm:p-10">
                 <div className="flex flex-col gap-10">
                     <label className="font-bold text-black font-montserrat text-base sm:text-[26px]">
                         {language.LOGIN.login}
@@ -66,12 +62,22 @@ const Login: React.FC = () => {
                             />
                         </div>
                         <div>
-                            <Button text={language.LOGIN.enter} type="submit" />
+                            <button
+                                className={`bg-button_color text-[8px] sm:text-base text-white font-bold w-[250px] sm:w-[346px] h-[30px] sm:h-[40px] rounded-lg `}
+                                onClick={() => {
+                                    formik.handleSubmit();
+                                }}
+                            >
+                                {language.LOGIN.enter}
+                            </button>
                         </div>
                         <div className="flex justify-end">
-                            <label className="font-medium font-montserrat text-black text-[8px] sm:text-xs">
+                            <Link
+                                href={getHref("/auth/reset")}
+                                className="font-medium font-montserrat text-black text-[8px] sm:text-xs"
+                            >
                                 {language.LOGIN.forgot_pass}
-                            </label>
+                            </Link>
                         </div>
                         <div className="flex justify-center gap-2">
                             <label className="font-medium font-montserrat text-black text-[8px] sm:text-xs">
@@ -94,7 +100,7 @@ const Login: React.FC = () => {
                         <GoogleInput></GoogleInput>
                     </div>
                 </div>
-            </form>
+            </div>
         </div>
     );
 };

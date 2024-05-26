@@ -130,6 +130,15 @@ const ru = {
         login: "Войти",
         or: "или",
     },
+    RESET: {
+        email: "Электронная Почта",
+        reset_title: "Восстановить Доступ",
+        submit: "Отправить",
+        go_back: "Вернуться к Входу",
+        new_password: "Придумайте новый пароль",
+        password: "Пароль",
+        confirm_password: "Подтвердите пароль",
+    },
     FORM_TEXT: {
         create_profile: "Создать Профиль",
         edit_profile: "Редактировать Профиль",
