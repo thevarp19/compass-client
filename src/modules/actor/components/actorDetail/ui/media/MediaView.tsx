@@ -140,7 +140,13 @@ export const MediaView: FC<AllInfoProps> = ({ actor }) => {
     );
 };
 
-function getYoutubeId(url: string) {
-    var results = url.match("[\\?&]v=([^&#]*)");
-    return results ? results[1] : "";
+function getYoutubeId(url: any) {
+    if (!url) return "";
+
+    const pattern =
+        /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+
+    const match = url.match(pattern);
+
+    return match ? match[1] : "";
 }
