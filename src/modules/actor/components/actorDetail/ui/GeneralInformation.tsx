@@ -45,6 +45,10 @@ export const GeneralInformation: FC<AllInfoProps> = ({ actor }) => {
                 )}
                 {renderField(
                     language.FORM_TEXT.nationality,
+                    actor?.nationationality
+                )}
+                {renderField(
+                    language.FORM_TEXT.citizenships,
                     actor?.citizenship
                 )}
                 {renderField(
