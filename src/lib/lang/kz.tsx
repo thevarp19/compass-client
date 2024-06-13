@@ -58,7 +58,7 @@ const kz = {
         registration: "Тіркелу",
     },
     ABOUTUS: {
-        title: "Біз - ",
+        title: "Compass - бұл Қазақстан киноагенттігі. Бұл сіздің киноиндустриядағы жолыңыз.",
         compass: "Compass Агенттігі",
         some_text: " Мұнда және мұнда мәтін",
         compass_actor: "Compass актерлері",

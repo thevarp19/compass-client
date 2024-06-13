@@ -32,9 +32,9 @@ export const languageOptions: { value: LanguageKey; label: string }[] = [
 ];
 
 export const LanguageContext = createContext<LanguageContextType>({
-    language: ru,
-    languageKey: "ru",
-    getHref: () => "/ru",
+    language: kz,
+    languageKey: "kz",
+    getHref: () => "/kz",
 });
 
 export const useLanguage = () => {
