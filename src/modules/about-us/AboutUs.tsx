@@ -1,90 +1,54 @@
 import { useLanguage } from "@/context/LanguageProvider";
-import { Actor } from "@/types/actor";
+import { Spin } from "antd";
 import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";
+import { useGetActors } from "../actor/queries";
 import { ActorsCarousel } from "../main/Main";
 
 export const AboutUs: FC = () => {
     const { language } = useLanguage();
-    const popularActors: Actor[] = [
-        {
-            id: 1,
-            firstName: "Абильмансур Сериков",
-            age: 32,
-            avatar: "/images/mansur.png",
-            isCompassActor: false,
-            lastName: "",
-            thirdName: "",
-            educations: [],
-            movies: [],
-        },
-        {
-            id: 2,
-            firstName: "Данияр Алшинов",
-            age: 32,
-            avatar: "/images/daniar.png",
-            isCompassActor: false,
-            lastName: "",
-            thirdName: "",
-            educations: [],
-            movies: [],
-        },
-        {
-            id: 3,
-            firstName: "Берик Айтжанов",
-            age: 32,
-            avatar: "/images/berik.png",
-            isCompassActor: false,
-            lastName: "",
-            thirdName: "",
-            educations: [],
-            movies: [],
-        },
-        {
-            id: 4,
-            firstName: "Куралай Анарбекова",
-            age: 32,
-            avatar: "/images/kuralay.png",
-            isCompassActor: false,
-            lastName: "",
-            thirdName: "",
-            educations: [],
-            movies: [],
-        },
-        {
-            id: 5,
-            firstName: "Динара Бактыбаева",
-            age: 32,
-            avatar: "/images/dinara.png",
-            isCompassActor: false,
-            lastName: "",
-            thirdName: "",
-            educations: [],
-            movies: [],
-        },
-        {
-            id: 6,
-            firstName: "Данияр Алшинов",
-            age: 32,
-            avatar: "/images/daniar.png",
-            isCompassActor: false,
-            lastName: "",
-            thirdName: "",
-            educations: [],
-            movies: [],
-        },
-    ];
+    const { data: actors, isPending } = useGetActors({
+        search: "",
+        sortBy: "",
+        isCompassActor: true,
+        gender: "",
+        citizenship: [],
+        // specialization: [],
+        cityAccommodation: [],
+        // legalStatus: [],
+        agency: [],
+        hairColor: [],
+        sport: [],
+        dancing: [],
+        right: [],
+        foreignLanguage: [],
+        singing: [],
+        musicalInstrument: [],
+        hairLength: [],
+        eyeColor: [],
+        bodyType: [],
+        peculiarities: [],
+        typeOfAppearance: [],
+        nationationality: [],
+    });
+
     return (
         <div>
             <section>
                 <MainBanner />
             </section>
             <section>
-                <ActorsCarousel
-                    title={language.ABOUTUS.compass_actor}
-                    actors={popularActors}
-                />
+                {isPending ? (
+                    <div>
+                        <Spin />
+                    </div>
+                ) : (
+                    <ActorsCarousel
+                        title={language.ABOUTUS.compass_actor}
+                        actors={actors || []}
+                    />
+                )}
             </section>
             <section>
                 <Manifest />
