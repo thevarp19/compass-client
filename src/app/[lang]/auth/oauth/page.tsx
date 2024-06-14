@@ -22,7 +22,7 @@ export default function OauthPage() {
             dispatch(loginSuccess(jwtToken));
             router.push(`/${oauthLanguage}/`);
         } else {
-            message.error("Not authorized");
+            message.error("Не авторизован!");
             router.push(`/${oauthLanguage}/auth/login`);
         }
     }, []);

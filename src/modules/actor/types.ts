@@ -39,7 +39,7 @@ export interface GetActorDetailResponse {
     age?: number | undefined;
     birthday: string;
     citizenship: string;
-    nationationality: string;
+    nationality: string;
     // specialization: string;
     cityAccommodation: string;
     // legalStatus: string;

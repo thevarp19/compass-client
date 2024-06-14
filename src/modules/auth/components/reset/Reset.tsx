@@ -40,7 +40,7 @@ export const Reset: FC = () => {
                                 {language.RESET.email}
                             </label>
                             <Input
-                                placeholder="Введите ваш email"
+                                placeholder={language.LOGIN.placeholderEmail}
                                 image="/icons/email.svg"
                                 name="email"
                                 value={emailInput}

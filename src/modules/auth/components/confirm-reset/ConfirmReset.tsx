@@ -72,7 +72,9 @@ export const ConfirmReset: FC = () => {
                                 {language.RESET.password}
                             </label>
                             <Input
-                                placeholder="Введите пароль"
+                                placeholder={
+                                    language.REGISTRATION.placeholderPassword
+                                }
                                 image="/icons/password.svg"
                                 name="password"
                                 value={formik.values.password}
@@ -86,7 +88,10 @@ export const ConfirmReset: FC = () => {
                                 {language.RESET.confirm_password}
                             </label>
                             <Input
-                                placeholder="Подтвердите ваш пароль"
+                                placeholder={
+                                    language.REGISTRATION
+                                        .placeholderPasswordRepeat
+                                }
                                 image="/icons/password.svg"
                                 name="repeatPassword"
                                 value={formik.values.repeatPassword}

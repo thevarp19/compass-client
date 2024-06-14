@@ -4,7 +4,15 @@ import { AllInfoProps } from "./AllInfo";
 
 export const GeneralInformation: FC<AllInfoProps> = ({ actor }) => {
     const { language } = useLanguage();
-
+    function formatDate(dateString: string): string {
+        const options: Intl.DateTimeFormatOptions = {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+        };
+        const date = new Date(dateString);
+        return date.toLocaleDateString("ru-RU", options);
+    }
     const renderField = (label: string, value: any) => (
         <div className="flex justify-between items-center gap-1 sm:gap-0">
             <h2 className="text-grayDark_text min-w-[50%] sm:min-w-none text-[8px] sm:text-base sm:leading-[130%]">
@@ -44,8 +52,12 @@ export const GeneralInformation: FC<AllInfoProps> = ({ actor }) => {
                         : "—"
                 )}
                 {renderField(
+                    language.FORM_TEXT.birthDate,
+                    formatDate(actor?.birthday ?? "")
+                )}
+                {renderField(
                     language.FORM_TEXT.nationality,
-                    actor?.nationationality
+                    actor?.nationality
                 )}
                 {renderField(
                     language.FORM_TEXT.citizenships,

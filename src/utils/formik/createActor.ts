@@ -93,5 +93,5 @@ export const createActorValues: GetActorDetailResponse = {
             releasedYear: undefined,
         },
     ],
-    nationationality: "",
+    nationality: "",
 };

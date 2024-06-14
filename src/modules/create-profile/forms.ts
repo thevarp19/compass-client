@@ -26,8 +26,8 @@ export const useCreateProfile = () => {
         if (!values.birthday) {
             errors["birthday"] = "Заполните поле";
         }
-        if (!values.nationationality) {
-            errors["nationationality"] = "Заполните поле";
+        if (!values.nationality) {
+            errors["nationality"] = "Заполните поле";
         }
         if (!values.citizenship) {
             errors["citizenship"] = "Заполните поле";

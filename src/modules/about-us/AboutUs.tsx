@@ -115,53 +115,36 @@ const Manifest = () => {
             <div className="flex gap-[144px] text-white">
                 <div className="flex flex-col max-w-[502px] min-h-[283px] gap-[10px] ">
                     <h2 className="underline text-[32px] font-medium leading-[130%]">
-                        Что такое Compass?
+                        {language.MANIFEST.SECTION_1.title}
                     </h2>
                     <h2 className="text-gray_text leading-[130%]">
-                        Compass - это международная кастинг-платформа и
-                        киноагентство, базирующееся в Алматы, Казахстан.
-                        Компания занимается подбором лучших актёров со всего
-                        мира и помогает им найти роли в киноиндустрии.
+                        {language.MANIFEST.SECTION_1.description}
                     </h2>
                 </div>
                 <div className="flex flex-col max-w-[502px] min-h-[283px] gap-[10px]">
                     <h2 className="underline text-[32px] font-medium leading-[130%]">
-                        Какие услуги предоставляет Compass?
+                        {language.MANIFEST.SECTION_2.title}
                     </h2>
                     <h2 className="text-gray_text leading-[130%]">
-                        Compass предоставляет услуги по поиску и подбору актёров
-                        для различных кинопроектов. Это включает в себя
-                        организацию кастингов, создание актёрских портфолио, а
-                        также предоставление консультаций и профессиональной
-                        поддержки для актёров.
+                        {language.MANIFEST.SECTION_2.description}
                     </h2>
                 </div>
             </div>
             <div className="flex gap-[144px] text-white">
                 <div className="flex flex-col max-w-[502px] min-h-[325px] gap-[10px]">
                     <h2 className="underline text-[32px] font-medium leading-[130%]">
-                        Как можно стать клиентом агентства Compass?
+                        {language.MANIFEST.SECTION_3.title}
                     </h2>
                     <h2 className="text-gray_text leading-[130%]">
-                        Чтобы стать клиентом агентства Compass, необходимо
-                        зарегистрироваться на их официальном сайте. Процесс
-                        включает заполнение анкеты с необходимой информацией и
-                        отправку заявки через онлайн-форму. После отправки
-                        заявки, команда Compass рассмотрит вашу кандидатуру и
-                        свяжется с вами для дальнейших шагов.
+                        {language.MANIFEST.SECTION_3.description}
                     </h2>
                 </div>
                 <div className="flex flex-col max-w-[502px] min-h-[325px] gap-[10px]">
                     <h2 className="underline text-[32px] font-medium leading-[130%]">
-                        Какие проекты поддерживает агентство Compass?
+                        {language.MANIFEST.SECTION_4.title}
                     </h2>
                     <h2 className="text-gray_text leading-[130%]">
-                        Агентство Compass работает с широким спектром проектов,
-                        включая фильмы, телесериалы, рекламные ролики и
-                        театральные постановки. Компания сотрудничает как с
-                        местными, так и с международными продюсерами и
-                        режиссёрами, предоставляя актёров для различных жанров и
-                        форматов.
+                        {language.MANIFEST.SECTION_4.description}
                     </h2>
                 </div>
             </div>

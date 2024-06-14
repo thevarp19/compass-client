@@ -28,7 +28,9 @@ const Registration: React.FC = () => {
                                 {language.REGISTRATION.mail}
                             </label>
                             <Input
-                                placeholder="Введите ваш email"
+                                placeholder={
+                                    language.REGISTRATION.placeholderEmail
+                                }
                                 onChange={formik.handleChange}
                                 image={"/icons/email.svg"}
                                 name="email"
@@ -41,7 +43,9 @@ const Registration: React.FC = () => {
                                 {language.REGISTRATION.password}
                             </label>
                             <Input
-                                placeholder="Введите пароль"
+                                placeholder={
+                                    language.REGISTRATION.placeholderPassword
+                                }
                                 image={"/icons/password.svg"}
                                 onChange={formik.handleChange}
                                 type="password"
@@ -55,7 +59,10 @@ const Registration: React.FC = () => {
                                 {language.REGISTRATION.confirm_password}
                             </label>
                             <Input
-                                placeholder="Подтвердите ваш пароль"
+                                placeholder={
+                                    language.REGISTRATION
+                                        .placeholderPasswordRepeat
+                                }
                                 image={"/icons/password.svg"}
                                 onChange={formik.handleChange}
                                 type="password"

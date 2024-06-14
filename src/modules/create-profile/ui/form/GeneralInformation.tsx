@@ -228,19 +228,16 @@ export const GeneralInformation: FC<FormProps> = ({ formik }) => {
                 <div className="flex ">
                     <SelectInput
                         className="min-w-[92px] sm:min-w-[237px]"
-                        value={formik.values.nationationality}
+                        value={formik.values.nationality}
                         options={formatOptions(nationality)}
                         onSelect={(value) =>
-                            handleSelectChange(`nationationality`, value)
+                            handleSelectChange(`nationality`, value)
                         }
                         onChange={(value) =>
-                            handleSelectChange(`nationationality`, value)
+                            handleSelectChange(`nationality`, value)
                         }
                         helpText={
-                            getFormikHelpText(
-                                formik,
-                                "nationationality"
-                            ) as string
+                            getFormikHelpText(formik, "nationality") as string
                         }
                     />
                 </div>

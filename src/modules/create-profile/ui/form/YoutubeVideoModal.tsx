@@ -23,7 +23,8 @@ export const YouTubeVideoModal: FC<ModalProps> = ({
     }, [isOpen]);
 
     const isValidYouTubeUrl = (url: string) => {
-        const pattern = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$/;
+        const pattern =
+            /^(http(s)??\:\/\/)?(www\.)?((youtube\.com\/watch\?v=)|(youtu.be\/))([a-zA-Z0-9\-_])+$/;
         return pattern.test(url);
     };
 
@@ -36,7 +37,7 @@ export const YouTubeVideoModal: FC<ModalProps> = ({
             formik.setFieldValue("userVideos", updatedVideos);
             onClose();
         } else {
-            setError("Please enter a valid YouTube URL.");
+            setError("Пожалуйста, введите действительный URL YouTube.");
         }
     };
 

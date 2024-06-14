@@ -184,11 +184,9 @@ const Questionnaire = () => {
 
                     <div className="flex justify-between w-full">
                         <div className="flex flex-col gap-[5px] w-full">
-                            <h2 className="text-white text-[12px] sm:text-2xl leading-[130%]">
-                                Промо
-                            </h2>
+                            <h2 className="text-white text-[12px] sm:text-2xl leading-[130%]"></h2>
                             <h2 className="text-gray_text text-[6px] sm:text-base leading-[130%]">
-                                Размещение в главном сервисе киноиндустрии
+                                {language.PROMO_SECTION.promoDescription}
                             </h2>
                         </div>
                         <div className="flex flex-col gap-[5px] w-full">
@@ -196,7 +194,7 @@ const Questionnaire = () => {
                                 3000+
                             </h2>
                             <h2 className="text-gray_text text-[6px] sm:text-base leading-[130%]">
-                                Поисковых запросов в базе ежемесечно
+                                {language.PROMO_SECTION.searchesDescription}
                             </h2>
                         </div>
                     </div>
@@ -206,7 +204,10 @@ const Questionnaire = () => {
                                 200+
                             </h2>
                             <h2 className="text-gray_text text-[6px] sm:text-base leading-[130%]">
-                                Проектов работает в Compass ежедневно
+                                {
+                                    language.PROMO_SECTION
+                                        .projectsDailyDescription
+                                }
                             </h2>
                         </div>
                         <div className="flex flex-col gap-[5px] w-full">
@@ -214,7 +215,10 @@ const Questionnaire = () => {
                                 5000+
                             </h2>
                             <h2 className="text-gray_text text-[6px] sm:text-base leading-[130%]">
-                                Проектов были сняты
+                                {
+                                    language.PROMO_SECTION
+                                        .projectsTotalDescription
+                                }
                             </h2>
                         </div>
                     </div>
@@ -304,37 +308,26 @@ const FAQ = () => {
                 <div className="flex gap-[10px] sm:gap-[50px]">
                     <div className="bg-button_color w-[120px] h-[120px] sm:w-[350px] sm:h-[350px] rounded-[10px] p-[7px] sm:p-5 flex flex-col gap-[10px] sm:gap-[30px] overflow-clip">
                         <h2 className="text-white text-[8px] sm:text-2xl leading-[130%] font-medium">
-                            Что такое Compass?
+                            {language.INFO_SECTION.section1.title}
                         </h2>
                         <h2 className="text-gray text-[6px] sm:text-base leading-[130%] font-medium">
-                            Compass - это международная кастинг-платформа и
-                            киноагентство, базирующееся в Алматы, Казахстан.
-                            Компания занимается подбором лучших актёров со всего
-                            мира и помогает им найти роли в киноиндустрии.
+                            {language.INFO_SECTION.section1.description}
                         </h2>
                     </div>
                     <div className="bg-button_color w-[120px] h-[120px] sm:w-[350px] sm:h-[350px] rounded-[10px] p-[7px] sm:p-5 flex flex-col gap-[10px] sm:gap-[30px] overflow-clip">
                         <h2 className="text-white text-[8px] sm:text-2xl leading-[130%] font-medium">
-                            Как можно стать клиентом агентства Compass?
+                            {language.INFO_SECTION.section2.title}
                         </h2>
                         <h2 className="text-gray text-[6px] sm:text-base leading-[130%] font-medium">
-                            Чтобы стать клиентом агентства Compass, необходимо
-                            зарегистрироваться на их официальном сайте. Процесс
-                            включает заполнение анкеты с необходимой информацией
-                            и отправку заявки через онлайн-форму. После отправки
-                            заявки, команда Compass рассмотрит вашу кандидатуру.
+                            {language.INFO_SECTION.section2.description}
                         </h2>
                     </div>
                     <div className="bg-button_color w-[120px] h-[120px] sm:w-[350px] sm:h-[350px] rounded-[10px] p-[7px] sm:p-5 flex flex-col gap-[10px] sm:gap-[30px] overflow-clip">
                         <h2 className="text-white text-[8px] sm:text-2xl leading-[130%] font-medium">
-                            Как связаться с агентством Compass?
+                            {language.INFO_SECTION.section3.title}
                         </h2>
                         <h2 className="text-gray text-[6px] sm:text-base leading-[130%] font-medium">
-                            Вы можете связаться с агентством Compass через
-                            контактную форму на их официальном сайте или
-                            посетить их офис в Алматы. Также можно связаться с
-                            ними по телефону или электронной почте, указанным на
-                            сайте
+                            {language.INFO_SECTION.section3.description}
                         </h2>
                     </div>
                 </div>

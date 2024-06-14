@@ -39,7 +39,7 @@ const Login: React.FC = () => {
                                 {language.LOGIN.mail}
                             </label>
                             <Input
-                                placeholder="Введите ваш email"
+                                placeholder={language.LOGIN.placeholderEmail}
                                 onChange={formik.handleChange}
                                 image="/icons/email.svg"
                                 name="email"
@@ -52,7 +52,7 @@ const Login: React.FC = () => {
                                 {language.LOGIN.password}
                             </label>
                             <Input
-                                placeholder="Введите пароль"
+                                placeholder={language.LOGIN.placeholderPassword}
                                 image={"/icons/password.svg"}
                                 onChange={formik.handleChange}
                                 type="password"

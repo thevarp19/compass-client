@@ -11,11 +11,12 @@ import {
     RegisterRequest,
     RegisterResponse,
 } from "./types";
-
 export const loginMutation = (success: (data: LoginResponse) => void) => {
     const { message } = App.useApp();
     return useMutation<LoginResponse, AxiosError<any>, LoginRequest>({
         async mutationFn(values) {
+            // Convert email to lowercase
+            values.email = values.email.toLowerCase();
             const { data } = await login(values);
             return data;
         },
@@ -28,12 +29,15 @@ export const loginMutation = (success: (data: LoginResponse) => void) => {
         },
     });
 };
+
 export const registerMutation = () => {
     const { message } = App.useApp();
     const router = useRouter();
     const { getHref } = useLanguage();
     return useMutation<RegisterResponse, AxiosError<any>, RegisterRequest>({
         async mutationFn(values) {
+            // Convert email to lowercase
+            values.email = values.email.toLowerCase();
             const { data } = await register(values);
             return data;
         },
