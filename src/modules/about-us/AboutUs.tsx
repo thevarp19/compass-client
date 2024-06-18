@@ -34,7 +34,7 @@ export const AboutUs: FC = () => {
         bodyType: [],
         peculiarities: [],
         typeOfAppearance: [],
-        nationationality: [],
+        nationality: [],
     });
 
     return (
