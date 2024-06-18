@@ -70,7 +70,7 @@ export const ActorFilter: FC<ActorFilterProps> = ({
             musicalInstrument: [],
             hairLength: [],
             eyeColor: [],
-            nationationality: [],
+            nationality: [],
             bodyType: [],
             peculiarities: [],
             typeOfAppearance: [],
@@ -367,13 +367,10 @@ export const ActorFilter: FC<ActorFilterProps> = ({
                             maxTagCount="responsive"
                             mode="multiple"
                             className="min-w-[90px] sm:min-w-[237px]"
-                            value={filters.nationationality}
+                            value={filters.nationality}
                             options={formatOptions(nationality)}
                             onChange={(value) =>
-                                handleMultiSelectChange(
-                                    `nationationality`,
-                                    value
-                                )
+                                handleMultiSelectChange(`nationality`, value)
                             }
                         />
                     </div>

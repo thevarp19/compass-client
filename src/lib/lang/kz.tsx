@@ -87,7 +87,7 @@ const kz: LangClientType = {
         media: "Медиа",
         actors_compass: "Compass актерлері",
         advanced_search: "Кеңейтілген іздеу",
-        nationality: "Азаматтығы",
+        nationality: "Ұлты",
         // specialization: "Мамандығы",
         cityOfResidence: "Тұратын Қаласы",
         // legalStatus: "Құқықтық Мәртебесі",

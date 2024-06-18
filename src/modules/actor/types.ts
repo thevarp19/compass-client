@@ -104,7 +104,7 @@ export interface ActorFilters {
     isCompassActor: boolean | undefined;
     gender: string;
     citizenship: string[];
-    nationationality: string[];
+    nationality: string[];
     // specialization: string[];
     cityAccommodation: string[];
     // legalStatus: string[];

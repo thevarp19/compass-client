@@ -60,8 +60,8 @@ export const ActorList: FC<ActorListProps> = ({ actors }) => {
                                     {language.ACTORLIST.education}
                                 </h2>
                                 <h2 className="text-[6px] sm:text-xs leading-[130%] text-grayDark_text">
-                                    {actor?.educations[0].university}{" "}
-                                    {actor?.educations[0].faculty}
+                                    {actor?.educations[0]?.university}{" "}
+                                    {actor?.educations[0]?.faculty}
                                 </h2>
                             </div>
                             <div className="flex flex-col gap-[10px]">
