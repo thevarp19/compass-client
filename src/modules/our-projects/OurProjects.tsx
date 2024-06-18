@@ -34,7 +34,7 @@ interface Actor {
     educations: Education[];
 }
 
-interface Project {
+export interface Project {
     id: number;
     name: string;
     image: string;
@@ -67,16 +67,16 @@ export const OurProjects: FC = () => {
                         </h2>
                         <h2 className="text-[9px] sm:text-[18px] font-medium leading-[130%]">
                             {language.PROJECTS.main_actors}{" "}
-                            <Link
-                                href={getHref(
-                                    `/actors/${project?.actors[0].id}`
-                                )}
-                            >
-                                <span className="text-[#6E9CF2]">
-                                    {project.actors[0]?.firstName}{" "}
-                                    {project.actors[0]?.lastName}
-                                </span>
-                            </Link>
+                            {project.actors.map((actor) => (
+                                <Link
+                                    href={getHref(`/actors/${actor.id}`)}
+                                    key={actor.id}
+                                >
+                                    <span className="text-[#6E9CF2]">
+                                        {actor.firstName} {actor.lastName}
+                                    </span>
+                                </Link>
+                            ))}
                         </h2>
                     </div>
                     <Image

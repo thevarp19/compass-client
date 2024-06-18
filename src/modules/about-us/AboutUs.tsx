@@ -1,10 +1,14 @@
+import { Loading } from "@/components/shared/loading/Loading";
 import { useLanguage } from "@/context/LanguageProvider";
+import { axios } from "@/lib/axios";
+import { useQuery } from "@tanstack/react-query";
 import { Spin } from "antd";
 import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";
 import { useGetActors } from "../actor/queries";
 import { ActorsCarousel } from "../main/Main";
+import { Project } from "../our-projects/OurProjects";
 
 export const AboutUs: FC = () => {
     const { language } = useLanguage();
@@ -153,6 +157,14 @@ const Manifest = () => {
 };
 
 const OurProjects = () => {
+    const { data: projects, isPending } = useQuery<Project[]>({
+        queryKey: ["projects"],
+        queryFn: async () => {
+            const response = await axios.get<Project[]>("/projects");
+            return response.data;
+        },
+    });
+    if (isPending) return <Loading className="h-[50vh]" />;
     const { language, getHref } = useLanguage();
     return (
         <div className="bg-secondary flex flex-col gap-10 justify-between py-10 sm:py-20 px-[25px] sm:px-[146px]">
@@ -164,27 +176,41 @@ const OurProjects = () => {
                     href={getHref("our-projects")}
                     className="text-[#6E9CF2] text-[10px] sm:text-[18px] font-medium leading-[130%] cursor-pointer"
                 >
-                    {language.PROJECTS.showAll}
+                    {language.PROJECTS.show_all}
                 </Link>
             </div>
-            <div className="relative">
-                <Image
-                    src={"/images/532banner.png"}
-                    width={380}
-                    height={190}
-                    alt="actor"
-                    className="w-[380px] h-[190px] sm:w-[1148px] sm:h-[500px] rounded-[9px] "
-                    style={{ objectFit: "cover", objectPosition: "center" }}
-                />
-                <div className="absolute flex flex-col justify-center bottom-0 left-0 h-[50px] sm:h-[134px] z-10 rounded-b-[9px] bg-gradient-to-r-gray">
-                    <h2 className="text-white text-base sm:text-5xl font-medium leading-[130%] ps-5">
-                        2021-2022 “5:32” (Salem Social Media)
-                    </h2>
-                    <h2 className="text-white text-[10px] sm:text-4xl font-medium leading-[130%] ps-5">
-                        В главных ролях: Абильмансур Сериков
-                    </h2>
+
+            {projects?.slice(0, 3).map((project) => (
+                <div key={project.id} className="relative">
+                    <Image
+                        src={project.image || "/images/532banner.png"}
+                        width={380}
+                        height={190}
+                        alt="actor"
+                        className="w-[380px] h-[190px] sm:w-[1148px] sm:h-[500px] rounded-[9px]"
+                        style={{ objectFit: "cover", objectPosition: "center" }}
+                    />
+                    <div className="absolute flex flex-col justify-center bottom-0 left-0 h-[50px] sm:h-[134px] z-10 rounded-b-[9px] bg-gradient-to-r-gray">
+                        <h2 className="text-white text-base sm:text-5xl font-medium leading-[130%] ps-5">
+                            {`${project.startYear} - ${project.endYear} "${project.name}"`}
+                        </h2>
+                        <div className="ps-5">
+                            {project.actors.map((actor) => (
+                                <h2
+                                    key={actor.id}
+                                    className="text-white text-[10px] sm:text-4xl font-medium leading-[130%]"
+                                >
+                                    <Link href={getHref(`/actors/${actor.id}`)}>
+                                        <span className="text-[#6E9CF2]">
+                                            {actor.firstName} {actor.lastName}
+                                        </span>
+                                    </Link>
+                                </h2>
+                            ))}
+                        </div>
+                    </div>
                 </div>
-            </div>
+            ))}
         </div>
     );
 };
