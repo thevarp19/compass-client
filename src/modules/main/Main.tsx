@@ -33,7 +33,7 @@ export const Main: FC = () => {
         bodyType: [],
         peculiarities: [],
         typeOfAppearance: [],
-        nationationality: [],
+        nationality: [],
     });
 
     if (isPending) {
@@ -53,7 +53,9 @@ export const Main: FC = () => {
             <section>
                 <Questionnaire />
             </section>
-            <section>{/* <CreateProfilePart /> */}</section>
+            <section>
+                <CreateProfilePart />
+            </section>
             <section>
                 <FAQ />
             </section>
