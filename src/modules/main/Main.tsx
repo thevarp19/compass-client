@@ -66,12 +66,12 @@ const MainBanner = () => {
     const { language, getHref } = useLanguage();
     return (
         <div className="bg-secondary flex gap-[25px] sm:gap-[140px] justify-center px-[25px] sm:px-[140px] py-[40px] sm:py-[110px]">
-            <div className="flex flex-col max-w-[175px] sm:max-w-[424px] justify-between">
+            <div className="flex flex-col max-w-[175px] sm:max-w-[424px] justify-between gap-5 sm:gap-0">
                 <div className="flex flex-col">
                     {" "}
-                    <h2 className="text-white font-semibold text-[20px] sm:text-[48px] flex leading-normal flex-col">
+                    <h2 className="text-white font-semibold text-[20px] sm:text-[42px] flex leading-normal flex-col">
                         {language.MAIN.selection}
-                        <span className="underline whitespace-nowrap text-[#6E9CF2]">
+                        <span className=" whitespace-nowrap">
                             {language.MAIN.best_actor}
                         </span>
                         {language.MAIN.from_all_world}
@@ -129,7 +129,7 @@ export const ActorsCarousel: FC<{ actors: Actor[]; title: string }> = ({
     };
 
     return (
-        <div className="bg-primary py-10 sm:py-20 px-[25px] sm:px-[146px] flex flex-col gap-[40px] sm:gap-[50px]">
+        <div className="bg-primary py-10 sm:py-20 px-[25px] sm:px-[146px] flex flex-col gap-[20px] sm:gap-[50px]">
             <div className="flex justify-between">
                 <h2 className="text-[15px] sm:text-[32px] leading-[130%] text-white">
                     {title}
@@ -159,7 +159,7 @@ export const ActorsCarousel: FC<{ actors: Actor[]; title: string }> = ({
             </div>
             <div
                 ref={scrollContainerRef}
-                className="flex gap-[20px] sm:gap-[37px] overflow-x-scroll min-w-[290px] sm:min-w-auto"
+                className="flex gap-[20px] sm:gap-[37px] overflow-x-scroll min-w-[290px] sm:min-w-auto min-h-[100px] sm:min-h-[250px]"
             >
                 {actors.map((actor, index) => (
                     <Link
@@ -186,11 +186,15 @@ const Questionnaire = () => {
 
                     <div className="flex justify-between w-full">
                         <div className="flex flex-col gap-[5px] w-full">
-                            <h2 className="text-white text-[12px] sm:text-2xl leading-[130%]"></h2>
-                            <h2 className="text-gray_text text-[6px] sm:text-base leading-[130%]">
-                                {language.PROMO_SECTION.promoDescription}
+                            <h2 className="text-white text-[12px] sm:text-2xl leading-[130%]">
+                                {" "}
+                                {language.PROMO_SECTION.promo}
                             </h2>
+                            <h2 className="text-gray_text text-[6px] sm:text-base leading-[130%] max-w-[150px] sm:max-w-[450px]">
+                                {language.PROMO_SECTION.promoDescription}
+                            </h2>{" "}
                         </div>
+                        {/*
                         <div className="flex flex-col gap-[5px] w-full">
                             <h2 className="text-white text-[12px] sm:text-2xl leading-[130%]">
                                 3000+
@@ -198,9 +202,9 @@ const Questionnaire = () => {
                             <h2 className="text-gray_text text-[6px] sm:text-base leading-[130%]">
                                 {language.PROMO_SECTION.searchesDescription}
                             </h2>
-                        </div>
+                        </div> */}
                     </div>
-                    <div className="flex justify-between w-full">
+                    {/* <div className="flex justify-between w-full">
                         <div className="flex flex-col gap-[5px] w-full">
                             <h2 className="text-white text-[12px] sm:text-2xl leading-[130%]">
                                 200+
@@ -223,7 +227,7 @@ const Questionnaire = () => {
                                 }
                             </h2>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
                 <div>
                     <Link href={getHref("/auth/registration")}>
@@ -253,7 +257,7 @@ const CreateProfilePart = () => {
     const { language, getHref } = useLanguage();
     return (
         <div className="bg-secondary flex gap-[140px] justify-between py-10 sm:py-20 px-[25px] sm:px-[146px]">
-            <div className="flex">
+            <div className="sm:flex hidden">
                 <Image
                     src="/images/Illustration3.png"
                     width={400}
@@ -262,7 +266,7 @@ const CreateProfilePart = () => {
                     alt="Illustration1"
                 />
             </div>
-            <div className="flex flex-col justify-between max-w-[511px]">
+            <div className="flex flex-col justify-between max-w-[511px] sm:gap-0 gap-10">
                 <div className="flex flex-col gap-5 font-semibold">
                     <div className="text-white text-4xl leading-[130%]">
                         {language.MAIN.for_casting}
@@ -285,7 +289,7 @@ const CreateProfilePart = () => {
                         </h2>
                     </div>
                 </div>
-                <div className="flex justify-end">
+                <div className="flex justify-center sm:justify-end">
                     <Link href={getHref("profile")}>
                         <button
                             className={`bg-button_color text-base text-white font-bold w-[240px] h-[50px] rounded-lg`}
@@ -317,7 +321,7 @@ const FAQ = () => {
                         </h2>
                     </div>
                     <div className="bg-button_color w-[120px] h-[120px] sm:w-[350px] sm:h-[350px] rounded-[10px] p-[7px] sm:p-5 flex flex-col gap-[10px] sm:gap-[30px] overflow-clip">
-                        <h2 className="text-white text-[8px] sm:text-2xl leading-[130%] font-medium">
+                        <h2 className="text-white text-[6px] sm:text-2xl leading-[130%] font-medium">
                             {language.INFO_SECTION.section2.title}
                         </h2>
                         <h2 className="text-gray text-[6px] sm:text-base leading-[130%] font-medium">

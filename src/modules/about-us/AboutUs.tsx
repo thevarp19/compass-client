@@ -1,14 +1,10 @@
-import { Loading } from "@/components/shared/loading/Loading";
 import { useLanguage } from "@/context/LanguageProvider";
-import { axios } from "@/lib/axios";
-import { useQuery } from "@tanstack/react-query";
 import { Spin } from "antd";
 import Image from "next/image";
-import Link from "next/link";
 import { FC } from "react";
 import { useGetActors } from "../actor/queries";
 import { ActorsCarousel } from "../main/Main";
-import { Project } from "../our-projects/OurProjects";
+import { OurProjects } from "../our-projects/OurProjects";
 
 export const AboutUs: FC = () => {
     const { language } = useLanguage();
@@ -39,8 +35,11 @@ export const AboutUs: FC = () => {
 
     return (
         <div>
-            <section>
+            {/* <section>
                 <MainBanner />
+            </section> */}
+            <section>
+                <Manifest />
             </section>
             <section>
                 {isPending ? (
@@ -54,9 +53,7 @@ export const AboutUs: FC = () => {
                     />
                 )}
             </section>
-            <section>
-                <Manifest />
-            </section>
+
             <section>
                 <OurProjects />
             </section>
@@ -115,102 +112,76 @@ const MainBanner = () => {
 const Manifest = () => {
     const { language } = useLanguage();
     return (
-        <div className="hidden bg-secondary sm:flex flex-col gap-10 justify-between px-[146px] py-[80px]">
-            <div className="flex gap-[144px] text-white">
-                <div className="flex flex-col max-w-[502px] min-h-[283px] gap-[10px] ">
-                    <h2 className="underline text-[32px] font-medium leading-[130%]">
+        <div className="bg-secondary flex flex-col justify-center items-center min-h-[354px] sm:min-h-[454px]">
+            <div className="flex gap-[144px] text-white sm:px-48 px-12">
+                <div className="flex flex-col gap-[10px] sm:w-[550px]">
+                    <h2 className="underline sm:text-[40px] text-xl font-medium leading-[130%] ">
                         {language.MANIFEST.SECTION_1.title}
                     </h2>
-                    <h2 className="text-gray_text leading-[130%]">
+                    <h2 className="text-gray_text text-base sm:text-lg leading-[130%] text-center">
                         {language.MANIFEST.SECTION_1.description}
                     </h2>
                 </div>
-                <div className="flex flex-col max-w-[502px] min-h-[283px] gap-[10px]">
-                    <h2 className="underline text-[32px] font-medium leading-[130%]">
-                        {language.MANIFEST.SECTION_2.title}
-                    </h2>
-                    <h2 className="text-gray_text leading-[130%]">
-                        {language.MANIFEST.SECTION_2.description}
-                    </h2>
-                </div>
-            </div>
-            <div className="flex gap-[144px] text-white">
-                <div className="flex flex-col max-w-[502px] min-h-[325px] gap-[10px]">
-                    <h2 className="underline text-[32px] font-medium leading-[130%]">
-                        {language.MANIFEST.SECTION_3.title}
-                    </h2>
-                    <h2 className="text-gray_text leading-[130%]">
-                        {language.MANIFEST.SECTION_3.description}
-                    </h2>
-                </div>
-                <div className="flex flex-col max-w-[502px] min-h-[325px] gap-[10px]">
-                    <h2 className="underline text-[32px] font-medium leading-[130%]">
-                        {language.MANIFEST.SECTION_4.title}
-                    </h2>
-                    <h2 className="text-gray_text leading-[130%]">
-                        {language.MANIFEST.SECTION_4.description}
-                    </h2>
-                </div>
             </div>
         </div>
     );
 };
 
-const OurProjects = () => {
-    const { data: projects, isPending } = useQuery<Project[]>({
-        queryKey: ["projects"],
-        queryFn: async () => {
-            const response = await axios.get<Project[]>("/projects");
-            return response.data;
-        },
-    });
-    if (isPending) return <Loading className="h-[50vh]" />;
-    const { language, getHref } = useLanguage();
-    return (
-        <div className="bg-secondary flex flex-col gap-10 justify-between py-10 sm:py-20 px-[25px] sm:px-[146px]">
-            <div className="flex justify-between">
-                <h2 className="text-white text-[15px] sm:text-[32px] font-medium leading-[130%]">
-                    {language.PROJECTS.our_projects}
-                </h2>
-                <Link
-                    href={getHref("our-projects")}
-                    className="text-[#6E9CF2] text-[10px] sm:text-[18px] font-medium leading-[130%] cursor-pointer"
-                >
-                    {language.PROJECTS.show_all}
-                </Link>
-            </div>
+// const OurProjects = () => {
+//     const { data: projects, isPending } = useQuery<Project[]>({
+//         queryKey: ["projects"],
+//         queryFn: async () => {
+//             const response = await axios.get<Project[]>("/projects");
+//             return response.data;
+//         },
+//     });
+//     if (isPending) return <Loading className="h-[50vh]" />;
+//     const { language, getHref } = useLanguage();
+//     return (
+//         <div className="bg-secondary flex flex-col gap-10 justify-between py-10 sm:py-20 px-[25px] sm:px-[146px]">
+//             <div className="flex justify-between">
+//                 <h2 className="text-white text-[15px] sm:text-[32px] font-medium leading-[130%]">
+//                     {language.PROJECTS.our_projects}
+//                 </h2>
+//                 <Link
+//                     href={getHref("our-projects")}
+//                     className="text-[#6E9CF2] text-[10px] sm:text-[18px] font-medium leading-[130%] cursor-pointer"
+//                 >
+//                     {language.PROJECTS.show_all}
+//                 </Link>
+//             </div>
 
-            {projects?.slice(0, 3).map((project) => (
-                <div key={project.id} className="relative">
-                    <Image
-                        src={project.image || "/images/532banner.png"}
-                        width={380}
-                        height={190}
-                        alt="actor"
-                        className="w-[380px] h-[190px] sm:w-[1148px] sm:h-[500px] rounded-[9px]"
-                        style={{ objectFit: "cover", objectPosition: "center" }}
-                    />
-                    <div className="absolute flex flex-col justify-center bottom-0 left-0 h-[50px] sm:h-[134px] z-10 rounded-b-[9px] bg-gradient-to-r-gray">
-                        <h2 className="text-white text-base sm:text-5xl font-medium leading-[130%] ps-5">
-                            {`${project.startYear} - ${project.endYear} "${project.name}"`}
-                        </h2>
-                        <div className="ps-5">
-                            {project.actors.map((actor) => (
-                                <h2
-                                    key={actor.id}
-                                    className="text-white text-[10px] sm:text-4xl font-medium leading-[130%]"
-                                >
-                                    <Link href={getHref(`/actors/${actor.id}`)}>
-                                        <span className="text-[#6E9CF2]">
-                                            {actor.firstName} {actor.lastName}
-                                        </span>
-                                    </Link>
-                                </h2>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            ))}
-        </div>
-    );
-};
+//             {projects?.slice(0, 3).map((project) => (
+//                 <div key={project.id} className="relative">
+//                     <Image
+//                         src={project.image || "/images/532banner.png"}
+//                         width={380}
+//                         height={190}
+//                         alt="actor"
+//                         className="w-[380px] h-[190px] sm:w-[1148px] sm:h-[500px] rounded-[9px]"
+//                         style={{ objectFit: "cover", objectPosition: "center" }}
+//                     />
+//                     <div className="absolute flex flex-col justify-center bottom-0 left-0 h-[50px] sm:h-[134px] z-10 rounded-b-[9px] bg-gradient-to-r-gray">
+//                         <h2 className="text-white text-base sm:text-5xl font-medium leading-[130%] ps-5">
+//                             {`${project.startYear} - ${project.endYear} "${project.name}"`}
+//                         </h2>
+//                         <div className="ps-5">
+//                             {project.actors.map((actor) => (
+//                                 <h2
+//                                     key={actor.id}
+//                                     className="text-white text-[10px] sm:text-4xl font-medium leading-[130%]"
+//                                 >
+//                                     <Link href={getHref(`/actors/${actor.id}`)}>
+//                                         <span className="text-[#6E9CF2]">
+//                                             {actor.firstName} {actor.lastName}
+//                                         </span>
+//                                     </Link>
+//                                 </h2>
+//                             ))}
+//                         </div>
+//                     </div>
+//                 </div>
+//             ))}
+//         </div>
+//     );
+// };

@@ -47,25 +47,20 @@ export default function Navbar() {
             </div>
             <div className="flex gap-[10px] sm:gap-10 items-center text-[8px] sm:text-lg text-white font-medium">
                 <div className="flex gap-[10px] sm:gap-10 items-center">
-                    <Link href={getHref("/about-us")} className="text-white">
+                    <Link href={getHref("/about-us")} className="text-white ">
                         {language.NAVBAR.about_us}
                     </Link>
                     <Link href={getHref("/actors")} className="text-white">
                         {language.NAVBAR.actors}
                     </Link>
-                    <Link
-                        href={getHref("/our-projects")}
-                        className="text-white"
-                    >
-                        {language.NAVBAR.our_project}
-                    </Link>
+                    <div className="text-primary sm:w-[120px]"></div>
                 </div>
                 {clientLoaded ? (
                     !auth.isLoggedIn ? (
                         <div className="flex gap-[10px] sm:gap-10 items-center">
                             <Link
                                 href={getHref("/auth/login")}
-                                className="text-white"
+                                className="text-white bg-button_color rounded-[5px] py-[5px] px-[12px] sm:py-[10px] sm:px-6 cursor-pointer text-[8px] font-semibold  sm:text-lg"
                             >
                                 {language.NAVBAR.login}
                             </Link>
