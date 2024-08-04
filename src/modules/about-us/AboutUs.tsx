@@ -1,9 +1,7 @@
 import { useLanguage } from "@/context/LanguageProvider";
-import { Spin } from "antd";
 import Image from "next/image";
 import { FC } from "react";
 import { useGetActors } from "../actor/queries";
-import { ActorsCarousel } from "../main/Main";
 import { OurProjects } from "../our-projects/OurProjects";
 
 export const AboutUs: FC = () => {
@@ -41,7 +39,7 @@ export const AboutUs: FC = () => {
             <section>
                 <Manifest />
             </section>
-            <section>
+            {/* <section>
                 {isPending ? (
                     <div>
                         <Spin />
@@ -52,7 +50,7 @@ export const AboutUs: FC = () => {
                         actors={actors || []}
                     />
                 )}
-            </section>
+            </section> */}
 
             <section>
                 <OurProjects />
@@ -115,7 +113,7 @@ const Manifest = () => {
         <div className="bg-secondary flex flex-col justify-center items-center min-h-[354px] sm:min-h-[454px]">
             <div className="flex gap-[144px] text-white sm:px-48 px-12">
                 <div className="flex flex-col gap-[10px] sm:w-[550px]">
-                    <h2 className="underline sm:text-[40px] text-xl font-medium leading-[130%] ">
+                    <h2 className=" sm:text-[40px] text-xl font-medium leading-[130%] ">
                         {language.MANIFEST.SECTION_1.title}
                     </h2>
                     <h2 className="text-gray_text text-base sm:text-lg leading-[130%] text-center">
