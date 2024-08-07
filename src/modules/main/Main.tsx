@@ -65,39 +65,51 @@ export const Main: FC = () => {
 const MainBanner = () => {
     const { language, getHref } = useLanguage();
     return (
-        <div className="bg-secondary flex gap-[25px] sm:gap-[140px] justify-center px-[25px] sm:px-[140px] py-[40px] sm:py-[110px]">
-            <div className="flex flex-col max-w-[175px] sm:max-w-[424px] justify-between gap-5 sm:gap-0">
-                <div className="flex flex-col">
-                    {" "}
-                    <h2 className="text-white font-semibold text-[20px] sm:text-[42px] flex leading-normal flex-col">
-                        {language.MAIN.selection}
-                        <span className=" whitespace-nowrap">
-                            {language.MAIN.best_actor}
-                        </span>
-                        {language.MAIN.from_all_world}
-                    </h2>
-                    <h2 className="text-white text-[8px] sm:text-base">
-                        {language.MAIN.inter_platform}
-                    </h2>
-                </div>
-                <div>
-                    <Link href={getHref("/actors")}>
-                        <button
-                            className={`bg-button_color text-[8px] sm:text-base text-white font-bold w-[80px] sm:w-[200px] h-[20px] sm:h-[50px] rounded-lg`}
-                        >
-                            {language.MAIN.find}
-                        </button>
-                    </Link>
-                </div>
-            </div>
-            <div className="flex ">
+        <div className="relative flex gap-[25px] sm:gap-[140px]  ">
+            <div className="absolute -z-10 ">
                 <Image
-                    src="/images/Illustration1.png"
-                    width={180}
-                    height={157}
-                    className="w-[180px] h-[157px] sm:w-[590px] sm:h-[463px]"
-                    alt="Illustration1"
+                    src="/images/mainBanner.jpeg"
+                    width={1024}
+                    height={960}
+                    style={{ objectFit: "cover" }}
+                    className="w-screen sm:h-[1060px] h-[300px]"
+                    alt=""
                 />
+            </div>
+            <div className="flex py-[40px] justify-center sm:py-[110px]  px-[25px] sm:px-[140px] w-full sm:gap-40">
+                <div className="flex flex-col max-w-[175px] sm:max-w-[424px] justify-between gap-5 sm:gap-0 ">
+                    <div className="flex flex-col ">
+                        {" "}
+                        <h2 className="text-white font-semibold text-[20px] sm:text-[42px] flex leading-normal flex-col">
+                            {language.MAIN.selection}
+                            <span className=" whitespace-nowrap">
+                                {language.MAIN.best_actor}
+                            </span>
+                            {language.MAIN.from_all_world}
+                        </h2>
+                        <h2 className="text-white text-[8px] sm:text-base">
+                            {language.MAIN.inter_platform}
+                        </h2>
+                    </div>
+                    <div className="sm:mt-24">
+                        <Link href={getHref("/actors")}>
+                            <button
+                                className={`bg-button_color text-[8px] sm:text-base text-white font-bold w-[80px] sm:w-[200px] h-[20px] sm:h-[50px] rounded-lg`}
+                            >
+                                {language.MAIN.find}
+                            </button>
+                        </Link>
+                    </div>
+                </div>
+                <div className="flex items-center">
+                    <Image
+                        src="/icons/mainLogo.png"
+                        width={483}
+                        height={85}
+                        className="w-auto h-[40px] sm:w-[483px] sm:h-[85px] "
+                        alt="logo"
+                    />
+                </div>
             </div>
         </div>
     );
@@ -242,11 +254,11 @@ const Questionnaire = () => {
 
             <div className="flex">
                 <Image
-                    src="/images/Illustration2.png"
+                    src="/images/films-photo.png"
                     width={170}
                     height={183}
                     className="w-[170px] h-[183px] sm:w-[400px] sm:h-[394px]"
-                    alt="Illustration1"
+                    alt="film"
                     style={{ objectFit: "contain" }}
                 />
             </div>
@@ -259,11 +271,11 @@ const CreateProfilePart = () => {
         <div className="bg-secondary flex gap-[140px] justify-between py-10 sm:py-20 px-[25px] sm:px-[146px]">
             <div className="sm:flex hidden">
                 <Image
-                    src="/images/Illustration3.png"
+                    src="/images/people.png"
                     width={400}
                     height={400}
-                    className="w-[400px] h-[400px]"
-                    alt="Illustration1"
+                    className="w-[450px] h-[450px]"
+                    alt="people"
                 />
             </div>
             <div className="flex flex-col justify-between max-w-[511px] sm:gap-0 gap-10">

@@ -42,7 +42,14 @@ export default function Navbar() {
                     href={getHref("/")}
                     className="text-xs sm:text-2xl font-montserrat font-bold text-white"
                 >
-                    {language.NAVBAR.text}
+                    <Image
+                        src="/icons/logoCompass.svg"
+                        width={100}
+                        height={19}
+                        objectFit="cover"
+                        className="sm:w-[100px] sm:h-[19px] w-[50px] h-[10px]"
+                        alt=""
+                    />
                 </Link>
             </div>
             <div className="flex gap-[10px] sm:gap-10 items-center text-[8px] sm:text-lg text-white font-medium">
