@@ -189,62 +189,29 @@ export const ActorsCarousel: FC<{ actors: Actor[]; title: string }> = ({
 const Questionnaire = () => {
     const { language, getHref } = useLanguage();
     return (
-        <div className="bg-secondary flex gap-5 sm:gap-[140px] justify-center py-10 sm:py-20 px-[25px] sm:px-[146px]">
-            <div className="flex flex-col justify-between gap-10 sm:gap-[80px] max-w-[190px] sm:max-w-[543px]">
+        <div className="bg-secondary flex sm:flex-row flex-col gap-5 sm:gap-[140px] sm:items-start items-center justify-center py-10 sm:py-20 px-[25px] sm:px-[146px]">
+            <div className="flex flex-col justify-between gap-10 sm:gap-[80px] sm:max-w-[543px]">
                 <div className="flex flex-col gap-10 font-semibold">
-                    <div className="text-white text-[15px] sm:text-4xl leading-[130%]">
+                    <div className="text-white text-xl sm:text-4xl leading-[130%]">
                         {language.MAIN.for_actor}
                     </div>
 
                     <div className="flex justify-between w-full">
                         <div className="flex flex-col gap-[5px] w-full">
-                            <h2 className="text-white text-[12px] sm:text-2xl leading-[130%]">
+                            <h2 className="text-white text-base sm:text-2xl leading-[130%]">
                                 {" "}
                                 {language.PROMO_SECTION.promo}
                             </h2>
-                            <h2 className="text-gray_text text-[6px] sm:text-base leading-[130%] max-w-[150px] sm:max-w-[450px]">
+                            <h2 className="text-gray_text text-[12px] sm:text-base leading-[130%] max-w-[250px] sm:max-w-[450px]">
                                 {language.PROMO_SECTION.promoDescription}
                             </h2>{" "}
                         </div>
-                        {/*
-                        <div className="flex flex-col gap-[5px] w-full">
-                            <h2 className="text-white text-[12px] sm:text-2xl leading-[130%]">
-                                3000+
-                            </h2>
-                            <h2 className="text-gray_text text-[6px] sm:text-base leading-[130%]">
-                                {language.PROMO_SECTION.searchesDescription}
-                            </h2>
-                        </div> */}
                     </div>
-                    {/* <div className="flex justify-between w-full">
-                        <div className="flex flex-col gap-[5px] w-full">
-                            <h2 className="text-white text-[12px] sm:text-2xl leading-[130%]">
-                                200+
-                            </h2>
-                            <h2 className="text-gray_text text-[6px] sm:text-base leading-[130%]">
-                                {
-                                    language.PROMO_SECTION
-                                        .projectsDailyDescription
-                                }
-                            </h2>
-                        </div>
-                        <div className="flex flex-col gap-[5px] w-full">
-                            <h2 className="text-white text-[12px] sm:text-2xl leading-[130%]">
-                                5000+
-                            </h2>
-                            <h2 className="text-gray_text text-[6px] sm:text-base leading-[130%]">
-                                {
-                                    language.PROMO_SECTION
-                                        .projectsTotalDescription
-                                }
-                            </h2>
-                        </div>
-                    </div> */}
                 </div>
-                <div>
+                <div className="flex justify-center">
                     <Link href={getHref("/auth/registration")}>
                         <button
-                            className={`bg-button_color text-[8px] sm:text-base text-white font-bold w-[80px] h-[20px] sm:w-[240px] sm:h-[50px] rounded-[3px]`}
+                            className={`bg-button_color text-[10px] sm:text-base text-white font-bold w-[120px] h-[25px] sm:w-[240px] sm:h-[50px] rounded-[3px]`}
                         >
                             {language.MAIN.registration}
                         </button>
@@ -257,7 +224,7 @@ const Questionnaire = () => {
                     src="/images/films-photo.png"
                     width={170}
                     height={183}
-                    className="w-[170px] h-[183px] sm:w-[400px] sm:h-[394px]"
+                    className="w-[200px] h-[183px] sm:w-[400px] sm:h-[394px]"
                     alt="film"
                     style={{ objectFit: "contain" }}
                 />
@@ -268,13 +235,13 @@ const Questionnaire = () => {
 const CreateProfilePart = () => {
     const { language, getHref } = useLanguage();
     return (
-        <div className="bg-secondary flex gap-[140px] justify-between py-10 sm:py-20 px-[25px] sm:px-[146px]">
-            <div className="sm:flex hidden">
+        <div className="bg-secondary flex sm:flex-row flex-col-reverse gap-10 sm:gap-[140px] justify-between py-10 sm:py-20 px-[25px] sm:px-[146px]">
+            <div className="flex justify-center">
                 <Image
                     src="/images/people.png"
                     width={400}
                     height={400}
-                    className="w-[450px] h-[450px]"
+                    className="w-[200px] h-[200px] sm:w-[450px] sm:h-[450px]"
                     alt="people"
                 />
             </div>
